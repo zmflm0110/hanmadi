@@ -32,6 +32,10 @@ ENGLISH = {
     'jeongmal': 'true', 'misul': 'art', 'swi': 'pee', 'eungga': 'poo', 'gansik': 'snack', 'geupsik': 'lunch', 'jongi': 'paper',
     'gawi': 'scissors', 'keurepaseu': 'crayon', 'gijeogwi': 'diaper', 'saekchilhada': 'color', 'swihada': 'pee', 'eungahada': 'poo',
     'kkeunnada': 'finish', 'bakkuda': 'change', 'maryeopda': 'want to go to the toilet', 'geuman': 'stop', 'da': 'all', 'salda': 'live',
+    'igeo': 'this', 'geugeo': 'that', 'jeogeo': 'that', 'yeogi': 'here', 'geogi': 'there', 'jeogi': 'there',
+    'do': 'also', 'man': 'only', 'nae': 'my', 'i-det': 'this', 'jeo-det': 'that',
+    'hana': 'one', 'dul': 'two', 'set': 'three', 'net': 'four', 'daseot': 'five',
+    'ppalgata': 'red', 'parata': 'blue', 'norata': 'yellow', 'hayata': 'white', 'kkamata': 'black',
 }
 
 
@@ -41,6 +45,7 @@ OVERRIDE = {
     'haseyo': 11749, 'kyeoda': 21818, 'kkeuda': 21365, 'moreuda': 7180, 'eopda': 29839, 'juseyo': 28431,
     'halkkayo': 11576, 'boda-try': 26144, 'jimaseyo': 32366, 'jogeum': 7209, 'suitda': 11750, 'haeya': 15523,
     'itda': 32761, 'gachi': 26818, 'volition': 36518,
+    'daseot': 2631, 'do': 11591,
 }
 # 알맞은 그림이 없는 기능어는 글자 카드로 둔다(AAC 에서 흔한 방식)
 TEXT_ONLY = {'an', 'mot', 'jeongmal'}

@@ -177,6 +177,115 @@ await check('배치: 탭이 카드에 가려지지 않고, 과제 모드가 아�
   assert.equal(await page.locator('#task').isVisible(), false);
 });
 
+await check('대화 상대: 친구 그림을 누르면 반말, 선생님을 누르면 존댓말', async (page) => {
+  await page.locator('#partner').click();
+  await page.locator('.partner-choice', { hasText: '친구에게' }).click();
+  for (const l of ['나', '먹다', '싶어요']) await card(page, l).click();
+  assert.equal(await sayText(page), '나는 먹고 싶어.');
+  await page.locator('#partner').click();
+  await page.locator('.partner-choice', { hasText: '선생님께' }).click();
+  assert.equal(await sayText(page), '저는 먹고 싶어요.');
+  assert.match(await page.locator('#partner').textContent(), /선생님께/);
+});
+
+await check('배운 해석: 다르게로 고른 해석이 다음번엔 먼저 나온다', async (page) => {
+  const pick = async () => {
+    await tab(page, '사람').click();
+    await card(page, '할머니').click();
+    await tab(page, '먹을거리').click();
+    await card(page, '밥').click();
+    await tab(page, '움직임').click();
+    await card(page, '먹다').click();
+  };
+  await pick();
+  assert.equal(await sayText(page), '할머니가 진지를 드세요.');
+  await page.locator('#other').click();
+  await page.locator('#say').click();
+  await page.waitForTimeout(1000); // 말한 뒤 비우기
+  await pick();
+  assert.equal(await sayText(page), '할머니, 진지를 드세요.');
+});
+
+await check('원칙 2(글 없이): 아이가 누르는 버튼마다 그림이나 기호가 있다', async (page) => {
+  for (const l of ['엄마', '쉬', '마렵다']) await card(page, l).click();
+  const bad = await page.evaluate(() =>
+    [...document.querySelectorAll('#app button')]
+      .filter((b) => b.offsetParent !== null && !b.closest('#alts')) // '모두 보기' 목록은 곁의 어른용
+      .filter((b) => !b.querySelector('img') && !/[^\p{Script=Hangul}\s\d.,/·?!~()]/u.test(b.textContent))
+      .map((b) => b.textContent.trim()),
+  );
+  assert.deepEqual(bad, [], `글자만 있는 버튼: ${bad.join(', ')}`);
+  for (const t of await page.locator('#tabs .tab').all()) assert.equal(await t.locator('img').count(), 1);
+});
+
+await check('원칙 3(손이 기억하게): 쓰고, 배우고, 가려도 다른 카드 자리가 그대로', async (page) => {
+  const layout = () => page.$$eval('#grid .card', (els) => els.map((e) => (e.classList.contains('gap') ? '·' : e.textContent)));
+  const before = await layout();
+  for (const l of ['엄마', '쉬', '마렵다']) await card(page, l).click();
+  await page.locator('#other').click();
+  await page.locator('#say').click();
+  await page.waitForTimeout(1000);
+  assert.deepEqual(await layout(), before, '말하고 배운 뒤');
+  await page.locator('#open-settings').click();
+  await page.locator('#edit-board').click();
+  await card(page, '엄마').click();
+  await page.locator('#edit-done').click();
+  const masked = await layout();
+  assert.equal(masked.length, before.length, '가린 카드는 빈칸으로 남는다');
+  assert.deepEqual(masked, before.map((x) => (x === '엄마' ? '·' : x)));
+});
+
+await check('원칙 4(덜 누르게): 물 주세요 3번, 화장실에 가고 싶어요 4번', async (page) => {
+  let taps = 0;
+  const tap = async (l) => (await card(page, l).click(), taps++);
+  await tap('물');
+  await tap('주세요');
+  await page.locator('#say').click();
+  taps++;
+  assert.equal((await page.evaluate(() => window.__spoken)).at(-1), '물 주세요.');
+  assert.ok(taps <= 3, `물 주세요 ${taps}번`);
+  await page.waitForTimeout(1000);
+  taps = 0;
+  await tap('화장실');
+  await tap('가다');
+  await tap('싶어요');
+  await page.locator('#say').click();
+  taps++;
+  assert.equal((await page.evaluate(() => window.__spoken)).at(-1), '화장실에 가고 싶어요.');
+  assert.ok(taps <= 4, `화장실 ${taps}번`);
+});
+
+await check('시작 판: 탭을 오가지 않고 일상 문장이 모두 된다(6칸 고정)', async (page) => {
+  const cols = await page.$eval('#grid', (g) => getComputedStyle(g).gridTemplateColumns.split(' ').length);
+  assert.equal(cols, 6);
+  const cases = [
+    [['물', '주세요'], '물 주세요.'],
+    [['화장실', '가다', '싶어요'], '화장실에 가고 싶어요.'],
+    [['엄마', '쉬', '마렵다'], '엄마, 쉬가 마려워요.'],
+    [['밥', '더', '주세요'], '밥 더 주세요.'],
+    [['그만', '하다', '싶어요'], '그만 하고 싶어요.'],
+    [['선생님', '도와주세요'], '선생님, 도와주세요.'],
+    [['아프다'], '아파요.'],
+    [['나', '도', '놀다', '싶어요'], '저도 놀고 싶어요.'],
+    [['이거', '싫다'], '이게 싫어요.'],
+  ];
+  for (const [labels, want] of cases) {
+    for (const l of labels) await card(page, l).click();
+    assert.equal(await sayText(page), want, labels.join('+'));
+    await page.locator('#clear').click();
+  }
+  assert.equal(await page.locator('#tabs .tab.on').textContent(), '시작', '탭을 바꾸지 않았다');
+});
+
+await check('품사 색은 기본이 테두리, 설정에서 배경으로 바꿀 수 있다', async (page) => {
+  const bg = () => page.$eval('#grid .card', (c) => getComputedStyle(c).backgroundColor);
+  assert.equal(await bg(), 'rgb(255, 255, 255)');
+  await page.locator('#open-settings').click();
+  await page.locator('input[name=colorStyle][value=background]').check();
+  await page.locator('#settings button[value=close]').click();
+  assert.notEqual(await bg(), 'rgb(255, 255, 255)');
+});
+
 await check('휴대폰 너비에서 가로 넘침이 없다', async (page) => {
   await page.setViewportSize({ width: 360, height: 780 });
   for (const l of ['엄마', '쉬', '마렵다']) await card(page, l).click();

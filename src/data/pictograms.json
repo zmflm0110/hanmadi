@@ -818,5 +818,85 @@
  "keurepaseu": {
   "arasaac": 4951,
   "query": "reviewed"
+ },
+ "igeo": {
+  "arasaac": 7095,
+  "query": "en"
+ },
+ "geugeo": {
+  "arasaac": 6906,
+  "query": "en"
+ },
+ "jeogeo": {
+  "arasaac": 6906,
+  "query": "en"
+ },
+ "yeogi": {
+  "arasaac": 5382,
+  "query": "en"
+ },
+ "geogi": {
+  "arasaac": 5375,
+  "query": "en"
+ },
+ "jeogi": {
+  "arasaac": 5375,
+  "query": "en"
+ },
+ "ppalgata": {
+  "arasaac": 2808,
+  "query": "en"
+ },
+ "parata": {
+  "arasaac": 4869,
+  "query": "en"
+ },
+ "norata": {
+  "arasaac": 2648,
+  "query": "en"
+ },
+ "hayata": {
+  "arasaac": 8043,
+  "query": "en"
+ },
+ "kkamata": {
+  "arasaac": 2886,
+  "query": "en"
+ },
+ "nae": {
+  "arasaac": 12264,
+  "query": "en"
+ },
+ "i-det": {
+  "arasaac": 7095,
+  "query": "en"
+ },
+ "jeo-det": {
+  "arasaac": 6906,
+  "query": "en"
+ },
+ "hana": {
+  "arasaac": 2627,
+  "query": "en"
+ },
+ "dul": {
+  "arasaac": 2628,
+  "query": "en"
+ },
+ "set": {
+  "arasaac": 2629,
+  "query": "en"
+ },
+ "net": {
+  "arasaac": 2630,
+  "query": "en"
+ },
+ "daseot": {
+  "arasaac": 2631,
+  "query": "reviewed"
+ },
+ "do": {
+  "arasaac": 11591,
+  "query": "reviewed"
  }
 }

@@ -2,7 +2,18 @@
 import type { Category, NounEntry } from '../engine/lexicon';
 import type { Speech } from '../engine/predicate';
 
+export type Partner = 'teacher' | 'parent' | 'friend' | 'elder';
+
+/** 대화 상대: 아이가 그림 하나로 말투·높임을 한 번에 바꾼다(원칙 2·5) */
+export const PARTNERS: { id: Partner; label: string; icon: string; speech: Speech; honorListener: boolean; say: string }[] = [
+  { id: 'teacher', label: '선생님께', icon: 'seonsaengnim', speech: 'polite', honorListener: true, say: '선생님께 말해요' },
+  { id: 'parent', label: '엄마·아빠에게', icon: 'eomma', speech: 'plain', honorListener: false, say: '엄마 아빠한테 말해' },
+  { id: 'friend', label: '친구에게', icon: 'chingu', speech: 'plain', honorListener: false, say: '친구한테 말해' },
+  { id: 'elder', label: '어른께', icon: 'halmeoni', speech: 'polite', honorListener: true, say: '어른께 말해요' },
+];
+
 export interface Settings {
+  partner: Partner | null; // null 이면 설정에서 말투를 직접 고른 상태
   speech: Speech;
   honorListener: boolean;
   grammar: boolean; // 끄면 기존 AAC 처럼 카드 이름만 읽는다(비교 실험용)
@@ -12,11 +23,14 @@ export interface Settings {
   scanMs: number;
   rate: number; // 말하기 빠르기
   big: boolean; // 큰 카드
+  /** 품사 색: 테두리(기본) 또는 배경. 배경색은 24칸 미만 판에서 찾기를 돕지 않고 어린아이에겐 방해일 수 있다(Thistle & Wilkinson) */
+  colorStyle: 'border' | 'background';
 }
 
 export const DEFAULT_SETTINGS: Settings = {
+  partner: 'teacher',
   speech: 'polite',
-  honorListener: false,
+  honorListener: true,
   grammar: true,
   speakOnTap: true,
   clearAfterSpeak: true,
@@ -24,6 +38,7 @@ export const DEFAULT_SETTINGS: Settings = {
   scanMs: 1500,
   rate: 0.9,
   big: false,
+  colorStyle: 'border',
 };
 
 export interface MyCard {
@@ -51,7 +66,7 @@ export interface LogEvent {
   skipped?: boolean;
 }
 
-const KEY = { settings: 'hanmadi.settings', mine: 'hanmadi.mine', log: 'hanmadi.log' };
+const KEY = { settings: 'hanmadi.settings', mine: 'hanmadi.mine', log: 'hanmadi.log', hidden: 'hanmadi.hidden', learn: 'hanmadi.learn' };
 const LOG_LIMIT = 5000;
 
 function read<T>(key: string, fallback: T): T {
@@ -95,6 +110,19 @@ export const store = {
   },
   clearLog() {
     write(KEY.log, []);
+  },
+  /** 선생님이 가린 카드(아이 화면에서는 빈칸으로 남아 다른 카드 자리가 안 바뀐다) */
+  hidden(): string[] {
+    return read<string[]>(KEY.hidden, []);
+  },
+  saveHidden(ids: string[]) {
+    write(KEY.hidden, ids);
+  },
+  learned<T>(fallback: T): T {
+    return read<T>(KEY.learn, fallback);
+  },
+  saveLearned(v: unknown) {
+    write(KEY.learn, v);
   },
 };
 

@@ -448,6 +448,13 @@ function realizeCore(cards: Card[], ctx: Context, limit = 5): Candidate[] {
     const text = phraseTokens.map((t) => t.text).join(' ');
     return [{ text: /[.?!]$/.test(text) ? text : text + '.', tokens: phraseTokens, features, score: 10, note: '인사·대답', unused: markers.map((m) => m.key).concat(adverbs.map((a) => a.key), modUnused) }];
   }
+  // 사람 카드 하나 + 인사·부탁·대답: '선생님, 도와주세요.' '엄마, 네.'
+  if (phrases.length && !preds.length && nouns.length === 1 && nouns[0]!.e.cat === 'person' && !nouns[0]!.e.wh && !mods.has(nouns[0]!.key)) {
+    const person = nouns[0]!;
+    const voc: Token = { text: callWord(person.e, ctx.speech), sources: [person.key], role: 'vocative' };
+    const text = `${voc.text}, ${phraseTokens.map((t) => t.text).join(' ')}`;
+    return [{ text: /[.?!]$/.test(text) ? text : text + '.', tokens: [voc, ...phraseTokens], features, score: 10, note: `${person.e.word}에게 말하기`, unused: markers.map((m) => m.key).concat(adverbs.map((x) => x.key), modUnused) }];
+  }
   const withPhrases = (c: Candidate): Candidate =>
     phrases.length ? { ...c, tokens: [...phraseTokens, { text: '.', sources: [] }, ...c.tokens], text: `${phraseTokens.map((t) => t.text).join(' ')}. ${c.text}` } : c;
 

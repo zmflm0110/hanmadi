@@ -57,6 +57,7 @@ def main():
     ap.add_argument('--errors', type=int, default=0)
     ap.add_argument('--split', choices=['dev', 'test', 'all'], default='dev')
     ap.add_argument('--bag', action='store_true', help='어순을 무시하는 기준도 잰다(카드 섞기 실험용)')
+    ap.add_argument('--emit-gold', help='항목마다 원문과 맞는 후보 문장(조사생략 기준)을 적은 파일을 쓴다(개인화 흉내 실험용)')
     args = ap.parse_args()
     rows = [json.loads(l) for l in Path(args.preds).read_text().splitlines() if l.strip()]
     if args.split != 'all':
@@ -76,6 +77,13 @@ def main():
                     hits[lv][k] += 1
             if lv == 'josa' and rank is None:
                 errors.append(r)
+    if args.emit_gold:
+        out = []
+        for r in rows:
+            gold = key(r['text'], 'josa')
+            match = next((p for p in r['preds'] if key(p, 'josa') == gold), None)
+            out.append(json.dumps({**r, 'gold': match}, ensure_ascii=False))
+        Path(args.emit_gold).write_text('\n'.join(out) + '\n')
     n = len(rows)
     print(f'[{args.split}] 항목 {n}개 (사람이 쓴 Tatoeba 문장을 카드열로 바꾼 것)')
     print(f'{"기준":<8}{"1순위":>8}{"3순위 안":>10}{"5순위 안":>10}')

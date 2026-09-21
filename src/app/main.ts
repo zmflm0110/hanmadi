@@ -1,12 +1,13 @@
 import './style.css';
 import { CORE } from '../data/core';
 import type { Category, Entry } from '../engine/lexicon';
+import { emptyPrefs, learn, rerank, type Prefs } from '../engine/prefer';
 import { realize, type Candidate, type Card } from '../engine/realize';
-import { TABS, colorOf, entriesFor, labelOf, pictureOf, type TabId } from './board';
+import { TABS, colorOf, entriesFor, iconUrl, labelOf, pictureOf, type TabId } from './board';
 import { Scanner } from './scan';
 import { hasKoreanVoice, speak } from './speech';
 import { TASKS, conditionFor } from './tasks';
-import { store, summarize, toNoun, type LogEvent, type MyCard, type Settings } from './store';
+import { PARTNERS, store, summarize, toNoun, type LogEvent, type MyCard, type Settings } from './store';
 
 const $ = <T extends HTMLElement>(id: string) => document.getElementById(id) as T;
 
@@ -19,6 +20,9 @@ let taps = 0;
 let firstAt = 0;
 let seq = 0;
 let pick = 0; // 지금 고른 해석(다르게 누를 때마다 다음 것)
+let hidden = new Set(store.hidden());
+let prefs: Prefs = { ...emptyPrefs(), ...store.learned<Partial<Prefs>>({}) };
+let editing = false; // 선생님이 보일 카드를 고르는 중
 let showAll = false;
 // 과제 모드(사용성 평가): 과제마다 말투·문법 켬/끔이 정해진다
 let task: { code: string; index: number } | null = null;
@@ -50,7 +54,9 @@ function compute() {
     candidates = [{ text, tokens: [], features: {} as Candidate['features'], score: 0, note: '카드 이름 그대로', unused: [] }];
     return;
   }
-  candidates = realize(sentence, { speech: eff.speech, honorListener: settings.honorListener }, 4);
+  const raw = realize(sentence, { speech: eff.speech, honorListener: settings.honorListener }, 4);
+  // 이 아이가 전에 고른 해석을 위로(순서만 바꾼다). 사용성 평가 중에는 조건을 같게 두려고 배운 것을 쓰지 않는다
+  candidates = task ? raw : rerank(raw, sentence, prefs);
 }
 
 function addCard(e: Entry) {
@@ -83,6 +89,10 @@ function say(i: number) {
   if (!c) return;
   speak(c.text, settings.rate);
   const eff = effective();
+  if (eff.grammar && !task) {
+    prefs = learn(prefs, c, sentence);
+    store.saveLearned(prefs);
+  }
   log({ type: 'speak', rank: i, taps: taps + 1, cards: sentence.length, ms: Date.now() - firstAt, grammar: eff.grammar, speech: eff.speech });
   if (task) {
     const t = TASKS[task.index]!;
@@ -190,7 +200,7 @@ function renderSpeak() {
     const other = document.createElement('button');
     other.id = 'other';
     other.className = 'say-other';
-    other.innerHTML = `<span>다르게</span><small>${pick + 1}/${candidates.length}</small>`;
+    other.innerHTML = `<span><span class="sym">🔄</span> 다르게</span><small>${pick + 1}/${candidates.length}</small>`;
     other.setAttribute('aria-label', `다른 뜻으로 (${pick + 1}/${candidates.length})`);
     other.onclick = () => {
       pick = (pick + 1) % candidates.length;
@@ -252,7 +262,13 @@ function renderTabs() {
     if (t.id === 'mine' && !myCards.length) continue;
     const b = document.createElement('button');
     b.className = `tab c-${t.color}${t.id === tab ? ' on' : ''}`;
-    b.textContent = t.label;
+    const img = document.createElement('img');
+    img.src = iconUrl(t.icon);
+    img.alt = '';
+    const label = document.createElement('span');
+    label.textContent = t.label;
+    b.append(img, label);
+    b.setAttribute('aria-label', t.label);
     b.setAttribute('aria-pressed', String(t.id === tab));
     b.onclick = () => {
       tab = t.id;
@@ -268,11 +284,84 @@ function renderGrid() {
   const grid = $('grid');
   grid.replaceChildren();
   grid.classList.toggle('big', settings.big);
+  grid.classList.toggle('starter', tab === 'core'); // 시작 판은 6칸 고정: 기기가 달라도 자리가 같다
+  document.body.classList.toggle('color-border', settings.colorStyle === 'border');
   for (const e of entriesFor(tab, myEntries())) {
     const b = cardFace(e);
-    b.onclick = () => addCard(e);
+    if (editing) {
+      b.classList.toggle('masked', hidden.has(e.id));
+      b.setAttribute('aria-pressed', String(!hidden.has(e.id)));
+      b.onclick = () => {
+        if (hidden.has(e.id)) hidden.delete(e.id);
+        else hidden.add(e.id);
+        store.saveHidden([...hidden]);
+        renderGrid();
+      };
+    } else if (hidden.has(e.id)) {
+      // 가린 카드는 빈칸: 자리를 지켜 손의 기억(운동 계획)을 흐트러뜨리지 않는다
+      const gap = document.createElement('div');
+      gap.className = 'card gap';
+      gap.setAttribute('aria-hidden', 'true');
+      grid.append(gap);
+      continue;
+    } else {
+      b.onclick = () => addCard(e);
+    }
     grid.append(b);
   }
+}
+
+function setEditing(on: boolean) {
+  editing = on;
+  $('editing').hidden = !on;
+  document.body.classList.toggle('is-editing', on);
+  renderGrid();
+}
+
+// ── 대화 상대 ───────────────────────────────────────────────────────────
+function renderPartner() {
+  const b = $('partner');
+  b.replaceChildren();
+  const p = PARTNERS.find((x) => x.id === settings.partner);
+  const img = document.createElement('img');
+  img.alt = '';
+  const label = document.createElement('span');
+  if (p) {
+    img.src = pictureOf(CORE.find((e) => e.id === p.icon)!)!;
+    label.textContent = p.label;
+  } else {
+    img.src = iconUrl('ui/favorite');
+    label.textContent = settings.speech === 'plain' ? '반말' : settings.speech === 'formal' ? '아주 높임' : '존댓말';
+  }
+  b.append(img, label);
+  b.setAttribute('aria-label', `누구에게 말하나요: ${label.textContent}`);
+}
+
+function openPartnerPicker() {
+  const grid = $('partner-grid');
+  grid.replaceChildren();
+  for (const p of PARTNERS) {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.className = `partner-choice${settings.partner === p.id ? ' on' : ''}`;
+    const img = document.createElement('img');
+    img.src = pictureOf(CORE.find((e) => e.id === p.icon)!)!;
+    img.alt = '';
+    const span = document.createElement('span');
+    span.textContent = p.label;
+    b.append(img, span);
+    b.onclick = () => {
+      settings = { ...settings, partner: p.id, speech: p.speech, honorListener: p.honorListener };
+      store.saveSettings(settings);
+      speak(p.say, settings.rate);
+      $<HTMLDialogElement>('partner-pick').close();
+      renderPartner();
+      update();
+    };
+    grid.append(b);
+  }
+  scanner.stop();
+  $<HTMLDialogElement>('partner-pick').showModal();
 }
 
 // ── 과제 모드 ───────────────────────────────────────────────────────────
@@ -335,9 +424,9 @@ function update() {
 function scanGroups(): HTMLElement[][] {
   const cands = [...document.querySelectorAll<HTMLElement>('#speak .say-main, #speak .say-other, #speak .say-more')];
   const list = showAll ? [...document.querySelectorAll<HTMLElement>('#alts .cand')] : [];
-  const tools = [...document.querySelectorAll<HTMLElement>('.strip-tools .tool')];
+  const tools = [...document.querySelectorAll<HTMLElement>('#partner, .strip-tools .tool')];
   const tabs = [...document.querySelectorAll<HTMLElement>('#tabs .tab')];
-  const cards = [...document.querySelectorAll<HTMLElement>('#grid .card')];
+  const cards = [...document.querySelectorAll<HTMLElement>('#grid button.card')];
   const rows = new Map<number, HTMLElement[]>();
   for (const c of cards) {
     const top = c.offsetTop;
@@ -395,6 +484,7 @@ const settingsDialog = $<HTMLDialogElement>('settings');
 function fillSettings() {
   const f = settingsDialog.querySelector('form')!;
   (f.querySelector(`input[name=speech][value=${settings.speech}]`) as HTMLInputElement).checked = true;
+  (f.querySelector(`input[name=colorStyle][value=${settings.colorStyle}]`) as HTMLInputElement).checked = true;
   for (const k of ['honorListener', 'grammar', 'speakOnTap', 'clearAfterSpeak', 'big', 'scan'] as const) {
     (f.elements.namedItem(k) as HTMLInputElement).checked = settings[k];
   }
@@ -406,24 +496,32 @@ function fillSettings() {
     ? `문법 도움 켬: ${s.grammarOn.sentences}문장, 평균 ${s.grammarOn.avgTaps.toFixed(1)}번 눌러 ${s.grammarOn.avgSeconds.toFixed(1)}초, 1순위 ${pct(s.grammarOn.top1)} · 끔: ${s.grammarOff.sentences}문장, 평균 ${s.grammarOff.avgTaps.toFixed(1)}번 ${s.grammarOff.avgSeconds.toFixed(1)}초`
     : '아직 기록이 없어요.';
   $('voice-warning').hidden = hasKoreanVoice();
+  const learnedPatterns = Object.keys(prefs.exact).length;
+  $('learn-summary').textContent = learnedPatterns ? `카드 조합 ${learnedPatterns}가지에서 고른 해석을 기억하고 있어요.` : '아직 배운 것이 없어요.';
 }
 
 settingsDialog.querySelector('form')!.addEventListener('change', (ev) => {
   const f = ev.currentTarget as HTMLFormElement;
   const data = new FormData(f);
+  const speech = data.get('speech') as Settings['speech'];
+  const honorListener = data.has('honorListener');
+  const partnerKept = PARTNERS.find((p) => p.id === settings.partner && p.speech === speech && p.honorListener === honorListener);
   settings = {
     ...settings,
-    speech: data.get('speech') as Settings['speech'],
-    honorListener: data.has('honorListener'),
+    partner: partnerKept ? partnerKept.id : null, // 말투를 직접 바꾸면 '대화 상대'는 풀린다
+    speech,
+    honorListener,
     grammar: data.has('grammar'),
     speakOnTap: data.has('speakOnTap'),
     clearAfterSpeak: data.has('clearAfterSpeak'),
     big: data.has('big'),
+    colorStyle: (data.get('colorStyle') as Settings['colorStyle']) ?? 'border',
     scan: data.has('scan'),
     rate: Number(data.get('rate')),
     scanMs: Math.max(500, Number(data.get('scanSec')) * 1000),
   };
   store.saveSettings(settings);
+  renderPartner();
   renderGrid();
   update();
 });
@@ -439,6 +537,13 @@ $('open-settings').onclick = () => {
   settingsDialog.showModal();
 };
 $('undo').onclick = () => sentence.length && removeAt(sentence.length - 1);
+$('partner').onclick = openPartnerPicker;
+$('edit-board').onclick = () => {
+  $<HTMLDialogElement>('settings').close();
+  setEditing(true);
+};
+$('edit-done').onclick = () => setEditing(false);
+$<HTMLDialogElement>('partner-pick').addEventListener('close', () => settings.scan && scanner.start());
 $('clear').onclick = () => sentence.length && clearSentence();
 
 $('export-log').onclick = () => {
@@ -457,6 +562,12 @@ $('export-log').onclick = () => {
   a.download = `hanmadi-log-${new Date().toISOString().slice(0, 10)}.json`;
   a.click();
   URL.revokeObjectURL(url);
+};
+$('clear-learned').onclick = () => {
+  prefs = emptyPrefs();
+  store.saveLearned(prefs);
+  fillSettings();
+  update();
 };
 $('clear-log').onclick = () => {
   store.clearLog();
@@ -517,6 +628,7 @@ function shrink(file: File, size: number): Promise<string> {
 }
 
 // ── 시작 ────────────────────────────────────────────────────────────────
+renderPartner();
 renderTabs();
 renderGrid();
 update();

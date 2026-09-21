@@ -73,6 +73,9 @@ describe('대표 문장(1순위)', () => {
     ['halmeoni do bap meokda', 'polite', '할머니도 진지를 드세요.'],
     ['na hakgyo do gada', 'polite', '저는 학교에도 가요.'],
     ['gong ppalgata', 'polite', '공이 빨개요.'],
+    ['seonsaengnim dowajwo', 'polite', '선생님, 도와주세요.'],
+    ['eomma ne', 'plain', '엄마, 응.'],
+    ['chingu annyeong', 'plain', '친구야, 안녕.'],
   ])('[%s] %s → %s', (ids, speech, out) => expect(top(ids, speech as Speech)).toBe(out));
 });
 
