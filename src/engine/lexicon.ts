@@ -54,6 +54,8 @@ export interface NounEntry {
   tense?: Tense;
   /** 의문사: 뭐, 누구, 어디, 언제 */
   wh?: boolean;
+  /** 다른 범주로도 쓰이는 낱말(아침 = 때·끼니) */
+  alt?: Category[];
 }
 
 export interface PredEntry {

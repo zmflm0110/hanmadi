@@ -100,9 +100,10 @@ export const CORE: Entry[] = [
   n('naeil', '내일', 'time', { timeJosa: '', tense: 'future' }),
   n('akka', '아까', 'time', { timeJosa: '', tense: 'past' }),
   n('ittaga', '이따가', 'time', { timeJosa: '', tense: 'future' }),
-  n('achim', '아침', 'time', { timeJosa: '에' }),
-  n('jeomsim', '점심', 'time', { timeJosa: '에' }),
-  n('jeonyeok', '저녁', 'time', { timeJosa: '에' }),
+  // 아침·점심·저녁은 때이면서 끼니: 아침에 먹어요 / 아침을 먹어요
+  n('achim', '아침', 'time', { timeJosa: '에', alt: ['food'] }),
+  n('jeomsim', '점심', 'time', { timeJosa: '에', alt: ['food'] }),
+  n('jeonyeok', '저녁', 'time', { timeJosa: '에', alt: ['food'] }),
   n('jumal', '주말', 'time', { timeJosa: '에' }),
 
   // ── 묻는 말 ──
@@ -119,7 +120,8 @@ export const CORE: Entry[] = [
   p('jada', '자다', 'verb', [S.time, S.agent, S.location, S.companion], { honorLemma: '주무시다' }),
   p('nolda', '놀다', 'verb', [S.time, S.agent, S.location, S.companion, S.instrument]),
   p('boda', '보다', 'verb', [S.time, S.agent, S.location, S.companion, S.theme([...OBJECTS, 'person', 'activity'])]),
-  p('mannada', '만나다', 'verb', [S.time, S.agent, S.location, S.theme(PEOPLE)]),
+  p('mannada', '만나다', 'verb', [S.time, S.agent, S.location, S.companion, S.theme(PEOPLE)]),
+  p('salda', '살다', 'verb', [S.time, S.agent, S.locationAt, S.companion]),
   p('juda', '주다', 'verb', [S.time, S.agent, S.recipient, S.theme()], { humbleLemma: '드리다' }),
   p('sada', '사다', 'verb', [S.time, S.agent, S.location, S.companion, S.theme()]),
   p('ssitda', '씻다', 'verb', [S.time, S.agent, S.location, S.theme(['body', 'food', 'thing', 'toy'])]),
@@ -193,6 +195,7 @@ export const CORE: Entry[] = [
   { kind: 'marker', id: 'q', word: '?', set: { mood: 'question' } },
   { kind: 'marker', id: 'juseyo', word: '주세요', set: { mood: 'request' } },
   { kind: 'marker', id: 'gachi', word: '같이', set: { mood: 'suggest' }, surface: '같이' },
+  { kind: 'marker', id: 'halkkayo', word: '할까요?', set: { mood: 'suggest' } },
   { kind: 'marker', id: 'sipda', word: '싶어요', set: { modality: 'want' } },
   { kind: 'marker', id: 'suitda', word: '할 수 있어요', set: { modality: 'can' } },
   { kind: 'marker', id: 'haeya', word: '해야 해요', set: { modality: 'must' } },
@@ -201,6 +204,8 @@ export const CORE: Entry[] = [
   { kind: 'marker', id: 'jimaseyo', word: '하지 마세요', set: { mood: 'command', negation: 'an' } },
   { kind: 'marker', id: 'haseyo', word: '하세요', set: { mood: 'command' } },
   { kind: 'marker', id: 'past', word: '했어요', set: { tense: 'past' } },
+  { kind: 'marker', id: 'promise', word: '할게요', set: { mood: 'promise' } },
+  { kind: 'marker', id: 'volition', word: '할래요', set: { mood: 'volition' } },
   { kind: 'marker', id: 'future', word: '할 거예요', set: { tense: 'future' } },
 
   // ── 꾸미는 말 ──

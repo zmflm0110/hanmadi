@@ -34,8 +34,8 @@ describe('대표 문장(1순위)', () => {
     ['ppang meokda sipda', 'polite', '빵을 먹고 싶어요.'],
     ['tv kkeuda jimaseyo', 'polite', '텔레비전을 끄지 마세요.'],
     ['gachi nolda', 'polite', '같이 놀까요?'],
-    ['uri gachi noriteo gada', 'polite', '우리 놀이터에 같이 갈까요?'],
-    ['uri gachi noriteo gada', 'plain', '우리 놀이터에 같이 가자.'],
+    ['uri gachi noriteo gada', 'polite', '우리 같이 놀이터에 갈까요?'],
+    ['uri gachi noriteo gada', 'plain', '우리 같이 놀이터에 가자.'],
     ['uri hakgyo gada', 'polite', '저희는 학교에 가요.'],
     ['annyeong', 'polite', '안녕하세요.'],
     ['gomawo', 'formal', '감사합니다.'],
@@ -93,6 +93,7 @@ function nounForms(e: Entry): string[] {
   if (e.cat === 'we') forms.push('저희');
   if (e.cat === 'you') forms.push('네');
   if (e.word === '누구') forms.push('누가');
+  if (e.word === '뭐') forms.push('뭘', '무엇'); // 같은 낱말의 말투 변이
   return forms;
 }
 

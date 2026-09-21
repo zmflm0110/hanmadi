@@ -1,0 +1,3477 @@
+[
+ {
+  "kind": "noun",
+  "id": "na",
+  "word": "나",
+  "cat": "self"
+ },
+ {
+  "kind": "noun",
+  "id": "neo",
+  "word": "너",
+  "cat": "you"
+ },
+ {
+  "kind": "noun",
+  "id": "uri",
+  "word": "우리",
+  "cat": "we"
+ },
+ {
+  "kind": "noun",
+  "id": "eomma",
+  "word": "엄마",
+  "cat": "person"
+ },
+ {
+  "kind": "noun",
+  "id": "appa",
+  "word": "아빠",
+  "cat": "person"
+ },
+ {
+  "kind": "noun",
+  "id": "halmeoni",
+  "word": "할머니",
+  "cat": "person",
+  "honorific": true
+ },
+ {
+  "kind": "noun",
+  "id": "harabeoji",
+  "word": "할아버지",
+  "cat": "person",
+  "honorific": true
+ },
+ {
+  "kind": "noun",
+  "id": "seonsaengnim",
+  "word": "선생님",
+  "cat": "person",
+  "honorific": true
+ },
+ {
+  "kind": "noun",
+  "id": "chingu",
+  "word": "친구",
+  "cat": "person"
+ },
+ {
+  "kind": "noun",
+  "id": "dongsaeng",
+  "word": "동생",
+  "cat": "person"
+ },
+ {
+  "kind": "noun",
+  "id": "hyeong",
+  "word": "형",
+  "cat": "person"
+ },
+ {
+  "kind": "noun",
+  "id": "nuna",
+  "word": "누나",
+  "cat": "person"
+ },
+ {
+  "kind": "noun",
+  "id": "eonni",
+  "word": "언니",
+  "cat": "person"
+ },
+ {
+  "kind": "noun",
+  "id": "oppa",
+  "word": "오빠",
+  "cat": "person"
+ },
+ {
+  "kind": "noun",
+  "id": "agi",
+  "word": "아기",
+  "cat": "person"
+ },
+ {
+  "kind": "noun",
+  "id": "gangaji",
+  "word": "강아지",
+  "cat": "animal"
+ },
+ {
+  "kind": "noun",
+  "id": "goyangi",
+  "word": "고양이",
+  "cat": "animal"
+ },
+ {
+  "kind": "noun",
+  "id": "jip",
+  "word": "집",
+  "cat": "place",
+  "honorForm": "댁"
+ },
+ {
+  "kind": "noun",
+  "id": "hakgyo",
+  "word": "학교",
+  "cat": "place"
+ },
+ {
+  "kind": "noun",
+  "id": "hwajangsil",
+  "word": "화장실",
+  "cat": "place"
+ },
+ {
+  "kind": "noun",
+  "id": "byeongwon",
+  "word": "병원",
+  "cat": "place"
+ },
+ {
+  "kind": "noun",
+  "id": "gongwon",
+  "word": "공원",
+  "cat": "place"
+ },
+ {
+  "kind": "noun",
+  "id": "noriteo",
+  "word": "놀이터",
+  "cat": "place"
+ },
+ {
+  "kind": "noun",
+  "id": "gyosil",
+  "word": "교실",
+  "cat": "place"
+ },
+ {
+  "kind": "noun",
+  "id": "sikdang",
+  "word": "식당",
+  "cat": "place"
+ },
+ {
+  "kind": "noun",
+  "id": "mateu",
+  "word": "마트",
+  "cat": "place"
+ },
+ {
+  "kind": "noun",
+  "id": "bang",
+  "word": "방",
+  "cat": "place"
+ },
+ {
+  "kind": "noun",
+  "id": "bak",
+  "word": "밖",
+  "cat": "place"
+ },
+ {
+  "kind": "noun",
+  "id": "bap",
+  "word": "밥",
+  "cat": "food",
+  "honorForm": "진지"
+ },
+ {
+  "kind": "noun",
+  "id": "ppang",
+  "word": "빵",
+  "cat": "food"
+ },
+ {
+  "kind": "noun",
+  "id": "gwaja",
+  "word": "과자",
+  "cat": "food"
+ },
+ {
+  "kind": "noun",
+  "id": "sagwa",
+  "word": "사과",
+  "cat": "food"
+ },
+ {
+  "kind": "noun",
+  "id": "banana",
+  "word": "바나나",
+  "cat": "food"
+ },
+ {
+  "kind": "noun",
+  "id": "ramyeon",
+  "word": "라면",
+  "cat": "food"
+ },
+ {
+  "kind": "noun",
+  "id": "gimbap",
+  "word": "김밥",
+  "cat": "food"
+ },
+ {
+  "kind": "noun",
+  "id": "gogi",
+  "word": "고기",
+  "cat": "food"
+ },
+ {
+  "kind": "noun",
+  "id": "aiseukeurim",
+  "word": "아이스크림",
+  "cat": "food"
+ },
+ {
+  "kind": "noun",
+  "id": "mul",
+  "word": "물",
+  "cat": "drink"
+ },
+ {
+  "kind": "noun",
+  "id": "uyu",
+  "word": "우유",
+  "cat": "drink"
+ },
+ {
+  "kind": "noun",
+  "id": "juseu",
+  "word": "주스",
+  "cat": "drink"
+ },
+ {
+  "kind": "noun",
+  "id": "chaek",
+  "word": "책",
+  "cat": "thing"
+ },
+ {
+  "kind": "noun",
+  "id": "yeonpil",
+  "word": "연필",
+  "cat": "thing"
+ },
+ {
+  "kind": "noun",
+  "id": "gabang",
+  "word": "가방",
+  "cat": "thing"
+ },
+ {
+  "kind": "noun",
+  "id": "hyudaepon",
+  "word": "휴대폰",
+  "cat": "thing"
+ },
+ {
+  "kind": "noun",
+  "id": "tv",
+  "word": "텔레비전",
+  "cat": "thing"
+ },
+ {
+  "kind": "noun",
+  "id": "keompyuteo",
+  "word": "컴퓨터",
+  "cat": "thing"
+ },
+ {
+  "kind": "noun",
+  "id": "gong",
+  "word": "공",
+  "cat": "toy"
+ },
+ {
+  "kind": "noun",
+  "id": "inhyeong",
+  "word": "인형",
+  "cat": "toy"
+ },
+ {
+  "kind": "noun",
+  "id": "beullok",
+  "word": "블록",
+  "cat": "toy"
+ },
+ {
+  "kind": "noun",
+  "id": "ot",
+  "word": "옷",
+  "cat": "clothes"
+ },
+ {
+  "kind": "noun",
+  "id": "sinbal",
+  "word": "신발",
+  "cat": "clothes"
+ },
+ {
+  "kind": "noun",
+  "id": "mun",
+  "word": "문",
+  "cat": "thing"
+ },
+ {
+  "kind": "noun",
+  "id": "bul",
+  "word": "불",
+  "cat": "thing"
+ },
+ {
+  "kind": "noun",
+  "id": "eumak",
+  "word": "음악",
+  "cat": "thing"
+ },
+ {
+  "kind": "noun",
+  "id": "beoseu",
+  "word": "버스",
+  "cat": "vehicle"
+ },
+ {
+  "kind": "noun",
+  "id": "cha",
+  "word": "차",
+  "cat": "vehicle"
+ },
+ {
+  "kind": "noun",
+  "id": "jihacheol",
+  "word": "지하철",
+  "cat": "vehicle"
+ },
+ {
+  "kind": "noun",
+  "id": "jajeongeo",
+  "word": "자전거",
+  "cat": "vehicle"
+ },
+ {
+  "kind": "noun",
+  "id": "meori",
+  "word": "머리",
+  "cat": "body"
+ },
+ {
+  "kind": "noun",
+  "id": "bae",
+  "word": "배",
+  "cat": "body"
+ },
+ {
+  "kind": "noun",
+  "id": "dari",
+  "word": "다리",
+  "cat": "body"
+ },
+ {
+  "kind": "noun",
+  "id": "son",
+  "word": "손",
+  "cat": "body"
+ },
+ {
+  "kind": "noun",
+  "id": "nun",
+  "word": "눈",
+  "cat": "body"
+ },
+ {
+  "kind": "noun",
+  "id": "mok",
+  "word": "목",
+  "cat": "body"
+ },
+ {
+  "kind": "noun",
+  "id": "gongbu",
+  "word": "공부",
+  "cat": "activity"
+ },
+ {
+  "kind": "noun",
+  "id": "undong",
+  "word": "운동",
+  "cat": "activity"
+ },
+ {
+  "kind": "noun",
+  "id": "sukje",
+  "word": "숙제",
+  "cat": "activity"
+ },
+ {
+  "kind": "noun",
+  "id": "cheongso",
+  "word": "청소",
+  "cat": "activity"
+ },
+ {
+  "kind": "noun",
+  "id": "geim",
+  "word": "게임",
+  "cat": "activity"
+ },
+ {
+  "kind": "noun",
+  "id": "norae",
+  "word": "노래",
+  "cat": "activity"
+ },
+ {
+  "kind": "noun",
+  "id": "geurim",
+  "word": "그림",
+  "cat": "activity"
+ },
+ {
+  "kind": "noun",
+  "id": "jigeum",
+  "word": "지금",
+  "cat": "time",
+  "timeJosa": "",
+  "tense": "present"
+ },
+ {
+  "kind": "noun",
+  "id": "oneul",
+  "word": "오늘",
+  "cat": "time",
+  "timeJosa": ""
+ },
+ {
+  "kind": "noun",
+  "id": "eoje",
+  "word": "어제",
+  "cat": "time",
+  "timeJosa": "",
+  "tense": "past"
+ },
+ {
+  "kind": "noun",
+  "id": "naeil",
+  "word": "내일",
+  "cat": "time",
+  "timeJosa": "",
+  "tense": "future"
+ },
+ {
+  "kind": "noun",
+  "id": "akka",
+  "word": "아까",
+  "cat": "time",
+  "timeJosa": "",
+  "tense": "past"
+ },
+ {
+  "kind": "noun",
+  "id": "ittaga",
+  "word": "이따가",
+  "cat": "time",
+  "timeJosa": "",
+  "tense": "future"
+ },
+ {
+  "kind": "noun",
+  "id": "achim",
+  "word": "아침",
+  "cat": "time",
+  "timeJosa": "에",
+  "alt": [
+   "food"
+  ]
+ },
+ {
+  "kind": "noun",
+  "id": "jeomsim",
+  "word": "점심",
+  "cat": "time",
+  "timeJosa": "에",
+  "alt": [
+   "food"
+  ]
+ },
+ {
+  "kind": "noun",
+  "id": "jeonyeok",
+  "word": "저녁",
+  "cat": "time",
+  "timeJosa": "에",
+  "alt": [
+   "food"
+  ]
+ },
+ {
+  "kind": "noun",
+  "id": "jumal",
+  "word": "주말",
+  "cat": "time",
+  "timeJosa": "에"
+ },
+ {
+  "kind": "noun",
+  "id": "mwo",
+  "word": "뭐",
+  "cat": "thing",
+  "wh": true
+ },
+ {
+  "kind": "noun",
+  "id": "nugu",
+  "word": "누구",
+  "cat": "person",
+  "wh": true
+ },
+ {
+  "kind": "noun",
+  "id": "eodi",
+  "word": "어디",
+  "cat": "place",
+  "wh": true
+ },
+ {
+  "kind": "noun",
+  "id": "eonje",
+  "word": "언제",
+  "cat": "time",
+  "wh": true,
+  "timeJosa": ""
+ },
+ {
+  "kind": "pred",
+  "id": "gada",
+  "lemma": "가다",
+  "pos": "verb",
+  "frame": [
+   {
+    "role": "time",
+    "josa": "",
+    "cats": [
+     "time"
+    ]
+   },
+   {
+    "role": "agent",
+    "josa": "이/가",
+    "cats": [
+     "self",
+     "you",
+     "we",
+     "person",
+     "animal"
+    ]
+   },
+   {
+    "role": "goal",
+    "josa": "에",
+    "cats": [
+     "place"
+    ]
+   },
+   {
+    "role": "companion",
+    "josa": "이랑/랑",
+    "cats": [
+     "self",
+     "you",
+     "we",
+     "person",
+     "animal"
+    ]
+   },
+   {
+    "role": "instrument",
+    "josa": "으로/로",
+    "cats": [
+     "vehicle",
+     "thing",
+     "toy"
+    ]
+   }
+  ],
+  "motion": true
+ },
+ {
+  "kind": "pred",
+  "id": "oda",
+  "lemma": "오다",
+  "pos": "verb",
+  "frame": [
+   {
+    "role": "time",
+    "josa": "",
+    "cats": [
+     "time"
+    ]
+   },
+   {
+    "role": "agent",
+    "josa": "이/가",
+    "cats": [
+     "self",
+     "you",
+     "we",
+     "person",
+     "animal"
+    ]
+   },
+   {
+    "role": "source",
+    "josa": "에서",
+    "cats": [
+     "place"
+    ]
+   },
+   {
+    "role": "goal",
+    "josa": "에",
+    "cats": [
+     "place"
+    ]
+   },
+   {
+    "role": "companion",
+    "josa": "이랑/랑",
+    "cats": [
+     "self",
+     "you",
+     "we",
+     "person",
+     "animal"
+    ]
+   },
+   {
+    "role": "instrument",
+    "josa": "으로/로",
+    "cats": [
+     "vehicle",
+     "thing",
+     "toy"
+    ]
+   }
+  ],
+  "motion": true
+ },
+ {
+  "kind": "pred",
+  "id": "meokda",
+  "lemma": "먹다",
+  "pos": "verb",
+  "frame": [
+   {
+    "role": "time",
+    "josa": "",
+    "cats": [
+     "time"
+    ]
+   },
+   {
+    "role": "agent",
+    "josa": "이/가",
+    "cats": [
+     "self",
+     "you",
+     "we",
+     "person",
+     "animal"
+    ]
+   },
+   {
+    "role": "location",
+    "josa": "에서",
+    "cats": [
+     "place"
+    ]
+   },
+   {
+    "role": "companion",
+    "josa": "이랑/랑",
+    "cats": [
+     "self",
+     "you",
+     "we",
+     "person",
+     "animal"
+    ]
+   },
+   {
+    "role": "theme",
+    "josa": "을/를",
+    "cats": [
+     "food",
+     "drink"
+    ]
+   }
+  ],
+  "honorLemma": "드시다"
+ },
+ {
+  "kind": "pred",
+  "id": "masida",
+  "lemma": "마시다",
+  "pos": "verb",
+  "frame": [
+   {
+    "role": "time",
+    "josa": "",
+    "cats": [
+     "time"
+    ]
+   },
+   {
+    "role": "agent",
+    "josa": "이/가",
+    "cats": [
+     "self",
+     "you",
+     "we",
+     "person",
+     "animal"
+    ]
+   },
+   {
+    "role": "location",
+    "josa": "에서",
+    "cats": [
+     "place"
+    ]
+   },
+   {
+    "role": "companion",
+    "josa": "이랑/랑",
+    "cats": [
+     "self",
+     "you",
+     "we",
+     "person",
+     "animal"
+    ]
+   },
+   {
+    "role": "theme",
+    "josa": "을/를",
+    "cats": [
+     "drink"
+    ]
+   }
+  ],
+  "honorLemma": "드시다"
+ },
+ {
+  "kind": "pred",
+  "id": "jada",
+  "lemma": "자다",
+  "pos": "verb",
+  "frame": [
+   {
+    "role": "time",
+    "josa": "",
+    "cats": [
+     "time"
+    ]
+   },
+   {
+    "role": "agent",
+    "josa": "이/가",
+    "cats": [
+     "self",
+     "you",
+     "we",
+     "person",
+     "animal"
+    ]
+   },
+   {
+    "role": "location",
+    "josa": "에서",
+    "cats": [
+     "place"
+    ]
+   },
+   {
+    "role": "companion",
+    "josa": "이랑/랑",
+    "cats": [
+     "self",
+     "you",
+     "we",
+     "person",
+     "animal"
+    ]
+   }
+  ],
+  "honorLemma": "주무시다"
+ },
+ {
+  "kind": "pred",
+  "id": "nolda",
+  "lemma": "놀다",
+  "pos": "verb",
+  "frame": [
+   {
+    "role": "time",
+    "josa": "",
+    "cats": [
+     "time"
+    ]
+   },
+   {
+    "role": "agent",
+    "josa": "이/가",
+    "cats": [
+     "self",
+     "you",
+     "we",
+     "person",
+     "animal"
+    ]
+   },
+   {
+    "role": "location",
+    "josa": "에서",
+    "cats": [
+     "place"
+    ]
+   },
+   {
+    "role": "companion",
+    "josa": "이랑/랑",
+    "cats": [
+     "self",
+     "you",
+     "we",
+     "person",
+     "animal"
+    ]
+   },
+   {
+    "role": "instrument",
+    "josa": "으로/로",
+    "cats": [
+     "vehicle",
+     "thing",
+     "toy"
+    ]
+   }
+  ]
+ },
+ {
+  "kind": "pred",
+  "id": "boda",
+  "lemma": "보다",
+  "pos": "verb",
+  "frame": [
+   {
+    "role": "time",
+    "josa": "",
+    "cats": [
+     "time"
+    ]
+   },
+   {
+    "role": "agent",
+    "josa": "이/가",
+    "cats": [
+     "self",
+     "you",
+     "we",
+     "person",
+     "animal"
+    ]
+   },
+   {
+    "role": "location",
+    "josa": "에서",
+    "cats": [
+     "place"
+    ]
+   },
+   {
+    "role": "companion",
+    "josa": "이랑/랑",
+    "cats": [
+     "self",
+     "you",
+     "we",
+     "person",
+     "animal"
+    ]
+   },
+   {
+    "role": "theme",
+    "josa": "을/를",
+    "cats": [
+     "food",
+     "drink",
+     "thing",
+     "toy",
+     "clothes",
+     "vehicle",
+     "animal",
+     "person",
+     "activity"
+    ]
+   }
+  ]
+ },
+ {
+  "kind": "pred",
+  "id": "mannada",
+  "lemma": "만나다",
+  "pos": "verb",
+  "frame": [
+   {
+    "role": "time",
+    "josa": "",
+    "cats": [
+     "time"
+    ]
+   },
+   {
+    "role": "agent",
+    "josa": "이/가",
+    "cats": [
+     "self",
+     "you",
+     "we",
+     "person",
+     "animal"
+    ]
+   },
+   {
+    "role": "location",
+    "josa": "에서",
+    "cats": [
+     "place"
+    ]
+   },
+   {
+    "role": "companion",
+    "josa": "이랑/랑",
+    "cats": [
+     "self",
+     "you",
+     "we",
+     "person",
+     "animal"
+    ]
+   },
+   {
+    "role": "theme",
+    "josa": "을/를",
+    "cats": [
+     "self",
+     "you",
+     "we",
+     "person"
+    ]
+   }
+  ]
+ },
+ {
+  "kind": "pred",
+  "id": "salda",
+  "lemma": "살다",
+  "pos": "verb",
+  "frame": [
+   {
+    "role": "time",
+    "josa": "",
+    "cats": [
+     "time"
+    ]
+   },
+   {
+    "role": "agent",
+    "josa": "이/가",
+    "cats": [
+     "self",
+     "you",
+     "we",
+     "person",
+     "animal"
+    ]
+   },
+   {
+    "role": "location",
+    "josa": "에",
+    "cats": [
+     "place"
+    ]
+   },
+   {
+    "role": "companion",
+    "josa": "이랑/랑",
+    "cats": [
+     "self",
+     "you",
+     "we",
+     "person",
+     "animal"
+    ]
+   }
+  ]
+ },
+ {
+  "kind": "pred",
+  "id": "juda",
+  "lemma": "주다",
+  "pos": "verb",
+  "frame": [
+   {
+    "role": "time",
+    "josa": "",
+    "cats": [
+     "time"
+    ]
+   },
+   {
+    "role": "agent",
+    "josa": "이/가",
+    "cats": [
+     "self",
+     "you",
+     "we",
+     "person",
+     "animal"
+    ]
+   },
+   {
+    "role": "recipient",
+    "josa": "에게",
+    "cats": [
+     "self",
+     "you",
+     "we",
+     "person",
+     "animal"
+    ]
+   },
+   {
+    "role": "theme",
+    "josa": "을/를",
+    "cats": [
+     "food",
+     "drink",
+     "thing",
+     "toy",
+     "clothes",
+     "vehicle",
+     "animal"
+    ]
+   }
+  ],
+  "humbleLemma": "드리다"
+ },
+ {
+  "kind": "pred",
+  "id": "sada",
+  "lemma": "사다",
+  "pos": "verb",
+  "frame": [
+   {
+    "role": "time",
+    "josa": "",
+    "cats": [
+     "time"
+    ]
+   },
+   {
+    "role": "agent",
+    "josa": "이/가",
+    "cats": [
+     "self",
+     "you",
+     "we",
+     "person",
+     "animal"
+    ]
+   },
+   {
+    "role": "location",
+    "josa": "에서",
+    "cats": [
+     "place"
+    ]
+   },
+   {
+    "role": "companion",
+    "josa": "이랑/랑",
+    "cats": [
+     "self",
+     "you",
+     "we",
+     "person",
+     "animal"
+    ]
+   },
+   {
+    "role": "theme",
+    "josa": "을/를",
+    "cats": [
+     "food",
+     "drink",
+     "thing",
+     "toy",
+     "clothes",
+     "vehicle",
+     "animal"
+    ]
+   }
+  ]
+ },
+ {
+  "kind": "pred",
+  "id": "ssitda",
+  "lemma": "씻다",
+  "pos": "verb",
+  "frame": [
+   {
+    "role": "time",
+    "josa": "",
+    "cats": [
+     "time"
+    ]
+   },
+   {
+    "role": "agent",
+    "josa": "이/가",
+    "cats": [
+     "self",
+     "you",
+     "we",
+     "person",
+     "animal"
+    ]
+   },
+   {
+    "role": "location",
+    "josa": "에서",
+    "cats": [
+     "place"
+    ]
+   },
+   {
+    "role": "theme",
+    "josa": "을/를",
+    "cats": [
+     "body",
+     "food",
+     "thing",
+     "toy"
+    ]
+   }
+  ]
+ },
+ {
+  "kind": "pred",
+  "id": "tada",
+  "lemma": "타다",
+  "pos": "verb",
+  "frame": [
+   {
+    "role": "time",
+    "josa": "",
+    "cats": [
+     "time"
+    ]
+   },
+   {
+    "role": "agent",
+    "josa": "이/가",
+    "cats": [
+     "self",
+     "you",
+     "we",
+     "person",
+     "animal"
+    ]
+   },
+   {
+    "role": "companion",
+    "josa": "이랑/랑",
+    "cats": [
+     "self",
+     "you",
+     "we",
+     "person",
+     "animal"
+    ]
+   },
+   {
+    "role": "theme",
+    "josa": "을/를",
+    "cats": [
+     "vehicle"
+    ]
+   }
+  ]
+ },
+ {
+  "kind": "pred",
+  "id": "anjda",
+  "lemma": "앉다",
+  "pos": "verb",
+  "frame": [
+   {
+    "role": "time",
+    "josa": "",
+    "cats": [
+     "time"
+    ]
+   },
+   {
+    "role": "agent",
+    "josa": "이/가",
+    "cats": [
+     "self",
+     "you",
+     "we",
+     "person",
+     "animal"
+    ]
+   },
+   {
+    "role": "location",
+    "josa": "에",
+    "cats": [
+     "place"
+    ]
+   }
+  ]
+ },
+ {
+  "kind": "pred",
+  "id": "ikda",
+  "lemma": "읽다",
+  "pos": "verb",
+  "frame": [
+   {
+    "role": "time",
+    "josa": "",
+    "cats": [
+     "time"
+    ]
+   },
+   {
+    "role": "agent",
+    "josa": "이/가",
+    "cats": [
+     "self",
+     "you",
+     "we",
+     "person",
+     "animal"
+    ]
+   },
+   {
+    "role": "location",
+    "josa": "에서",
+    "cats": [
+     "place"
+    ]
+   },
+   {
+    "role": "theme",
+    "josa": "을/를",
+    "cats": [
+     "thing"
+    ]
+   }
+  ]
+ },
+ {
+  "kind": "pred",
+  "id": "hada",
+  "lemma": "하다",
+  "pos": "verb",
+  "frame": [
+   {
+    "role": "time",
+    "josa": "",
+    "cats": [
+     "time"
+    ]
+   },
+   {
+    "role": "agent",
+    "josa": "이/가",
+    "cats": [
+     "self",
+     "you",
+     "we",
+     "person",
+     "animal"
+    ]
+   },
+   {
+    "role": "location",
+    "josa": "에서",
+    "cats": [
+     "place"
+    ]
+   },
+   {
+    "role": "companion",
+    "josa": "이랑/랑",
+    "cats": [
+     "self",
+     "you",
+     "we",
+     "person",
+     "animal"
+    ]
+   },
+   {
+    "role": "theme",
+    "josa": "을/를",
+    "cats": [
+     "activity"
+    ]
+   }
+  ]
+ },
+ {
+  "kind": "pred",
+  "id": "gongbuhada",
+  "lemma": "공부하다",
+  "pos": "verb",
+  "frame": [
+   {
+    "role": "time",
+    "josa": "",
+    "cats": [
+     "time"
+    ]
+   },
+   {
+    "role": "agent",
+    "josa": "이/가",
+    "cats": [
+     "self",
+     "you",
+     "we",
+     "person",
+     "animal"
+    ]
+   },
+   {
+    "role": "location",
+    "josa": "에서",
+    "cats": [
+     "place"
+    ]
+   },
+   {
+    "role": "companion",
+    "josa": "이랑/랑",
+    "cats": [
+     "self",
+     "you",
+     "we",
+     "person",
+     "animal"
+    ]
+   }
+  ],
+  "nounHada": true
+ },
+ {
+  "kind": "pred",
+  "id": "undonghada",
+  "lemma": "운동하다",
+  "pos": "verb",
+  "frame": [
+   {
+    "role": "time",
+    "josa": "",
+    "cats": [
+     "time"
+    ]
+   },
+   {
+    "role": "agent",
+    "josa": "이/가",
+    "cats": [
+     "self",
+     "you",
+     "we",
+     "person",
+     "animal"
+    ]
+   },
+   {
+    "role": "location",
+    "josa": "에서",
+    "cats": [
+     "place"
+    ]
+   },
+   {
+    "role": "companion",
+    "josa": "이랑/랑",
+    "cats": [
+     "self",
+     "you",
+     "we",
+     "person",
+     "animal"
+    ]
+   }
+  ],
+  "nounHada": true
+ },
+ {
+  "kind": "pred",
+  "id": "jeonhwahada",
+  "lemma": "전화하다",
+  "pos": "verb",
+  "frame": [
+   {
+    "role": "time",
+    "josa": "",
+    "cats": [
+     "time"
+    ]
+   },
+   {
+    "role": "agent",
+    "josa": "이/가",
+    "cats": [
+     "self",
+     "you",
+     "we",
+     "person",
+     "animal"
+    ]
+   },
+   {
+    "role": "recipient",
+    "josa": "에게",
+    "cats": [
+     "self",
+     "you",
+     "we",
+     "person",
+     "animal"
+    ]
+   }
+  ],
+  "nounHada": true
+ },
+ {
+  "kind": "pred",
+  "id": "dopda",
+  "lemma": "돕다",
+  "pos": "verb",
+  "frame": [
+   {
+    "role": "time",
+    "josa": "",
+    "cats": [
+     "time"
+    ]
+   },
+   {
+    "role": "agent",
+    "josa": "이/가",
+    "cats": [
+     "self",
+     "you",
+     "we",
+     "person",
+     "animal"
+    ]
+   },
+   {
+    "role": "theme",
+    "josa": "을/를",
+    "cats": [
+     "self",
+     "you",
+     "we",
+     "person"
+    ]
+   }
+  ]
+ },
+ {
+  "kind": "pred",
+  "id": "gidarida",
+  "lemma": "기다리다",
+  "pos": "verb",
+  "frame": [
+   {
+    "role": "time",
+    "josa": "",
+    "cats": [
+     "time"
+    ]
+   },
+   {
+    "role": "agent",
+    "josa": "이/가",
+    "cats": [
+     "self",
+     "you",
+     "we",
+     "person",
+     "animal"
+    ]
+   },
+   {
+    "role": "location",
+    "josa": "에서",
+    "cats": [
+     "place"
+    ]
+   },
+   {
+    "role": "theme",
+    "josa": "을/를",
+    "cats": [
+     "self",
+     "you",
+     "we",
+     "person",
+     "vehicle"
+    ]
+   }
+  ]
+ },
+ {
+  "kind": "pred",
+  "id": "ulda",
+  "lemma": "울다",
+  "pos": "verb",
+  "frame": [
+   {
+    "role": "time",
+    "josa": "",
+    "cats": [
+     "time"
+    ]
+   },
+   {
+    "role": "agent",
+    "josa": "이/가",
+    "cats": [
+     "self",
+     "you",
+     "we",
+     "person",
+     "animal"
+    ]
+   }
+  ]
+ },
+ {
+  "kind": "pred",
+  "id": "utda",
+  "lemma": "웃다",
+  "pos": "verb",
+  "frame": [
+   {
+    "role": "time",
+    "josa": "",
+    "cats": [
+     "time"
+    ]
+   },
+   {
+    "role": "agent",
+    "josa": "이/가",
+    "cats": [
+     "self",
+     "you",
+     "we",
+     "person",
+     "animal"
+    ]
+   }
+  ]
+ },
+ {
+  "kind": "pred",
+  "id": "ssauda",
+  "lemma": "싸우다",
+  "pos": "verb",
+  "frame": [
+   {
+    "role": "time",
+    "josa": "",
+    "cats": [
+     "time"
+    ]
+   },
+   {
+    "role": "agent",
+    "josa": "이/가",
+    "cats": [
+     "self",
+     "you",
+     "we",
+     "person",
+     "animal"
+    ]
+   },
+   {
+    "role": "companion",
+    "josa": "이랑/랑",
+    "cats": [
+     "self",
+     "you",
+     "we",
+     "person",
+     "animal"
+    ]
+   }
+  ]
+ },
+ {
+  "kind": "pred",
+  "id": "mandeulda",
+  "lemma": "만들다",
+  "pos": "verb",
+  "frame": [
+   {
+    "role": "time",
+    "josa": "",
+    "cats": [
+     "time"
+    ]
+   },
+   {
+    "role": "agent",
+    "josa": "이/가",
+    "cats": [
+     "self",
+     "you",
+     "we",
+     "person",
+     "animal"
+    ]
+   },
+   {
+    "role": "location",
+    "josa": "에서",
+    "cats": [
+     "place"
+    ]
+   },
+   {
+    "role": "companion",
+    "josa": "이랑/랑",
+    "cats": [
+     "self",
+     "you",
+     "we",
+     "person",
+     "animal"
+    ]
+   },
+   {
+    "role": "theme",
+    "josa": "을/를",
+    "cats": [
+     "food",
+     "drink",
+     "thing",
+     "toy",
+     "clothes",
+     "vehicle",
+     "animal"
+    ]
+   }
+  ]
+ },
+ {
+  "kind": "pred",
+  "id": "deutda",
+  "lemma": "듣다",
+  "pos": "verb",
+  "frame": [
+   {
+    "role": "time",
+    "josa": "",
+    "cats": [
+     "time"
+    ]
+   },
+   {
+    "role": "agent",
+    "josa": "이/가",
+    "cats": [
+     "self",
+     "you",
+     "we",
+     "person",
+     "animal"
+    ]
+   },
+   {
+    "role": "theme",
+    "josa": "을/를",
+    "cats": [
+     "thing",
+     "activity"
+    ]
+   }
+  ]
+ },
+ {
+  "kind": "pred",
+  "id": "ipda",
+  "lemma": "입다",
+  "pos": "verb",
+  "frame": [
+   {
+    "role": "time",
+    "josa": "",
+    "cats": [
+     "time"
+    ]
+   },
+   {
+    "role": "agent",
+    "josa": "이/가",
+    "cats": [
+     "self",
+     "you",
+     "we",
+     "person",
+     "animal"
+    ]
+   },
+   {
+    "role": "theme",
+    "josa": "을/를",
+    "cats": [
+     "clothes"
+    ]
+   }
+  ]
+ },
+ {
+  "kind": "pred",
+  "id": "beotda",
+  "lemma": "벗다",
+  "pos": "verb",
+  "frame": [
+   {
+    "role": "time",
+    "josa": "",
+    "cats": [
+     "time"
+    ]
+   },
+   {
+    "role": "agent",
+    "josa": "이/가",
+    "cats": [
+     "self",
+     "you",
+     "we",
+     "person",
+     "animal"
+    ]
+   },
+   {
+    "role": "theme",
+    "josa": "을/를",
+    "cats": [
+     "clothes"
+    ]
+   }
+  ]
+ },
+ {
+  "kind": "pred",
+  "id": "yeolda",
+  "lemma": "열다",
+  "pos": "verb",
+  "frame": [
+   {
+    "role": "time",
+    "josa": "",
+    "cats": [
+     "time"
+    ]
+   },
+   {
+    "role": "agent",
+    "josa": "이/가",
+    "cats": [
+     "self",
+     "you",
+     "we",
+     "person",
+     "animal"
+    ]
+   },
+   {
+    "role": "theme",
+    "josa": "을/를",
+    "cats": [
+     "thing"
+    ]
+   }
+  ]
+ },
+ {
+  "kind": "pred",
+  "id": "datda",
+  "lemma": "닫다",
+  "pos": "verb",
+  "frame": [
+   {
+    "role": "time",
+    "josa": "",
+    "cats": [
+     "time"
+    ]
+   },
+   {
+    "role": "agent",
+    "josa": "이/가",
+    "cats": [
+     "self",
+     "you",
+     "we",
+     "person",
+     "animal"
+    ]
+   },
+   {
+    "role": "theme",
+    "josa": "을/를",
+    "cats": [
+     "thing"
+    ]
+   }
+  ]
+ },
+ {
+  "kind": "pred",
+  "id": "kyeoda",
+  "lemma": "켜다",
+  "pos": "verb",
+  "frame": [
+   {
+    "role": "time",
+    "josa": "",
+    "cats": [
+     "time"
+    ]
+   },
+   {
+    "role": "agent",
+    "josa": "이/가",
+    "cats": [
+     "self",
+     "you",
+     "we",
+     "person",
+     "animal"
+    ]
+   },
+   {
+    "role": "theme",
+    "josa": "을/를",
+    "cats": [
+     "thing"
+    ]
+   }
+  ]
+ },
+ {
+  "kind": "pred",
+  "id": "kkeuda",
+  "lemma": "끄다",
+  "pos": "verb",
+  "frame": [
+   {
+    "role": "time",
+    "josa": "",
+    "cats": [
+     "time"
+    ]
+   },
+   {
+    "role": "agent",
+    "josa": "이/가",
+    "cats": [
+     "self",
+     "you",
+     "we",
+     "person",
+     "animal"
+    ]
+   },
+   {
+    "role": "theme",
+    "josa": "을/를",
+    "cats": [
+     "thing"
+    ]
+   }
+  ]
+ },
+ {
+  "kind": "pred",
+  "id": "bureuda",
+  "lemma": "부르다",
+  "pos": "verb",
+  "frame": [
+   {
+    "role": "time",
+    "josa": "",
+    "cats": [
+     "time"
+    ]
+   },
+   {
+    "role": "agent",
+    "josa": "이/가",
+    "cats": [
+     "self",
+     "you",
+     "we",
+     "person",
+     "animal"
+    ]
+   },
+   {
+    "role": "companion",
+    "josa": "이랑/랑",
+    "cats": [
+     "self",
+     "you",
+     "we",
+     "person",
+     "animal"
+    ]
+   },
+   {
+    "role": "theme",
+    "josa": "을/를",
+    "cats": [
+     "activity",
+     "self",
+     "you",
+     "we",
+     "person"
+    ]
+   }
+  ]
+ },
+ {
+  "kind": "pred",
+  "id": "geurida",
+  "lemma": "그리다",
+  "pos": "verb",
+  "frame": [
+   {
+    "role": "time",
+    "josa": "",
+    "cats": [
+     "time"
+    ]
+   },
+   {
+    "role": "agent",
+    "josa": "이/가",
+    "cats": [
+     "self",
+     "you",
+     "we",
+     "person",
+     "animal"
+    ]
+   },
+   {
+    "role": "companion",
+    "josa": "이랑/랑",
+    "cats": [
+     "self",
+     "you",
+     "we",
+     "person",
+     "animal"
+    ]
+   },
+   {
+    "role": "theme",
+    "josa": "을/를",
+    "cats": [
+     "activity"
+    ]
+   }
+  ]
+ },
+ {
+  "kind": "pred",
+  "id": "johahada",
+  "lemma": "좋아하다",
+  "pos": "verb",
+  "frame": [
+   {
+    "role": "agent",
+    "josa": "이/가",
+    "cats": [
+     "self",
+     "you",
+     "we",
+     "person",
+     "animal"
+    ]
+   },
+   {
+    "role": "theme",
+    "josa": "을/를",
+    "cats": [
+     "self",
+     "you",
+     "we",
+     "person",
+     "animal",
+     "place",
+     "food",
+     "drink",
+     "thing",
+     "toy",
+     "vehicle",
+     "body",
+     "clothes",
+     "activity"
+    ]
+   }
+  ]
+ },
+ {
+  "kind": "pred",
+  "id": "sireohada",
+  "lemma": "싫어하다",
+  "pos": "verb",
+  "frame": [
+   {
+    "role": "agent",
+    "josa": "이/가",
+    "cats": [
+     "self",
+     "you",
+     "we",
+     "person",
+     "animal"
+    ]
+   },
+   {
+    "role": "theme",
+    "josa": "을/를",
+    "cats": [
+     "self",
+     "you",
+     "we",
+     "person",
+     "animal",
+     "place",
+     "food",
+     "drink",
+     "thing",
+     "toy",
+     "vehicle",
+     "body",
+     "clothes",
+     "activity"
+    ]
+   }
+  ]
+ },
+ {
+  "kind": "pred",
+  "id": "saranghada",
+  "lemma": "사랑하다",
+  "pos": "verb",
+  "frame": [
+   {
+    "role": "agent",
+    "josa": "이/가",
+    "cats": [
+     "self",
+     "you",
+     "we",
+     "person",
+     "animal"
+    ]
+   },
+   {
+    "role": "theme",
+    "josa": "을/를",
+    "cats": [
+     "self",
+     "you",
+     "we",
+     "person",
+     "animal"
+    ]
+   }
+  ]
+ },
+ {
+  "kind": "pred",
+  "id": "alda",
+  "lemma": "알다",
+  "pos": "verb",
+  "frame": [
+   {
+    "role": "agent",
+    "josa": "이/가",
+    "cats": [
+     "self",
+     "you",
+     "we",
+     "person",
+     "animal"
+    ]
+   },
+   {
+    "role": "theme",
+    "josa": "을/를",
+    "cats": [
+     "self",
+     "you",
+     "we",
+     "person",
+     "animal",
+     "place",
+     "food",
+     "drink",
+     "thing",
+     "toy",
+     "vehicle",
+     "body",
+     "clothes",
+     "activity"
+    ]
+   }
+  ]
+ },
+ {
+  "kind": "pred",
+  "id": "moreuda",
+  "lemma": "모르다",
+  "pos": "verb",
+  "frame": [
+   {
+    "role": "agent",
+    "josa": "이/가",
+    "cats": [
+     "self",
+     "you",
+     "we",
+     "person",
+     "animal"
+    ]
+   },
+   {
+    "role": "theme",
+    "josa": "을/를",
+    "cats": [
+     "self",
+     "you",
+     "we",
+     "person",
+     "animal",
+     "place",
+     "food",
+     "drink",
+     "thing",
+     "toy",
+     "vehicle",
+     "body",
+     "clothes",
+     "activity"
+    ]
+   }
+  ]
+ },
+ {
+  "kind": "pred",
+  "id": "swida",
+  "lemma": "쉬다",
+  "pos": "verb",
+  "frame": [
+   {
+    "role": "time",
+    "josa": "",
+    "cats": [
+     "time"
+    ]
+   },
+   {
+    "role": "agent",
+    "josa": "이/가",
+    "cats": [
+     "self",
+     "you",
+     "we",
+     "person",
+     "animal"
+    ]
+   },
+   {
+    "role": "location",
+    "josa": "에서",
+    "cats": [
+     "place"
+    ]
+   }
+  ]
+ },
+ {
+  "kind": "pred",
+  "id": "ireonada",
+  "lemma": "일어나다",
+  "pos": "verb",
+  "frame": [
+   {
+    "role": "time",
+    "josa": "",
+    "cats": [
+     "time"
+    ]
+   },
+   {
+    "role": "agent",
+    "josa": "이/가",
+    "cats": [
+     "self",
+     "you",
+     "we",
+     "person",
+     "animal"
+    ]
+   }
+  ]
+ },
+ {
+  "kind": "pred",
+  "id": "nupda",
+  "lemma": "눕다",
+  "pos": "verb",
+  "frame": [
+   {
+    "role": "time",
+    "josa": "",
+    "cats": [
+     "time"
+    ]
+   },
+   {
+    "role": "agent",
+    "josa": "이/가",
+    "cats": [
+     "self",
+     "you",
+     "we",
+     "person",
+     "animal"
+    ]
+   },
+   {
+    "role": "location",
+    "josa": "에",
+    "cats": [
+     "place"
+    ]
+   }
+  ]
+ },
+ {
+  "kind": "pred",
+  "id": "geotda",
+  "lemma": "걷다",
+  "pos": "verb",
+  "frame": [
+   {
+    "role": "time",
+    "josa": "",
+    "cats": [
+     "time"
+    ]
+   },
+   {
+    "role": "agent",
+    "josa": "이/가",
+    "cats": [
+     "self",
+     "you",
+     "we",
+     "person",
+     "animal"
+    ]
+   },
+   {
+    "role": "companion",
+    "josa": "이랑/랑",
+    "cats": [
+     "self",
+     "you",
+     "we",
+     "person",
+     "animal"
+    ]
+   }
+  ]
+ },
+ {
+  "kind": "pred",
+  "id": "ttwida",
+  "lemma": "뛰다",
+  "pos": "verb",
+  "frame": [
+   {
+    "role": "time",
+    "josa": "",
+    "cats": [
+     "time"
+    ]
+   },
+   {
+    "role": "agent",
+    "josa": "이/가",
+    "cats": [
+     "self",
+     "you",
+     "we",
+     "person",
+     "animal"
+    ]
+   },
+   {
+    "role": "location",
+    "josa": "에서",
+    "cats": [
+     "place"
+    ]
+   }
+  ]
+ },
+ {
+  "kind": "pred",
+  "id": "malhada",
+  "lemma": "말하다",
+  "pos": "verb",
+  "frame": [
+   {
+    "role": "time",
+    "josa": "",
+    "cats": [
+     "time"
+    ]
+   },
+   {
+    "role": "agent",
+    "josa": "이/가",
+    "cats": [
+     "self",
+     "you",
+     "we",
+     "person",
+     "animal"
+    ]
+   },
+   {
+    "role": "recipient",
+    "josa": "에게",
+    "cats": [
+     "self",
+     "you",
+     "we",
+     "person",
+     "animal"
+    ]
+   }
+  ],
+  "honorLemma": "말씀하시다"
+ },
+ {
+  "kind": "pred",
+  "id": "hwanada",
+  "lemma": "화나다",
+  "pos": "verb",
+  "frame": [
+   {
+    "role": "time",
+    "josa": "",
+    "cats": [
+     "time"
+    ]
+   },
+   {
+    "role": "experiencer",
+    "josa": "은/는",
+    "cats": [
+     "self",
+     "you",
+     "we",
+     "person",
+     "animal"
+    ]
+   }
+  ]
+ },
+ {
+  "kind": "pred",
+  "id": "itda",
+  "lemma": "있다",
+  "pos": "adj",
+  "frame": [
+   {
+    "role": "time",
+    "josa": "",
+    "cats": [
+     "time"
+    ]
+   },
+   {
+    "role": "experiencer",
+    "josa": "은/는",
+    "cats": [
+     "self",
+     "you",
+     "we",
+     "person",
+     "animal"
+    ]
+   },
+   {
+    "role": "location",
+    "josa": "에",
+    "cats": [
+     "place"
+    ]
+   },
+   {
+    "role": "agent",
+    "josa": "이/가",
+    "cats": [
+     "self",
+     "you",
+     "we",
+     "person",
+     "animal",
+     "place",
+     "food",
+     "drink",
+     "thing",
+     "toy",
+     "vehicle",
+     "body",
+     "clothes",
+     "activity"
+    ]
+   }
+  ],
+  "honorLemma": "계시다"
+ },
+ {
+  "kind": "pred",
+  "id": "eopda",
+  "lemma": "없다",
+  "pos": "adj",
+  "frame": [
+   {
+    "role": "time",
+    "josa": "",
+    "cats": [
+     "time"
+    ]
+   },
+   {
+    "role": "experiencer",
+    "josa": "은/는",
+    "cats": [
+     "self",
+     "you",
+     "we",
+     "person",
+     "animal"
+    ]
+   },
+   {
+    "role": "location",
+    "josa": "에",
+    "cats": [
+     "place"
+    ]
+   },
+   {
+    "role": "agent",
+    "josa": "이/가",
+    "cats": [
+     "self",
+     "you",
+     "we",
+     "person",
+     "animal",
+     "place",
+     "food",
+     "drink",
+     "thing",
+     "toy",
+     "vehicle",
+     "body",
+     "clothes",
+     "activity"
+    ]
+   }
+  ]
+ },
+ {
+  "kind": "pred",
+  "id": "jota",
+  "lemma": "좋다",
+  "pos": "adj",
+  "frame": [
+   {
+    "role": "experiencer",
+    "josa": "은/는",
+    "cats": [
+     "self",
+     "you",
+     "we",
+     "person",
+     "animal"
+    ]
+   },
+   {
+    "role": "theme",
+    "josa": "이/가",
+    "cats": [
+     "self",
+     "you",
+     "we",
+     "person",
+     "animal",
+     "place",
+     "food",
+     "drink",
+     "thing",
+     "toy",
+     "vehicle",
+     "body",
+     "clothes",
+     "activity"
+    ]
+   }
+  ]
+ },
+ {
+  "kind": "pred",
+  "id": "silta",
+  "lemma": "싫다",
+  "pos": "adj",
+  "frame": [
+   {
+    "role": "experiencer",
+    "josa": "은/는",
+    "cats": [
+     "self",
+     "you",
+     "we",
+     "person",
+     "animal"
+    ]
+   },
+   {
+    "role": "theme",
+    "josa": "이/가",
+    "cats": [
+     "self",
+     "you",
+     "we",
+     "person",
+     "animal",
+     "place",
+     "food",
+     "drink",
+     "thing",
+     "toy",
+     "vehicle",
+     "body",
+     "clothes",
+     "activity"
+    ]
+   }
+  ]
+ },
+ {
+  "kind": "pred",
+  "id": "apeuda",
+  "lemma": "아프다",
+  "pos": "adj",
+  "frame": [
+   {
+    "role": "time",
+    "josa": "",
+    "cats": [
+     "time"
+    ]
+   },
+   {
+    "role": "experiencer",
+    "josa": "은/는",
+    "cats": [
+     "self",
+     "you",
+     "we",
+     "person",
+     "animal"
+    ]
+   },
+   {
+    "role": "theme",
+    "josa": "이/가",
+    "cats": [
+     "body"
+    ]
+   }
+  ]
+ },
+ {
+  "kind": "pred",
+  "id": "baegopeuda",
+  "lemma": "배고프다",
+  "pos": "adj",
+  "frame": [
+   {
+    "role": "time",
+    "josa": "",
+    "cats": [
+     "time"
+    ]
+   },
+   {
+    "role": "experiencer",
+    "josa": "은/는",
+    "cats": [
+     "self",
+     "you",
+     "we",
+     "person",
+     "animal"
+    ]
+   }
+  ]
+ },
+ {
+  "kind": "pred",
+  "id": "mongmareuda",
+  "lemma": "목마르다",
+  "pos": "adj",
+  "frame": [
+   {
+    "role": "time",
+    "josa": "",
+    "cats": [
+     "time"
+    ]
+   },
+   {
+    "role": "experiencer",
+    "josa": "은/는",
+    "cats": [
+     "self",
+     "you",
+     "we",
+     "person",
+     "animal"
+    ]
+   }
+  ]
+ },
+ {
+  "kind": "pred",
+  "id": "jollida",
+  "lemma": "졸리다",
+  "pos": "adj",
+  "frame": [
+   {
+    "role": "time",
+    "josa": "",
+    "cats": [
+     "time"
+    ]
+   },
+   {
+    "role": "experiencer",
+    "josa": "은/는",
+    "cats": [
+     "self",
+     "you",
+     "we",
+     "person",
+     "animal"
+    ]
+   }
+  ]
+ },
+ {
+  "kind": "pred",
+  "id": "deopda",
+  "lemma": "덥다",
+  "pos": "adj",
+  "frame": [
+   {
+    "role": "time",
+    "josa": "",
+    "cats": [
+     "time"
+    ]
+   },
+   {
+    "role": "experiencer",
+    "josa": "은/는",
+    "cats": [
+     "self",
+     "you",
+     "we",
+     "person",
+     "animal"
+    ]
+   },
+   {
+    "role": "theme",
+    "josa": "이/가",
+    "cats": [
+     "place"
+    ]
+   }
+  ]
+ },
+ {
+  "kind": "pred",
+  "id": "chupda",
+  "lemma": "춥다",
+  "pos": "adj",
+  "frame": [
+   {
+    "role": "time",
+    "josa": "",
+    "cats": [
+     "time"
+    ]
+   },
+   {
+    "role": "experiencer",
+    "josa": "은/는",
+    "cats": [
+     "self",
+     "you",
+     "we",
+     "person",
+     "animal"
+    ]
+   },
+   {
+    "role": "theme",
+    "josa": "이/가",
+    "cats": [
+     "place"
+    ]
+   }
+  ]
+ },
+ {
+  "kind": "pred",
+  "id": "masitda",
+  "lemma": "맛있다",
+  "pos": "adj",
+  "frame": [
+   {
+    "role": "theme",
+    "josa": "이/가",
+    "cats": [
+     "food",
+     "drink"
+    ]
+   }
+  ]
+ },
+ {
+  "kind": "pred",
+  "id": "maseopda",
+  "lemma": "맛없다",
+  "pos": "adj",
+  "frame": [
+   {
+    "role": "theme",
+    "josa": "이/가",
+    "cats": [
+     "food",
+     "drink"
+    ]
+   }
+  ]
+ },
+ {
+  "kind": "pred",
+  "id": "keuda",
+  "lemma": "크다",
+  "pos": "adj",
+  "frame": [
+   {
+    "role": "theme",
+    "josa": "이/가",
+    "cats": [
+     "self",
+     "you",
+     "we",
+     "person",
+     "animal",
+     "place",
+     "food",
+     "drink",
+     "thing",
+     "toy",
+     "vehicle",
+     "body",
+     "clothes",
+     "activity"
+    ]
+   }
+  ]
+ },
+ {
+  "kind": "pred",
+  "id": "jakda",
+  "lemma": "작다",
+  "pos": "adj",
+  "frame": [
+   {
+    "role": "theme",
+    "josa": "이/가",
+    "cats": [
+     "self",
+     "you",
+     "we",
+     "person",
+     "animal",
+     "place",
+     "food",
+     "drink",
+     "thing",
+     "toy",
+     "vehicle",
+     "body",
+     "clothes",
+     "activity"
+    ]
+   }
+  ]
+ },
+ {
+  "kind": "pred",
+  "id": "museopda",
+  "lemma": "무섭다",
+  "pos": "adj",
+  "frame": [
+   {
+    "role": "experiencer",
+    "josa": "은/는",
+    "cats": [
+     "self",
+     "you",
+     "we",
+     "person",
+     "animal"
+    ]
+   },
+   {
+    "role": "theme",
+    "josa": "이/가",
+    "cats": [
+     "self",
+     "you",
+     "we",
+     "person",
+     "animal",
+     "place",
+     "food",
+     "drink",
+     "thing",
+     "toy",
+     "vehicle",
+     "body",
+     "clothes",
+     "activity"
+    ]
+   }
+  ]
+ },
+ {
+  "kind": "pred",
+  "id": "jaemiitda",
+  "lemma": "재미있다",
+  "pos": "adj",
+  "frame": [
+   {
+    "role": "experiencer",
+    "josa": "은/는",
+    "cats": [
+     "self",
+     "you",
+     "we",
+     "person",
+     "animal"
+    ]
+   },
+   {
+    "role": "theme",
+    "josa": "이/가",
+    "cats": [
+     "self",
+     "you",
+     "we",
+     "person",
+     "animal",
+     "place",
+     "food",
+     "drink",
+     "thing",
+     "toy",
+     "vehicle",
+     "body",
+     "clothes",
+     "activity"
+    ]
+   }
+  ]
+ },
+ {
+  "kind": "pred",
+  "id": "simsimhada",
+  "lemma": "심심하다",
+  "pos": "adj",
+  "frame": [
+   {
+    "role": "time",
+    "josa": "",
+    "cats": [
+     "time"
+    ]
+   },
+   {
+    "role": "experiencer",
+    "josa": "은/는",
+    "cats": [
+     "self",
+     "you",
+     "we",
+     "person",
+     "animal"
+    ]
+   }
+  ]
+ },
+ {
+  "kind": "pred",
+  "id": "gippeuda",
+  "lemma": "기쁘다",
+  "pos": "adj",
+  "frame": [
+   {
+    "role": "time",
+    "josa": "",
+    "cats": [
+     "time"
+    ]
+   },
+   {
+    "role": "experiencer",
+    "josa": "은/는",
+    "cats": [
+     "self",
+     "you",
+     "we",
+     "person",
+     "animal"
+    ]
+   }
+  ]
+ },
+ {
+  "kind": "pred",
+  "id": "seulpeuda",
+  "lemma": "슬프다",
+  "pos": "adj",
+  "frame": [
+   {
+    "role": "time",
+    "josa": "",
+    "cats": [
+     "time"
+    ]
+   },
+   {
+    "role": "experiencer",
+    "josa": "은/는",
+    "cats": [
+     "self",
+     "you",
+     "we",
+     "person",
+     "animal"
+    ]
+   }
+  ]
+ },
+ {
+  "kind": "pred",
+  "id": "pigonhada",
+  "lemma": "피곤하다",
+  "pos": "adj",
+  "frame": [
+   {
+    "role": "time",
+    "josa": "",
+    "cats": [
+     "time"
+    ]
+   },
+   {
+    "role": "experiencer",
+    "josa": "은/는",
+    "cats": [
+     "self",
+     "you",
+     "we",
+     "person",
+     "animal"
+    ]
+   }
+  ]
+ },
+ {
+  "kind": "pred",
+  "id": "gwaenchanta",
+  "lemma": "괜찮다",
+  "pos": "adj",
+  "frame": [
+   {
+    "role": "experiencer",
+    "josa": "은/는",
+    "cats": [
+     "self",
+     "you",
+     "we",
+     "person",
+     "animal"
+    ]
+   },
+   {
+    "role": "theme",
+    "josa": "이/가",
+    "cats": [
+     "self",
+     "you",
+     "we",
+     "person",
+     "animal",
+     "place",
+     "food",
+     "drink",
+     "thing",
+     "toy",
+     "vehicle",
+     "body",
+     "clothes",
+     "activity"
+    ]
+   }
+  ]
+ },
+ {
+  "kind": "pred",
+  "id": "piryohada",
+  "lemma": "필요하다",
+  "pos": "adj",
+  "frame": [
+   {
+    "role": "experiencer",
+    "josa": "은/는",
+    "cats": [
+     "self",
+     "you",
+     "we",
+     "person",
+     "animal"
+    ]
+   },
+   {
+    "role": "theme",
+    "josa": "이/가",
+    "cats": [
+     "self",
+     "you",
+     "we",
+     "person",
+     "animal",
+     "place",
+     "food",
+     "drink",
+     "thing",
+     "toy",
+     "vehicle",
+     "body",
+     "clothes",
+     "activity"
+    ]
+   }
+  ]
+ },
+ {
+  "kind": "pred",
+  "id": "yeppeuda",
+  "lemma": "예쁘다",
+  "pos": "adj",
+  "frame": [
+   {
+    "role": "theme",
+    "josa": "이/가",
+    "cats": [
+     "self",
+     "you",
+     "we",
+     "person",
+     "animal",
+     "place",
+     "food",
+     "drink",
+     "thing",
+     "toy",
+     "vehicle",
+     "body",
+     "clothes",
+     "activity"
+    ]
+   }
+  ]
+ },
+ {
+  "kind": "pred",
+  "id": "tteugeopda",
+  "lemma": "뜨겁다",
+  "pos": "adj",
+  "frame": [
+   {
+    "role": "theme",
+    "josa": "이/가",
+    "cats": [
+     "self",
+     "you",
+     "we",
+     "person",
+     "animal",
+     "place",
+     "food",
+     "drink",
+     "thing",
+     "toy",
+     "vehicle",
+     "body",
+     "clothes",
+     "activity"
+    ]
+   }
+  ]
+ },
+ {
+  "kind": "pred",
+  "id": "chagapda",
+  "lemma": "차갑다",
+  "pos": "adj",
+  "frame": [
+   {
+    "role": "theme",
+    "josa": "이/가",
+    "cats": [
+     "self",
+     "you",
+     "we",
+     "person",
+     "animal",
+     "place",
+     "food",
+     "drink",
+     "thing",
+     "toy",
+     "vehicle",
+     "body",
+     "clothes",
+     "activity"
+    ]
+   }
+  ]
+ },
+ {
+  "kind": "marker",
+  "id": "an",
+  "word": "안",
+  "set": {
+   "negation": "an"
+  }
+ },
+ {
+  "kind": "marker",
+  "id": "mot",
+  "word": "못",
+  "set": {
+   "negation": "mot"
+  }
+ },
+ {
+  "kind": "marker",
+  "id": "q",
+  "word": "?",
+  "set": {
+   "mood": "question"
+  }
+ },
+ {
+  "kind": "marker",
+  "id": "juseyo",
+  "word": "주세요",
+  "set": {
+   "mood": "request"
+  }
+ },
+ {
+  "kind": "marker",
+  "id": "gachi",
+  "word": "같이",
+  "set": {
+   "mood": "suggest"
+  },
+  "surface": "같이"
+ },
+ {
+  "kind": "marker",
+  "id": "halkkayo",
+  "word": "할까요?",
+  "set": {
+   "mood": "suggest"
+  }
+ },
+ {
+  "kind": "marker",
+  "id": "sipda",
+  "word": "싶어요",
+  "set": {
+   "modality": "want"
+  }
+ },
+ {
+  "kind": "marker",
+  "id": "suitda",
+  "word": "할 수 있어요",
+  "set": {
+   "modality": "can"
+  }
+ },
+ {
+  "kind": "marker",
+  "id": "haeya",
+  "word": "해야 해요",
+  "set": {
+   "modality": "must"
+  }
+ },
+ {
+  "kind": "marker",
+  "id": "jungida",
+  "word": "하는 중",
+  "set": {
+   "modality": "progressive"
+  }
+ },
+ {
+  "kind": "marker",
+  "id": "boda-try",
+  "word": "해 볼래요",
+  "set": {
+   "modality": "try"
+  }
+ },
+ {
+  "kind": "marker",
+  "id": "jimaseyo",
+  "word": "하지 마세요",
+  "set": {
+   "mood": "command",
+   "negation": "an"
+  }
+ },
+ {
+  "kind": "marker",
+  "id": "haseyo",
+  "word": "하세요",
+  "set": {
+   "mood": "command"
+  }
+ },
+ {
+  "kind": "marker",
+  "id": "past",
+  "word": "했어요",
+  "set": {
+   "tense": "past"
+  }
+ },
+ {
+  "kind": "marker",
+  "id": "promise",
+  "word": "할게요",
+  "set": {
+   "mood": "promise"
+  }
+ },
+ {
+  "kind": "marker",
+  "id": "volition",
+  "word": "할래요",
+  "set": {
+   "mood": "volition"
+  }
+ },
+ {
+  "kind": "marker",
+  "id": "future",
+  "word": "할 거예요",
+  "set": {
+   "tense": "future"
+  }
+ },
+ {
+  "kind": "adverb",
+  "id": "ppalli",
+  "word": "빨리"
+ },
+ {
+  "kind": "adverb",
+  "id": "cheoncheonhi",
+  "word": "천천히"
+ },
+ {
+  "kind": "adverb",
+  "id": "mani",
+  "word": "많이"
+ },
+ {
+  "kind": "adverb",
+  "id": "jogeum",
+  "word": "조금"
+ },
+ {
+  "kind": "adverb",
+  "id": "deo",
+  "word": "더"
+ },
+ {
+  "kind": "adverb",
+  "id": "tto",
+  "word": "또"
+ },
+ {
+  "kind": "adverb",
+  "id": "neomu",
+  "word": "너무"
+ },
+ {
+  "kind": "adverb",
+  "id": "jeongmal",
+  "word": "정말"
+ },
+ {
+  "kind": "adverb",
+  "id": "honja",
+  "word": "혼자"
+ },
+ {
+  "kind": "adverb",
+  "id": "wae",
+  "word": "왜",
+  "wh": true
+ },
+ {
+  "kind": "phrase",
+  "id": "annyeong",
+  "word": "안녕",
+  "plain": "안녕",
+  "polite": "안녕하세요",
+  "formal": "안녕하십니까"
+ },
+ {
+  "kind": "phrase",
+  "id": "gomawo",
+  "word": "고마워요",
+  "plain": "고마워",
+  "polite": "고마워요",
+  "formal": "감사합니다"
+ },
+ {
+  "kind": "phrase",
+  "id": "mianhae",
+  "word": "미안해요",
+  "plain": "미안해",
+  "polite": "미안해요",
+  "formal": "죄송합니다"
+ },
+ {
+  "kind": "phrase",
+  "id": "ne",
+  "word": "네",
+  "plain": "응",
+  "polite": "네",
+  "formal": "예"
+ },
+ {
+  "kind": "phrase",
+  "id": "aniyo",
+  "word": "아니요",
+  "plain": "아니",
+  "polite": "아니요",
+  "formal": "아닙니다"
+ },
+ {
+  "kind": "phrase",
+  "id": "saranghae",
+  "word": "사랑해요",
+  "plain": "사랑해",
+  "polite": "사랑해요",
+  "formal": "사랑합니다"
+ },
+ {
+  "kind": "phrase",
+  "id": "dowajwo",
+  "word": "도와주세요",
+  "plain": "도와줘",
+  "polite": "도와주세요",
+  "formal": "도와주십시오"
+ },
+ {
+  "kind": "phrase",
+  "id": "jalja",
+  "word": "잘 자요",
+  "plain": "잘 자",
+  "polite": "잘 자요",
+  "formal": "안녕히 주무세요"
+ }
+]

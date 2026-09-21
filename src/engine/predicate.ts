@@ -14,7 +14,8 @@ import {
 } from './conjugate';
 
 export type Speech = 'plain' | 'polite' | 'formal'; // 반말(해체) · 해요체 · 합쇼체
-export type Mood = 'statement' | 'question' | 'suggest' | 'command' | 'request';
+export type Mood = 'statement' | 'question' | 'suggest' | 'command' | 'request' | 'promise' | 'volition' | 'volitionQ';
+// promise: 먹을게요 / volition: 먹을래요 / volitionQ: 먹을래요?(드실래요?)
 export type Tense = 'present' | 'past' | 'future';
 export type Negation = 'none' | 'an' | 'mot';
 export type Modality = 'none' | 'want' | 'progressive' | 'can' | 'cannot' | 'must' | 'try';
@@ -73,6 +74,12 @@ function ending(p: Predicate, f: Features): string {
         return attachFormal(h, q ? '니까' : '니다');
     }
   }
+  if (f.mood === 'promise' || f.mood === 'volition' || f.mood === 'volitionQ') {
+    const h = f.honorific && f.mood === 'volitionQ' ? honor(p) : p;
+    if (f.speech === 'formal') return attachC(h, f.mood === 'volitionQ' ? '겠습니까' : '겠습니다'); // 먹겠습니다, 드시겠습니까
+    const base = f.mood === 'promise' ? 'ㄹ게' : 'ㄹ래';
+    return attachEu(h, f.speech === 'polite' ? base + '요' : base); // 갈게요, 먹을래, 가실래요
+  }
   if (f.mood === 'suggest') {
     if (f.speech === 'plain') return attachC(p, '자'); // 가자, 먹자
     if (f.speech === 'polite') return attachEu(p, 'ㄹ까요'); // 갈까요, 먹을까요
@@ -105,7 +112,7 @@ function withNegation(p: Predicate, n: Negation, body: (p: Predicate) => string)
 
 export function realizePredicate(p: Predicate, f: Features): string {
   const core = realizeCore(p, f);
-  return f.mood === 'question' || (f.mood === 'suggest' && f.speech === 'polite') ? core + '?' : core;
+  return f.mood === 'question' || f.mood === 'volitionQ' || (f.mood === 'suggest' && f.speech === 'polite') ? core + '?' : core;
 }
 
 function realizeCore(p: Predicate, f: Features): string {

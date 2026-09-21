@@ -33,6 +33,8 @@ export interface Candidate {
 
 export interface Context {
   speech: Speech;
+  /** 듣는 이가 높일 분(선생님·어른)이면 듣는 이에게 묻거나 권할 때 -(으)시-: 괜찮으세요? 뭐 드실래요? */
+  honorListener?: boolean;
 }
 
 const ROLE_RANK: Record<Role, number> = {
@@ -50,7 +52,8 @@ const ROLE_RANK: Record<Role, number> = {
 const SUBJECT_ROLES = new Set<Role>(['agent', 'experiencer']);
 const SHARED_ROLES = new Set<Role>(['time', 'agent', 'experiencer', 'companion']);
 const PRONOUNS = new Set<Category>(['self', 'you', 'we']);
-const WHAT_CATS = new Set<Category>(['food', 'drink', 'thing', 'toy', 'clothes', 'vehicle', 'body', 'activity', 'animal', 'place']);
+// '뭐'가 들어갈 수 있는 자리: 사물·일. 하는 이·함께하는 이 같은 생물 자리는 안 된다(뭐가 해요? ✗)
+const WHAT_CATS = new Set<Category>(['food', 'drink', 'thing', 'toy', 'clothes', 'vehicle', 'body', 'activity']);
 
 interface OwnedSlot extends Slot {
   owner: number; // 서술어 번호(0 = 앞 동사, 1 = 주 서술어)
@@ -71,12 +74,15 @@ function compatible(n: NounEntry, s: Slot): boolean {
   if (n.wh) {
     if (n.word === '뭐') return s.role !== 'time' && s.cats.some((c) => WHAT_CATS.has(c));
     if (n.word === '누구') return s.cats.includes('person');
+    if (n.word === '어디') return s.cats.includes('place') || s.cats.includes('body'); // 어디가 아파요?
   }
-  return s.cats.includes(n.cat);
+  return s.cats.includes(n.cat) || !!n.alt?.some((c) => s.cats.includes(c));
 }
 
 /** 명사들을 격틀 자리에 배정하는 모든 경우를 따져 점수 높은 순으로 */
-function assign(nouns: NounCard[], slots: OwnedSlot[], predPos: number[]): Assignment[] {
+function assign(nouns: NounCard[], slots: OwnedSlot[], predPos: number[], mood: Features['mood']): Assignment[] {
+  const asking = mood === 'question' || mood === 'volitionQ';
+  const directive = mood === 'command' || mood === 'request';
   const out: Assignment[] = [];
   const cur: (OwnedSlot | null)[] = [];
   const used = new Set<number>();
@@ -90,7 +96,14 @@ function assign(nouns: NounCard[], slots: OwnedSlot[], predPos: number[]): Assig
         return;
       }
       s += 3 + 1 / slot.cats.length;
-      if (SUBJECT_ROLES.has(slot.role)) s += PRONOUNS.has(n.e.cat) ? 1.5 : n.e.cat === 'person' ? 0.5 : 0;
+      if (SUBJECT_ROLES.has(slot.role)) {
+        s += PRONOUNS.has(n.e.cat) ? 1.5 : n.e.cat === 'person' ? 0.5 : 0;
+        // 평서문의 주어는 대개 말하는 나, 묻거나 시킬 때 주어는 대개 듣는 너
+        if (n.e.cat === 'you' && !asking && !directive) s -= 1;
+        if ((n.e.cat === 'self' || n.e.cat === 'we') && (asking || directive)) s -= 1;
+      }
+      // 때 낱말이 끼니 자리(아침을 먹다)로 쓰이는 건 드물지 않지만 기본은 때
+      if (n.e.cat === 'time' && slot.role !== 'time') s -= 0.8;
       // 두 서술어: 앞 동사보다 먼저 놓인 명사는 앞 동사, 뒤는 주 서술어 쪽이 자연스럽다
       if (predPos.length === 2 && !SHARED_ROLES.has(slot.role)) {
         const beforeV1 = n.pos < predPos[0]!;
@@ -179,10 +192,25 @@ function renderNoun(n: NounEntry, slot: Slot | null, st: NounStyle, honorRecipie
   if (!slot) return word;
   if (slot.role === 'time') return word + (n.timeJosa ?? '');
   if (n.wh) {
-    if (n.word === '누구' && slot.josa === '이/가') return '누가';
-    if (n.word === '누구' && slot.josa === '을/를') return '누구를';
-    if (n.word === '누구' && (slot.role === 'companion' || slot.role === 'recipient')) return word + (slot.role === 'companion' ? '랑' : '에게');
-    return word; // 뭐 먹어요? 어디 가요? 언제 와요?
+    const formal = st.speech === 'formal';
+    if (n.word === '누구') {
+      if (slot.josa === '이/가') return '누가';
+      if (slot.role === 'companion') return formal ? '누구와' : '누구랑';
+      if (slot.role === 'recipient') return formal ? '누구에게' : '누구한테';
+      return '누구를';
+    }
+    if (n.word === '뭐') {
+      if (slot.josa === '이/가') return formal ? '무엇이' : '뭐가'; // 뭐가 좋아?
+      if (slot.role === 'instrument') return formal ? '무엇으로' : '뭘로';
+      return formal ? '무엇을' : '뭐'; // 뭐 먹어요? / 무엇을 드십니까?
+    }
+    if (n.word === '어디') {
+      if (slot.role === 'goal') return formal ? '어디에' : '어디'; // 어디 가요?
+      if (slot.josa === '에서') return formal ? '어디에서' : '어디서'; // 어디서 왔어요?
+      if (slot.josa === '이/가') return '어디가'; // 어디가 아파요?
+      return '어디에'; // 어디에 있어요?
+    }
+    return word; // 언제 와요?
   }
   let josa = st.topic ? '은/는' : slot.josa;
   if (josa === '이/가' && st.isSubject && st.honorSubject && st.speech === 'formal') josa = '께서';
@@ -225,23 +253,30 @@ function applyMarkers(base: Features, markers: { key: string; e: MarkerEntry }[]
 export function realize(cards: Card[], ctx: Context, limit = 5): Candidate[] {
   const nouns: NounCard[] = [];
   const preds: { key: string; e: PredEntry; pos: number }[] = [];
-  const markers: { key: string; e: MarkerEntry }[] = [];
-  const adverbs: { key: string; e: AdverbEntry }[] = [];
+  const markers: { key: string; e: MarkerEntry; pos: number }[] = [];
+  const adverbs: { key: string; e: AdverbEntry; pos: number }[] = [];
   const phrases: { key: string; e: PhraseEntry }[] = [];
   cards.forEach((c, pos) => {
     const e = c.entry;
     if (e.kind === 'noun') nouns.push({ key: c.key, e, pos });
     else if (e.kind === 'pred') preds.push({ key: c.key, e, pos });
-    else if (e.kind === 'marker') markers.push({ key: c.key, e });
-    else if (e.kind === 'adverb') adverbs.push({ key: c.key, e });
+    else if (e.kind === 'marker') markers.push({ key: c.key, e, pos });
+    else if (e.kind === 'adverb') adverbs.push({ key: c.key, e, pos });
     else phrases.push({ key: c.key, e });
   });
 
   let features: Features = applyMarkers({ ...DEFAULT_FEATURES, speech: ctx.speech }, markers);
-  if (!markers.some((m) => m.e.set.tense)) {
+  // 때 낱말이 시제를 정한다(어제→과거, 내일→미래). 단 바람·가능·의무는 지금의 마음이라 그대로 둔다: 내일 만나고 싶어요
+  let tenseFromTime = false;
+  if (!markers.some((m) => m.e.set.tense) && ['none', 'progressive', 'try'].includes(features.modality)) {
     const t = nouns.find((n) => n.e.tense)?.e.tense;
-    if (t) features.tense = t;
+    if (t) {
+      features.tense = t;
+      tenseFromTime = t === 'future';
+    }
   }
+  if (features.mood === 'question' && markers.some((m) => m.e.set.mood === 'volition')) features.mood = 'volitionQ';
+  if (features.mood === 'volition' && markers.some((m) => m.e.set.mood === 'question')) features.mood = 'volitionQ';
   const hasWh = nouns.some((n) => n.e.wh) || adverbs.some((a) => a.e.wh);
   if (hasWh && features.mood === 'statement') features.mood = 'question';
 
@@ -271,7 +306,7 @@ export function realize(cards: Card[], ctx: Context, limit = 5): Candidate[] {
   addFrame(main.e.frame, 1);
   if (first) addFrame(first.e.frame, 0);
 
-  const assignments = assign(nouns, slots, usedPreds.map((p) => p.pos)).slice(0, 3);
+  const assignments = assign(nouns, slots, usedPreds.map((p) => p.pos), features.mood).slice(0, 3);
   const candidates: Candidate[] = [];
 
   assignments.forEach((a, rank) => {
@@ -285,20 +320,24 @@ export function realize(cards: Card[], ctx: Context, limit = 5): Candidate[] {
     const recipientIdx = nouns.findIndex((_, i) => roleOf(i) === 'recipient');
     const honorRecipient = recipientIdx >= 0 && !!nouns[recipientIdx]!.e.honorific;
 
-    const build = (opts: { vocative: boolean; omitSubject: boolean; topicSubject: boolean }): Candidate => {
-      const f: Features = { ...features };
+    // 듣는 이 높임: 주어가 '너'이거나 없고, 듣는 이에게 묻거나 시킬 때
+    const listenerDirected = (!subject || subject.e.cat === 'you') && ['question', 'volitionQ', 'command', 'request'].includes(features.mood);
+    const honorListener = !!ctx.honorListener && listenerDirected;
+
+    const build = (opts: { vocative: boolean; omitSubject: boolean; topicSubject: boolean; tense?: Features['tense'] }): Candidate => {
+      const f: Features = { ...features, tense: opts.tense ?? features.tense };
       if (opts.vocative) {
         if (f.mood === 'statement') f.mood = 'command';
         f.honorific = false;
         // 높일 사람을 부르며 반말로 시키지 않는다: '할머니, 진지 드셔' ✗
         if (subject?.e.honorific && f.speech === 'plain') f.speech = 'polite';
       } else {
-        f.honorific = honorSubject && (f.mood === 'statement' || f.mood === 'question');
+        f.honorific = (honorSubject && ['statement', 'question', 'volitionQ'].includes(f.mood)) || (honorListener && (f.mood === 'question' || f.mood === 'volitionQ'));
       }
       // 서술어 낱말 고르기(드시다·계시다·드리다)
       const mainPred = (() => {
         const e = main.e;
-        const subjectInAgent = subjIdx >= 0 && nouns[subjIdx]!.e.honorific;
+        const subjectInAgent = (subjIdx >= 0 && nouns[subjIdx]!.e.honorific) || honorListener;
         if (honorRecipient && e.humbleLemma) return toPredicate(e, e.humbleLemma);
         if (e.honorLemma && subjectInAgent && (f.honorific || opts.vocative || f.mood === 'command' || f.mood === 'request')) return toPredicate(e, e.honorLemma, true);
         return toPredicate(e);
@@ -306,20 +345,24 @@ export function realize(cards: Card[], ctx: Context, limit = 5): Candidate[] {
 
       const tokens: Token[] = [];
       const unused: string[] = [...unusedPreds];
+      // 어순은 사용자가 놓은 카드 순서를 따른다(한국어는 조사가 역할을 말해 주므로 어순이 자유롭고, 강조는 사용자의 뜻이다).
+      // 서술어만 늘 끝으로 보낸다.
       const order = nouns
         .map((n, i) => ({ n, i, slot: a.slots[i] ?? null }))
-        .filter(({ i }) => !(opts.vocative && i === subjectIdx))
-        .sort((x, y) => {
-          const rx = x.slot ? ROLE_RANK[x.slot.role] + (first && x.slot.owner === 0 ? 10 : 0) : 5;
-          const ry = y.slot ? ROLE_RANK[y.slot.role] + (first && y.slot.owner === 0 ? 10 : 0) : 5;
-          return rx - ry || x.n.pos - y.n.pos;
-        });
+        .filter(({ i }) => !(opts.vocative && i === subjectIdx));
+      const extras: { pos: number; token: Token }[] = [
+        ...markers.filter((m) => m.e.surface).map((m) => ({ pos: m.pos, token: { text: m.e.surface!, sources: [m.key], role: 'adverb' as const } })),
+        ...adverbs.map((ad) => ({ pos: ad.pos, token: { text: ad.e.word, sources: [ad.key], role: 'adverb' as const } })),
+      ];
+      // 두 서술어: 앞 동사에 딸린 말과 주어·때는 앞 동사 앞에, 카드를 앞 동사 뒤에 놓은 주 서술어의 말은 뒤에: 저녁 먹으러 식당에 갔어요
+      const placed: { pos: number; token: Token; late?: boolean }[] = [];
+      const late = (pos: number, slot: OwnedSlot | null) => !!first && pos > first.pos && (!slot || (slot.owner === 1 && !SHARED_ROLES.has(slot.role)));
 
       if (opts.vocative && subject) tokens.push({ text: subject.e.word, sources: [subject.key], role: 'vocative' });
       for (const { n, i, slot } of order) {
         const isSubject = i === subjectIdx;
         if (isSubject && opts.omitSubject) {
-          tokens.push({ text: '', sources: [n.key], role: slot?.role }); // 생략했지만 뜻은 반영됨
+          placed.push({ pos: n.pos, token: { text: '', sources: [n.key], role: slot?.role } }); // 생략했지만 뜻은 반영됨
           continue;
         }
         const topic = isSubject && opts.topicSubject && slot?.josa === '이/가' && !n.e.wh;
@@ -327,37 +370,42 @@ export function realize(cards: Card[], ctx: Context, limit = 5): Candidate[] {
         const bareWe = isSubject && n.e.cat === 'we' && (f.mood === 'suggest' || f.mood === 'command');
         const style: NounStyle = { speech: f.speech, honorSubject, isSubject, topic, inclusiveWe: f.mood === 'suggest' };
         const text = bareWe ? surfaceWord(n.e, null, style) : renderNoun(n.e, slot, style, honorRecipient);
-        tokens.push({ text, sources: [n.key], role: slot?.role });
+        placed.push({ pos: n.pos, token: { text, sources: [n.key], role: slot?.role }, late: late(n.pos, slot) });
       }
-      for (const m of markers) if (m.e.surface) tokens.push({ text: m.e.surface, sources: [m.key], role: 'adverb' });
-      for (const ad of adverbs) tokens.push({ text: ad.e.word, sources: [ad.key], role: 'adverb' });
+      const all = [...placed, ...extras.map((x) => ({ ...x, late: !!first && x.pos > first.pos }))].sort((p, q) => p.pos - q.pos);
+      for (const x of all) if (!x.late) tokens.push(x.token);
 
       const markerKeys = markers.filter((m) => !m.e.surface).map((m) => m.key);
       if (first) {
         const p0 = toPredicate(first.e);
         const link = main.e.motion ? attachEu(p0, '러') : attachC(p0, '고');
         tokens.push({ text: link, sources: [first.key], role: 'predicate' });
+        for (const x of all) if (x.late) tokens.push(x.token);
       }
       tokens.push({ text: realizePredicate(mainPred, f), sources: [main.key, ...markerKeys], role: 'predicate' });
 
       const note = opts.vocative ? `${subject?.e.word}에게 말하기` : subject ? (opts.omitSubject ? `주어 생략(${subject.e.word})` : `주어: ${subject.e.word}`) : '주어 없음';
-      return { text: textOf(tokens.filter((t) => t.text !== '')), tokens, features: f, score: a.score - rank * 0.5, note, unused };
+      return { text: textOf(tokens.filter((t) => t.text !== '')), tokens, features: f, score: a.score - rank * 0.3, note, unused };
     };
 
     const subjCat = subject?.e.cat;
     const isPronounSubj = !!subjCat && PRONOUNS.has(subjCat);
     const polite = features.speech !== 'plain';
     // 기본형: 나/우리는 '은/는', 너는 존댓말에서 생략
+    // 약속·의지는 '제가 할게요'처럼 주격으로 나선다
+    const topicDefault = isPronounSubj && !['question', 'volitionQ', 'promise', 'volition'].includes(features.mood);
     const base = build({
       vocative: false,
       omitSubject: subjCat === 'you' && polite,
-      topicSubject: isPronounSubj && features.mood !== 'question',
+      topicSubject: topicDefault,
     });
     candidates.push(base);
-    if (subject && isPronounSubj && subjCat !== 'you') candidates.push({ ...build({ vocative: false, omitSubject: true, topicSubject: false }), score: base.score - 0.8 });
+    // '내일 와'처럼 현재형으로 가까운 미래를 말하는 것도 자연스럽다
+    if (tenseFromTime) candidates.push({ ...build({ vocative: false, omitSubject: subjCat === 'you' && polite, topicSubject: topicDefault, tense: 'present' }), score: base.score - 0.7 });
+    if (subject && isPronounSubj && subjCat !== 'you') candidates.push({ ...build({ vocative: false, omitSubject: true, topicSubject: false }), score: base.score - 1.6 }); // 말맛 변이는 다른 해석보다 뒤로
     const animateSubj = subjCat === 'person' || subjCat === 'animal';
     if (subject && animateSubj && !subject.e.wh) {
-      candidates.push({ ...build({ vocative: false, omitSubject: false, topicSubject: true }), score: base.score - 1.2 }); // 같은 뜻의 말맛 차이라 다른 해석보다 뒤로
+      candidates.push({ ...build({ vocative: false, omitSubject: false, topicSubject: true }), score: base.score - 1.6 }); // 같은 뜻의 말맛 차이라 다른 해석보다 뒤로
       const imperativeLike = ['command', 'request', 'suggest'].includes(features.mood);
       const canVocative = subjCat === 'person' && main.e.pos === 'verb' && features.tense !== 'past' && (imperativeLike || features.mood === 'statement');
       if (canVocative) {
