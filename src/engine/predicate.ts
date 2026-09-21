@@ -1,6 +1,6 @@
 // 문장 자질(말투·서법·시제·높임·부정·양태)에 맞춰 서술어 전체를 만든다.
 import { attachJosa } from './josa';
-import { finalJong } from './hangul';
+import { addJong, finalJong } from './hangul';
 import {
   attachC,
   attachEu,
@@ -163,9 +163,15 @@ function realizeCore(p: Predicate, f: Features): string {
 // ── 이다 · 아니다 ────────────────────────────────────────────────────────
 /** 명사 + 이다: 학생이에요, 의사예요, 선생님이세요, 친구였어요, 학생일 거예요 */
 export function realizeCopula(noun: string, f: Features): string {
-  const q = f.mood === 'question';
-  const mark = q ? '?' : '';
   const vowelEnd = finalJong(noun) === '';
+  // 묻는 짐작: 뭘까? 누구일까요?
+  if (f.mood === 'shall' && f.negation === 'none') {
+    // 받침 없으면 ㄹ을 붙이고(누굴까, 뭘까), 있으면 '일까'(사과일까 → 받침 없음 → 사괄까 ✗ 이므로 받침 없는 일반 명사는 '일까')
+    const base = noun === '뭐' || noun === '누구' ? addJong(noun, 'ㄹ') : `${noun}일`;
+    return `${base}까${f.speech === 'plain' ? '' : '요'}?`;
+  }
+  const q = f.mood === 'question' || f.mood === 'shall';
+  const mark = q ? '?' : '';
   if (f.negation !== 'none') {
     return `${attachJosa(noun, '이/가')} ${realizeAnida(f)}${mark}`;
   }

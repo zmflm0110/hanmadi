@@ -94,7 +94,7 @@ def to_cards(sentence: str, kiwi: Kiwi):
     speech = speech_of(toks)
     cards: list[str] = []
     markers: list[str] = []
-    past = future = honor_seen = False
+    past = future = honor_seen = copula = False
     missing: list[str] = []  # 사전에 없는 낱말(끝까지 모은다: '하나만 없는 문장' 분석용)
     i = 0
     while i < len(toks):
@@ -179,6 +179,11 @@ def to_cards(sentence: str, kiwi: Kiwi):
                 cards.append(NOUNS[t.form])
             else:
                 missing.append(t.form)
+        elif tag == 'VCP' and nxt is not None and nxt.tag in ('EF', 'EP'):
+            copula = True  # 명사 + 이다로 맺는 문장: 엔진이 마지막 명사로 맺는다
+        elif tag == 'VCN':
+            markers.append('an')  # 아니다
+            copula = True
         elif tag == 'ETM' and t.form in ('ㄹ', '을') and nxt is not None and nxt.form == '거':
             future = True
             i += 1  # '거' 건너뜀, 뒤의 이/VCP 도 건너뛴다
@@ -190,8 +195,10 @@ def to_cards(sentence: str, kiwi: Kiwi):
 
     if missing:
         raise Skip('사전에 없는 낱말', missing)
-    if not any(c for c in cards if next((e for e in LEX if e['id'] == c), {}).get('kind') == 'pred'):
+    if not copula and not any(c for c in cards if next((e for e in LEX if e['id'] == c), {}).get('kind') == 'pred'):
         raise Skip('서술어 카드 없음')
+    if copula and any(next((e for e in LEX if e['id'] == c), {}).get('kind') == 'pred' for c in cards):
+        raise Skip('이다 + 다른 서술어')  # 관형형 등이 섞인 문장
     time_tense = {TIME_TENSE.get(c) for c in cards}
     if past and 'past' not in time_tense:
         markers.append('past')

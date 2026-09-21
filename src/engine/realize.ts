@@ -473,7 +473,7 @@ function realizeCore(cards: Card[], ctx: Context, limit = 5): Candidate[] {
   const withPhrases = (c: Candidate): Candidate =>
     phrases.length ? { ...c, tokens: [...phraseTokens, { text: '.', sources: [] }, ...c.tokens], text: `${phraseTokens.map((t) => t.text).join(' ')}. ${c.text}` } : c;
 
-  if (!preds.length) return nounOnly(nouns, markers, adverbs, features, mods).map((c) => withPhrases({ ...c, unused: [...c.unused, ...modUnused] })).slice(0, limit);
+  if (!preds.length) return nounOnly(nouns, markers, adverbs, features, mods, !!ctx.honorListener).map((c) => withPhrases({ ...c, unused: [...c.unused, ...modUnused] })).slice(0, limit);
 
   // 서술어가 셋 이상이면 마지막 둘만 잇는다(앞의 것은 unused)
   const usedPreds = preds.slice(-2);
@@ -626,7 +626,7 @@ function realizeCore(cards: Card[], ctx: Context, limit = 5): Candidate[] {
 }
 
 /** 서술어 카드 없이 명사만: '물 주세요', '화장실이 어디예요?', '이게 뭐예요?', '저도요.' */
-function nounOnly(nouns: NounCard[], markers: { key: string; e: MarkerEntry }[], adverbs: { key: string; e: AdverbEntry }[], f: Features, mods: Map<string, NounMods>): Candidate[] {
+function nounOnly(nouns: NounCard[], markers: { key: string; e: MarkerEntry }[], adverbs: { key: string; e: AdverbEntry }[], f: Features, mods: Map<string, NounMods>, honorListener = false): Candidate[] {
   const request = markers.find((m) => m.e.set.mood === 'request');
   const unusedMarkers = markers.filter((m) => m !== request).map((m) => m.key);
   const adverbTokens: Token[] = adverbs.map((a) => ({ text: a.e.word, sources: [a.key], role: 'adverb' }));
@@ -644,18 +644,52 @@ function nounOnly(nouns: NounCard[], markers: { key: string; e: MarkerEntry }[],
   }
 
   const wh = rest.find((n) => n.e.wh);
+  // '누구'가 뒤 명사를 꾸미면 그 명사로 맺는다: 이건 누구 가방이에요? 어제 누구 생일이었어?
+  if (wh && wh.e.word === '누구') {
+    const i = rest.indexOf(wh);
+    const owned = rest[i + 1];
+    if (owned && !owned.e.wh) {
+      const before = rest.slice(0, i).filter((n) => n.e.cat !== 'time');
+      const times = rest.slice(0, i).filter((n) => n.e.cat === 'time');
+      const tokens: Token[] = [...vocative, ...times.map((t) => ({ ...phrase(t, { role: 'time', josa: '', cats: ['time'] }), role: 'time' as const }))];
+      for (const n of before) {
+        const bare = n.e.deictic && f.speech !== 'formal';
+        tokens.push({ ...phrase(n, bare ? { role: 'agent', josa: '은/는', cats: [] } : { role: 'agent', josa: '은/는', cats: [] }), role: 'agent' });
+      }
+      tokens.push(...adverbTokens);
+      const head = `${wh.e.word} ${phrase(owned, null).text}`;
+      tokens.push({ text: realizeCopula(head, { ...f, mood: 'question', honorific: false }), sources: [wh.key, ...phrase(owned, null).sources], role: 'predicate' });
+      const wm = mods.get(wh.key); // '누구'에 딸린 카드(수량 등)는 못 쓴 것으로
+      const whUnused = wm ? [...wm.pre.map((x) => x.key), ...(wm.num ? [wm.num.key] : []), ...(wm.particle ? [wm.particle.key] : [])] : [];
+      return [{ text: textOf(tokens), tokens, features: { ...f, mood: 'question' }, score: 5, note: '묻기', unused: [...unusedMarkers, ...whUnused] }];
+    }
+  }
   if (wh) {
     const others = rest.filter((n) => n !== wh);
     const subjectSlot: Slot = { role: 'agent', josa: '이/가', cats: [] };
     const tokens: Token[] = [...vocative, ...others.map((n) => ({ ...phrase(n, subjectSlot), role: 'agent' as const })), ...adverbTokens];
     const whWord = f.speech === 'formal' && wh.e.word === '뭐' ? '무엇' : wh.e.word; // 합쇼체는 글말: 무엇입니까
-    tokens.push({ text: realizeCopula(whWord, { ...f, mood: 'question' }), sources: [wh.key], role: 'predicate' });
+    // 어른께 물을 때: 누구세요? 어디세요?
+    const whMood = f.mood === 'shall' ? 'shall' : 'question';
+    tokens.push({ text: realizeCopula(whWord, { ...f, mood: whMood, honorific: honorListener && !others.length }), sources: [wh.key], role: 'predicate' });
     const wm = mods.get(wh.key); // '뭐도'처럼 의문사에 딸린 카드는 이 문장에 못 넣는다
     const whUnused = wm ? [...wm.pre.map((x) => x.key), ...(wm.num ? [wm.num.key] : []), ...(wm.particle ? [wm.particle.key] : [])] : [];
     return [{ text: textOf(tokens), tokens, features: { ...f, mood: 'question' }, score: 5, note: '묻기', unused: [...unusedMarkers, ...whUnused] }];
   }
 
-  if (!rest.length) return [];
+  if (!rest.length) {
+    // [안] 하나: 아니에요 / 아닐 거예요
+    if (f.negation === 'an' && !nouns.length) {
+      const text = realizeAnidaAlone(f);
+      const keys = markers.filter((m) => m.e.set.negation).map((m) => m.key);
+      const advKeys = adverbTokens.flatMap((t) => t.sources); // '그냥 아니에요'는 어색해 꾸밈 카드는 못 쓴 것으로
+      return [{ text, tokens: [{ text, sources: keys, role: 'predicate' }], features: f, score: 2, note: '아니라고 말하기', unused: [...unusedMarkers.filter((k) => !keys.includes(k)), ...advKeys] }];
+    }
+    return [];
+  }
+  const out: Candidate[] = [];
+  const copula = copulaCandidate(nouns, adverbTokens, f, mods, unusedMarkers);
+  if (copula) out.push(copula);
   const last = rest[rest.length - 1]!;
   const lastPhrase = phrase(last, null);
   const hasParticle = !!mods.get(last.key)?.particle;
@@ -667,5 +701,47 @@ function nounOnly(nouns: NounCard[], markers: { key: string; e: MarkerEntry }[],
     ...adverbTokens,
     { text: frag, sources: lastPhrase.sources, role: 'fragment' },
   ];
-  return [{ text: textOf(tokens), tokens, features: f, score: 1, note: '낱말로 말하기', unused: unusedMarkers }];
+  out.push({ text: textOf(tokens), tokens, features: f, score: 1, note: '낱말로 말하기', unused: unusedMarkers });
+  return out;
+}
+
+function realizeAnidaAlone(f: Features): string {
+  const polite = f.speech === 'polite';
+  const formal = f.speech === 'formal';
+  const t = f.tense === 'future' ? (formal ? '아닐 겁니다' : polite ? '아닐 거예요' : '아닐 거야') : f.tense === 'past' ? (formal ? '아니었습니다' : polite ? '아니었어요' : '아니었어') : formal ? '아닙니다' : polite ? '아니에요' : '아니야';
+  return f.mood === 'question' ? `${t}?` : `${t}.`;
+}
+
+/**
+ * '이다' 문장: 명사만 두 장 이상이면 마지막 명사로 맺는다. 이거 사과예요 / 오늘 생일이에요 / 엄마는 선생님이에요 / 이거 엄마 가방이에요
+ * 앞의 때 낱말은 때로, 첫 명사는 이야기 대상(은/는), 가운데 명사는 마지막 명사를 꾸민다(엄마 가방).
+ */
+function copulaCandidate(nouns: NounCard[], adverbTokens: Token[], f: Features, mods: Map<string, NounMods>, unused: string[]): Candidate | null {
+  if (nouns.some((n) => n.e.wh)) return null;
+  // [사과][?] → 사과예요?  [그거][안] → 그게 아니에요
+  const single = nouns.length === 1 && (f.mood === 'question' || f.negation !== 'none');
+  if (nouns.length < 2 && !single) return null;
+  const style: NounStyle = { speech: f.speech, honorSubject: false, isSubject: false, topic: false };
+  const times = nouns.filter((n, i) => n.e.cat === 'time' && i < nouns.length - 1);
+  const others = nouns.filter((n) => !times.includes(n));
+  const predNoun = others[others.length - 1]!;
+  const topicNoun = others.length >= 2 ? others[0]! : null;
+  const middle = others.slice(topicNoun ? 1 : 0, -1);
+  const tokens: Token[] = [];
+  for (const t of times) tokens.push({ ...renderPhrase(t, { role: 'time', josa: '', cats: ['time'] }, style, false, mods.get(t.key)), role: 'time' });
+  const honorific = !!topicNoun?.e.honorific;
+  if (topicNoun) {
+    // 이거는 말할 때 조사 없이가 자연스럽다: 이거 사과예요
+    const bare = topicNoun.e.deictic && f.speech !== 'formal';
+    const ph = renderPhrase(topicNoun, bare ? null : { role: 'agent', josa: '은/는', cats: [] }, { ...style, isSubject: true }, false, mods.get(topicNoun.key));
+    tokens.push({ ...ph, role: 'agent' });
+  }
+  tokens.push(...adverbTokens);
+  const lastPh = renderPhrase(predNoun, null, { ...style, bare: true }, false, mods.get(predNoun.key));
+  const head = [...middle.map((n) => renderPhrase(n, null, { ...style, bare: true }, false, mods.get(n.key)).text), lastPh.text].join(' ');
+  let pred = realizeCopula(head, { ...f, honorific, mood: f.mood === 'question' || f.mood === 'shall' ? f.mood : 'statement' });
+  pred = pred.replace(/^(이|그|저)거가 /, '$1게 '); // 그게 아니에요
+  tokens.push({ text: pred, sources: [...middle.flatMap((n) => renderPhrase(n, null, style, false, mods.get(n.key)).sources), ...lastPh.sources], role: 'predicate' });
+  const note = topicNoun ? `${topicNoun.e.cat === 'self' ? '내' : topicNoun.e.word} 이야기` : '무엇인지 말하기';
+  return { text: textOf(tokens), tokens, features: f, score: 3, note, unused };
 }
