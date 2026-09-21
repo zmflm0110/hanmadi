@@ -28,7 +28,23 @@ ENGLISH = {
     'dowajwo': 'help', 'jalja': 'good night', 'bul': 'light', 'tv': 'television', 'cha': 'car', 'bae': 'belly',
     'mok': 'neck', 'nun': 'eye', 'son': 'hand', 'gong': 'ball', 'bak': 'outside', 'jigeum': 'now', 'oneul': 'today',
     'eoje': 'yesterday', 'naeil': 'tomorrow', 'akka': 'before', 'ittaga': 'later', 'itda': 'there is', 'eopda': 'there is not',
+    'bap': 'rice', 'ramyeon': 'noodles', 'gimbap': 'sushi', 'mannada': 'meet', 'moreuda': 'not know', 'gwaenchanta': 'okay',
+    'jeongmal': 'true', 'misul': 'art', 'swi': 'pee', 'eungga': 'poo', 'gansik': 'snack', 'geupsik': 'lunch', 'jongi': 'paper',
+    'gawi': 'scissors', 'keurepaseu': 'crayon', 'gijeogwi': 'diaper', 'saekchilhada': 'color', 'swihada': 'pee', 'eungahada': 'poo',
+    'kkeunnada': 'finish', 'bakkuda': 'change', 'maryeopda': 'want to go to the toilet', 'geuman': 'stop', 'da': 'all', 'salda': 'live',
 }
+
+
+# 눈으로 검토해서 고른 그림(검색 1순위가 엉뚱했던 것): 공원이 스페인의 특정 공원, 미술이 리코더, '해야'가 콧수염 …
+OVERRIDE = {
+    'gongwon': 30609, 'bap': 39387, 'keurepaseu': 4951, 'misul': 16339, 'jumal': 32396, 'eodi': 7764, 'hada': 32751,
+    'haseyo': 11749, 'kyeoda': 21818, 'kkeuda': 21365, 'moreuda': 7180, 'eopda': 29839, 'juseyo': 28431,
+    'halkkayo': 11576, 'boda-try': 26144, 'jimaseyo': 32366, 'jogeum': 7209, 'suitda': 11750, 'haeya': 15523,
+    'itda': 32761, 'gachi': 26818, 'volition': 36518,
+}
+# 알맞은 그림이 없는 기능어는 글자 카드로 둔다(AAC 에서 흔한 방식)
+TEXT_ONLY = {'an', 'mot', 'jeongmal'}
+BAD_IDS = {39109}  # 검색이 비면 돌려주는 '12월 31일' 그림
 
 
 def get(url: str):
@@ -43,6 +59,7 @@ def search(lang: str, word: str):
     except Exception:
         return None
     # 같은 낱말로 딱 맞는 키워드를 가진 그림을 먼저
+    data = [p for p in data if p['_id'] not in BAD_IDS]
     exact = [p for p in data if any(k['keyword'] == word for k in p.get('keywords', []))]
     pick = (exact or data or [None])[0]
     return pick['_id'] if pick else None
@@ -50,9 +67,22 @@ def search(lang: str, word: str):
 
 def main():
     mapping = json.loads(MAP.read_text()) if MAP.exists() else {}
+    for cid in TEXT_ONLY:
+        mapping.pop(cid, None)
+        (OUT / f'{cid}.png').unlink(missing_ok=True)
     for e in LEX:
         cid = e['id']
-        if cid in mapping and (OUT / f'{cid}.png').exists():
+        if cid in TEXT_ONLY:
+            continue
+        want = OVERRIDE.get(cid)
+        if cid in mapping and (OUT / f'{cid}.png').exists() and (want is None or mapping[cid]['arasaac'] == want):
+            continue
+        if want is not None:
+            png = get(f'https://static.arasaac.org/pictograms/{want}/{want}_300.png')
+            (OUT / f'{cid}.png').write_bytes(png)
+            mapping[cid] = {'arasaac': want, 'query': 'reviewed'}
+            print(f'  {cid:14} → {want} (검토해서 고름)')
+            time.sleep(0.15)
             continue
         word = e.get('word') or e.get('lemma')
         pid, how = None, ''

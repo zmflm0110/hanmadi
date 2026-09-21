@@ -84,8 +84,8 @@
   "query": "ko"
  },
  "gongwon": {
-  "arasaac": 5518,
-  "query": "ko"
+  "arasaac": 30609,
+  "query": "reviewed"
  },
  "noriteo": {
   "arasaac": 2859,
@@ -308,8 +308,8 @@
   "query": "ko"
  },
  "jumal": {
-  "arasaac": 27329,
-  "query": "ko"
+  "arasaac": 32396,
+  "query": "reviewed"
  },
  "mwo": {
   "arasaac": 22620,
@@ -384,8 +384,8 @@
   "query": "ko"
  },
  "hada": {
-  "arasaac": 21824,
-  "query": "ko"
+  "arasaac": 32751,
+  "query": "reviewed"
  },
  "gongbuhada": {
   "arasaac": 6495,
@@ -444,12 +444,12 @@
   "query": "ko"
  },
  "kyeoda": {
-  "arasaac": 4639,
-  "query": "ko"
+  "arasaac": 21818,
+  "query": "reviewed"
  },
  "kkeuda": {
-  "arasaac": 4562,
-  "query": "ko"
+  "arasaac": 21365,
+  "query": "reviewed"
  },
  "bureuda": {
   "arasaac": 32669,
@@ -504,12 +504,12 @@
   "query": "ko"
  },
  "itda": {
-  "arasaac": 9001,
-  "query": "en"
+  "arasaac": 32761,
+  "query": "reviewed"
  },
  "eopda": {
-  "arasaac": 39109,
-  "query": "en"
+  "arasaac": 29839,
+  "query": "reviewed"
  },
  "jota": {
   "arasaac": 2418,
@@ -599,57 +599,49 @@
   "arasaac": 4652,
   "query": "ko"
  },
- "an": {
-  "arasaac": 32308,
-  "query": "en"
- },
- "mot": {
-  "arasaac": 39109,
-  "query": "en"
- },
  "q": {
   "arasaac": 9847,
   "query": "en"
  },
  "juseyo": {
-  "arasaac": 39109,
-  "query": "en"
+  "arasaac": 28431,
+  "query": "reviewed"
  },
  "gachi": {
-  "arasaac": 5367,
-  "query": "en"
+  "arasaac": 26818,
+  "query": "reviewed"
  },
  "halkkayo": {
-  "arasaac": 39109,
-  "query": "en"
+  "arasaac": 11576,
+  "query": "reviewed"
  },
  "sipda": {
   "arasaac": 5441,
   "query": "en"
  },
  "suitda": {
-  "arasaac": 6544,
-  "query": "en"
+  "arasaac": 11750,
+  "query": "reviewed"
  },
  "haeya": {
-  "arasaac": 2661,
-  "query": "en"
+  "arasaac": 15523,
+  "query": "reviewed"
  },
  "jungida": {
   "arasaac": 32747,
   "query": "en"
  },
  "boda-try": {
-  "arasaac": 8148,
-  "query": "en"
+  "arasaac": 26144,
+  "query": "reviewed"
  },
  "jimaseyo": {
-  "arasaac": 39109,
-  "query": "en"
+  "arasaac": 32366,
+  "query": "reviewed"
  },
  "haseyo": {
-  "arasaac": 32751,
-  "query": "en"
+  "arasaac": 11749,
+  "query": "reviewed"
  },
  "past": {
   "arasaac": 9839,
@@ -660,8 +652,8 @@
   "query": "en"
  },
  "volition": {
-  "arasaac": 5441,
-  "query": "en"
+  "arasaac": 36518,
+  "query": "reviewed"
  },
  "future": {
   "arasaac": 9829,
@@ -680,8 +672,8 @@
   "query": "en"
  },
  "jogeum": {
-  "arasaac": 39109,
-  "query": "en"
+  "arasaac": 7209,
+  "query": "reviewed"
  },
  "deo": {
   "arasaac": 5508,
@@ -734,5 +726,97 @@
  "jalja": {
   "arasaac": 6942,
   "query": "en"
+ },
+ "bap": {
+  "arasaac": 39387,
+  "query": "reviewed"
+ },
+ "ramyeon": {
+  "arasaac": 8584,
+  "query": "en"
+ },
+ "gimbap": {
+  "arasaac": 38993,
+  "query": "en"
+ },
+ "gansik": {
+  "arasaac": 4694,
+  "query": "en"
+ },
+ "geupsik": {
+  "arasaac": 4611,
+  "query": "en"
+ },
+ "jongi": {
+  "arasaac": 8349,
+  "query": "en"
+ },
+ "gawi": {
+  "arasaac": 2591,
+  "query": "en"
+ },
+ "gijeogwi": {
+  "arasaac": 22017,
+  "query": "en"
+ },
+ "misul": {
+  "arasaac": 16339,
+  "query": "reviewed"
+ },
+ "swi": {
+  "arasaac": 16713,
+  "query": "en"
+ },
+ "eungga": {
+  "arasaac": 8050,
+  "query": "en"
+ },
+ "mannada": {
+  "arasaac": 39520,
+  "query": "en"
+ },
+ "moreuda": {
+  "arasaac": 7180,
+  "query": "reviewed"
+ },
+ "saekchilhada": {
+  "arasaac": 5968,
+  "query": "en"
+ },
+ "swihada": {
+  "arasaac": 16713,
+  "query": "en"
+ },
+ "eungahada": {
+  "arasaac": 8050,
+  "query": "en"
+ },
+ "kkeunnada": {
+  "arasaac": 32814,
+  "query": "en"
+ },
+ "bakkuda": {
+  "arasaac": 37360,
+  "query": "en"
+ },
+ "maryeopda": {
+  "arasaac": 10144,
+  "query": "en"
+ },
+ "gwaenchanta": {
+  "arasaac": 5397,
+  "query": "en"
+ },
+ "geuman": {
+  "arasaac": 7196,
+  "query": "en"
+ },
+ "da": {
+  "arasaac": 5596,
+  "query": "en"
+ },
+ "keurepaseu": {
+  "arasaac": 4951,
+  "query": "reviewed"
  }
 }
