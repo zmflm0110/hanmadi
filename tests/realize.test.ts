@@ -45,7 +45,6 @@ describe('대표 문장(1순위)', () => {
     ['na gongbu hada', 'polite', '저는 공부를 해요.'],
     ['na gongbuhada an', 'polite', '저는 공부 안 해요.'],
     ['seonsaengnim hakgyo itda', 'formal', '선생님께서 학교에 계십니다.'],
-    ['halmeoni apeuda', 'polite', '할머니는 아프세요.'],
     ['jeonyeok ramyeon meokda', 'polite', '저녁에 라면을 먹어요.'],
     ['na mongmareuda', 'polite', '저는 목말라요.'],
     ['gongwon deopda', 'polite', '공원이 더워요.'],
@@ -63,6 +62,16 @@ describe('애매하면 다른 해석을 후보로 함께 낸다', () => {
     const t = texts('chingu yeonpil juda').slice(0, 3);
     expect(t).toContain('친구가 연필을 줘요.');
     expect(t).toContain('친구에게 연필을 줘요.');
+  });
+  it('사람 카드로 시작하는 속마음 문장: 부르는 해석이 먼저, 그 사람 이야기도 후보로', () => {
+    const t = texts('halmeoni apeuda').slice(0, 2);
+    expect(t).toEqual(['할머니, 아파요.', '할머니는 아프세요.']);
+    expect(top('eomma eungga maryeopda', 'plain')).toBe('엄마, 응가가 마려워.');
+    expect(top('seonsaengnim hwajangsil gada sipda')).toBe('선생님, 화장실에 가고 싶어요.');
+    expect(top('halmeoni mwo meokda volition')).toBe('할머니, 뭐 드실래요?');
+  });
+  it('반말로 친구를 부르면 호격 조사', () => {
+    expect(texts('chingu gachi nolda', 'plain')).toContain('친구야, 같이 놀자.');
   });
   it('높일 사람을 부를 때는 반말 설정이어도 존댓말', () => {
     expect(texts('halmeoni bap meokda', 'plain')).toContain('할머니, 진지를 드세요.');

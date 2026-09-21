@@ -56,6 +56,8 @@ export interface NounEntry {
   wh?: boolean;
   /** 다른 범주로도 쓰이는 낱말(아침 = 때·끼니) */
   alt?: Category[];
+  /** 반말로 부를 때 호격 조사 아/야를 붙이는 말(친구야, 동생아). 엄마·형처럼 부르는 친족어는 안 붙인다 */
+  callSuffix?: boolean;
 }
 
 export interface PredEntry {

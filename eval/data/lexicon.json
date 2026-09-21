@@ -54,13 +54,15 @@
   "kind": "noun",
   "id": "chingu",
   "word": "친구",
-  "cat": "person"
+  "cat": "person",
+  "callSuffix": true
  },
  {
   "kind": "noun",
   "id": "dongsaeng",
   "word": "동생",
-  "cat": "person"
+  "cat": "person",
+  "callSuffix": true
  },
  {
   "kind": "noun",
@@ -90,7 +92,8 @@
   "kind": "noun",
   "id": "agi",
   "word": "아기",
-  "cat": "person"
+  "cat": "person",
+  "callSuffix": true
  },
  {
   "kind": "noun",
@@ -228,6 +231,18 @@
  },
  {
   "kind": "noun",
+  "id": "gansik",
+  "word": "간식",
+  "cat": "food"
+ },
+ {
+  "kind": "noun",
+  "id": "geupsik",
+  "word": "급식",
+  "cat": "food"
+ },
+ {
+  "kind": "noun",
   "id": "mul",
   "word": "물",
   "cat": "drink"
@@ -330,6 +345,30 @@
  },
  {
   "kind": "noun",
+  "id": "jongi",
+  "word": "종이",
+  "cat": "thing"
+ },
+ {
+  "kind": "noun",
+  "id": "gawi",
+  "word": "가위",
+  "cat": "thing"
+ },
+ {
+  "kind": "noun",
+  "id": "keurepaseu",
+  "word": "크레파스",
+  "cat": "thing"
+ },
+ {
+  "kind": "noun",
+  "id": "gijeogwi",
+  "word": "기저귀",
+  "cat": "clothes"
+ },
+ {
+  "kind": "noun",
   "id": "beoseu",
   "word": "버스",
   "cat": "vehicle"
@@ -429,6 +468,24 @@
   "id": "geurim",
   "word": "그림",
   "cat": "activity"
+ },
+ {
+  "kind": "noun",
+  "id": "misul",
+  "word": "미술",
+  "cat": "activity"
+ },
+ {
+  "kind": "noun",
+  "id": "swi",
+  "word": "쉬",
+  "cat": "body"
+ },
+ {
+  "kind": "noun",
+  "id": "eungga",
+  "word": "응가",
+  "cat": "body"
  },
  {
   "kind": "noun",
@@ -2429,6 +2486,183 @@
  },
  {
   "kind": "pred",
+  "id": "saekchilhada",
+  "lemma": "색칠하다",
+  "pos": "verb",
+  "frame": [
+   {
+    "role": "time",
+    "josa": "",
+    "cats": [
+     "time"
+    ]
+   },
+   {
+    "role": "agent",
+    "josa": "이/가",
+    "cats": [
+     "self",
+     "you",
+     "we",
+     "person",
+     "animal"
+    ]
+   },
+   {
+    "role": "companion",
+    "josa": "이랑/랑",
+    "cats": [
+     "self",
+     "you",
+     "we",
+     "person",
+     "animal"
+    ]
+   },
+   {
+    "role": "instrument",
+    "josa": "으로/로",
+    "cats": [
+     "vehicle",
+     "thing",
+     "toy"
+    ]
+   }
+  ],
+  "nounHada": true
+ },
+ {
+  "kind": "pred",
+  "id": "swihada",
+  "lemma": "쉬하다",
+  "pos": "verb",
+  "frame": [
+   {
+    "role": "time",
+    "josa": "",
+    "cats": [
+     "time"
+    ]
+   },
+   {
+    "role": "agent",
+    "josa": "이/가",
+    "cats": [
+     "self",
+     "you",
+     "we",
+     "person",
+     "animal"
+    ]
+   },
+   {
+    "role": "location",
+    "josa": "에서",
+    "cats": [
+     "place"
+    ]
+   }
+  ],
+  "nounHada": true
+ },
+ {
+  "kind": "pred",
+  "id": "eungahada",
+  "lemma": "응가하다",
+  "pos": "verb",
+  "frame": [
+   {
+    "role": "time",
+    "josa": "",
+    "cats": [
+     "time"
+    ]
+   },
+   {
+    "role": "agent",
+    "josa": "이/가",
+    "cats": [
+     "self",
+     "you",
+     "we",
+     "person",
+     "animal"
+    ]
+   },
+   {
+    "role": "location",
+    "josa": "에서",
+    "cats": [
+     "place"
+    ]
+   }
+  ],
+  "nounHada": true
+ },
+ {
+  "kind": "pred",
+  "id": "kkeunnada",
+  "lemma": "끝나다",
+  "pos": "verb",
+  "frame": [
+   {
+    "role": "time",
+    "josa": "",
+    "cats": [
+     "time"
+    ]
+   },
+   {
+    "role": "agent",
+    "josa": "이/가",
+    "cats": [
+     "activity",
+     "thing"
+    ]
+   }
+  ]
+ },
+ {
+  "kind": "pred",
+  "id": "bakkuda",
+  "lemma": "바꾸다",
+  "pos": "verb",
+  "frame": [
+   {
+    "role": "time",
+    "josa": "",
+    "cats": [
+     "time"
+    ]
+   },
+   {
+    "role": "agent",
+    "josa": "이/가",
+    "cats": [
+     "self",
+     "you",
+     "we",
+     "person",
+     "animal"
+    ]
+   },
+   {
+    "role": "theme",
+    "josa": "을/를",
+    "cats": [
+     "food",
+     "drink",
+     "thing",
+     "toy",
+     "clothes",
+     "vehicle",
+     "animal"
+    ]
+   }
+  ]
+ },
+ {
+  "kind": "pred",
   "id": "itda",
   "lemma": "있다",
   "pos": "adj",
@@ -2667,6 +2901,39 @@
      "we",
      "person",
      "animal"
+    ]
+   }
+  ]
+ },
+ {
+  "kind": "pred",
+  "id": "maryeopda",
+  "lemma": "마렵다",
+  "pos": "adj",
+  "frame": [
+   {
+    "role": "time",
+    "josa": "",
+    "cats": [
+     "time"
+    ]
+   },
+   {
+    "role": "experiencer",
+    "josa": "은/는",
+    "cats": [
+     "self",
+     "you",
+     "we",
+     "person",
+     "animal"
+    ]
+   },
+   {
+    "role": "theme",
+    "josa": "이/가",
+    "cats": [
+     "body"
     ]
    }
   ]
@@ -3403,6 +3670,16 @@
   "kind": "adverb",
   "id": "honja",
   "word": "혼자"
+ },
+ {
+  "kind": "adverb",
+  "id": "geuman",
+  "word": "그만"
+ },
+ {
+  "kind": "adverb",
+  "id": "da",
+  "word": "다"
  },
  {
   "kind": "adverb",

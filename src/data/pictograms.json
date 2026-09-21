@@ -1,0 +1,738 @@
+{
+ "na": {
+  "arasaac": 6632,
+  "query": "en"
+ },
+ "neo": {
+  "arasaac": 6625,
+  "query": "en"
+ },
+ "uri": {
+  "arasaac": 7185,
+  "query": "en"
+ },
+ "eomma": {
+  "arasaac": 2458,
+  "query": "ko"
+ },
+ "appa": {
+  "arasaac": 31146,
+  "query": "ko"
+ },
+ "halmeoni": {
+  "arasaac": 23710,
+  "query": "ko"
+ },
+ "harabeoji": {
+  "arasaac": 23718,
+  "query": "ko"
+ },
+ "seonsaengnim": {
+  "arasaac": 6556,
+  "query": "ko"
+ },
+ "chingu": {
+  "arasaac": 25790,
+  "query": "ko"
+ },
+ "dongsaeng": {
+  "arasaac": 2423,
+  "query": "ko"
+ },
+ "hyeong": {
+  "arasaac": 37967,
+  "query": "ko"
+ },
+ "nuna": {
+  "arasaac": 2422,
+  "query": "ko"
+ },
+ "eonni": {
+  "arasaac": 2422,
+  "query": "ko"
+ },
+ "oppa": {
+  "arasaac": 2423,
+  "query": "ko"
+ },
+ "agi": {
+  "arasaac": 6060,
+  "query": "ko"
+ },
+ "gangaji": {
+  "arasaac": 34041,
+  "query": "ko"
+ },
+ "goyangi": {
+  "arasaac": 7114,
+  "query": "ko"
+ },
+ "jip": {
+  "arasaac": 6964,
+  "query": "ko"
+ },
+ "hakgyo": {
+  "arasaac": 32446,
+  "query": "ko"
+ },
+ "hwajangsil": {
+  "arasaac": 5921,
+  "query": "ko"
+ },
+ "byeongwon": {
+  "arasaac": 6523,
+  "query": "ko"
+ },
+ "gongwon": {
+  "arasaac": 5518,
+  "query": "ko"
+ },
+ "noriteo": {
+  "arasaac": 2859,
+  "query": "ko"
+ },
+ "gyosil": {
+  "arasaac": 9815,
+  "query": "ko"
+ },
+ "sikdang": {
+  "arasaac": 5970,
+  "query": "ko"
+ },
+ "mateu": {
+  "arasaac": 32942,
+  "query": "ko"
+ },
+ "bang": {
+  "arasaac": 39552,
+  "query": "ko"
+ },
+ "bak": {
+  "arasaac": 5475,
+  "query": "en"
+ },
+ "ppang": {
+  "arasaac": 2494,
+  "query": "ko"
+ },
+ "gwaja": {
+  "arasaac": 2402,
+  "query": "ko"
+ },
+ "sagwa": {
+  "arasaac": 2462,
+  "query": "ko"
+ },
+ "banana": {
+  "arasaac": 2530,
+  "query": "ko"
+ },
+ "gogi": {
+  "arasaac": 2316,
+  "query": "ko"
+ },
+ "aiseukeurim": {
+  "arasaac": 3348,
+  "query": "ko"
+ },
+ "mul": {
+  "arasaac": 32464,
+  "query": "ko"
+ },
+ "uyu": {
+  "arasaac": 2445,
+  "query": "ko"
+ },
+ "juseu": {
+  "arasaac": 11461,
+  "query": "ko"
+ },
+ "chaek": {
+  "arasaac": 25191,
+  "query": "ko"
+ },
+ "yeonpil": {
+  "arasaac": 2440,
+  "query": "ko"
+ },
+ "gabang": {
+  "arasaac": 27620,
+  "query": "ko"
+ },
+ "hyudaepon": {
+  "arasaac": 25269,
+  "query": "ko"
+ },
+ "tv": {
+  "arasaac": 25498,
+  "query": "en"
+ },
+ "keompyuteo": {
+  "arasaac": 7190,
+  "query": "ko"
+ },
+ "gong": {
+  "arasaac": 3241,
+  "query": "en"
+ },
+ "inhyeong": {
+  "arasaac": 26238,
+  "query": "ko"
+ },
+ "beullok": {
+  "arasaac": 4935,
+  "query": "ko"
+ },
+ "ot": {
+  "arasaac": 7233,
+  "query": "ko"
+ },
+ "sinbal": {
+  "arasaac": 24801,
+  "query": "ko"
+ },
+ "mun": {
+  "arasaac": 3244,
+  "query": "ko"
+ },
+ "bul": {
+  "arasaac": 8619,
+  "query": "en"
+ },
+ "eumak": {
+  "arasaac": 24791,
+  "query": "ko"
+ },
+ "beoseu": {
+  "arasaac": 2263,
+  "query": "ko"
+ },
+ "cha": {
+  "arasaac": 2339,
+  "query": "en"
+ },
+ "jihacheol": {
+  "arasaac": 26925,
+  "query": "ko"
+ },
+ "jajeongeo": {
+  "arasaac": 6935,
+  "query": "ko"
+ },
+ "meori": {
+  "arasaac": 2673,
+  "query": "ko"
+ },
+ "bae": {
+  "arasaac": 2786,
+  "query": "en"
+ },
+ "dari": {
+  "arasaac": 8666,
+  "query": "ko"
+ },
+ "son": {
+  "arasaac": 28431,
+  "query": "en"
+ },
+ "nun": {
+  "arasaac": 6573,
+  "query": "en"
+ },
+ "mok": {
+  "arasaac": 2727,
+  "query": "en"
+ },
+ "gongbu": {
+  "arasaac": 25682,
+  "query": "ko"
+ },
+ "undong": {
+  "arasaac": 4793,
+  "query": "ko"
+ },
+ "sukje": {
+  "arasaac": 11228,
+  "query": "ko"
+ },
+ "cheongso": {
+  "arasaac": 22791,
+  "query": "ko"
+ },
+ "geim": {
+  "arasaac": 11290,
+  "query": "ko"
+ },
+ "norae": {
+  "arasaac": 24795,
+  "query": "ko"
+ },
+ "geurim": {
+  "arasaac": 11238,
+  "query": "ko"
+ },
+ "jigeum": {
+  "arasaac": 32747,
+  "query": "en"
+ },
+ "oneul": {
+  "arasaac": 7131,
+  "query": "en"
+ },
+ "eoje": {
+  "arasaac": 38279,
+  "query": "en"
+ },
+ "naeil": {
+  "arasaac": 38278,
+  "query": "en"
+ },
+ "akka": {
+  "arasaac": 32745,
+  "query": "en"
+ },
+ "ittaga": {
+  "arasaac": 32749,
+  "query": "en"
+ },
+ "achim": {
+  "arasaac": 25704,
+  "query": "ko"
+ },
+ "jeomsim": {
+  "arasaac": 4611,
+  "query": "ko"
+ },
+ "jeonyeok": {
+  "arasaac": 6970,
+  "query": "ko"
+ },
+ "jumal": {
+  "arasaac": 27329,
+  "query": "ko"
+ },
+ "mwo": {
+  "arasaac": 22620,
+  "query": "en"
+ },
+ "nugu": {
+  "arasaac": 9853,
+  "query": "en"
+ },
+ "eodi": {
+  "arasaac": 7764,
+  "query": "en"
+ },
+ "eonje": {
+  "arasaac": 32874,
+  "query": "en"
+ },
+ "gada": {
+  "arasaac": 8142,
+  "query": "ko"
+ },
+ "oda": {
+  "arasaac": 16807,
+  "query": "ko"
+ },
+ "meokda": {
+  "arasaac": 6456,
+  "query": "ko"
+ },
+ "masida": {
+  "arasaac": 6061,
+  "query": "ko"
+ },
+ "jada": {
+  "arasaac": 6479,
+  "query": "ko"
+ },
+ "nolda": {
+  "arasaac": 23392,
+  "query": "ko"
+ },
+ "boda": {
+  "arasaac": 6564,
+  "query": "ko"
+ },
+ "salda": {
+  "arasaac": 11605,
+  "query": "ko"
+ },
+ "juda": {
+  "arasaac": 28431,
+  "query": "ko"
+ },
+ "sada": {
+  "arasaac": 8986,
+  "query": "ko"
+ },
+ "ssitda": {
+  "arasaac": 34826,
+  "query": "ko"
+ },
+ "tada": {
+  "arasaac": 6045,
+  "query": "ko"
+ },
+ "anjda": {
+  "arasaac": 6611,
+  "query": "ko"
+ },
+ "ikda": {
+  "arasaac": 7141,
+  "query": "ko"
+ },
+ "hada": {
+  "arasaac": 21824,
+  "query": "ko"
+ },
+ "gongbuhada": {
+  "arasaac": 6495,
+  "query": "ko"
+ },
+ "undonghada": {
+  "arasaac": 10156,
+  "query": "ko"
+ },
+ "jeonhwahada": {
+  "arasaac": 4662,
+  "query": "ko"
+ },
+ "dopda": {
+  "arasaac": 4570,
+  "query": "ko"
+ },
+ "gidarida": {
+  "arasaac": 36914,
+  "query": "ko"
+ },
+ "ulda": {
+  "arasaac": 7147,
+  "query": "ko"
+ },
+ "utda": {
+  "arasaac": 13354,
+  "query": "ko"
+ },
+ "ssauda": {
+  "arasaac": 37373,
+  "query": "ko"
+ },
+ "mandeulda": {
+  "arasaac": 32751,
+  "query": "ko"
+ },
+ "deutda": {
+  "arasaac": 6572,
+  "query": "ko"
+ },
+ "ipda": {
+  "arasaac": 6627,
+  "query": "ko"
+ },
+ "beotda": {
+  "arasaac": 35099,
+  "query": "ko"
+ },
+ "yeolda": {
+  "arasaac": 24825,
+  "query": "ko"
+ },
+ "datda": {
+  "arasaac": 24976,
+  "query": "ko"
+ },
+ "kyeoda": {
+  "arasaac": 4639,
+  "query": "ko"
+ },
+ "kkeuda": {
+  "arasaac": 4562,
+  "query": "ko"
+ },
+ "bureuda": {
+  "arasaac": 32669,
+  "query": "ko"
+ },
+ "geurida": {
+  "arasaac": 8088,
+  "query": "ko"
+ },
+ "johahada": {
+  "arasaac": 37826,
+  "query": "ko"
+ },
+ "sireohada": {
+  "arasaac": 37825,
+  "query": "ko"
+ },
+ "saranghada": {
+  "arasaac": 37721,
+  "query": "ko"
+ },
+ "alda": {
+  "arasaac": 16885,
+  "query": "ko"
+ },
+ "swida": {
+  "arasaac": 16643,
+  "query": "ko"
+ },
+ "ireonada": {
+  "arasaac": 8989,
+  "query": "ko"
+ },
+ "nupda": {
+  "arasaac": 6027,
+  "query": "ko"
+ },
+ "geotda": {
+  "arasaac": 29951,
+  "query": "ko"
+ },
+ "ttwida": {
+  "arasaac": 6607,
+  "query": "ko"
+ },
+ "malhada": {
+  "arasaac": 9693,
+  "query": "ko"
+ },
+ "hwanada": {
+  "arasaac": 35539,
+  "query": "ko"
+ },
+ "itda": {
+  "arasaac": 9001,
+  "query": "en"
+ },
+ "eopda": {
+  "arasaac": 39109,
+  "query": "en"
+ },
+ "jota": {
+  "arasaac": 2418,
+  "query": "ko"
+ },
+ "silta": {
+  "arasaac": 6155,
+  "query": "ko"
+ },
+ "apeuda": {
+  "arasaac": 7040,
+  "query": "ko"
+ },
+ "baegopeuda": {
+  "arasaac": 4962,
+  "query": "ko"
+ },
+ "mongmareuda": {
+  "arasaac": 4963,
+  "query": "ko"
+ },
+ "jollida": {
+  "arasaac": 31913,
+  "query": "ko"
+ },
+ "deopda": {
+  "arasaac": 6952,
+  "query": "ko"
+ },
+ "chupda": {
+  "arasaac": 35583,
+  "query": "ko"
+ },
+ "masitda": {
+  "arasaac": 32340,
+  "query": "ko"
+ },
+ "maseopda": {
+  "arasaac": 32338,
+  "query": "ko"
+ },
+ "keuda": {
+  "arasaac": 4658,
+  "query": "ko"
+ },
+ "jakda": {
+  "arasaac": 4716,
+  "query": "ko"
+ },
+ "museopda": {
+  "arasaac": 2261,
+  "query": "ko"
+ },
+ "jaemiitda": {
+  "arasaac": 24733,
+  "query": "ko"
+ },
+ "simsimhada": {
+  "arasaac": 28705,
+  "query": "ko"
+ },
+ "gippeuda": {
+  "arasaac": 6892,
+  "query": "ko"
+ },
+ "seulpeuda": {
+  "arasaac": 35545,
+  "query": "ko"
+ },
+ "pigonhada": {
+  "arasaac": 35537,
+  "query": "ko"
+ },
+ "piryohada": {
+  "arasaac": 37160,
+  "query": "ko"
+ },
+ "yeppeuda": {
+  "arasaac": 26114,
+  "query": "ko"
+ },
+ "tteugeopda": {
+  "arasaac": 26716,
+  "query": "ko"
+ },
+ "chagapda": {
+  "arasaac": 4652,
+  "query": "ko"
+ },
+ "an": {
+  "arasaac": 32308,
+  "query": "en"
+ },
+ "mot": {
+  "arasaac": 39109,
+  "query": "en"
+ },
+ "q": {
+  "arasaac": 9847,
+  "query": "en"
+ },
+ "juseyo": {
+  "arasaac": 39109,
+  "query": "en"
+ },
+ "gachi": {
+  "arasaac": 5367,
+  "query": "en"
+ },
+ "halkkayo": {
+  "arasaac": 39109,
+  "query": "en"
+ },
+ "sipda": {
+  "arasaac": 5441,
+  "query": "en"
+ },
+ "suitda": {
+  "arasaac": 6544,
+  "query": "en"
+ },
+ "haeya": {
+  "arasaac": 2661,
+  "query": "en"
+ },
+ "jungida": {
+  "arasaac": 32747,
+  "query": "en"
+ },
+ "boda-try": {
+  "arasaac": 8148,
+  "query": "en"
+ },
+ "jimaseyo": {
+  "arasaac": 39109,
+  "query": "en"
+ },
+ "haseyo": {
+  "arasaac": 32751,
+  "query": "en"
+ },
+ "past": {
+  "arasaac": 9839,
+  "query": "en"
+ },
+ "promise": {
+  "arasaac": 37046,
+  "query": "en"
+ },
+ "volition": {
+  "arasaac": 5441,
+  "query": "en"
+ },
+ "future": {
+  "arasaac": 9829,
+  "query": "en"
+ },
+ "ppalli": {
+  "arasaac": 5306,
+  "query": "en"
+ },
+ "cheoncheonhi": {
+  "arasaac": 4676,
+  "query": "en"
+ },
+ "mani": {
+  "arasaac": 7168,
+  "query": "en"
+ },
+ "jogeum": {
+  "arasaac": 39109,
+  "query": "en"
+ },
+ "deo": {
+  "arasaac": 5508,
+  "query": "en"
+ },
+ "tto": {
+  "arasaac": 37163,
+  "query": "en"
+ },
+ "neomu": {
+  "arasaac": 25708,
+  "query": "en"
+ },
+ "honja": {
+  "arasaac": 7253,
+  "query": "en"
+ },
+ "wae": {
+  "arasaac": 36719,
+  "query": "en"
+ },
+ "annyeong": {
+  "arasaac": 6522,
+  "query": "en"
+ },
+ "gomawo": {
+  "arasaac": 8129,
+  "query": "en"
+ },
+ "mianhae": {
+  "arasaac": 11625,
+  "query": "en"
+ },
+ "ne": {
+  "arasaac": 5584,
+  "query": "en"
+ },
+ "aniyo": {
+  "arasaac": 5526,
+  "query": "en"
+ },
+ "saranghae": {
+  "arasaac": 11519,
+  "query": "en"
+ },
+ "dowajwo": {
+  "arasaac": 32648,
+  "query": "en"
+ },
+ "jalja": {
+  "arasaac": 6942,
+  "query": "en"
+ }
+}

@@ -4,7 +4,7 @@
 // 그래서 출력은 낱말(Token)마다 어느 카드에서 왔는지(sources)를 달고 나온다. 출처 없는 토큰은 문법 요소뿐이다.
 import { attachC, attachEu, type Predicate } from './conjugate';
 import { finalJong } from './hangul';
-import { josaFor } from './josa';
+import { attachJosa, josaFor } from './josa';
 import type { AdverbEntry, Category, Entry, MarkerEntry, NounEntry, PhraseEntry, PredEntry, Role, Slot } from './lexicon';
 import { DEFAULT_FEATURES, realizeCopula, realizePredicate, type Features, type Speech } from './predicate';
 
@@ -251,6 +251,46 @@ function applyMarkers(base: Features, markers: { key: string; e: MarkerEntry }[]
 }
 
 export function realize(cards: Card[], ctx: Context, limit = 5): Candidate[] {
+  const own = realizeCore(cards, ctx);
+  // 부르는 말 해석: 사람 카드를 부르는 말로 떼고, 나머지를 '내가 하는 말'로: [엄마][응가][마렵다] → 엄마, 응가가 마려워
+  const addressed = addressVariants(cards, ctx);
+  const seen = new Set<string>();
+  const best = Math.max(...own.concat(addressed).map((c) => c.score), -Infinity);
+  return own
+    .concat(addressed)
+    .sort((a, b) => b.score - a.score)
+    .filter((c) => c.score >= best - 4)
+    .filter((c) => (seen.has(c.text) ? false : (seen.add(c.text), true)))
+    .slice(0, limit);
+}
+
+/** 부르는 말: 반말이면 친구야·동생아 */
+function callWord(e: NounEntry, speech: Speech): string {
+  return speech === 'plain' && e.callSuffix ? attachJosa(e.word, '아/야') : e.word;
+}
+
+function addressVariants(cards: Card[], ctx: Context): Candidate[] {
+  const preds = cards.filter((c) => c.entry.kind === 'pred').map((c) => c.entry as PredEntry);
+  const idx = cards.findIndex((c) => c.entry.kind === 'noun' && c.entry.cat === 'person' && !c.entry.wh);
+  if (!preds.length || idx !== 0) return []; // 부르는 말은 맨 앞 카드일 때만
+  const person = cards[idx]!;
+  const e = person.entry as NounEntry;
+  const rest = cards.filter((_, i) => i !== idx);
+  const inner = realizeCore(rest, { speech: e.honorific && ctx.speech === 'plain' ? 'polite' : ctx.speech, honorListener: ctx.honorListener || !!e.honorific });
+  const voc: Token = { text: callWord(e, inner[0]?.features.speech ?? ctx.speech), sources: [person.key], role: 'vocative' };
+  // 몸 상태·느낌(마렵다, 배고프다)이나 바람·의지·약속은 대개 '내' 속마음이라 누군가를 불러 알리는 말일 가능성이 크다
+  const main = preds[preds.length - 1]!;
+  const inward = main.frame.some((s) => s.role === 'experiencer') && !main.frame.some((s) => s.role === 'agent');
+  return inner
+    .filter((c) => c.features.mood !== 'command') // 명령형 부르기는 기존 해석이 이미 낸다
+    .map((c) => {
+      const aboutMe = inward || c.features.modality === 'want' || ['promise', 'volition', 'volitionQ'].includes(c.features.mood);
+      // 떼어 낸 사람 카드 몫(격틀 자리 하나 ≈ 3.2점)을 보태 다른 해석과 같은 척도로 맞춘다
+      return { ...c, tokens: [voc, ...c.tokens], text: `${voc.text}, ${c.text}`, note: `${e.word}에게 말하기`, score: c.score + 3.2 + (aboutMe ? 1.5 : -0.5) };
+    });
+}
+
+function realizeCore(cards: Card[], ctx: Context, limit = 5): Candidate[] {
   const nouns: NounCard[] = [];
   const preds: { key: string; e: PredEntry; pos: number }[] = [];
   const markers: { key: string; e: MarkerEntry; pos: number }[] = [];
@@ -279,6 +319,7 @@ export function realize(cards: Card[], ctx: Context, limit = 5): Candidate[] {
   if (features.mood === 'volition' && markers.some((m) => m.e.set.mood === 'question')) features.mood = 'volitionQ';
   const hasWh = nouns.some((n) => n.e.wh) || adverbs.some((a) => a.e.wh);
   if (hasWh && features.mood === 'statement') features.mood = 'question';
+  if (hasWh && features.mood === 'volition') features.mood = 'volitionQ'; // 뭐 먹을래?
 
   const phraseTokens: Token[] = phrases.map((p) => ({ text: p.e[ctx.speech], sources: [p.key], role: 'phrase' }));
   if (phrases.length && !nouns.length && !preds.length) {
@@ -358,7 +399,7 @@ export function realize(cards: Card[], ctx: Context, limit = 5): Candidate[] {
       const placed: { pos: number; token: Token; late?: boolean }[] = [];
       const late = (pos: number, slot: OwnedSlot | null) => !!first && pos > first.pos && (!slot || (slot.owner === 1 && !SHARED_ROLES.has(slot.role)));
 
-      if (opts.vocative && subject) tokens.push({ text: subject.e.word, sources: [subject.key], role: 'vocative' });
+      if (opts.vocative && subject) tokens.push({ text: callWord(subject.e, f.speech), sources: [subject.key], role: 'vocative' });
       for (const { n, i, slot } of order) {
         const isSubject = i === subjectIdx;
         if (isSubject && opts.omitSubject) {
@@ -392,8 +433,8 @@ export function realize(cards: Card[], ctx: Context, limit = 5): Candidate[] {
     const isPronounSubj = !!subjCat && PRONOUNS.has(subjCat);
     const polite = features.speech !== 'plain';
     // 기본형: 나/우리는 '은/는', 너는 존댓말에서 생략
-    // 약속·의지는 '제가 할게요'처럼 주격으로 나선다
-    const topicDefault = isPronounSubj && !['question', 'volitionQ', 'promise', 'volition'].includes(features.mood);
+    // 약속은 '제가 할게요'처럼 주격으로 나선다
+    const topicDefault = isPronounSubj && !['question', 'volitionQ', 'promise'].includes(features.mood);
     const base = build({
       vocative: false,
       omitSubject: subjCat === 'you' && polite,

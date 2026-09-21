@@ -69,10 +69,12 @@
 {"id":"5383160","text":"뭐가 좋아?","speech":"plain","honorListener":false,"cards":["mwo","jota"],"preds":["뭐가 좋아?"],"unused":[]}
 {"id":"5548650","text":"가!","speech":"plain","honorListener":false,"cards":["gada"],"preds":["가."],"unused":[]}
 {"id":"5568718","text":"눈이 와요.","speech":"polite","honorListener":false,"cards":["nun","oda"],"preds":["눈 와요."],"unused":[]}
+{"id":"5951646","text":"끝났읍니다.","speech":"plain","honorListener":false,"cards":["kkeunnada","past"],"preds":["끝났어."],"unused":[]}
 {"id":"5951665","text":"내일 만납시다.","speech":"formal","honorListener":false,"cards":["naeil","mannada","halkkayo"],"preds":["내일 만납시다."],"unused":[]}
 {"id":"5951674","text":"맛있어요!","speech":"polite","honorListener":false,"cards":["masitda"],"preds":["맛있어요."],"unused":[]}
 {"id":"5951778","text":"내일 전화하세요","speech":"polite","honorListener":false,"cards":["naeil","jeonhwahada","haseyo"],"preds":["내일 전화하세요."],"unused":[]}
 {"id":"5951782","text":"기다리세요","speech":"polite","honorListener":false,"cards":["gidarida","haseyo"],"preds":["기다리세요."],"unused":[]}
+{"id":"5951784","text":"다 했읍니까?","speech":"plain","honorListener":false,"cards":["da","hada","past","q"],"preds":["다 했어?"],"unused":[]}
 {"id":"5951786","text":"숙제 하세요","speech":"polite","honorListener":false,"cards":["sukje","hada","haseyo"],"preds":["숙제를 하세요."],"unused":[]}
 {"id":"6304970","text":"날 사랑해 줘!","speech":"plain","honorListener":false,"cards":["na","saranghada","juseyo"],"preds":["나는 사랑해 줘.","사랑해 줘.","나를 사랑해 줘."],"unused":[]}
 {"id":"6305027","text":"왜 왔어요?","speech":"polite","honorListener":false,"cards":["wae","oda","past"],"preds":["왜 왔어요?"],"unused":[]}
@@ -107,17 +109,22 @@
 {"id":"8363273","text":"뛰어.","speech":"plain","honorListener":false,"cards":["ttwida"],"preds":["뛰어."],"unused":[]}
 {"id":"8363278","text":"열어.","speech":"plain","honorListener":false,"cards":["yeolda"],"preds":["열어."],"unused":[]}
 {"id":"8363292","text":"누가 알아?","speech":"plain","honorListener":false,"cards":["nugu","alda"],"preds":["누가 알아?","누구를 알아?"],"unused":[]}
+{"id":"8363294","text":"그만 말해.","speech":"plain","honorListener":false,"cards":["geuman","malhada"],"preds":["그만 말해."],"unused":[]}
 {"id":"8363298","text":"알아.","speech":"plain","honorListener":false,"cards":["alda"],"preds":["알아."],"unused":[]}
 {"id":"8363300","text":"일어나!","speech":"plain","honorListener":false,"cards":["ireonada"],"preds":["일어나."],"unused":[]}
 {"id":"8363307","text":"집에 와.","speech":"plain","honorListener":false,"cards":["jip","oda"],"preds":["집에서 와.","집에 와."],"unused":[]}
 {"id":"8363322","text":"일어나.","speech":"plain","honorListener":false,"cards":["ireonada"],"preds":["일어나."],"unused":[]}
 {"id":"8363336","text":"밖에서 운동해.","speech":"plain","honorListener":false,"cards":["bak","undonghada"],"preds":["밖에서 운동해."],"unused":[]}
 {"id":"8363340","text":"앉아!","speech":"plain","honorListener":false,"cards":["anjda"],"preds":["앉아."],"unused":[]}
+{"id":"8363351","text":"그만 읽어.","speech":"plain","honorListener":false,"cards":["geuman","ikda"],"preds":["그만 읽어."],"unused":[]}
 {"id":"8363359","text":"웃어줘.","speech":"plain","honorListener":false,"cards":["utda","juseyo"],"preds":["웃어 줘."],"unused":[]}
 {"id":"8363367","text":"말해.","speech":"plain","honorListener":false,"cards":["malhada"],"preds":["말해."],"unused":[]}
 {"id":"8363399","text":"누구 있어?","speech":"plain","honorListener":false,"cards":["nugu","itda"],"preds":["누가 있어?","누구를 있어?"],"unused":[]}
 {"id":"8363402","text":"누구 집에 있어?","speech":"plain","honorListener":false,"cards":["nugu","jip","itda"],"preds":["누가 집에 있어?","누구를 집이 있어?","누구를 집에 있어?"],"unused":[]}
 {"id":"8363419","text":"우린 기다렸어.","speech":"plain","honorListener":false,"cards":["uri","gidarida","past"],"preds":["우리는 기다렸어.","기다렸어.","우리를 기다렸어."],"unused":[]}
+{"id":"8363453","text":"그만 웃어.","speech":"plain","honorListener":false,"cards":["geuman","utda"],"preds":["그만 웃어."],"unused":[]}
+{"id":"8363456","text":"그만 싸워!","speech":"plain","honorListener":false,"cards":["geuman","ssauda"],"preds":["그만 싸워."],"unused":[]}
+{"id":"8363457","text":"그만 울어.","speech":"plain","honorListener":false,"cards":["geuman","ulda"],"preds":["그만 울어."],"unused":[]}
 {"id":"8363488","text":"알았어.","speech":"plain","honorListener":false,"cards":["alda","past"],"preds":["알았어."],"unused":[]}
 {"id":"8364914","text":"물이 정말 차가워.","speech":"plain","honorListener":false,"cards":["mul","jeongmal","chagapda"],"preds":["물이 정말 차가워."],"unused":[]}
 {"id":"8365129","text":"천천히 말해줘.","speech":"plain","honorListener":false,"cards":["cheoncheonhi","malhada","juseyo"],"preds":["천천히 말해 줘."],"unused":[]}
@@ -128,12 +135,13 @@
 {"id":"8368164","text":"앉아 줘.","speech":"plain","honorListener":false,"cards":["anjda","juseyo"],"preds":["앉아 줘."],"unused":[]}
 {"id":"8368174","text":"빨리 와.","speech":"plain","honorListener":false,"cards":["ppalli","oda"],"preds":["빨리 와."],"unused":[]}
 {"id":"8368184","text":"눈이 왔어.","speech":"plain","honorListener":false,"cards":["nun","oda","past"],"preds":["눈 왔어."],"unused":[]}
-{"id":"8368200","text":"엄마가 울었어.","speech":"plain","honorListener":false,"cards":["eomma","ulda","past"],"preds":["엄마가 울었어.","엄마는 울었어."],"unused":[]}
-{"id":"8368201","text":"엄마는 울었어.","speech":"plain","honorListener":false,"cards":["eomma","ulda","past"],"preds":["엄마가 울었어.","엄마는 울었어."],"unused":[]}
+{"id":"8368200","text":"엄마가 울었어.","speech":"plain","honorListener":false,"cards":["eomma","ulda","past"],"preds":["엄마가 울었어.","엄마, 울었어.","엄마는 울었어."],"unused":[]}
+{"id":"8368201","text":"엄마는 울었어.","speech":"plain","honorListener":false,"cards":["eomma","ulda","past"],"preds":["엄마가 울었어.","엄마, 울었어.","엄마는 울었어."],"unused":[]}
 {"id":"8368219","text":"천천히 먹어.","speech":"plain","honorListener":false,"cards":["cheoncheonhi","meokda"],"preds":["천천히 먹어."],"unused":[]}
 {"id":"8368343","text":"난 운동했어.","speech":"plain","honorListener":false,"cards":["na","undonghada","past"],"preds":["나는 운동했어.","운동했어.","나랑 운동했어."],"unused":[]}
 {"id":"8368347","text":"너무 슬퍼!","speech":"plain","honorListener":false,"cards":["neomu","seulpeuda"],"preds":["너무 슬퍼."],"unused":[]}
 {"id":"8368379","text":"내일 와.","speech":"plain","honorListener":false,"cards":["naeil","oda"],"preds":["내일 올 거야.","내일 와."],"unused":[]}
+{"id":"8368433","text":"너 어제 학교 끝나고 뭐했어?","speech":"plain","honorListener":false,"cards":["neo","eoje","hakgyo","kkeunnada","mwo","hada"],"preds":["네가 어제 학교에서 끝나고 뭐 했어?"],"unused":[]}
 {"id":"8369708","text":"나 자러 가고 싶어.","speech":"plain","honorListener":false,"cards":["na","jada","gada","sipda"],"preds":["나는 자러 가고 싶어.","자러 가고 싶어.","나랑 자러 가고 싶어."],"unused":[]}
 {"id":"8369709","text":"나 자고 싶어.","speech":"plain","honorListener":false,"cards":["na","jada","sipda"],"preds":["나는 자고 싶어.","자고 싶어.","나랑 자고 싶어."],"unused":[]}
 {"id":"8369714","text":"어제 지하철을 탔어.","speech":"plain","honorListener":false,"cards":["eoje","jihacheol","tada"],"preds":["어제 지하철을 탔어."],"unused":[]}
@@ -188,6 +196,7 @@
 {"id":"10610361","text":"너는 알고 있어?","speech":"plain","honorListener":false,"cards":["neo","alda","jungida","q"],"preds":["네가 알고 있어?","너를 알고 있어?"],"unused":[]}
 {"id":"10617670","text":"너 좋아해?","speech":"plain","honorListener":false,"cards":["neo","johahada","q"],"preds":["네가 좋아해?","너를 좋아해?"],"unused":[]}
 {"id":"10630290","text":"와주세요.","speech":"polite","honorListener":false,"cards":["oda","juseyo"],"preds":["와 주세요."],"unused":[]}
+{"id":"10642147","text":"내가 바꿀게.","speech":"plain","honorListener":false,"cards":["na","bakkuda","promise"],"preds":["내가 바꿀게.","바꿀게."],"unused":[]}
 {"id":"10706821","text":"우리한테 오세요.","speech":"polite","honorListener":false,"cards":["uri","oda","haseyo"],"preds":["저희 오세요.","오세요.","저희랑 오세요."],"unused":[]}
 {"id":"10706822","text":"가실거예요?","speech":"polite","honorListener":true,"cards":["gada","future","q"],"preds":["가실 거예요?"],"unused":[]}
 {"id":"10788984","text":"나 내일 집에 없어.","speech":"plain","honorListener":false,"cards":["na","naeil","jip","eopda"],"preds":["나는 내일 집에 없을 거야.","나는 내일 집에 없어.","나는 내일 집이 없을 거야.","내일 집에 없을 거야.","나는 내일 집이 없어."],"unused":[]}
@@ -197,6 +206,7 @@
 {"id":"11085727","text":"물은 어디 있어?","speech":"plain","honorListener":false,"cards":["mul","eodi","itda"],"preds":["물이 어디에 있어?"],"unused":[]}
 {"id":"11089223","text":"내일 뭘 할 거예요?","speech":"polite","honorListener":false,"cards":["naeil","mwo","hada"],"preds":["내일 뭐 할 거예요?","내일 뭐 해요?"],"unused":[]}
 {"id":"11091840","text":"집에는 안 계셔요.","speech":"polite","honorListener":false,"cards":["jip","itda","an"],"preds":["집에 안 있어요.","집이 안 있어요."],"unused":[]}
+{"id":"11104409","text":"노래 그만 불러.","speech":"plain","honorListener":false,"cards":["norae","geuman","bureuda"],"preds":["노래를 그만 불러."],"unused":[]}
 {"id":"11104579","text":"저는 노래할 거에요.","speech":"polite","honorListener":false,"cards":["na","norae","hada","future"],"preds":["저는 노래를 할 거예요.","노래를 할 거예요.","저랑 노래를 할 거예요."],"unused":[]}
 {"id":"11104637","text":"널 도우러 갈게.","speech":"plain","honorListener":false,"cards":["neo","dopda","gada","promise"],"preds":["네가 도우러 갈게.","너를 도우러 갈게.","너랑 도우러 갈게."],"unused":[]}
 {"id":"11104708","text":"고기로 할게요.","speech":"polite","honorListener":false,"cards":["gogi","hada","promise"],"preds":["고기 할게요."],"unused":[]}
@@ -217,7 +227,7 @@
 {"id":"11106411","text":"차에 타.","speech":"plain","honorListener":false,"cards":["cha","tada"],"preds":["차를 타."],"unused":[]}
 {"id":"11106560","text":"어디로 갈 거야?","speech":"plain","honorListener":false,"cards":["eodi","gada","future"],"preds":["어디 갈 거야?"],"unused":[]}
 {"id":"11106666","text":"너무 좋아!","speech":"plain","honorListener":false,"cards":["neomu","jota"],"preds":["너무 좋아."],"unused":[]}
-{"id":"11106795","text":"아침으로 뭘 먹을래?","speech":"plain","honorListener":false,"cards":["achim","mwo","meokda","volition"],"preds":["아침에 뭐 먹을래."],"unused":[]}
+{"id":"11106795","text":"아침으로 뭘 먹을래?","speech":"plain","honorListener":false,"cards":["achim","mwo","meokda","volition"],"preds":["아침에 뭐 먹을래?"],"unused":[]}
 {"id":"11106806","text":"나는 괜찮을 거야.","speech":"plain","honorListener":false,"cards":["na","gwaenchanta","future"],"preds":["나는 괜찮을 거야.","괜찮을 거야.","내가 괜찮을 거야."],"unused":[]}
 {"id":"11106807","text":"누구 집에 있어요?","speech":"polite","honorListener":false,"cards":["nugu","jip","itda"],"preds":["누가 집에 있어요?","누구를 집이 있어요?","누구를 집에 있어요?"],"unused":[]}
 {"id":"11106979","text":"마셔.","speech":"plain","honorListener":false,"cards":["masida"],"preds":["마셔."],"unused":[]}
@@ -243,7 +253,8 @@
 {"id":"13117114","text":"괜찮아요?","speech":"polite","honorListener":false,"cards":["gwaenchanta","q"],"preds":["괜찮아요?"],"unused":[]}
 {"id":"13117116","text":"괜찮으십니까?","speech":"formal","honorListener":true,"cards":["gwaenchanta","q"],"preds":["괜찮으십니까?"],"unused":[]}
 {"id":"13121486","text":"마시러 왔습니다.","speech":"formal","honorListener":false,"cards":["masida","oda","past"],"preds":["마시러 왔습니다."],"unused":[]}
-{"id":"13128379","text":"아기가 울고 있어요.","speech":"polite","honorListener":false,"cards":["agi","ulda","jungida"],"preds":["아기가 울고 있어요.","아기, 울고 있으세요.","아기는 울고 있어요."],"unused":[]}
+{"id":"13128379","text":"아기가 울고 있어요.","speech":"polite","honorListener":false,"cards":["agi","ulda","jungida"],"preds":["아기가 울고 있어요.","아기, 울고 있으세요.","아기, 울고 있어요.","아기는 울고 있어요."],"unused":[]}
+{"id":"13134956","text":"그만 말해!","speech":"plain","honorListener":false,"cards":["geuman","malhada"],"preds":["그만 말해."],"unused":[]}
 {"id":"13138312","text":"버스로 가자.","speech":"plain","honorListener":false,"cards":["beoseu","gada","halkkayo"],"preds":["버스로 가자."],"unused":[]}
 {"id":"13144319","text":"나와 만나고 싶어?","speech":"plain","honorListener":false,"cards":["na","mannada","sipda","q"],"preds":["내가 만나고 싶어?","만나고 싶어?","나를 만나고 싶어?","나랑 만나고 싶어?"],"unused":[]}
 {"id":"13150918","text":"심심해.","speech":"plain","honorListener":false,"cards":["simsimhada"],"preds":["심심해."],"unused":[]}
@@ -272,7 +283,7 @@
 {"id":"13170241","text":"목말라.","speech":"plain","honorListener":false,"cards":["mongmareuda"],"preds":["목말라."],"unused":[]}
 {"id":"13170288","text":"너무 더워요!","speech":"polite","honorListener":false,"cards":["neomu","deopda"],"preds":["너무 더워요."],"unused":[]}
 {"id":"13170289","text":"너무 덥습니다!","speech":"formal","honorListener":false,"cards":["neomu","deopda"],"preds":["너무 덥습니다."],"unused":[]}
-{"id":"13170402","text":"아빠는 지금 집에 안 계셔.","speech":"plain","honorListener":false,"cards":["appa","jigeum","jip","itda","an"],"preds":["아빠가 지금 집에 안 있어.","아빠는 지금 집이 안 있어.","아빠는 지금 집에 안 있어."],"unused":[]}
+{"id":"13170402","text":"아빠는 지금 집에 안 계셔.","speech":"plain","honorListener":false,"cards":["appa","jigeum","jip","itda","an"],"preds":["아빠가 지금 집에 안 있어.","아빠, 지금 집에 안 있어.","아빠는 지금 집이 안 있어.","아빠는 지금 집에 안 있어.","아빠, 지금 집이 안 있어."],"unused":[]}
 {"id":"13170801","text":"컴퓨터가 있어요.","speech":"polite","honorListener":false,"cards":["keompyuteo","itda"],"preds":["컴퓨터가 있어요."],"unused":[]}
 {"id":"13170803","text":"저는 컴퓨터가 있습니다.","speech":"formal","honorListener":false,"cards":["na","keompyuteo","itda"],"preds":["저는 컴퓨터가 있습니다."],"unused":[]}
 {"id":"13170804","text":"나 컴퓨터 있어.","speech":"plain","honorListener":false,"cards":["na","keompyuteo","itda"],"preds":["나는 컴퓨터가 있어."],"unused":[]}
@@ -328,7 +339,7 @@
 {"id":"13220281","text":"좋아하셨어요?","speech":"polite","honorListener":true,"cards":["johahada","past","q"],"preds":["좋아하셨어요?"],"unused":[]}
 {"id":"13220282","text":"좋아하셨습니까?","speech":"formal","honorListener":true,"cards":["johahada","past","q"],"preds":["좋아하셨습니까?"],"unused":[]}
 {"id":"13231318","text":"예뻐요.","speech":"polite","honorListener":false,"cards":["yeppeuda"],"preds":["예뻐요."],"unused":[]}
-{"id":"13237601","text":"엄마 집에 있어?","speech":"plain","honorListener":false,"cards":["eomma","jip","itda","q"],"preds":["엄마가 집에 있어?","엄마는 집이 있어?","엄마는 집에 있어?"],"unused":[]}
+{"id":"13237601","text":"엄마 집에 있어?","speech":"plain","honorListener":false,"cards":["eomma","jip","itda","q"],"preds":["엄마가 집에 있어?","엄마는 집이 있어?","엄마, 집에 있어?","엄마는 집에 있어?","엄마, 집이 있어?"],"unused":[]}
 {"id":"13243084","text":"방 있어요?","speech":"polite","honorListener":false,"cards":["bang","itda","q"],"preds":["방에 있어요?","방이 있어요?"],"unused":[]}
 {"id":"13243087","text":"방 있습니까?","speech":"formal","honorListener":false,"cards":["bang","itda","q"],"preds":["방에 있습니까?","방이 있습니까?"],"unused":[]}
 {"id":"13243093","text":"방이 있습니까?","speech":"formal","honorListener":false,"cards":["bang","itda","q"],"preds":["방에 있습니까?","방이 있습니까?"],"unused":[]}
@@ -345,12 +356,13 @@
 {"id":"13252721","text":"덥습니다.","speech":"formal","honorListener":false,"cards":["deopda"],"preds":["덥습니다."],"unused":[]}
 {"id":"13252722","text":"더워요.","speech":"polite","honorListener":false,"cards":["deopda"],"preds":["더워요."],"unused":[]}
 {"id":"13252723","text":"더워.","speech":"plain","honorListener":false,"cards":["deopda"],"preds":["더워."],"unused":[]}
+{"id":"13253013","text":"다로 밥 먹어!","speech":"plain","honorListener":false,"cards":["da","bap","meokda"],"preds":["다 밥을 먹어."],"unused":[]}
 {"id":"13253111","text":"배가 불러요.","speech":"polite","honorListener":false,"cards":["bae","bureuda"],"preds":["배 불러요."],"unused":[]}
 {"id":"13253112","text":"배가 부릅니다.","speech":"formal","honorListener":false,"cards":["bae","bureuda"],"preds":["배 부릅니다."],"unused":[]}
 {"id":"13253119","text":"배가 불러.","speech":"plain","honorListener":false,"cards":["bae","bureuda"],"preds":["배 불러."],"unused":[]}
 {"id":"13254275","text":"음악을 좋아해요.","speech":"polite","honorListener":false,"cards":["eumak","johahada"],"preds":["음악을 좋아해요."],"unused":[]}
 {"id":"13254404","text":"봐.","speech":"plain","honorListener":false,"cards":["boda"],"preds":["봐."],"unused":[]}
-{"id":"13258734","text":"엄마를 사랑해?","speech":"plain","honorListener":false,"cards":["eomma","saranghada","q"],"preds":["엄마가 사랑해?","엄마를 사랑해?","엄마는 사랑해?"],"unused":[]}
+{"id":"13258734","text":"엄마를 사랑해?","speech":"plain","honorListener":false,"cards":["eomma","saranghada","q"],"preds":["엄마가 사랑해?","엄마를 사랑해?","엄마, 사랑해?","엄마는 사랑해?"],"unused":[]}
 {"id":"13258736","text":"나를 사랑해?","speech":"plain","honorListener":false,"cards":["na","saranghada","q"],"preds":["내가 사랑해?","사랑해?","나를 사랑해?"],"unused":[]}
 {"id":"13258737","text":"저를 사랑합니까?","speech":"formal","honorListener":false,"cards":["na","saranghada","q"],"preds":["제가 사랑합니까?","사랑합니까?","저를 사랑합니까?"],"unused":[]}
 {"id":"13258738","text":"나를 사랑해요?","speech":"polite","honorListener":false,"cards":["na","saranghada","q"],"preds":["제가 사랑해요?","사랑해요?","저를 사랑해요?"],"unused":[]}
@@ -370,6 +382,7 @@
 {"id":"13589883","text":"우유 마셔!","speech":"plain","honorListener":false,"cards":["uyu","masida"],"preds":["우유를 마셔."],"unused":[]}
 {"id":"13589891","text":"나 우유 마셨어.","speech":"plain","honorListener":false,"cards":["na","uyu","masida","past"],"preds":["나는 우유를 마셨어.","우유를 마셨어.","나랑 우유를 마셨어."],"unused":[]}
 {"id":"13614433","text":"학교를 가세요.","speech":"polite","honorListener":false,"cards":["hakgyo","gada","haseyo"],"preds":["학교에 가세요."],"unused":[]}
+{"id":"13756439","text":"끝났어?","speech":"plain","honorListener":false,"cards":["kkeunnada","past","q"],"preds":["끝났어?"],"unused":[]}
 {"id":"13761852","text":"방에 있어.","speech":"plain","honorListener":false,"cards":["bang","itda"],"preds":["방에 있어.","방이 있어."],"unused":[]}
 {"id":"13762805","text":"우리 오늘 저녁 어디서 먹어?","speech":"plain","honorListener":false,"cards":["uri","oneul","jeonyeok","eodi","meokda"],"preds":["우리가 오늘 저녁에 어디서 먹어?","우리가 오늘 저녁을 어디서 먹어?","오늘 저녁에 어디서 먹어?","오늘 저녁을 어디서 먹어?","우리랑 오늘 저녁에 어디서 먹어?"],"unused":[]}
 {"id":"13918335","text":"도와 주세요.","speech":"polite","honorListener":false,"cards":["dopda","juseyo"],"preds":["도와 주세요."],"unused":[]}

@@ -17,13 +17,13 @@ export const CORE: Entry[] = [
   n('halmeoni', '할머니', 'person', { honorific: true }),
   n('harabeoji', '할아버지', 'person', { honorific: true }),
   n('seonsaengnim', '선생님', 'person', { honorific: true }),
-  n('chingu', '친구', 'person'),
-  n('dongsaeng', '동생', 'person'),
+  n('chingu', '친구', 'person', { callSuffix: true }),
+  n('dongsaeng', '동생', 'person', { callSuffix: true }),
   n('hyeong', '형', 'person'),
   n('nuna', '누나', 'person'),
   n('eonni', '언니', 'person'),
   n('oppa', '오빠', 'person'),
-  n('agi', '아기', 'person'),
+  n('agi', '아기', 'person', { callSuffix: true }),
   n('gangaji', '강아지', 'animal'),
   n('goyangi', '고양이', 'animal'),
 
@@ -50,6 +50,8 @@ export const CORE: Entry[] = [
   n('gimbap', '김밥', 'food'),
   n('gogi', '고기', 'food'),
   n('aiseukeurim', '아이스크림', 'food'),
+  n('gansik', '간식', 'food'),
+  n('geupsik', '급식', 'food'),
   n('mul', '물', 'drink'),
   n('uyu', '우유', 'drink'),
   n('juseu', '주스', 'drink'),
@@ -69,6 +71,10 @@ export const CORE: Entry[] = [
   n('mun', '문', 'thing'),
   n('bul', '불', 'thing'),
   n('eumak', '음악', 'thing'),
+  n('jongi', '종이', 'thing'),
+  n('gawi', '가위', 'thing'),
+  n('keurepaseu', '크레파스', 'thing'),
+  n('gijeogwi', '기저귀', 'clothes'),
 
   // ── 탈것 ──
   n('beoseu', '버스', 'vehicle'),
@@ -92,6 +98,10 @@ export const CORE: Entry[] = [
   n('geim', '게임', 'activity'),
   n('norae', '노래', 'activity'),
   n('geurim', '그림', 'activity'),
+  n('misul', '미술', 'activity'),
+  // 배변: 어린이집·유치원에서 가장 먼저 필요한 말(AAC 우수사례 공모전 2025 수상 사례의 첫 중재 영역)
+  n('swi', '쉬', 'body'),
+  n('eungga', '응가', 'body'),
 
   // ── 때 ──
   n('jigeum', '지금', 'time', { timeJosa: '', tense: 'present' }),
@@ -159,6 +169,11 @@ export const CORE: Entry[] = [
   p('ttwida', '뛰다', 'verb', [S.time, S.agent, S.location]),
   p('malhada', '말하다', 'verb', [S.time, S.agent, S.recipient], { honorLemma: '말씀하시다' }),
   p('hwanada', '화나다', 'verb', [S.time, S.experiencer]),
+  p('saekchilhada', '색칠하다', 'verb', [S.time, S.agent, S.companion, S.instrument], { nounHada: true }),
+  p('swihada', '쉬하다', 'verb', [S.time, S.agent, S.location], { nounHada: true }),
+  p('eungahada', '응가하다', 'verb', [S.time, S.agent, S.location], { nounHada: true }),
+  p('kkeunnada', '끝나다', 'verb', [S.time, { role: 'agent', josa: '이/가', cats: ['activity', 'thing'] }]),
+  p('bakkuda', '바꾸다', 'verb', [S.time, S.agent, S.theme()]),
 
   // ── 있음 ──
   p('itda', '있다', 'adj', [S.time, S.experiencer, S.locationAt, { role: 'agent', josa: '이/가', cats: ALL }], { honorLemma: '계시다' }),
@@ -169,6 +184,7 @@ export const CORE: Entry[] = [
   p('silta', '싫다', 'adj', [S.experiencer, S.theme(ALL, '이/가')]),
   p('apeuda', '아프다', 'adj', [S.time, S.experiencer, S.theme(['body'], '이/가')]),
   p('baegopeuda', '배고프다', 'adj', [S.time, S.experiencer]),
+  p('maryeopda', '마렵다', 'adj', [S.time, S.experiencer, S.theme(['body'], '이/가')]),
   p('mongmareuda', '목마르다', 'adj', [S.time, S.experiencer]),
   p('jollida', '졸리다', 'adj', [S.time, S.experiencer]),
   p('deopda', '덥다', 'adj', [S.time, S.experiencer, S.theme(['place'], '이/가')]),
@@ -218,6 +234,8 @@ export const CORE: Entry[] = [
   { kind: 'adverb', id: 'neomu', word: '너무' },
   { kind: 'adverb', id: 'jeongmal', word: '정말' },
   { kind: 'adverb', id: 'honja', word: '혼자' },
+  { kind: 'adverb', id: 'geuman', word: '그만' },
+  { kind: 'adverb', id: 'da', word: '다' },
   { kind: 'adverb', id: 'wae', word: '왜', wh: true },
 
   // ── 인사·대답 ──
