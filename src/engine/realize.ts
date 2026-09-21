@@ -425,7 +425,9 @@ function realizeCore(cards: Card[], ctx: Context, limit = 5): Candidate[] {
       }
       tokens.push({ text: realizePredicate(mainPred, f), sources: [main.key, ...markerKeys], role: 'predicate' });
 
-      const note = opts.vocative ? `${subject?.e.word}에게 말하기` : subject ? (opts.omitSubject ? `주어 생략(${subject.e.word})` : `주어: ${subject.e.word}`) : '주어 없음';
+      // 사용자에게 보이는 해석 이름: 문법 용어 대신 '누구 이야기인지'
+      const whose = (n: NounCard) => (n.e.cat === 'self' ? '내' : n.e.cat === 'we' ? '우리' : n.e.cat === 'you' ? '너' : n.e.word);
+      const note = opts.vocative ? `${subject?.e.word}에게 말하기` : subject && !opts.omitSubject && subject.e.cat !== 'you' ? `${whose(subject)} 이야기` : subject?.e.cat === 'you' ? '너에게 묻기' : '내 이야기';
       return { text: textOf(tokens.filter((t) => t.text !== '')), tokens, features: f, score: a.score - rank * 0.3, note, unused };
     };
 

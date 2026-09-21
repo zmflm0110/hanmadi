@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#fffaf2" />
+    <meta name="description" content="그림 카드를 고르면 조사·어미·높임을 붙여 자연스러운 한국어 문장으로 말해 주는 보완대체의사소통(AAC) 앱" />
+    <link rel="manifest" href="./manifest.webmanifest" />
+    <link rel="icon" href="./icon.svg" type="image/svg+xml" />
+    <title>한마디</title>
+  </head>
+  <body>
+    <div id="app">
+      <header class="bar">
+        <div class="strip" id="strip" aria-live="polite" aria-label="고른 카드"></div>
+        <div class="strip-tools">
+          <button class="tool" id="undo" aria-label="마지막 카드 지우기">⌫</button>
+          <button class="tool" id="clear" aria-label="모두 지우기"><span class="long">지우기</span><span class="short">✕</span></button>
+          <button class="tool" id="open-settings" aria-label="설정">⚙</button>
+        </div>
+      </header>
+      <section class="speak" id="speak" aria-label="말할 문장"></section>
+      <nav class="tabs" id="tabs" aria-label="카드 분류"></nav>
+      <main class="grid" id="grid" aria-label="카드"></main>
+    </div>
+
+    <dialog id="settings" aria-labelledby="settings-title">
+      <form method="dialog" class="sheet">
+        <h2 id="settings-title">설정</h2>
+        <fieldset>
+          <legend>말투</legend>
+          <label><input type="radio" name="speech" value="plain" /> 반말 <small>친구·가족</small></label>
+          <label><input type="radio" name="speech" value="polite" /> 존댓말 <small>해요</small></label>
+          <label><input type="radio" name="speech" value="formal" /> 아주 높임 <small>합니다</small></label>
+        </fieldset>
+        <label class="row"><input type="checkbox" name="honorListener" /> 듣는 분을 높이기 <small>선생님·어른께 물을 때 "드실래요?"</small></label>
+        <label class="row"><input type="checkbox" name="grammar" /> 문법 도움 <small>끄면 카드 이름만 읽어요(비교해 보기)</small></label>
+        <label class="row"><input type="checkbox" name="speakOnTap" /> 카드를 누르면 낱말 읽기</label>
+        <label class="row"><input type="checkbox" name="clearAfterSpeak" /> 말한 뒤 카드 비우기</label>
+        <label class="row"><input type="checkbox" name="big" /> 큰 카드</label>
+        <label class="row">말하기 빠르기 <input type="range" name="rate" min="0.5" max="1.4" step="0.1" /></label>
+        <fieldset>
+          <legend>스위치 스캐닝</legend>
+          <label class="row"><input type="checkbox" name="scan" /> 켜기 <small>스페이스·엔터·화면 아무 곳을 누르면 골라요. Esc 로 끄기</small></label>
+          <label class="row">넘어가는 빠르기(초) <input type="number" name="scanSec" min="0.5" max="5" step="0.25" /></label>
+        </fieldset>
+        <fieldset>
+          <legend>내 카드</legend>
+          <button type="button" id="open-mycard">사진으로 카드 만들기</button>
+        </fieldset>
+        <fieldset>
+          <legend>사용 기록 <small>이 기기에만, 이름·사진·목소리 없이</small></legend>
+          <p id="log-summary" class="muted"></p>
+          <div class="buttons">
+            <button type="button" id="export-log">기록 내보내기</button>
+            <button type="button" id="clear-log">기록 지우기</button>
+          </div>
+        </fieldset>
+        <p id="voice-warning" class="warn" hidden>이 기기에서 한국어 목소리를 찾지 못했어요. 기기 설정의 음성(TTS)에서 한국어를 받아 주세요.</p>
+        <p class="credit">그림 상징: Sergio Palao, <a href="https://arasaac.org" target="_blank" rel="noopener">ARASAAC</a> (CC BY-NC-SA 4.0, 아라곤 정부). 문장 엔진·앱: MIT.</p>
+        <div class="buttons end"><button value="close" class="primary">닫기</button></div>
+      </form>
+    </dialog>
+
+    <dialog id="mycard" aria-labelledby="mycard-title">
+      <form method="dialog" class="sheet" id="mycard-form">
+        <h2 id="mycard-title">사진으로 카드 만들기</h2>
+        <label class="photo-pick">
+          <img id="mycard-preview" alt="" />
+          <span>사진 고르기</span>
+          <input type="file" accept="image/*" id="mycard-file" />
+        </label>
+        <label class="row">이름 <input type="text" id="mycard-word" maxlength="12" placeholder="예: 지민, 딸기, 할머니 댁" required /></label>
+        <label class="row">무엇인가요?
+          <select id="mycard-cat">
+            <option value="person">사람</option>
+            <option value="animal">동물</option>
+            <option value="food">먹을 것</option>
+            <option value="drink">마실 것</option>
+            <option value="toy">장난감</option>
+            <option value="thing">물건</option>
+            <option value="place">곳</option>
+          </select>
+        </label>
+        <p class="muted">고른 종류에 맞춰 조사가 알맞게 붙어요. 예: 지민<b>이랑</b> 놀아요, 딸기<b>를</b> 먹어요, 공원<b>에</b> 가요</p>
+        <p id="mycard-error" class="warn" hidden></p>
+        <div class="buttons end">
+          <button value="cancel" formnovalidate>그만두기</button>
+          <button id="mycard-save" class="primary" value="save">만들기</button>
+        </div>
+      </form>
+    </dialog>
+
+    <script type="module" src="/src/app/main.ts"></script>
+  </body>
+</html>

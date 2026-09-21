@@ -4,7 +4,11 @@
   "description": "그림 카드를 고르면 자연스러운 한국어 문장으로 말해 주는 오픈소스 AAC",
   "scripts": {
     "test": "vitest run",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "e2e": "vite build && node tests/e2e/app.e2e.mjs"
   },
   "author": "",
   "license": "MIT",
@@ -12,8 +16,10 @@
   "devDependencies": {
     "@types/node": "^26.6.2",
     "es-hangul": "^2.4.0",
+    "playwright-core": "^1.63.0",
     "tsx": "^4.23.15",
     "typescript": "^7.0.2",
+    "vite": "^8.3.0",
     "vitest": "^4.1.11"
   }
 }

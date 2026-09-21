@@ -1,0 +1,11 @@
+{
+  "name": "한마디 — 그림 카드로 말하는 AAC",
+  "short_name": "한마디",
+  "lang": "ko",
+  "start_url": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#fffaf2",
+  "theme_color": "#fffaf2",
+  "icons": [{ "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }]
+}
