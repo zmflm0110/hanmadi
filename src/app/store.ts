@@ -36,7 +36,7 @@ export interface MyCard {
 /** 익명 사용 기록 한 줄. 이름·사진·음성은 남기지 않는다. */
 export interface LogEvent {
   t: number; // ms (기록 시작 기준이 아니라 절대 시각 — 내보낼 때 상대 시각으로 바꾼다)
-  type: 'add' | 'remove' | 'clear' | 'speak';
+  type: 'add' | 'remove' | 'clear' | 'speak' | 'task';
   card?: string; // 카드 id (내 카드는 'mine' 으로만)
   rank?: number; // 말한 후보가 몇 번째였는지(0 = 1순위)
   taps?: number; // 이 문장을 만드는 데 누른 횟수
@@ -45,6 +45,10 @@ export interface LogEvent {
   grammar?: boolean;
   speech?: Speech;
   task?: string; // 과제 모드일 때 과제 id
+  participant?: string; // 과제 모드 참가자 코드(P01 같은 익명 코드)
+  text?: string; // 과제 모드에서만: 만든 문장(과제 문장이라 개인 정보가 아니다)
+  match?: boolean; // 과제 모드: 기대한 뜻과 맞는지(참고용 자동 판정)
+  skipped?: boolean;
 }
 
 const KEY = { settings: 'hanmadi.settings', mine: 'hanmadi.mine', log: 'hanmadi.log' };

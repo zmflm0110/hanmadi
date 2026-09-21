@@ -19,6 +19,7 @@
           <button class="tool" id="open-settings" aria-label="설정">⚙</button>
         </div>
       </header>
+      <div class="task" id="task" hidden role="status" aria-live="polite"></div>
       <section class="speak" id="speak" aria-label="말할 문장"></section>
       <nav class="tabs" id="tabs" aria-label="카드 분류"></nav>
       <main class="grid" id="grid" aria-label="카드"></main>
@@ -47,6 +48,14 @@
         <fieldset>
           <legend>내 카드</legend>
           <button type="button" id="open-mycard">사진으로 카드 만들기</button>
+        </fieldset>
+        <fieldset>
+          <legend>사용성 평가 <small>상황 과제 12개, 문법 켬/끔 반씩</small></legend>
+          <label class="row">참가자 코드 <input type="text" id="task-code" maxlength="8" placeholder="예: P01 (이름 말고 번호)" /></label>
+          <div class="buttons">
+            <button type="button" id="task-start">과제 시작</button>
+            <button type="button" id="task-stop">과제 끝내기</button>
+          </div>
         </fieldset>
         <fieldset>
           <legend>사용 기록 <small>이 기기에만, 이름·사진·목소리 없이</small></legend>

@@ -5,6 +5,7 @@ import { realize, type Candidate, type Card } from '../engine/realize';
 import { TABS, colorOf, entriesFor, labelOf, pictureOf, type TabId } from './board';
 import { Scanner } from './scan';
 import { hasKoreanVoice, speak } from './speech';
+import { TASKS, conditionFor } from './tasks';
 import { store, summarize, toNoun, type LogEvent, type MyCard, type Settings } from './store';
 
 const $ = <T extends HTMLElement>(id: string) => document.getElementById(id) as T;
@@ -17,6 +18,14 @@ let tab: TabId = 'core';
 let taps = 0;
 let firstAt = 0;
 let seq = 0;
+// 과제 모드(사용성 평가): 과제마다 말투·문법 켬/끔이 정해진다
+let task: { code: string; index: number } | null = null;
+
+/** 지금 적용할 말투·문법 도움(과제 모드면 과제가 정한 값) */
+function effective() {
+  if (!task || task.index >= TASKS.length) return { grammar: settings.grammar, speech: settings.speech };
+  return { grammar: conditionFor(task.code, task.index), speech: TASKS[task.index]!.speech };
+}
 
 const photos = () => Object.fromEntries(myCards.map((c) => [c.id, c.photo]));
 const myEntries = (): Entry[] => myCards.map(toNoun);
@@ -32,13 +41,14 @@ function compute() {
     candidates = [];
     return;
   }
-  if (!settings.grammar) {
+  const eff = effective();
+  if (!eff.grammar) {
     // 비교 모드: 기존 AAC 처럼 카드 이름을 차례로 읽는다
     const text = sentence.map((c) => labelOf(c.entry)).join(' ');
     candidates = [{ text, tokens: [], features: {} as Candidate['features'], score: 0, note: '카드 이름 그대로', unused: [] }];
     return;
   }
-  candidates = realize(sentence, { speech: settings.speech, honorListener: settings.honorListener }, 4);
+  candidates = realize(sentence, { speech: eff.speech, honorListener: settings.honorListener }, 4);
 }
 
 function addCard(e: Entry) {
@@ -70,7 +80,13 @@ function say(i: number) {
   const c = candidates[i];
   if (!c) return;
   speak(c.text, settings.rate);
-  log({ type: 'speak', rank: i, taps: taps + 1, cards: sentence.length, ms: Date.now() - firstAt, grammar: settings.grammar, speech: settings.speech });
+  const eff = effective();
+  log({ type: 'speak', rank: i, taps: taps + 1, cards: sentence.length, ms: Date.now() - firstAt, grammar: eff.grammar, speech: eff.speech });
+  if (task) {
+    const t = TASKS[task.index]!;
+    log({ type: 'task', task: t.id, participant: task.code, grammar: eff.grammar, speech: eff.speech, text: c.text, match: t.expect.test(c.text), rank: i, taps: taps + 1, cards: sentence.length, ms: Date.now() - firstAt });
+    window.setTimeout(nextTask, 1200);
+  }
   flash(i);
   if (settings.clearAfterSpeak) window.setTimeout(() => clearSentence(false), 900);
 }
@@ -186,6 +202,54 @@ function renderGrid() {
   }
 }
 
+// ── 과제 모드 ───────────────────────────────────────────────────────────
+function renderTask() {
+  const box = $('task');
+  if (!task) {
+    box.hidden = true;
+    return;
+  }
+  box.hidden = false;
+  box.replaceChildren();
+  if (task.index >= TASKS.length) {
+    box.textContent = '과제를 모두 마쳤어요. 고맙습니다! (설정 → 기록 내보내기)';
+    return;
+  }
+  const t = TASKS[task.index]!;
+  const head = document.createElement('b');
+  head.textContent = `과제 ${task.index + 1}/${TASKS.length}`;
+  const text = document.createElement('span');
+  text.textContent = t.prompt;
+  const skip = document.createElement('button');
+  skip.textContent = '건너뛰기';
+  skip.onclick = () => {
+    log({ type: 'task', task: t.id, participant: task!.code, grammar: effective().grammar, skipped: true });
+    nextTask();
+  };
+  box.append(head, text, skip);
+}
+
+function nextTask() {
+  if (!task) return;
+  task.index += 1;
+  clearSentence(false);
+  renderTask();
+}
+
+$('task-start').onclick = () => {
+  const code = ($('task-code') as HTMLInputElement).value.trim() || 'P00';
+  task = { code, index: 0 };
+  $<HTMLDialogElement>('settings').close();
+  clearSentence(false);
+  renderTask();
+};
+$('task-stop').onclick = () => {
+  task = null;
+  $<HTMLDialogElement>('settings').close();
+  renderTask();
+  update();
+};
+
 function update() {
   compute();
   renderStrip();
@@ -204,7 +268,8 @@ function scanGroups(): HTMLElement[][] {
     const top = c.offsetTop;
     rows.set(top, [...(rows.get(top) ?? []), c]);
   }
-  return [cands, ...[...rows.values()], tabs, tools];
+  const taskButtons = [...document.querySelectorAll<HTMLElement>('#task button')];
+  return [cands, ...[...rows.values()], tabs, tools, taskButtons];
 }
 
 const scanner = new Scanner(scanGroups, () => settings.scanMs);

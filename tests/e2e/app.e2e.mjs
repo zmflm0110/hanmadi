@@ -108,6 +108,46 @@ await check('스위치 스캐닝: 스페이스 두 번으로 카드를 고른다
   assert.equal(await page.locator('#strip .chip span').first().textContent(), '나');
 });
 
+await check('과제 모드: 상황을 보여 주고, 말하면 결과를 남기고 다음 과제로', async (page) => {
+  await page.locator('#open-settings').click();
+  await page.locator('#task-code').fill('P02'); // 짝수 코드: 앞 절반은 문법 켬
+  await page.locator('#task-start').click();
+  assert.match(await page.locator('#task').textContent(), /과제 1\/12.*물을 달라고/);
+  await card(page, '물').click();
+  await card(page, '주세요').click();
+  assert.equal((await cands(page))[0], '물 주세요.');
+  await page.locator('#speak .cand').first().click();
+  await page.waitForFunction(() => /과제 2\/12/.test(document.querySelector('#task').textContent), null, { timeout: 4000 });
+  const log = await page.evaluate(() => JSON.parse(localStorage.getItem('hanmadi.log')));
+  const t = log.find((e) => e.type === 'task');
+  assert.equal(t.task, 't01');
+  assert.equal(t.participant, 'P02');
+  assert.equal(t.grammar, true);
+  assert.equal(t.match, true);
+  assert.equal(t.text, '물 주세요.');
+});
+
+await check('과제 모드: 홀수 코드는 문법 끔으로 시작한다(순서 상쇄)', async (page) => {
+  await page.locator('#open-settings').click();
+  await page.locator('#task-code').fill('P03');
+  await page.locator('#task-start').click();
+  await card(page, '물').click();
+  await card(page, '주세요').click();
+  assert.deepEqual(await cands(page), ['물 주세요']);
+});
+
+await check('배치: 탭이 카드에 가려지지 않고, 과제 모드가 아니면 과제 줄이 안 보인다', async (page) => {
+  for (const l of ['할머니', '밥', '먹다'].slice(0, 1)) await page.locator('#tabs .tab').first().click();
+  await card(page, '엄마').click();
+  const tabs = await page.locator('#tabs').boundingBox();
+  const grid = await page.locator('#grid').boundingBox();
+  const speakBox = await page.locator('#speak').boundingBox();
+  assert.ok(tabs.height >= 40, `탭 높이 ${tabs.height}`);
+  assert.ok(tabs.y + tabs.height <= grid.y + 1, '탭 아래에 카드판');
+  assert.ok(speakBox.y + speakBox.height <= tabs.y + 1, '후보 아래에 탭');
+  assert.equal(await page.locator('#task').isVisible(), false);
+});
+
 await check('휴대폰 너비에서 가로 넘침이 없다', async (page) => {
   await page.setViewportSize({ width: 360, height: 780 });
   for (const l of ['엄마', '쉬', '마렵다']) await card(page, l).click();

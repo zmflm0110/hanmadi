@@ -66,7 +66,7 @@ select:focus-visible {
 
 #app {
   display: grid;
-  grid-template-rows: auto auto auto 1fr;
+  grid-template-rows: auto auto auto auto 1fr; /* 문장 줄 · 과제 알림 · 후보 · 탭 · 카드 */
   grid-template-columns: minmax(0, 1fr); /* 긴 후보 줄이 화면 너비를 밀어내지 않게 */
   height: 100dvh;
   max-width: 1400px;
@@ -483,4 +483,29 @@ input[type='radio'] {
   .tool .short {
     display: inline;
   }
+}
+
+/* ── 과제 모드 알림 ── */
+.task[hidden] {
+  display: none;
+}
+.task {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin: 0 12px 8px;
+  padding: 10px 14px;
+  border-radius: var(--radius);
+  background: #fff3c4;
+  color: #3d2f00;
+  font-size: 1.05rem;
+}
+.task span {
+  flex: 1;
+}
+.task button {
+  padding: 8px 12px;
+  border: 2px solid #d8c27a;
+  border-radius: 10px;
+  background: #fffaf0;
 }
