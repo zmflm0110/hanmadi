@@ -108,7 +108,7 @@ export function labelOf(e: Entry): string {
 
 const PICTO = pictograms as Record<string, { arasaac: number }>;
 /** 알맞은 ARASAAC 그림이 없는 기능어는 직접 그린 기호로(글을 몰라도 알아보게) */
-const OWN_SYMBOLS: Record<string, string> = { an: 'ui/not.svg', mot: 'ui/cannot.svg', jeongmal: 'ui/really.svg', man: 'ui/only.svg' };
+export const OWN_SYMBOLS: Record<string, string> = { an: 'ui/not.svg', mot: 'ui/cannot.svg', jeongmal: 'ui/really.svg', man: 'ui/only.svg', geunyang: 'ui/shrug.svg', bappeuda: 'ui/busy.svg' };
 
 export function pictureOf(e: Entry, custom?: Record<string, string>): string | null {
   if (custom?.[e.id]) return custom[e.id]!;

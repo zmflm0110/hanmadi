@@ -36,6 +36,19 @@ ENGLISH = {
     'do': 'also', 'man': 'only', 'nae': 'my', 'i-det': 'this', 'jeo-det': 'that',
     'hana': 'one', 'dul': 'two', 'set': 'three', 'net': 'four', 'daseot': 'five',
     'ppalgata': 'red', 'parata': 'blue', 'norata': 'yellow', 'hayata': 'white', 'kkamata': 'black',
+    'satang': 'sweet', 'ttalgi': 'strawberry', 'keopi': 'coffee', 'seonmul': 'present', 'don': 'money', 'yeonghwa': 'cinema',
+    'taeksi': 'taxi', 'gajok': 'family', 'namja': 'man', 'yeoja': 'woman', 'heori': 'back', 'gaseum': 'chest', 'ippal': 'tooth',
+    'jam': 'sleep', 'il': 'work', 'saengil': 'birthday', 'najung': 'later', 'bi': 'rain', 'nalssi': 'weather',
+    'chukhahada': 'congratulate', 'josimhada': 'be careful', 'yeollakhada': 'contact', 'heeojida': 'say goodbye', 'himnaeda': 'encourage',
+    'saenggakhada': 'think', 'billida': 'borrow', 'danyeooda': 'come back', 'iyagihada': 'talk', 'eungwonhada': 'cheer',
+    'junbihada': 'prepare', 'kiuda': 'look after', 'butakhada': 'ask', 'beorida': 'throw away', 'baeuda': 'learn', 'ilhada': 'work',
+    'mitda': 'trust', 'chamda': 'wait', 'bonaeda': 'send', 'itda-forget': 'forget', 'chatda': 'look for', 'sijakhada': 'start',
+    'gieokhada': 'remember', 'ihaehada': 'understand', 'yaksokhada': 'promise', 'doraoda': 'return', 'deureooda': 'come in',
+    'gajida': 'have', 'sesuhada': 'wash face', 'dallida': 'run',
+    'baebureuda': 'full', 'himdeulda': 'tired', 'bangapda': 'pleased to meet you', 'gomapda': 'thank you', 'oeropda': 'lonely',
+    'bureopda': 'envy', 'jeulgeopda': 'happy', 'bappeuda': 'busy', 'bissada': 'expensive', 'dapdaphada': 'overwhelmed',
+    'jal': 'well', 'jom': 'a little', 'dasi': 'again', 'gyesok': 'continue', 'ije': 'now', 'ajik': 'not yet', 'geunyang': 'just',
+    'iljjik': 'early', 'yeolsimhi': 'hard', 'joyonghi': 'quiet', 'haja': "let's go",
 }
 
 
@@ -46,6 +59,8 @@ OVERRIDE = {
     'halkkayo': 11576, 'boda-try': 26144, 'jimaseyo': 32366, 'jogeum': 7209, 'suitda': 11750, 'haeya': 15523,
     'itda': 32761, 'gachi': 26818, 'volition': 36518,
     'daseot': 2631, 'do': 11591,
+    'chukhahada': 6969, 'billida': 34790, 'joyonghi': 5936, 'iljjik': 25209, 'jom': 8195, 'sesuhada': 34777,
+    'dapdaphada': 30484, 'ajik': 36914, 'haja': 16717, 'yeolsimhi': 25121,
 }
 # 알맞은 그림이 없는 기능어는 글자 카드로 둔다(AAC 에서 흔한 방식)
 TEXT_ONLY = {'an', 'mot', 'jeongmal'}

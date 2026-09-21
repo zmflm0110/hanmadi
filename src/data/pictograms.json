@@ -898,5 +898,281 @@
  "do": {
   "arasaac": 11591,
   "query": "reviewed"
+ },
+ "gajok": {
+  "arasaac": 38351,
+  "query": "en"
+ },
+ "namja": {
+  "arasaac": 4665,
+  "query": "en"
+ },
+ "yeoja": {
+  "arasaac": 24621,
+  "query": "en"
+ },
+ "satang": {
+  "arasaac": 32440,
+  "query": "en"
+ },
+ "ttalgi": {
+  "arasaac": 2400,
+  "query": "en"
+ },
+ "keopi": {
+  "arasaac": 24479,
+  "query": "en"
+ },
+ "seonmul": {
+  "arasaac": 25381,
+  "query": "en"
+ },
+ "don": {
+  "arasaac": 4630,
+  "query": "en"
+ },
+ "yeonghwa": {
+  "arasaac": 30387,
+  "query": "en"
+ },
+ "taeksi": {
+  "arasaac": 2580,
+  "query": "en"
+ },
+ "heori": {
+  "arasaac": 2748,
+  "query": "en"
+ },
+ "gaseum": {
+  "arasaac": 2853,
+  "query": "en"
+ },
+ "ippal": {
+  "arasaac": 10267,
+  "query": "en"
+ },
+ "jam": {
+  "arasaac": 6479,
+  "query": "en"
+ },
+ "il": {
+  "arasaac": 6624,
+  "query": "en"
+ },
+ "saengil": {
+  "arasaac": 37363,
+  "query": "en"
+ },
+ "najung": {
+  "arasaac": 32749,
+  "query": "en"
+ },
+ "bi": {
+  "arasaac": 7148,
+  "query": "en"
+ },
+ "nalssi": {
+  "arasaac": 24721,
+  "query": "en"
+ },
+ "josimhada": {
+  "arasaac": 25618,
+  "query": "en"
+ },
+ "yeollakhada": {
+  "arasaac": 37634,
+  "query": "en"
+ },
+ "heeojida": {
+  "arasaac": 21793,
+  "query": "en"
+ },
+ "himnaeda": {
+  "arasaac": 6046,
+  "query": "en"
+ },
+ "saenggakhada": {
+  "arasaac": 38796,
+  "query": "en"
+ },
+ "danyeooda": {
+  "arasaac": 29714,
+  "query": "en"
+ },
+ "iyagihada": {
+  "arasaac": 6517,
+  "query": "en"
+ },
+ "eungwonhada": {
+  "arasaac": 26615,
+  "query": "en"
+ },
+ "junbihada": {
+  "arasaac": 6190,
+  "query": "en"
+ },
+ "kiuda": {
+  "arasaac": 11691,
+  "query": "en"
+ },
+ "butakhada": {
+  "arasaac": 25062,
+  "query": "en"
+ },
+ "beorida": {
+  "arasaac": 36673,
+  "query": "en"
+ },
+ "baeuda": {
+  "arasaac": 37810,
+  "query": "en"
+ },
+ "ilhada": {
+  "arasaac": 6624,
+  "query": "en"
+ },
+ "mitda": {
+  "arasaac": 36694,
+  "query": "en"
+ },
+ "chamda": {
+  "arasaac": 36914,
+  "query": "en"
+ },
+ "bonaeda": {
+  "arasaac": 21828,
+  "query": "en"
+ },
+ "itda-forget": {
+  "arasaac": 26258,
+  "query": "en"
+ },
+ "chatda": {
+  "arasaac": 6947,
+  "query": "en"
+ },
+ "sijakhada": {
+  "arasaac": 5431,
+  "query": "en"
+ },
+ "gieokhada": {
+  "arasaac": 37369,
+  "query": "en"
+ },
+ "ihaehada": {
+  "arasaac": 11697,
+  "query": "en"
+ },
+ "yaksokhada": {
+  "arasaac": 37046,
+  "query": "en"
+ },
+ "doraoda": {
+  "arasaac": 29714,
+  "query": "en"
+ },
+ "deureooda": {
+  "arasaac": 2742,
+  "query": "en"
+ },
+ "gajida": {
+  "arasaac": 32761,
+  "query": "en"
+ },
+ "sesuhada": {
+  "arasaac": 34777,
+  "query": "reviewed"
+ },
+ "dallida": {
+  "arasaac": 6465,
+  "query": "en"
+ },
+ "baebureuda": {
+  "arasaac": 26176,
+  "query": "en"
+ },
+ "himdeulda": {
+  "arasaac": 35537,
+  "query": "en"
+ },
+ "bangapda": {
+  "arasaac": 6892,
+  "query": "en"
+ },
+ "gomapda": {
+  "arasaac": 8129,
+  "query": "en"
+ },
+ "oeropda": {
+  "arasaac": 7253,
+  "query": "en"
+ },
+ "bureopda": {
+  "arasaac": 36911,
+  "query": "en"
+ },
+ "jeulgeopda": {
+  "arasaac": 35533,
+  "query": "en"
+ },
+ "bissada": {
+  "arasaac": 4589,
+  "query": "en"
+ },
+ "haja": {
+  "arasaac": 16717,
+  "query": "reviewed"
+ },
+ "jal": {
+  "arasaac": 5397,
+  "query": "en"
+ },
+ "jom": {
+  "arasaac": 8195,
+  "query": "reviewed"
+ },
+ "dasi": {
+  "arasaac": 37163,
+  "query": "en"
+ },
+ "gyesok": {
+  "arasaac": 24998,
+  "query": "en"
+ },
+ "ije": {
+  "arasaac": 32747,
+  "query": "en"
+ },
+ "ajik": {
+  "arasaac": 36914,
+  "query": "reviewed"
+ },
+ "geunyang": {
+  "arasaac": 8612,
+  "query": "en"
+ },
+ "iljjik": {
+  "arasaac": 25209,
+  "query": "reviewed"
+ },
+ "yeolsimhi": {
+  "arasaac": 25121,
+  "query": "reviewed"
+ },
+ "joyonghi": {
+  "arasaac": 5936,
+  "query": "reviewed"
+ },
+ "chukhahada": {
+  "arasaac": 6969,
+  "query": "reviewed"
+ },
+ "billida": {
+  "arasaac": 34790,
+  "query": "reviewed"
+ },
+ "dapdaphada": {
+  "arasaac": 30484,
+  "query": "reviewed"
  }
 }
