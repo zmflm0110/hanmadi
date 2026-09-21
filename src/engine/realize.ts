@@ -5,7 +5,7 @@
 import { attachC, attachEu, type Predicate } from './conjugate';
 import { finalJong } from './hangul';
 import { attachJosa, josaFor } from './josa';
-import type { AdverbEntry, Category, DetEntry, Entry, MarkerEntry, NounEntry, NumEntry, ParticleEntry, PhraseEntry, PredEntry, Role, Slot } from './lexicon';
+import { ANIMATE, type AdverbEntry, type Category, type DetEntry, type Entry, type MarkerEntry, type NounEntry, type NumEntry, type ParticleEntry, type PhraseEntry, type PredEntry, type Role, type Slot } from './lexicon';
 import { DEFAULT_FEATURES, realizeCopula, realizePredicate, type Features, type Speech } from './predicate';
 
 export interface Card {
@@ -80,7 +80,7 @@ function compatible(n: NounEntry, s: Slot): boolean {
 }
 
 /** 명사들을 격틀 자리에 배정하는 모든 경우를 따져 점수 높은 순으로 */
-function assign(nouns: NounCard[], slots: OwnedSlot[], predPos: number[], mood: Features['mood']): Assignment[] {
+function assign(nouns: NounCard[], slots: OwnedSlot[], predPos: number[], mood: Features['mood'], together = false): Assignment[] {
   const asking = mood === 'question' || mood === 'volitionQ';
   const directive = mood === 'command' || mood === 'request';
   const out: Assignment[] = [];
@@ -100,8 +100,14 @@ function assign(nouns: NounCard[], slots: OwnedSlot[], predPos: number[], mood: 
         s += PRONOUNS.has(n.e.cat) ? 1.5 : n.e.cat === 'person' ? 0.5 : 0;
         // 평서문의 주어는 대개 말하는 나, 묻거나 시킬 때 주어는 대개 듣는 너
         if (n.e.cat === 'you' && !asking && !directive) s -= 1;
-        if ((n.e.cat === 'self' || n.e.cat === 'we') && (asking || directive)) s -= 1;
+        if ((n.e.cat === 'self' || n.e.cat === 'we') && asking) s -= 1;
+        // 시키거나 부탁할 때 하는 이는 듣는 사람이다: [나][좀][돕다][주세요] → 저를 좀 도와 주세요
+        if ((n.e.cat === 'self' || n.e.cat === 'we') && directive) s -= 3;
       }
+      // 사람·동물 카드가 없고 탈것만 있으면 탈것이 오고 가는 주체: 버스가 안 와 / 사람이 있으면 수단: 버스로 가요
+      if (n.e.cat === 'vehicle' && slot.role === 'agent' && !nouns.some((x) => ANIMATE.includes(x.e.cat))) s += 0.8;
+      // '같이'가 있으면 사람은 함께하는 이일 가능성이 크다: 친구랑 같이 놀았어요
+      if (together && slot.role === 'companion' && n.e.cat !== 'self' && n.e.cat !== 'we') s += 1.5;
       // 때 낱말이 끼니 자리(아침을 먹다)로 쓰이는 건 드물지 않지만 기본은 때
       if (n.e.cat === 'time' && slot.role !== 'time') s -= 0.8;
       // 두 서술어: 앞 동사보다 먼저 놓인 명사는 앞 동사, 뒤는 주 서술어 쪽이 자연스럽다
@@ -114,7 +120,7 @@ function assign(nouns: NounCard[], slots: OwnedSlot[], predPos: number[], mood: 
     });
     // 주어 자리가 비었는데 대명사(나·너·우리)가 다른 자리에 가 있으면 어색하다: '학교에 저랑 가요'
     const filled = new Set(cur.filter(Boolean).map((x) => `${x!.owner}:${x!.role}`));
-    const subjectOpen = !filled.has('1:agent') && !filled.has('1:experiencer');
+    const subjectOpen = !directive && !filled.has('1:agent') && !filled.has('1:experiencer'); // 시킬 때 주어는 듣는 사람(비어 있는 게 자연스럽다)
     cur.forEach((slot, i) => {
       if (slot && subjectOpen && PRONOUNS.has(nouns[i]!.e.cat) && !SUBJECT_ROLES.has(slot.role)) s -= 2;
     });
@@ -428,6 +434,12 @@ function realizeCore(cards: Card[], ctx: Context, limit = 5): Candidate[] {
   });
 
   let features: Features = applyMarkers({ ...DEFAULT_FEATURES, speech: ctx.speech }, markers);
+  // '해 볼래요'와 다른 양태 카드를 함께 쓰면 겹친다: [먹다][해 볼래요][싶어요] → 먹어 보고 싶어요
+  const modalities = markers.map((m) => m.e.set.modality).filter(Boolean);
+  if (modalities.includes('try') && modalities.some((x) => x !== 'try')) {
+    features.tryAlso = true;
+    features.modality = modalities.find((x) => x !== 'try')!;
+  }
   // 때 낱말이 시제를 정한다(어제→과거, 내일→미래). 단 바람·가능·의무는 지금의 마음이라 그대로 둔다: 내일 만나고 싶어요
   let tenseFromTime = false;
   if (!markers.some((m) => m.e.set.tense) && ['none', 'progressive', 'try'].includes(features.modality)) {
@@ -437,6 +449,9 @@ function realizeCore(cards: Card[], ctx: Context, limit = 5): Candidate[] {
       tenseFromTime = t === 'future';
     }
   }
+  // '같이'는 지난 일이나 물음에서는 제안이 아니라 그냥 '함께': 어제 친구랑 같이 놀았어요
+  const onlyGachi = markers.every((m) => m.e.id === 'gachi' || !m.e.set.mood);
+  if (features.mood === 'suggest' && onlyGachi && (features.tense === 'past' || nouns.some((n) => n.e.wh))) features.mood = 'statement';
   if (features.mood === 'question' && markers.some((m) => m.e.set.mood === 'volition')) features.mood = 'volitionQ';
   if (features.mood === 'volition' && markers.some((m) => m.e.set.mood === 'question')) features.mood = 'volitionQ';
   const hasWh = nouns.some((n) => n.e.wh) || adverbs.some((a) => a.e.wh);
@@ -476,7 +491,8 @@ function realizeCore(cards: Card[], ctx: Context, limit = 5): Candidate[] {
   addFrame(main.e.frame, 1);
   if (first) addFrame(first.e.frame, 0);
 
-  const assignments = assign(nouns, slots, usedPreds.map((p) => p.pos), features.mood).slice(0, 3);
+  const together = markers.some((m) => m.e.id === 'gachi');
+  const assignments = assign(nouns, slots, usedPreds.map((p) => p.pos), features.mood, together).slice(0, 3);
   const candidates: Candidate[] = [];
 
   assignments.forEach((a, rank) => {
@@ -494,7 +510,7 @@ function realizeCore(cards: Card[], ctx: Context, limit = 5): Candidate[] {
     const listenerDirected = (!subject || subject.e.cat === 'you') && ['question', 'volitionQ', 'command', 'request'].includes(features.mood);
     const honorListener = !!ctx.honorListener && listenerDirected;
 
-    const build = (opts: { vocative: boolean; omitSubject: boolean; topicSubject: boolean; tense?: Features['tense'] }): Candidate => {
+    const build = (opts: { vocative: boolean; omitSubject: boolean; topicSubject: boolean; tense?: Features['tense']; caseSubject?: boolean; sequence?: boolean }): Candidate => {
       const f: Features = { ...features, tense: opts.tense ?? features.tense };
       if (opts.vocative) {
         if (f.mood === 'statement') f.mood = 'command';
@@ -540,10 +556,12 @@ function realizeCore(cards: Card[], ctx: Context, limit = 5): Candidate[] {
           continue;
         }
         const topic = isSubject && opts.topicSubject && slot?.josa === '이/가' && !n.e.wh;
+        // 느끼는 이(은/는)를 '이/가'로: 엄마가 아파요 (말뭉치에서 자주 쓰임)
+        const slotUsed = isSubject && opts.caseSubject && slot?.role === 'experiencer' ? { ...slot, josa: '이/가' } : slot;
         // 청유·명령에서 '우리'는 조사 없이: 우리 같이 가자
         const bareWe = isSubject && n.e.cat === 'we' && (f.mood === 'suggest' || f.mood === 'command');
         const style: NounStyle = { speech: f.speech, honorSubject, isSubject, topic, inclusiveWe: f.mood === 'suggest' };
-        const ph = bareWe && !mods.has(n.key) ? { text: surfaceWord(n.e, null, style), sources: [n.key] } : renderPhrase(n, slot, style, honorRecipient, mods.get(n.key));
+        const ph = bareWe && !mods.has(n.key) ? { text: surfaceWord(n.e, null, style), sources: [n.key] } : renderPhrase(n, slotUsed, style, honorRecipient, mods.get(n.key));
         placed.push({ pos: n.pos, token: { text: ph.text, sources: ph.sources, role: slot?.role }, late: late(n.pos, slot) });
       }
       const all = [...placed, ...extras.map((x) => ({ ...x, late: !!first && x.pos > first.pos }))].sort((p, q) => p.pos - q.pos);
@@ -552,7 +570,8 @@ function realizeCore(cards: Card[], ctx: Context, limit = 5): Candidate[] {
       const markerKeys = markers.filter((m) => !m.e.surface).map((m) => m.key);
       if (first) {
         const p0 = toPredicate(first.e);
-        const link = main.e.motion ? attachEu(p0, '러') : attachC(p0, '고');
+        // 이동 동사 앞은 목적(-러: 일하러 와요)이 기본, 순서(-고: 일하고 와요)도 후보로
+        const link = main.e.motion && !opts.sequence ? attachEu(p0, '러') : attachC(p0, '고');
         tokens.push({ text: link, sources: [first.key], role: 'predicate' });
         for (const x of all) if (x.late) tokens.push(x.token);
       }
@@ -576,9 +595,14 @@ function realizeCore(cards: Card[], ctx: Context, limit = 5): Candidate[] {
       topicSubject: topicDefault,
     });
     candidates.push(base);
+    if (first && main.e.motion) candidates.push({ ...build({ vocative: false, omitSubject: subjCat === 'you' && polite, topicSubject: topicDefault, sequence: true }), score: base.score - 0.8 });
     // '내일 와'처럼 현재형으로 가까운 미래를 말하는 것도 자연스럽다
     if (tenseFromTime) candidates.push({ ...build({ vocative: false, omitSubject: subjCat === 'you' && polite, topicSubject: topicDefault, tense: 'present' }), score: base.score - 0.7 });
     if (subject && isPronounSubj && subjCat !== 'you') candidates.push({ ...build({ vocative: false, omitSubject: true, topicSubject: false }), score: base.score - 1.6 }); // 말맛 변이는 다른 해석보다 뒤로
+    // 느끼는 이가 사람이면 '이/가' 모양도 후보로: 엄마가 아파요 / 제가 배고파요
+    if (subject && expIdx === subjectIdx && subjIdx < 0 && subjCat !== 'you' && !subject.e.wh) {
+      candidates.push({ ...build({ vocative: false, omitSubject: false, topicSubject: false, caseSubject: true }), score: base.score - 1.2 });
+    }
     const animateSubj = subjCat === 'person' || subjCat === 'animal';
     if (subject && animateSubj && !subject.e.wh) {
       candidates.push({ ...build({ vocative: false, omitSubject: false, topicSubject: true }), score: base.score - 1.6 }); // 같은 뜻의 말맛 차이라 다른 해석보다 뒤로

@@ -85,7 +85,7 @@ def main():
             out.append(json.dumps({**r, 'gold': match}, ensure_ascii=False))
         Path(args.emit_gold).write_text('\n'.join(out) + '\n')
     n = len(rows)
-    print(f'[{args.split}] 항목 {n}개 (사람이 쓴 Tatoeba 문장을 카드열로 바꾼 것)')
+    print(f'[{args.split}] 항목 {n}개 (사람이 쓴 문장을 카드열로 바꾼 것)')
     print(f'{"기준":<8}{"1순위":>8}{"3순위 안":>10}{"5순위 안":>10}')
     for lv, name in levels:
         h = hits[lv]

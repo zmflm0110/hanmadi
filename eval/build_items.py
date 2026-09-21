@@ -44,7 +44,9 @@ PUNCT_TAGS = {'SF', 'SP', 'SS', 'SE', 'SO', 'SW'}
 
 
 class Skip(Exception):
-    pass
+    def __init__(self, msg, missing=None):
+        super().__init__(msg)
+        self.missing = missing or []
 
 
 # Kiwi 는 어미의 ㄴ·ㄹ·ㅂ·ㅆ 을 종성 자모(U+11A8~)로 준다: 'ᆯ게요', 'ᆫ다'. 호환 자모로 맞춘다.
@@ -61,7 +63,7 @@ class Tok:
 
 # 말하는 AAC 가 내지 않는 글말체(해라체)와 아직 카드가 없는 종결 표현
 HAERACHE = {'다', 'ㄴ다', '는다', '라', '어라', '아라', '냐', '느냐', '니', '으냐', '는가'}
-UNSUPPORTED_EF = {'니까', '으니까', 'ㄴ대요', '는대요', 'ㄴ대', '는대', '대요', '래요', '라고요', '거야', '을걸', 'ㄹ걸', '나요', 'ㄴ가요', '는가요', '은가요', '죠', '지요', '지', '잖아', '잖아요', '네요', '네', '군요', '구나', '는데', '는데요', 'ㄴ데', '은데', '거든', '거든요', '다고', 'ㄴ다고', '더라'}
+UNSUPPORTED_EF = {'니까', '으니까', '니까요', '으니까요', '야지', '어야지', '아야지', '야지요', '구만', '구나', '군',  'ㄴ대요', '는대요', 'ㄴ대', '는대', '대요', '래요', '라고요', '거야', '을걸', 'ㄹ걸', '나요', 'ㄴ가요', '는가요', '은가요', '죠', '지요', '지', '잖아', '잖아요', '네요', '네', '군요', '구나', '는데', '는데요', 'ㄴ데', '은데', '거든', '거든요', '다고', 'ㄴ다고', '더라'}
 # 뜻을 싣는 조사: 카드 없이 버리면 뜻이 사라진다
 MEANING_JOSA = {'까지', '부터', '조차', '마저', '밖에', '마다', '보다', '처럼', '한테서', '에게서', '로서', '로써', '으로서', '으로써', '의', '나', '이나', '든지', '라도', '이라도'}
 
@@ -93,6 +95,7 @@ def to_cards(sentence: str, kiwi: Kiwi):
     cards: list[str] = []
     markers: list[str] = []
     past = future = honor_seen = False
+    missing: list[str] = []  # 사전에 없는 낱말(끝까지 모은다: '하나만 없는 문장' 분석용)
     i = 0
     while i < len(toks):
         t = toks[i]
@@ -120,7 +123,9 @@ def to_cards(sentence: str, kiwi: Kiwi):
                     cards += [NOUNS[t.form], 'hada']
                     i += 2
                     continue
-                raise Skip(f'하다 동사 없음: {t.form}하다')
+                missing.append(f'{t.form}하다')
+                i += 2
+                continue
             if t.form in GA_ONLY and nxt is not None and nxt.tag == 'JKS':
                 cards.append(GA_ONLY[t.form])
             elif t.form == '나' and nxt is not None and nxt.tag == 'JKG':
@@ -128,14 +133,15 @@ def to_cards(sentence: str, kiwi: Kiwi):
                 i += 2
                 continue
             elif t.form not in NOUNS:
-                raise Skip(f'명사 없음: {t.form}')
+                missing.append(t.form)
             else:
                 cards.append(NOUNS[t.form])
         elif tag.split('-')[0] in ('VV', 'VA'):
             form = t.form
             if form not in PREDS:
-                raise Skip(f'서술어 없음: {form}다')
-            cards.append(PREDS[form])
+                missing.append(f'{form}다')
+            else:
+                cards.append(PREDS[form])
         elif tag == 'VX':
             prev = toks[i - 1] if i else None
             if t.form == '싶' and prev is not None and prev.form == '고':
@@ -172,7 +178,7 @@ def to_cards(sentence: str, kiwi: Kiwi):
             elif t.form in NOUNS and TIME_TENSE.get(NOUNS[t.form]) is not None or t.form in ('지금', '오늘', '어제', '내일', '아까', '이따가'):
                 cards.append(NOUNS[t.form])
             else:
-                raise Skip(f'부사: {t.form}')
+                missing.append(t.form)
         elif tag == 'ETM' and t.form in ('ㄹ', '을') and nxt is not None and nxt.form == '거':
             future = True
             i += 1  # '거' 건너뜀, 뒤의 이/VCP 도 건너뛴다
@@ -182,6 +188,8 @@ def to_cards(sentence: str, kiwi: Kiwi):
             raise Skip(f'{tag}:{t.form}')
         i += 1
 
+    if missing:
+        raise Skip('사전에 없는 낱말', missing)
     if not any(c for c in cards if next((e for e in LEX if e['id'] == c), {}).get('kind') == 'pred'):
         raise Skip('서술어 카드 없음')
     time_tense = {TIME_TENSE.get(c) for c in cards}
@@ -194,8 +202,10 @@ def to_cards(sentence: str, kiwi: Kiwi):
         markers.append('q')
     ef = [t.form for t in toks if t.tag == 'EF'][-1]
     ask = sentence.rstrip().endswith('?')
-    if ef in ('ㄹ까요', '을까요', 'ㄹ까', '을까', '자', 'ㅂ시다', '읍시다') and 'gachi' not in cards:
-        markers.append('halkkayo')
+    if ef in ('ㄹ까요', '을까요', 'ㄹ까', '을까') and 'gachi' not in cards:
+        markers.append('halkkayo')  # 묻는 제안·짐작: 먹을까? 좋을까?
+    if ef in ('자', 'ㅂ시다', '읍시다') and 'gachi' not in cards:
+        markers.append('haja')  # 같이 하자: 가자, 갑시다
     if ef in ('ㄹ게', '을게', 'ㄹ게요', '을게요', 'ㄹ께', 'ㄹ께요'):
         markers.append('promise')
     if ef in ('ㄹ래', '을래', 'ㄹ래요', '을래요'):
@@ -209,9 +219,10 @@ def to_cards(sentence: str, kiwi: Kiwi):
     return speech, cards + markers, honor_listener
 
 
-def main(src: str, dst: str):
+def main(src: str, dst: str, gaps: int = 0):
     kiwi = Kiwi()
     reasons = Counter()
+    one_miss = Counter()  # 이 낱말 하나만 있으면 표현할 수 있는 문장 수
     items = []
     total = 0
     for line in Path(src).read_text().splitlines():
@@ -224,12 +235,18 @@ def main(src: str, dst: str):
             speech, cards, honor_listener = to_cards(text, kiwi)
         except Skip as e:
             reasons[str(e).split(':')[0]] += 1
+            if len(set(e.missing)) == 1:
+                one_miss[e.missing[0]] += 1
             continue
         items.append({'id': sid, 'text': text, 'speech': speech, 'honorListener': honor_listener, 'cards': cards})
     Path(dst).write_text('\n'.join(json.dumps(x, ensure_ascii=False) for x in items) + '\n')
     print(f'전체 {total}문장 중 카드로 옮길 수 있는 문장 {len(items)} ({len(items) / total:.1%})')
     print('빠진 이유 상위:', reasons.most_common(12))
+    if gaps:
+        total_one = sum(one_miss.values())
+        print(f'낱말 하나만 없어서 빠진 문장 {total_one}개. 그 낱말 상위 {gaps}:')
+        print('  ' + ', '.join(f'{w}({n})' for w, n in one_miss.most_common(gaps)))
 
 
 if __name__ == '__main__':
-    main(*sys.argv[1:3])
+    main(sys.argv[1], sys.argv[2], int(sys.argv[3]) if len(sys.argv) > 3 else 0)

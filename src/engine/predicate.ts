@@ -14,7 +14,8 @@ import {
 } from './conjugate';
 
 export type Speech = 'plain' | 'polite' | 'formal'; // 반말(해체) · 해요체 · 합쇼체
-export type Mood = 'statement' | 'question' | 'suggest' | 'command' | 'request' | 'promise' | 'volition' | 'volitionQ';
+export type Mood = 'statement' | 'question' | 'suggest' | 'shall' | 'command' | 'request' | 'promise' | 'volition' | 'volitionQ';
+// suggest: 하자/할까요?/합시다(같이 하자) · shall: 할까?/할까요?(묻는 제안, 짐작: 좋을까?)
 // promise: 먹을게요 / volition: 먹을래요 / volitionQ: 먹을래요?(드실래요?)
 export type Tense = 'present' | 'past' | 'future';
 export type Negation = 'none' | 'an' | 'mot';
@@ -27,6 +28,8 @@ export interface Features {
   honorific: boolean; // 주체 높임 -(으)시-
   negation: Negation;
   modality: Modality;
+  /** '해 보다'를 다른 양태와 겹칠 때: 먹어 보고 싶어요 */
+  tryAlso?: boolean;
 }
 
 export const DEFAULT_FEATURES: Features = {
@@ -80,6 +83,9 @@ function ending(p: Predicate, f: Features): string {
     const base = f.mood === 'promise' ? 'ㄹ게' : 'ㄹ래';
     return attachEu(h, f.speech === 'polite' ? base + '요' : base); // 갈게요, 먹을래, 가실래요
   }
+  if (f.mood === 'shall') {
+    return attachEu(p, f.speech === 'plain' ? 'ㄹ까' : 'ㄹ까요'); // 먹을까? 먹을까요? 좋을까?
+  }
   if (f.mood === 'suggest') {
     if (f.speech === 'plain') return attachC(p, '자'); // 가자, 먹자
     if (f.speech === 'polite') return attachEu(p, 'ㄹ까요'); // 갈까요, 먹을까요
@@ -112,10 +118,15 @@ function withNegation(p: Predicate, n: Negation, body: (p: Predicate) => string)
 
 export function realizePredicate(p: Predicate, f: Features): string {
   const core = realizeCore(p, f);
-  return f.mood === 'question' || f.mood === 'volitionQ' || (f.mood === 'suggest' && f.speech === 'polite') ? core + '?' : core;
+  return f.mood === 'question' || f.mood === 'volitionQ' || f.mood === 'shall' || (f.mood === 'suggest' && f.speech === 'polite') ? core + '?' : core;
 }
 
 function realizeCore(p: Predicate, f: Features): string {
+  // 해 보다 + 다른 양태: 본동사를 '-아 보다'로 만든 뒤 '보다'에 양태를 붙인다(먹어 보고 싶어요, 가 볼 수 있어요)
+  if (f.tryAlso && f.modality !== 'try' && f.modality !== 'none') {
+    const inner = realizeCore(BODA, { ...f, tryAlso: false, negation: 'none' });
+    return withNegation(p, f.negation, (q) => `${infinitive(q)} ${inner}`);
+  }
   // 금지: -지 말다
   if (f.negation !== 'none' && (f.mood === 'command' || f.mood === 'suggest')) {
     const main = attachC(p, '지');

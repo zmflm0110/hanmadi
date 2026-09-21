@@ -6,12 +6,23 @@
 {"id": "447683", "text": "나는 김밥을 먹고 싶어요.", "speech": "polite", "honorListener": false, "cards": ["na", "gimbap", "meokda", "sipda"]}
 {"id": "472088", "text": "나는 학교에 가요.", "speech": "polite", "honorListener": false, "cards": ["na", "hakgyo", "gada"]}
 {"id": "480026", "text": "나는 책을 읽을 거예요.", "speech": "polite", "honorListener": false, "cards": ["na", "chaek", "ikda", "future"]}
+{"id": "500823", "text": "바쁘세요?", "speech": "polite", "honorListener": true, "cards": ["bappeuda", "q"]}
+{"id": "507533", "text": "저는 어제 영화를 보러 갔습니다.", "speech": "formal", "honorListener": false, "cards": ["na", "eoje", "yeonghwa", "boda", "gada"]}
 {"id": "753586", "text": "어제 저는 책을 샀어요.", "speech": "polite", "honorListener": false, "cards": ["eoje", "na", "chaek", "sada"]}
+{"id": "923481", "text": "불 좀 있어요?", "speech": "polite", "honorListener": false, "cards": ["bul", "jom", "itda", "q"]}
+{"id": "935555", "text": "조용히 해!", "speech": "plain", "honorListener": false, "cards": ["joyonghi", "hada"]}
+{"id": "942235", "text": "생일 축하합니다!", "speech": "formal", "honorListener": false, "cards": ["saengil", "chukhahada"]}
+{"id": "943237", "text": "나중에 보자!", "speech": "plain", "honorListener": false, "cards": ["najung", "boda", "haja"]}
 {"id": "943268", "text": "어디에서 오셨습니까?", "speech": "formal", "honorListener": true, "cards": ["eodi", "oda", "past"]}
+{"id": "952567", "text": "나는 돈이 없어.", "speech": "plain", "honorListener": false, "cards": ["na", "don", "eopda"]}
+{"id": "957286", "text": "축하합니다!", "speech": "formal", "honorListener": false, "cards": ["chukhahada"]}
 {"id": "961689", "text": "고양이한테 우유를 줬어요.", "speech": "polite", "honorListener": false, "cards": ["goyangi", "uyu", "juda", "past"]}
+{"id": "961716", "text": "커피를 못 마십니다.", "speech": "formal", "honorListener": false, "cards": ["keopi", "masida", "mot"]}
 {"id": "961943", "text": "책을 읽고 싶었어요", "speech": "polite", "honorListener": false, "cards": ["chaek", "ikda", "sipda", "past"]}
 {"id": "961978", "text": "어디에 가고 싶으세요?", "speech": "polite", "honorListener": true, "cards": ["eodi", "gada", "sipda"]}
 {"id": "962005", "text": "저녁은 뭘 만들까요?", "speech": "polite", "honorListener": false, "cards": ["jeonyeok", "mwo", "mandeulda", "halkkayo"]}
+{"id": "963309", "text": "일찍 일어났어요.", "speech": "polite", "honorListener": false, "cards": ["iljjik", "ireonada", "past"]}
+{"id": "963312", "text": "어제는 일찍 일어났어요.", "speech": "polite", "honorListener": false, "cards": ["eoje", "iljjik", "ireonada"]}
 {"id": "982274", "text": "괜찮으세요?", "speech": "polite", "honorListener": true, "cards": ["gwaenchanta", "q"]}
 {"id": "998746", "text": "네 개가 어디 있어?", "speech": "plain", "honorListener": false, "cards": ["net", "eodi", "itda"]}
 {"id": "1051974", "text": "어디가 아프십니까?", "speech": "formal", "honorListener": true, "cards": ["eodi", "apeuda"]}
@@ -22,9 +33,13 @@
 {"id": "1211897", "text": "난 공원에 가요.", "speech": "polite", "honorListener": false, "cards": ["na", "gongwon", "gada"]}
 {"id": "1225850", "text": "가고 싶어.", "speech": "plain", "honorListener": false, "cards": ["gada", "sipda"]}
 {"id": "1535556", "text": "말 해.", "speech": "plain", "honorListener": false, "cards": ["malhada"]}
+{"id": "1583323", "text": "지금 바빠요.", "speech": "polite", "honorListener": false, "cards": ["jigeum", "bappeuda"]}
 {"id": "1587175", "text": "이 방은 너무 커요.", "speech": "polite", "honorListener": false, "cards": ["i-det", "bang", "neomu", "keuda"]}
 {"id": "1587242", "text": "왜 이걸 지금 말해?", "speech": "plain", "honorListener": false, "cards": ["wae", "igeo", "jigeum", "malhada"]}
 {"id": "2059489", "text": "이따가 전화할께", "speech": "plain", "honorListener": false, "cards": ["ittaga", "jeonhwahada", "promise"]}
+{"id": "2148056", "text": "커피 한 잔 할래?", "speech": "plain", "honorListener": false, "cards": ["keopi", "hana", "hada", "q", "volition"]}
+{"id": "2148058", "text": "커피 마실래요?", "speech": "polite", "honorListener": false, "cards": ["keopi", "masida", "q", "volition"]}
+{"id": "2148062", "text": "커피 마실래?", "speech": "plain", "honorListener": false, "cards": ["keopi", "masida", "q", "volition"]}
 {"id": "2385464", "text": "널 사랑해!", "speech": "plain", "honorListener": false, "cards": ["neo", "saranghada"]}
 {"id": "2499810", "text": "공부해요.", "speech": "polite", "honorListener": false, "cards": ["gongbuhada"]}
 {"id": "2622429", "text": "어디에 살고 있습니까?", "speech": "formal", "honorListener": false, "cards": ["eodi", "salda", "jungida"]}
@@ -39,19 +54,30 @@
 {"id": "2652695", "text": "뭐합니까?", "speech": "formal", "honorListener": false, "cards": ["mwo", "hada"]}
 {"id": "2654595", "text": "사랑해 - 나도.", "speech": "plain", "honorListener": false, "cards": ["saranghada", "na", "do"]}
 {"id": "2654597", "text": "사랑해요 - 나도", "speech": "polite", "honorListener": false, "cards": ["saranghada", "na", "do"]}
+{"id": "2730483", "text": "우리 헤어졌어.", "speech": "plain", "honorListener": false, "cards": ["uri", "heeojida", "past"]}
 {"id": "2730507", "text": "사랑합니다.", "speech": "formal", "honorListener": false, "cards": ["saranghada"]}
 {"id": "2819618", "text": "집에 가십시오.", "speech": "formal", "honorListener": true, "cards": ["jip", "gada", "haseyo"]}
 {"id": "2819628", "text": "우리는 집에 갑니다.", "speech": "formal", "honorListener": false, "cards": ["uri", "jip", "gada"]}
 {"id": "2834018", "text": "머리가 좋아요.", "speech": "polite", "honorListener": false, "cards": ["meori", "jota"]}
 {"id": "2834027", "text": "사과 주스 두 잔 주세요.", "speech": "polite", "honorListener": false, "cards": ["sagwa", "juseu", "dul", "juda", "haseyo"]}
 {"id": "2881442", "text": "내일 널 만나고 싶어.", "speech": "plain", "honorListener": false, "cards": ["naeil", "neo", "mannada", "sipda"]}
+{"id": "3158104", "text": "다시 말해봐.", "speech": "plain", "honorListener": false, "cards": ["dasi", "malhada", "boda-try"]}
+{"id": "3182943", "text": "나는 남자를 봐요.", "speech": "polite", "honorListener": false, "cards": ["na", "namja", "boda"]}
+{"id": "3246289", "text": "잘 부탁합니다!", "speech": "formal", "honorListener": false, "cards": ["jal", "butakhada"]}
+{"id": "3329440", "text": "공부 시작 할까요?", "speech": "polite", "honorListener": false, "cards": ["gongbu", "sijakhada", "q", "halkkayo"]}
+{"id": "3421742", "text": "커피 좋아해요?", "speech": "polite", "honorListener": false, "cards": ["keopi", "johahada", "q"]}
 {"id": "3421775", "text": "어디 가고싶어요?", "speech": "polite", "honorListener": false, "cards": ["eodi", "gada", "sipda"]}
 {"id": "3581318", "text": "나는 사과를 먹고 있어요.", "speech": "polite", "honorListener": false, "cards": ["na", "sagwa", "meokda", "jungida"]}
 {"id": "3647232", "text": "무엇을 공부합니까?", "speech": "formal", "honorListener": false, "cards": ["mwo", "gongbuhada"]}
+{"id": "3681018", "text": "내가 찾아 볼게.", "speech": "plain", "honorListener": false, "cards": ["na", "chatda", "boda-try", "promise"]}
 {"id": "3684989", "text": "어제 나는 집에 있었어.", "speech": "plain", "honorListener": false, "cards": ["eoje", "na", "jip", "itda"]}
+{"id": "3709070", "text": "못 믿어.", "speech": "plain", "honorListener": false, "cards": ["mitda", "mot"]}
+{"id": "3709077", "text": "조심해!", "speech": "plain", "honorListener": false, "cards": ["josimhada"]}
+{"id": "3718218", "text": "오늘은 너무 바빴어.", "speech": "plain", "honorListener": false, "cards": ["oneul", "neomu", "bappeuda", "past"]}
 {"id": "3950245", "text": "천천히 하세요.", "speech": "polite", "honorListener": false, "cards": ["cheoncheonhi", "hada", "haseyo"]}
 {"id": "4038389", "text": "너 왜 울어?", "speech": "plain", "honorListener": false, "cards": ["neo", "wae", "ulda"]}
 {"id": "4038391", "text": "너 왜 화났어?", "speech": "plain", "honorListener": false, "cards": ["neo", "wae", "hwanada", "past"]}
+{"id": "4038395", "text": "너 잠자?", "speech": "plain", "honorListener": false, "cards": ["neo", "jam", "jada", "q"]}
 {"id": "4038403", "text": "나는 몰라요.", "speech": "polite", "honorListener": false, "cards": ["na", "moreuda"]}
 {"id": "4038404", "text": "난 몰라.", "speech": "plain", "honorListener": false, "cards": ["na", "moreuda"]}
 {"id": "4440438", "text": "먹었어요.", "speech": "polite", "honorListener": false, "cards": ["meokda", "past"]}
@@ -59,13 +85,17 @@
 {"id": "4440442", "text": "마셨어요.", "speech": "polite", "honorListener": false, "cards": ["masida", "past"]}
 {"id": "4440443", "text": "마실래요.", "speech": "polite", "honorListener": false, "cards": ["masida", "volition"]}
 {"id": "4440445", "text": "마시고 싶어요.", "speech": "polite", "honorListener": false, "cards": ["masida", "sipda"]}
+{"id": "4440446", "text": "잘자.", "speech": "plain", "honorListener": false, "cards": ["jal", "jada"]}
 {"id": "4587813", "text": "무엇을 마십니까?", "speech": "formal", "honorListener": false, "cards": ["mwo", "masida"]}
 {"id": "4708217", "text": "나도 몰라.", "speech": "plain", "honorListener": false, "cards": ["na", "do", "moreuda"]}
+{"id": "4708218", "text": "힘내!", "speech": "plain", "honorListener": false, "cards": ["himnaeda"]}
 {"id": "4710363", "text": "자고 있어?", "speech": "plain", "honorListener": false, "cards": ["jada", "jungida", "q"]}
 {"id": "4710372", "text": "뭐 샀어?", "speech": "plain", "honorListener": false, "cards": ["mwo", "sada", "past"]}
 {"id": "4710374", "text": "뭘 보고 있어?", "speech": "plain", "honorListener": false, "cards": ["mwo", "boda", "jungida"]}
+{"id": "4710375", "text": "비와?", "speech": "plain", "honorListener": false, "cards": ["bi", "oda", "q"]}
 {"id": "4710380", "text": "이 노래 알아?", "speech": "plain", "honorListener": false, "cards": ["i-det", "norae", "alda", "q"]}
-{"id": "4739157", "text": "가자!", "speech": "plain", "honorListener": false, "cards": ["gada", "halkkayo"]}
+{"id": "4717809", "text": "축하해!", "speech": "plain", "honorListener": false, "cards": ["chukhahada"]}
+{"id": "4739157", "text": "가자!", "speech": "plain", "honorListener": false, "cards": ["gada", "haja"]}
 {"id": "4749575", "text": "아침 먹을래?", "speech": "plain", "honorListener": false, "cards": ["achim", "meokda", "q", "volition"]}
 {"id": "4950447", "text": "이 책 읽어.", "speech": "plain", "honorListener": false, "cards": ["i-det", "chaek", "ikda"]}
 {"id": "4950448", "text": "이 책을 읽으세요.", "speech": "polite", "honorListener": false, "cards": ["i-det", "chaek", "ikda", "haseyo"]}
@@ -74,40 +104,67 @@
 {"id": "4952570", "text": "저는 강아지가 정말 좋아요.", "speech": "polite", "honorListener": false, "cards": ["na", "gangaji", "jeongmal", "jota"]}
 {"id": "4952571", "text": "저도 음악을 좋아합니다.", "speech": "formal", "honorListener": false, "cards": ["na", "do", "eumak", "johahada"]}
 {"id": "4952572", "text": "저도 음악이 정말 좋아요.", "speech": "polite", "honorListener": false, "cards": ["na", "do", "eumak", "jeongmal", "jota"]}
+{"id": "4952734", "text": "돈 좀 찾아올게.", "speech": "plain", "honorListener": false, "cards": ["don", "jom", "chatda", "oda", "promise"]}
 {"id": "4963183", "text": "빨리 와!", "speech": "plain", "honorListener": false, "cards": ["ppalli", "oda"]}
 {"id": "4963184", "text": "빨리 오세요!", "speech": "polite", "honorListener": false, "cards": ["ppalli", "oda", "haseyo"]}
 {"id": "4965773", "text": "머리가 아파요.", "speech": "polite", "honorListener": false, "cards": ["meori", "apeuda"]}
 {"id": "5383158", "text": "무엇을 좋아하세요?", "speech": "polite", "honorListener": true, "cards": ["mwo", "johahada"]}
 {"id": "5383160", "text": "뭐가 좋아?", "speech": "plain", "honorListener": false, "cards": ["mwo", "jota"]}
+{"id": "5383445", "text": "이 가위 잘 안들어요.", "speech": "polite", "honorListener": false, "cards": ["i-det", "gawi", "jal", "deutda", "an"]}
+{"id": "5526116", "text": "그냥 그거 가져.", "speech": "plain", "honorListener": false, "cards": ["geunyang", "geugeo", "gajida"]}
 {"id": "5548650", "text": "가!", "speech": "plain", "honorListener": false, "cards": ["gada"]}
 {"id": "5568718", "text": "눈이 와요.", "speech": "polite", "honorListener": false, "cards": ["nun", "oda"]}
+{"id": "5568820", "text": "비가 와요.", "speech": "polite", "honorListener": false, "cards": ["bi", "oda"]}
+{"id": "5568826", "text": "비와.", "speech": "plain", "honorListener": false, "cards": ["bi", "oda"]}
 {"id": "5951646", "text": "끝났읍니다.", "speech": "plain", "honorListener": false, "cards": ["kkeunnada", "past"]}
 {"id": "5951649", "text": "여기 계시는군요.", "speech": "polite", "honorListener": false, "cards": ["yeogi", "itda"]}
-{"id": "5951665", "text": "내일 만납시다.", "speech": "formal", "honorListener": false, "cards": ["naeil", "mannada", "halkkayo"]}
+{"id": "5951665", "text": "내일 만납시다.", "speech": "formal", "honorListener": false, "cards": ["naeil", "mannada", "haja"]}
 {"id": "5951674", "text": "맛있어요!", "speech": "polite", "honorListener": false, "cards": ["masitda"]}
 {"id": "5951778", "text": "내일 전화하세요", "speech": "polite", "honorListener": false, "cards": ["naeil", "jeonhwahada", "haseyo"]}
+{"id": "5951779", "text": "가지고 있읍니다", "speech": "plain", "honorListener": false, "cards": ["gajida", "jungida"]}
 {"id": "5951782", "text": "기다리세요", "speech": "polite", "honorListener": false, "cards": ["gidarida", "haseyo"]}
 {"id": "5951784", "text": "다 했읍니까?", "speech": "plain", "honorListener": false, "cards": ["da", "hada", "past", "q"]}
+{"id": "5951785", "text": "축하 합니다!", "speech": "formal", "honorListener": false, "cards": ["chukhahada"]}
 {"id": "5951786", "text": "숙제 하세요", "speech": "polite", "honorListener": false, "cards": ["sukje", "hada", "haseyo"]}
+{"id": "6295661", "text": "오늘 비가 올까요?", "speech": "polite", "honorListener": false, "cards": ["oneul", "bi", "oda", "q", "halkkayo"]}
 {"id": "6304970", "text": "날 사랑해 줘!", "speech": "plain", "honorListener": false, "cards": ["na", "saranghada", "juseyo"]}
 {"id": "6305027", "text": "왜 왔어요?", "speech": "polite", "honorListener": false, "cards": ["wae", "oda", "past"]}
 {"id": "6305066", "text": "슬퍼.", "speech": "plain", "honorListener": false, "cards": ["seulpeuda"]}
 {"id": "6305067", "text": "아파.", "speech": "plain", "honorListener": false, "cards": ["apeuda"]}
+{"id": "6305073", "text": "잠이 와.", "speech": "plain", "honorListener": false, "cards": ["jam", "oda"]}
+{"id": "6305129", "text": "고마워!", "speech": "plain", "honorListener": false, "cards": ["gomapda"]}
+{"id": "6305446", "text": "물 좀 마셔.", "speech": "plain", "honorListener": false, "cards": ["mul", "jom", "masida"]}
 {"id": "6485249", "text": "저기 봐.", "speech": "plain", "honorListener": false, "cards": ["jeogi", "boda"]}
 {"id": "6845341", "text": "그건 몰랐어요.", "speech": "polite", "honorListener": false, "cards": ["geugeo", "moreuda", "past"]}
 {"id": "6961393", "text": "괜찮을 겁니다.", "speech": "formal", "honorListener": false, "cards": ["gwaenchanta", "future"]}
+{"id": "6961443", "text": "제가 많이 일찍 왔어요.", "speech": "polite", "honorListener": false, "cards": ["na", "mani", "iljjik", "oda", "past"]}
 {"id": "6963471", "text": "날 알아요?", "speech": "polite", "honorListener": false, "cards": ["na", "alda", "q"]}
 {"id": "7166421", "text": "뭐 먹고 싶어?", "speech": "plain", "honorListener": false, "cards": ["mwo", "meokda", "sipda"]}
+{"id": "7166439", "text": "너 커피 좀 마실래?", "speech": "plain", "honorListener": false, "cards": ["neo", "keopi", "jom", "masida", "q", "volition"]}
 {"id": "7347548", "text": "놀고 싶어요.", "speech": "polite", "honorListener": false, "cards": ["nolda", "sipda"]}
 {"id": "7347553", "text": "쉬고 싶어요.", "speech": "polite", "honorListener": false, "cards": ["swida", "sipda"]}
+{"id": "7347559", "text": "일하고 싶어요.", "speech": "polite", "honorListener": false, "cards": ["ilhada", "sipda"]}
+{"id": "7668722", "text": "커피를 마시고싶어요.", "speech": "polite", "honorListener": false, "cards": ["keopi", "masida", "sipda"]}
 {"id": "7668733", "text": "차 좋아해요?", "speech": "polite", "honorListener": false, "cards": ["cha", "johahada", "q"]}
 {"id": "7668782", "text": "차 좋아해?", "speech": "plain", "honorListener": false, "cards": ["cha", "johahada", "q"]}
+{"id": "7788267", "text": "지금 바빠?", "speech": "plain", "honorListener": false, "cards": ["jigeum", "bappeuda", "q"]}
+{"id": "7965171", "text": "택시로 안 왔어.", "speech": "plain", "honorListener": false, "cards": ["taeksi", "oda", "an", "past"]}
 {"id": "7965191", "text": "어제 저는 책을 샀습니다.", "speech": "formal", "honorListener": false, "cards": ["eoje", "na", "chaek", "sada"]}
+{"id": "7999572", "text": "조용히 해 주세요.", "speech": "polite", "honorListener": false, "cards": ["joyonghi", "hada", "juseyo"]}
 {"id": "8061821", "text": "누가 읽고 있습니까?", "speech": "formal", "honorListener": false, "cards": ["nugu", "ikda", "jungida"]}
 {"id": "8119496", "text": "어디서 오셨어요?", "speech": "polite", "honorListener": true, "cards": ["eodi", "oda", "past"]}
+{"id": "8119497", "text": "잘 다녀오십시오!", "speech": "formal", "honorListener": true, "cards": ["jal", "danyeooda", "haseyo"]}
+{"id": "8119510", "text": "잘 가요.", "speech": "polite", "honorListener": false, "cards": ["jal", "gada"]}
+{"id": "8119511", "text": "나중에 봐요.", "speech": "polite", "honorListener": false, "cards": ["najung", "boda"]}
+{"id": "8119514", "text": "잘가요!", "speech": "polite", "honorListener": false, "cards": ["jal", "gada"]}
+{"id": "8119516", "text": "잘가요.", "speech": "polite", "honorListener": false, "cards": ["jal", "gada"]}
+{"id": "8119520", "text": "반가워요.", "speech": "polite", "honorListener": false, "cards": ["bangapda"]}
 {"id": "8119555", "text": "어디에 사십니까?", "speech": "formal", "honorListener": true, "cards": ["eodi", "sada"]}
+{"id": "8119558", "text": "어디에서 일해요?", "speech": "polite", "honorListener": false, "cards": ["eodi", "ilhada"]}
 {"id": "8119567", "text": "어디서 만날까요?", "speech": "polite", "honorListener": false, "cards": ["eodi", "mannada", "halkkayo"]}
+{"id": "8119569", "text": "고마워요.", "speech": "polite", "honorListener": false, "cards": ["gomapda"]}
 {"id": "8119573", "text": "전화할게요.", "speech": "polite", "honorListener": false, "cards": ["jeonhwahada", "promise"]}
+{"id": "8119580", "text": "힘내.", "speech": "plain", "honorListener": false, "cards": ["himnaeda"]}
 {"id": "8225806", "text": "왜 나를 좋아해?", "speech": "plain", "honorListener": false, "cards": ["wae", "na", "johahada"]}
 {"id": "8355474", "text": "너는 그것을 씻었어?", "speech": "plain", "honorListener": false, "cards": ["neo", "geugeo", "ssitda", "past", "q"]}
 {"id": "8355562", "text": "사과를 좋아하십니까?", "speech": "formal", "honorListener": true, "cards": ["sagwa", "johahada", "q"]}
@@ -115,43 +172,78 @@
 {"id": "8355896", "text": "기다려!", "speech": "plain", "honorListener": false, "cards": ["gidarida"]}
 {"id": "8355900", "text": "들어.", "speech": "plain", "honorListener": false, "cards": ["deutda"]}
 {"id": "8355907", "text": "웃어.", "speech": "plain", "honorListener": false, "cards": ["utda"]}
+{"id": "8355908", "text": "시작해.", "speech": "plain", "honorListener": false, "cards": ["sijakhada"]}
+{"id": "8355961", "text": "계속해.", "speech": "plain", "honorListener": false, "cards": ["gyesok", "hada"]}
 {"id": "8355962", "text": "여기로 와.", "speech": "plain", "honorListener": false, "cards": ["yeogi", "oda"]}
 {"id": "8355980", "text": "나는 웃었어.", "speech": "plain", "honorListener": false, "cards": ["na", "utda", "past"]}
 {"id": "8358091", "text": "내일 어디로 갈거야?", "speech": "plain", "honorListener": false, "cards": ["naeil", "eodi", "gada"]}
 {"id": "8358102", "text": "나 정말 슬퍼.", "speech": "plain", "honorListener": false, "cards": ["na", "jeongmal", "seulpeuda"]}
+{"id": "8358269", "text": "나좀 그만 봐.", "speech": "plain", "honorListener": false, "cards": ["na", "jom", "geuman", "boda"]}
 {"id": "8358295", "text": "어디에서 살고싶어?", "speech": "plain", "honorListener": false, "cards": ["eodi", "salda", "sipda"]}
 {"id": "8358321", "text": "천천히 걸어.", "speech": "plain", "honorListener": false, "cards": ["cheoncheonhi", "geotda"]}
+{"id": "8358325", "text": "열심히 공부해.", "speech": "plain", "honorListener": false, "cards": ["yeolsimhi", "gongbuhada"]}
+{"id": "8358326", "text": "조심해.", "speech": "plain", "honorListener": false, "cards": ["josimhada"]}
+{"id": "8360540", "text": "우리는 내일 돌아올거야.", "speech": "plain", "honorListener": false, "cards": ["uri", "naeil", "doraoda"]}
+{"id": "8361434", "text": "나는 영화를 봤어.", "speech": "plain", "honorListener": false, "cards": ["na", "yeonghwa", "boda", "past"]}
 {"id": "8361438", "text": "너 거기 있어?", "speech": "plain", "honorListener": false, "cards": ["neo", "geogi", "itda", "q"]}
+{"id": "8361470", "text": "나는 그냥 쉬고 싶어.", "speech": "plain", "honorListener": false, "cards": ["na", "geunyang", "swida", "sipda"]}
 {"id": "8362088", "text": "왜 이 학교를 좋아해?", "speech": "plain", "honorListener": false, "cards": ["wae", "i-det", "hakgyo", "johahada"]}
+{"id": "8363270", "text": "고마워.", "speech": "plain", "honorListener": false, "cards": ["gomapda"]}
 {"id": "8363271", "text": "가.", "speech": "plain", "honorListener": false, "cards": ["gada"]}
 {"id": "8363272", "text": "기다려.", "speech": "plain", "honorListener": false, "cards": ["gidarida"]}
 {"id": "8363273", "text": "뛰어.", "speech": "plain", "honorListener": false, "cards": ["ttwida"]}
 {"id": "8363278", "text": "열어.", "speech": "plain", "honorListener": false, "cards": ["yeolda"]}
+{"id": "8363289", "text": "열심히 해.", "speech": "plain", "honorListener": false, "cards": ["yeolsimhi", "hada"]}
+{"id": "8363290", "text": "조용히 해.", "speech": "plain", "honorListener": false, "cards": ["joyonghi", "hada"]}
 {"id": "8363292", "text": "누가 알아?", "speech": "plain", "honorListener": false, "cards": ["nugu", "alda"]}
 {"id": "8363294", "text": "그만 말해.", "speech": "plain", "honorListener": false, "cards": ["geuman", "malhada"]}
 {"id": "8363298", "text": "알아.", "speech": "plain", "honorListener": false, "cards": ["alda"]}
 {"id": "8363300", "text": "일어나!", "speech": "plain", "honorListener": false, "cards": ["ireonada"]}
+{"id": "8363304", "text": "들어와.", "speech": "plain", "honorListener": false, "cards": ["deureooda"]}
 {"id": "8363307", "text": "집에 와.", "speech": "plain", "honorListener": false, "cards": ["jip", "oda"]}
+{"id": "8363310", "text": "이해해.", "speech": "plain", "honorListener": false, "cards": ["ihaehada"]}
+{"id": "8363318", "text": "엄마 잘자.", "speech": "plain", "honorListener": false, "cards": ["eomma", "jal", "jada"]}
+{"id": "8363319", "text": "계속 해줘.", "speech": "plain", "honorListener": false, "cards": ["gyesok", "hada", "juseyo"]}
 {"id": "8363322", "text": "일어나.", "speech": "plain", "honorListener": false, "cards": ["ireonada"]}
+{"id": "8363324", "text": "날 믿어.", "speech": "plain", "honorListener": false, "cards": ["na", "mitda"]}
+{"id": "8363325", "text": "계속 들어.", "speech": "plain", "honorListener": false, "cards": ["gyesok", "deutda"]}
 {"id": "8363326", "text": "이걸 읽어.", "speech": "plain", "honorListener": false, "cards": ["igeo", "ikda"]}
 {"id": "8363336", "text": "밖에서 운동해.", "speech": "plain", "honorListener": false, "cards": ["bak", "undonghada"]}
 {"id": "8363340", "text": "앉아!", "speech": "plain", "honorListener": false, "cards": ["anjda"]}
 {"id": "8363351", "text": "그만 읽어.", "speech": "plain", "honorListener": false, "cards": ["geuman", "ikda"]}
+{"id": "8363352", "text": "기억해.", "speech": "plain", "honorListener": false, "cards": ["gieokhada"]}
+{"id": "8363355", "text": "계속 읽어.", "speech": "plain", "honorListener": false, "cards": ["gyesok", "ikda"]}
 {"id": "8363356", "text": "여기서 기다려.", "speech": "plain", "honorListener": false, "cards": ["yeogi", "gidarida"]}
 {"id": "8363359", "text": "웃어줘.", "speech": "plain", "honorListener": false, "cards": ["utda", "juseyo"]}
+{"id": "8363362", "text": "우린 이해해.", "speech": "plain", "honorListener": false, "cards": ["uri", "ihaehada"]}
 {"id": "8363367", "text": "말해.", "speech": "plain", "honorListener": false, "cards": ["malhada"]}
+{"id": "8363369", "text": "좀 먹어봐.", "speech": "plain", "honorListener": false, "cards": ["jom", "meokda", "boda-try"]}
+{"id": "8363370", "text": "우리한테 연락해.", "speech": "plain", "honorListener": false, "cards": ["uri", "yeollakhada"]}
+{"id": "8363374", "text": "노래 부탁해.", "speech": "plain", "honorListener": false, "cards": ["norae", "butakhada"]}
+{"id": "8363398", "text": "조용히 해줘.", "speech": "plain", "honorListener": false, "cards": ["joyonghi", "hada", "juseyo"]}
 {"id": "8363399", "text": "누구 있어?", "speech": "plain", "honorListener": false, "cards": ["nugu", "itda"]}
 {"id": "8363402", "text": "누구 집에 있어?", "speech": "plain", "honorListener": false, "cards": ["nugu", "jip", "itda"]}
+{"id": "8363410", "text": "잘 봐.", "speech": "plain", "honorListener": false, "cards": ["jal", "boda"]}
+{"id": "8363414", "text": "우린 약속했어.", "speech": "plain", "honorListener": false, "cards": ["uri", "yaksokhada", "past"]}
+{"id": "8363415", "text": "우린 기억하고 있어.", "speech": "plain", "honorListener": false, "cards": ["uri", "gieokhada", "jungida"]}
 {"id": "8363419", "text": "우린 기다렸어.", "speech": "plain", "honorListener": false, "cards": ["uri", "gidarida", "past"]}
 {"id": "8363453", "text": "그만 웃어.", "speech": "plain", "honorListener": false, "cards": ["geuman", "utda"]}
 {"id": "8363456", "text": "그만 싸워!", "speech": "plain", "honorListener": false, "cards": ["geuman", "ssauda"]}
 {"id": "8363457", "text": "그만 울어.", "speech": "plain", "honorListener": false, "cards": ["geuman", "ulda"]}
 {"id": "8363461", "text": "여기에 있어.", "speech": "plain", "honorListener": false, "cards": ["yeogi", "itda"]}
+{"id": "8363462", "text": "노래 시작해.", "speech": "plain", "honorListener": false, "cards": ["norae", "sijakhada"]}
+{"id": "8363465", "text": "다시 해.", "speech": "plain", "honorListener": false, "cards": ["dasi", "hada"]}
+{"id": "8363466", "text": "여기서 시작해.", "speech": "plain", "honorListener": false, "cards": ["yeogi", "sijakhada"]}
 {"id": "8363471", "text": "거기 앉아.", "speech": "plain", "honorListener": false, "cards": ["geogi", "anjda"]}
 {"id": "8363472", "text": "여기 앉아.", "speech": "plain", "honorListener": false, "cards": ["yeogi", "anjda"]}
+{"id": "8363486", "text": "약속할게.", "speech": "plain", "honorListener": false, "cards": ["yaksokhada", "promise"]}
+{"id": "8363487", "text": "기억하고 있어.", "speech": "plain", "honorListener": false, "cards": ["gieokhada", "jungida"]}
 {"id": "8363488", "text": "알았어.", "speech": "plain", "honorListener": false, "cards": ["alda", "past"]}
+{"id": "8363797", "text": "나는 많이 배웠어.", "speech": "plain", "honorListener": false, "cards": ["na", "mani", "baeuda", "past"]}
 {"id": "8364914", "text": "물이 정말 차가워.", "speech": "plain", "honorListener": false, "cards": ["mul", "jeongmal", "chagapda"]}
+{"id": "8365012", "text": "우린 강아지와 고양이를 가지고 있어.", "speech": "plain", "honorListener": false, "cards": ["uri", "gangaji", "goyangi", "gajida", "jungida"]}
 {"id": "8365108", "text": "사과는 빨개.", "speech": "plain", "honorListener": false, "cards": ["sagwa", "ppalgata"]}
+{"id": "8365116", "text": "네가 부러워.", "speech": "plain", "honorListener": false, "cards": ["neo", "bureopda"]}
 {"id": "8365129", "text": "천천히 말해줘.", "speech": "plain", "honorListener": false, "cards": ["cheoncheonhi", "malhada", "juseyo"]}
 {"id": "8366768", "text": "더 먹을래?", "speech": "plain", "honorListener": false, "cards": ["deo", "meokda", "q", "volition"]}
 {"id": "8367571", "text": "저를 사랑해 주세요.", "speech": "polite", "honorListener": false, "cards": ["na", "saranghada", "juseyo"]}
@@ -161,13 +253,35 @@
 {"id": "8368164", "text": "앉아 줘.", "speech": "plain", "honorListener": false, "cards": ["anjda", "juseyo"]}
 {"id": "8368174", "text": "빨리 와.", "speech": "plain", "honorListener": false, "cards": ["ppalli", "oda"]}
 {"id": "8368184", "text": "눈이 왔어.", "speech": "plain", "honorListener": false, "cards": ["nun", "oda", "past"]}
+{"id": "8368194", "text": "비가 왔어.", "speech": "plain", "honorListener": false, "cards": ["bi", "oda", "past"]}
 {"id": "8368200", "text": "엄마가 울었어.", "speech": "plain", "honorListener": false, "cards": ["eomma", "ulda", "past"]}
 {"id": "8368201", "text": "엄마는 울었어.", "speech": "plain", "honorListener": false, "cards": ["eomma", "ulda", "past"]}
+{"id": "8368205", "text": "참아.", "speech": "plain", "honorListener": false, "cards": ["chamda"]}
+{"id": "8368214", "text": "이해했어.", "speech": "plain", "honorListener": false, "cards": ["ihaehada", "past"]}
 {"id": "8368219", "text": "천천히 먹어.", "speech": "plain", "honorListener": false, "cards": ["cheoncheonhi", "meokda"]}
+{"id": "8368221", "text": "날 잊어.", "speech": "plain", "honorListener": false, "cards": ["na", "itda-forget"]}
+{"id": "8368236", "text": "나 일해.", "speech": "plain", "honorListener": false, "cards": ["na", "ilhada"]}
 {"id": "8368241", "text": "저기를 봐.", "speech": "plain", "honorListener": false, "cards": ["jeogi", "boda"]}
+{"id": "8368253", "text": "준비해.", "speech": "plain", "honorListener": false, "cards": ["junbihada"]}
+{"id": "8368317", "text": "가져.", "speech": "plain", "honorListener": false, "cards": ["gajida"]}
+{"id": "8368318", "text": "이거 가져.", "speech": "plain", "honorListener": false, "cards": ["igeo", "gajida"]}
+{"id": "8368319", "text": "이걸 가져.", "speech": "plain", "honorListener": false, "cards": ["igeo", "gajida"]}
+{"id": "8368321", "text": "계속 말해.", "speech": "plain", "honorListener": false, "cards": ["gyesok", "malhada"]}
+{"id": "8368324", "text": "계속 웃어.", "speech": "plain", "honorListener": false, "cards": ["gyesok", "utda"]}
+{"id": "8368325", "text": "계속 노래하고 있어.", "speech": "plain", "honorListener": false, "cards": ["gyesok", "norae", "hada", "jungida"]}
+{"id": "8368326", "text": "계속 노래해.", "speech": "plain", "honorListener": false, "cards": ["gyesok", "norae", "hada"]}
+{"id": "8368327", "text": "계속 말하고 있어봐.", "speech": "plain", "honorListener": false, "cards": ["gyesok", "malhada", "jungida", "boda-try"]}
+{"id": "8368328", "text": "계속 찾아봐.", "speech": "plain", "honorListener": false, "cards": ["gyesok", "chatda", "boda-try"]}
+{"id": "8368329", "text": "계속 찾고 있어봐.", "speech": "plain", "honorListener": false, "cards": ["gyesok", "chatda", "jungida", "boda-try"]}
+{"id": "8368330", "text": "계속 웃고 있어봐.", "speech": "plain", "honorListener": false, "cards": ["gyesok", "utda", "jungida", "boda-try"]}
+{"id": "8368331", "text": "계속 조용히 하고 있어봐.", "speech": "plain", "honorListener": false, "cards": ["gyesok", "joyonghi", "hada", "jungida", "boda-try"]}
+{"id": "8368333", "text": "계속 보고 있어봐.", "speech": "plain", "honorListener": false, "cards": ["gyesok", "boda", "jungida", "boda-try"]}
+{"id": "8368334", "text": "계속 가고 있어봐.", "speech": "plain", "honorListener": false, "cards": ["gyesok", "gada", "itda", "boda-try"]}
+{"id": "8368336", "text": "계속 싸워.", "speech": "plain", "honorListener": false, "cards": ["gyesok", "ssauda"]}
 {"id": "8368343", "text": "난 운동했어.", "speech": "plain", "honorListener": false, "cards": ["na", "undonghada", "past"]}
 {"id": "8368347", "text": "너무 슬퍼!", "speech": "plain", "honorListener": false, "cards": ["neomu", "seulpeuda"]}
 {"id": "8368379", "text": "내일 와.", "speech": "plain", "honorListener": false, "cards": ["naeil", "oda"]}
+{"id": "8368385", "text": "다시 와.", "speech": "plain", "honorListener": false, "cards": ["dasi", "oda"]}
 {"id": "8368433", "text": "너 어제 학교 끝나고 뭐했어?", "speech": "plain", "honorListener": false, "cards": ["neo", "eoje", "hakgyo", "kkeunnada", "mwo", "hada"]}
 {"id": "8369708", "text": "나 자러 가고 싶어.", "speech": "plain", "honorListener": false, "cards": ["na", "jada", "gada", "sipda"]}
 {"id": "8369709", "text": "나 자고 싶어.", "speech": "plain", "honorListener": false, "cards": ["na", "jada", "sipda"]}
@@ -178,39 +292,70 @@
 {"id": "8369723", "text": "지하철로 갈게.", "speech": "plain", "honorListener": false, "cards": ["jihacheol", "gada", "promise"]}
 {"id": "8369725", "text": "지하철로 가고 싶어.", "speech": "plain", "honorListener": false, "cards": ["jihacheol", "gada", "sipda"]}
 {"id": "8375027", "text": "난 음악을 듣고 있어.", "speech": "plain", "honorListener": false, "cards": ["na", "eumak", "deutda", "jungida"]}
+{"id": "8377409", "text": "들어와!", "speech": "plain", "honorListener": false, "cards": ["deureooda"]}
+{"id": "8384636", "text": "외로워.", "speech": "plain", "honorListener": false, "cards": ["oeropda"]}
+{"id": "8394164", "text": "너 왜 아직도 학교에 있어?", "speech": "plain", "honorListener": false, "cards": ["neo", "wae", "ajik", "do", "hakgyo", "itda"]}
 {"id": "8394167", "text": "난 학교에 있어.", "speech": "plain", "honorListener": false, "cards": ["na", "hakgyo", "itda"]}
 {"id": "8394170", "text": "난 이 학교를 좋아해.", "speech": "plain", "honorListener": false, "cards": ["na", "i-det", "hakgyo", "johahada"]}
 {"id": "8394173", "text": "내일 학교에 갈 거야?", "speech": "plain", "honorListener": false, "cards": ["naeil", "hakgyo", "gada", "q"]}
 {"id": "8396631", "text": "집 있어요?", "speech": "polite", "honorListener": false, "cards": ["jip", "itda", "q"]}
+{"id": "8403185", "text": "난 열심히 일하고 있었어.", "speech": "plain", "honorListener": false, "cards": ["na", "yeolsimhi", "ilhada", "jungida", "past"]}
+{"id": "8406168", "text": "내일 아침은 바빠요?", "speech": "polite", "honorListener": false, "cards": ["naeil", "achim", "bappeuda", "q"]}
+{"id": "8437683", "text": "왜 여자가 싫어?", "speech": "plain", "honorListener": false, "cards": ["wae", "yeoja", "silta"]}
+{"id": "8441225", "text": "너 왜 아직도 일하고 있어?", "speech": "plain", "honorListener": false, "cards": ["neo", "wae", "ajik", "do", "ilhada", "jungida"]}
+{"id": "8441226", "text": "왜 아직도 일하고 있어?", "speech": "plain", "honorListener": false, "cards": ["wae", "ajik", "do", "ilhada", "jungida"]}
 {"id": "8501833", "text": "어디서 살 거야?", "speech": "plain", "honorListener": false, "cards": ["eodi", "salda", "future"]}
+{"id": "8516990", "text": "우린 아직도 먹고 있어.", "speech": "plain", "honorListener": false, "cards": ["uri", "ajik", "do", "meokda", "jungida"]}
 {"id": "8533614", "text": "정말 재미있었어!", "speech": "plain", "honorListener": false, "cards": ["jeongmal", "jaemiitda", "past"]}
+{"id": "8533803", "text": "누구도 돈이 없었어.", "speech": "plain", "honorListener": false, "cards": ["nugu", "do", "don", "eopda", "past"]}
 {"id": "8584448", "text": "사과 좋아요?", "speech": "polite", "honorListener": false, "cards": ["sagwa", "jota", "q"]}
+{"id": "8624126", "text": "여자는 무엇을 가지고 갑니까?", "speech": "formal", "honorListener": false, "cards": ["yeoja", "mwo", "gajida", "gada"]}
 {"id": "8624198", "text": "버스로 갈 거예요", "speech": "polite", "honorListener": false, "cards": ["beoseu", "gada", "future"]}
 {"id": "8624550", "text": "나 배 아파.", "speech": "plain", "honorListener": false, "cards": ["na", "bae", "apeuda"]}
 {"id": "8624552", "text": "괜찮아.", "speech": "plain", "honorListener": false, "cards": ["gwaenchanta"]}
+{"id": "8700720", "text": "고양이가 잠을 안 자.", "speech": "plain", "honorListener": false, "cards": ["goyangi", "jam", "jada", "an"]}
+{"id": "8700723", "text": "강아지가 잠을 안 자.", "speech": "plain", "honorListener": false, "cards": ["gangaji", "jam", "jada", "an"]}
 {"id": "8700737", "text": "학교에 갑니다.", "speech": "formal", "honorListener": false, "cards": ["hakgyo", "gada"]}
 {"id": "9211125", "text": "무엇을 하고 있습니까?", "speech": "formal", "honorListener": false, "cards": ["mwo", "hada", "jungida"]}
+{"id": "9229479", "text": "돌아와요 !", "speech": "polite", "honorListener": false, "cards": ["doraoda"]}
+{"id": "9375564", "text": "찾았습니다.", "speech": "formal", "honorListener": false, "cards": ["chatda", "past"]}
+{"id": "9375573", "text": "찾았어.", "speech": "plain", "honorListener": false, "cards": ["chatda", "past"]}
+{"id": "9392933", "text": "믿고 있어.", "speech": "plain", "honorListener": false, "cards": ["mitda", "jungida"]}
+{"id": "9414924", "text": "축하해요!", "speech": "polite", "honorListener": false, "cards": ["chukhahada"]}
+{"id": "9414928", "text": "고맙습니다", "speech": "formal", "honorListener": false, "cards": ["gomapda"]}
+{"id": "9466292", "text": "반갑습니다.", "speech": "formal", "honorListener": false, "cards": ["bangapda"]}
+{"id": "9466297", "text": "고맙습니다.", "speech": "formal", "honorListener": false, "cards": ["gomapda"]}
 {"id": "9466303", "text": "좋아요.", "speech": "polite", "honorListener": false, "cards": ["jota"]}
 {"id": "9666949", "text": "배가 아파요.", "speech": "polite", "honorListener": false, "cards": ["bae", "apeuda"]}
 {"id": "9666954", "text": "배가 많이 아파요.", "speech": "polite", "honorListener": false, "cards": ["bae", "mani", "apeuda"]}
+{"id": "9677229", "text": "이제 그만해!", "speech": "plain", "honorListener": false, "cards": ["ije", "geuman", "hada"]}
+{"id": "9952228", "text": "좀 기다려.", "speech": "plain", "honorListener": false, "cards": ["jom", "gidarida"]}
+{"id": "10155038", "text": "나 돌아왔어!", "speech": "plain", "honorListener": false, "cards": ["na", "doraoda", "past"]}
+{"id": "10573710", "text": "나는 커피가 더 좋아.", "speech": "plain", "honorListener": false, "cards": ["na", "keopi", "deo", "jota"]}
 {"id": "10573753", "text": "저는 이거 할게요.", "speech": "polite", "honorListener": false, "cards": ["na", "igeo", "hada", "promise"]}
 {"id": "10573806", "text": "이것 보세요.", "speech": "polite", "honorListener": false, "cards": ["igeo", "boda", "haseyo"]}
 {"id": "10573840", "text": "쉬어.", "speech": "plain", "honorListener": false, "cards": ["swida"]}
+{"id": "10573927", "text": "약속했어.", "speech": "plain", "honorListener": false, "cards": ["yaksokhada", "past"]}
 {"id": "10573933", "text": "전화해줘!", "speech": "plain", "honorListener": false, "cards": ["jeonhwahada", "juseyo"]}
+{"id": "10573934", "text": "연락해줘!", "speech": "plain", "honorListener": false, "cards": ["yeollakhada", "juseyo"]}
 {"id": "10573951", "text": "공부해!", "speech": "plain", "honorListener": false, "cards": ["gongbuhada"]}
 {"id": "10573970", "text": "나는 고양이를 좋아해.", "speech": "plain", "honorListener": false, "cards": ["na", "goyangi", "johahada"]}
 {"id": "10573981", "text": "나는 이걸 살거야.", "speech": "plain", "honorListener": false, "cards": ["na", "igeo", "sada", "future"]}
 {"id": "10574002", "text": "이 책 읽어보셨어요?", "speech": "polite", "honorListener": true, "cards": ["i-det", "chaek", "ikda", "boda-try", "past", "q"]}
+{"id": "10574028", "text": "시작하자!", "speech": "plain", "honorListener": false, "cards": ["sijakhada", "haja"]}
 {"id": "10574072", "text": "우리가 그거 했어.", "speech": "plain", "honorListener": false, "cards": ["uri", "geugeo", "hada", "past"]}
 {"id": "10576253", "text": "우리 그거 알아.", "speech": "plain", "honorListener": false, "cards": ["uri", "geugeo", "alda"]}
 {"id": "10576464", "text": "여기 오세요!", "speech": "polite", "honorListener": false, "cards": ["yeogi", "oda", "haseyo"]}
+{"id": "10576534", "text": "너무 고마워!", "speech": "plain", "honorListener": false, "cards": ["neomu", "gomapda"]}
 {"id": "10576592", "text": "듣고 있습니다.", "speech": "formal", "honorListener": false, "cards": ["deutda", "jungida"]}
 {"id": "10585797", "text": "우리 기다려주세요!", "speech": "polite", "honorListener": false, "cards": ["uri", "gidarida", "juseyo"]}
 {"id": "10585811", "text": "우리 집에 오세요!", "speech": "polite", "honorListener": false, "cards": ["uri", "jip", "oda", "haseyo"]}
 {"id": "10587570", "text": "나 이거 정말 좋아.", "speech": "plain", "honorListener": false, "cards": ["na", "igeo", "jeongmal", "jota"]}
+{"id": "10587616", "text": "잘 자.", "speech": "plain", "honorListener": false, "cards": ["jal", "jada"]}
 {"id": "10587631", "text": "거기 가실 거예요?", "speech": "polite", "honorListener": true, "cards": ["geogi", "gada", "future", "q"]}
 {"id": "10587641", "text": "나는 이거 안 좋아해.", "speech": "plain", "honorListener": false, "cards": ["na", "igeo", "johahada", "an"]}
 {"id": "10587892", "text": "자전거 있으세요?", "speech": "polite", "honorListener": true, "cards": ["jajeongeo", "itda", "q"]}
+{"id": "10587916", "text": "준비하세요!", "speech": "polite", "honorListener": false, "cards": ["junbihada", "haseyo"]}
 {"id": "10589831", "text": "어디서 먹을까?", "speech": "plain", "honorListener": false, "cards": ["eodi", "meokda", "halkkayo"]}
 {"id": "10589838", "text": "뭘 하셨어요?", "speech": "polite", "honorListener": true, "cards": ["mwo", "hada", "past"]}
 {"id": "10596595", "text": "보세요!", "speech": "polite", "honorListener": false, "cards": ["boda", "haseyo"]}
@@ -219,11 +364,16 @@
 {"id": "10603239", "text": "우리 어디서 만날까요?", "speech": "polite", "honorListener": false, "cards": ["uri", "eodi", "mannada", "halkkayo"]}
 {"id": "10603240", "text": "우리 어디서 볼까요?", "speech": "polite", "honorListener": false, "cards": ["uri", "eodi", "boda", "halkkayo"]}
 {"id": "10603247", "text": "어디 가셨어요?", "speech": "polite", "honorListener": true, "cards": ["eodi", "gada", "past"]}
+{"id": "10605378", "text": "너는 왜 안 들어와?", "speech": "plain", "honorListener": false, "cards": ["neo", "wae", "deureooda", "an"]}
+{"id": "10605402", "text": "그걸 기억해.", "speech": "plain", "honorListener": false, "cards": ["geugeo", "gieokhada"]}
+{"id": "10605426", "text": "나 좀 도와줘.", "speech": "plain", "honorListener": false, "cards": ["na", "jom", "dopda", "juseyo"]}
 {"id": "10605455", "text": "내일 아침에 오세요.", "speech": "polite", "honorListener": false, "cards": ["naeil", "achim", "oda", "haseyo"]}
+{"id": "10605456", "text": "나는 너를 믿어.", "speech": "plain", "honorListener": false, "cards": ["na", "neo", "mitda"]}
 {"id": "10607033", "text": "우리 기다려줘!", "speech": "plain", "honorListener": false, "cards": ["uri", "gidarida", "juseyo"]}
 {"id": "10607039", "text": "누가 갈거야?", "speech": "plain", "honorListener": false, "cards": ["nugu", "gada", "future"]}
-{"id": "10607106", "text": "점심 먹으러 갑시다.", "speech": "formal", "honorListener": false, "cards": ["jeomsim", "meokda", "gada", "halkkayo"]}
-{"id": "10607108", "text": "점심 먹읍시다.", "speech": "formal", "honorListener": false, "cards": ["jeomsim", "meokda", "halkkayo"]}
+{"id": "10607093", "text": "아직도 무서우세요?", "speech": "polite", "honorListener": true, "cards": ["ajik", "do", "museopda", "q"]}
+{"id": "10607106", "text": "점심 먹으러 갑시다.", "speech": "formal", "honorListener": false, "cards": ["jeomsim", "meokda", "gada", "haja"]}
+{"id": "10607108", "text": "점심 먹읍시다.", "speech": "formal", "honorListener": false, "cards": ["jeomsim", "meokda", "haja"]}
 {"id": "10607116", "text": "앉으십시오.", "speech": "formal", "honorListener": true, "cards": ["anjda", "haseyo"]}
 {"id": "10607123", "text": "내가 도울게.", "speech": "plain", "honorListener": false, "cards": ["na", "dopda", "promise"]}
 {"id": "10607282", "text": "뭐가 없으세요?", "speech": "polite", "honorListener": true, "cards": ["mwo", "eopda"]}
@@ -235,41 +385,58 @@
 {"id": "10609013", "text": "왜 안 먹어요?", "speech": "polite", "honorListener": false, "cards": ["wae", "meokda", "an"]}
 {"id": "10610361", "text": "너는 알고 있어?", "speech": "plain", "honorListener": false, "cards": ["neo", "alda", "jungida", "q"]}
 {"id": "10617670", "text": "너 좋아해?", "speech": "plain", "honorListener": false, "cards": ["neo", "johahada", "q"]}
+{"id": "10617671", "text": "제가 차를 준비했습니다.", "speech": "formal", "honorListener": false, "cards": ["na", "cha", "junbihada", "past"]}
+{"id": "10617760", "text": "나는 너를 생각해.", "speech": "plain", "honorListener": false, "cards": ["na", "neo", "saenggakhada"]}
+{"id": "10622379", "text": "잘 자요.", "speech": "polite", "honorListener": false, "cards": ["jal", "jada"]}
+{"id": "10622389", "text": "잘 자요!", "speech": "polite", "honorListener": false, "cards": ["jal", "jada"]}
 {"id": "10630290", "text": "와주세요.", "speech": "polite", "honorListener": false, "cards": ["oda", "juseyo"]}
 {"id": "10642147", "text": "내가 바꿀게.", "speech": "plain", "honorListener": false, "cards": ["na", "bakkuda", "promise"]}
+{"id": "10669518", "text": "반갑습니다!", "speech": "formal", "honorListener": false, "cards": ["bangapda"]}
+{"id": "10706783", "text": "나중에 봅시다.", "speech": "formal", "honorListener": false, "cards": ["najung", "boda", "haja"]}
+{"id": "10706784", "text": "나중에 봐.", "speech": "plain", "honorListener": false, "cards": ["najung", "boda"]}
 {"id": "10706821", "text": "우리한테 오세요.", "speech": "polite", "honorListener": false, "cards": ["uri", "oda", "haseyo"]}
 {"id": "10706822", "text": "가실거예요?", "speech": "polite", "honorListener": true, "cards": ["gada", "future", "q"]}
 {"id": "10788984", "text": "나 내일 집에 없어.", "speech": "plain", "honorListener": false, "cards": ["na", "naeil", "jip", "eopda"]}
-{"id": "11082059", "text": "우리 버스 타자.", "speech": "plain", "honorListener": false, "cards": ["uri", "beoseu", "tada", "halkkayo"]}
+{"id": "11082059", "text": "우리 버스 타자.", "speech": "plain", "honorListener": false, "cards": ["uri", "beoseu", "tada", "haja"]}
 {"id": "11083909", "text": "눈이 많이 왔어.", "speech": "plain", "honorListener": false, "cards": ["nun", "mani", "oda", "past"]}
 {"id": "11085726", "text": "우리 오늘 뭐해?", "speech": "plain", "honorListener": false, "cards": ["uri", "oneul", "mwo", "hada"]}
 {"id": "11085727", "text": "물은 어디 있어?", "speech": "plain", "honorListener": false, "cards": ["mul", "eodi", "itda"]}
 {"id": "11089223", "text": "내일 뭘 할 거예요?", "speech": "polite", "honorListener": false, "cards": ["naeil", "mwo", "hada"]}
 {"id": "11091840", "text": "집에는 안 계셔요.", "speech": "polite", "honorListener": false, "cards": ["jip", "itda", "an"]}
+{"id": "11091845", "text": "내일은 일 안 해.", "speech": "plain", "honorListener": false, "cards": ["naeil", "il", "hada", "an"]}
+{"id": "11103029", "text": "선물 고맙습니다!", "speech": "formal", "honorListener": false, "cards": ["seonmul", "gomapda"]}
+{"id": "11103036", "text": "집으로 돌아와 줘.", "speech": "plain", "honorListener": false, "cards": ["jip", "doraoda", "juseyo"]}
 {"id": "11104409", "text": "노래 그만 불러.", "speech": "plain", "honorListener": false, "cards": ["norae", "geuman", "bureuda"]}
 {"id": "11104579", "text": "저는 노래할 거에요.", "speech": "polite", "honorListener": false, "cards": ["na", "norae", "hada", "future"]}
 {"id": "11104637", "text": "널 도우러 갈게.", "speech": "plain", "honorListener": false, "cards": ["neo", "dopda", "gada", "promise"]}
+{"id": "11104682", "text": "잘 못 들었어요.", "speech": "polite", "honorListener": false, "cards": ["jal", "deutda", "mot", "past"]}
 {"id": "11104708", "text": "고기로 할게요.", "speech": "polite", "honorListener": false, "cards": ["gogi", "hada", "promise"]}
 {"id": "11104709", "text": "고기 주세요.", "speech": "polite", "honorListener": false, "cards": ["gogi", "juda", "haseyo"]}
 {"id": "11104722", "text": "거기로 가.", "speech": "plain", "honorListener": false, "cards": ["geogi", "gada"]}
 {"id": "11104725", "text": "차 주세요.", "speech": "polite", "honorListener": false, "cards": ["cha", "juda", "haseyo"]}
 {"id": "11104773", "text": "나 너무 무서워.", "speech": "plain", "honorListener": false, "cards": ["na", "neomu", "museopda"]}
+{"id": "11104793", "text": "이제 다 끝났어.", "speech": "plain", "honorListener": false, "cards": ["ije", "da", "kkeunnada", "past"]}
 {"id": "11104818", "text": "나 졸려.", "speech": "plain", "honorListener": false, "cards": ["na", "jollida"]}
 {"id": "11104821", "text": "지금 뭐하고 있어?", "speech": "plain", "honorListener": false, "cards": ["jigeum", "mwo", "hada", "jungida"]}
 {"id": "11105211", "text": "내일 할게.", "speech": "plain", "honorListener": false, "cards": ["naeil", "hada", "promise"]}
-{"id": "11105326", "text": "빨리 집에 가자.", "speech": "plain", "honorListener": false, "cards": ["ppalli", "jip", "gada", "halkkayo"]}
+{"id": "11105326", "text": "빨리 집에 가자.", "speech": "plain", "honorListener": false, "cards": ["ppalli", "jip", "gada", "haja"]}
+{"id": "11105382", "text": "너는 여자가 좋아?", "speech": "plain", "honorListener": false, "cards": ["neo", "yeoja", "jota", "q"]}
+{"id": "11105429", "text": "저는 잘 모릅니다.", "speech": "formal", "honorListener": false, "cards": ["na", "jal", "moreuda"]}
+{"id": "11105440", "text": "이해했습니다.", "speech": "formal", "honorListener": false, "cards": ["ihaehada", "past"]}
 {"id": "11105696", "text": "뭐하고 있어?", "speech": "plain", "honorListener": false, "cards": ["mwo", "hada", "jungida"]}
 {"id": "11106014", "text": "안 무서워?", "speech": "plain", "honorListener": false, "cards": ["museopda", "an", "q"]}
 {"id": "11106071", "text": "거기 있습니다.", "speech": "formal", "honorListener": false, "cards": ["geogi", "itda"]}
 {"id": "11106073", "text": "거기 있어.", "speech": "plain", "honorListener": false, "cards": ["geogi", "itda"]}
 {"id": "11106082", "text": "제가 살게요.", "speech": "polite", "honorListener": false, "cards": ["na", "sada", "promise"]}
-{"id": "11106130", "text": "병원으로 갑시다.", "speech": "formal", "honorListener": false, "cards": ["byeongwon", "gada", "halkkayo"]}
-{"id": "11106131", "text": "병원에 가자.", "speech": "plain", "honorListener": false, "cards": ["byeongwon", "gada", "halkkayo"]}
+{"id": "11106130", "text": "병원으로 갑시다.", "speech": "formal", "honorListener": false, "cards": ["byeongwon", "gada", "haja"]}
+{"id": "11106131", "text": "병원에 가자.", "speech": "plain", "honorListener": false, "cards": ["byeongwon", "gada", "haja"]}
 {"id": "11106244", "text": "우리에게 노래를 불러줘.", "speech": "plain", "honorListener": false, "cards": ["uri", "norae", "bureuda", "juseyo"]}
 {"id": "11106330", "text": "울고 있어?", "speech": "plain", "honorListener": false, "cards": ["ulda", "jungida", "q"]}
+{"id": "11106377", "text": "좀 쉬어.", "speech": "plain", "honorListener": false, "cards": ["jom", "swida"]}
 {"id": "11106409", "text": "누가 이 그림을 그렸어?", "speech": "plain", "honorListener": false, "cards": ["nugu", "i-det", "geurim", "geurida", "past"]}
 {"id": "11106410", "text": "누가 이 그림을 그렸을까?", "speech": "plain", "honorListener": false, "cards": ["nugu", "i-det", "geurim", "geurida", "past", "halkkayo"]}
 {"id": "11106411", "text": "차에 타.", "speech": "plain", "honorListener": false, "cards": ["cha", "tada"]}
+{"id": "11106447", "text": "오늘 바빠?", "speech": "plain", "honorListener": false, "cards": ["oneul", "bappeuda", "q"]}
 {"id": "11106560", "text": "어디로 갈 거야?", "speech": "plain", "honorListener": false, "cards": ["eodi", "gada", "future"]}
 {"id": "11106666", "text": "너무 좋아!", "speech": "plain", "honorListener": false, "cards": ["neomu", "jota"]}
 {"id": "11106691", "text": "이거 괜찮아?", "speech": "plain", "honorListener": false, "cards": ["igeo", "gwaenchanta", "q"]}
@@ -280,6 +447,8 @@
 {"id": "11106807", "text": "누구 집에 있어요?", "speech": "polite", "honorListener": false, "cards": ["nugu", "jip", "itda"]}
 {"id": "11106979", "text": "마셔.", "speech": "plain", "honorListener": false, "cards": ["masida"]}
 {"id": "11107050", "text": "우리를 보세요.", "speech": "polite", "honorListener": false, "cards": ["uri", "boda", "haseyo"]}
+{"id": "11110761", "text": "생각해 주세요.", "speech": "polite", "honorListener": false, "cards": ["saenggakhada", "juseyo"]}
+{"id": "11114978", "text": "우린 그걸 다시는 못 할 거야.", "speech": "plain", "honorListener": false, "cards": ["uri", "geugeo", "dasi", "hada", "mot", "future"]}
 {"id": "11128354", "text": "앉아보세요.", "speech": "polite", "honorListener": false, "cards": ["anjda", "boda-try", "haseyo"]}
 {"id": "11128401", "text": "예뻐?", "speech": "plain", "honorListener": false, "cards": ["yeppeuda", "q"]}
 {"id": "11133289", "text": "그건 없어요.", "speech": "polite", "honorListener": false, "cards": ["geugeo", "eopda"]}
@@ -289,11 +458,14 @@
 {"id": "11597196", "text": "빨리 가!", "speech": "plain", "honorListener": false, "cards": ["ppalli", "gada"]}
 {"id": "11917295", "text": "괜찮을 거예요.", "speech": "polite", "honorListener": false, "cards": ["gwaenchanta", "future"]}
 {"id": "12212429", "text": "물 주세요.", "speech": "polite", "honorListener": false, "cards": ["mul", "juda", "haseyo"]}
+{"id": "12212615", "text": "커피 주세요.", "speech": "polite", "honorListener": false, "cards": ["keopi", "juda", "haseyo"]}
 {"id": "12212630", "text": "아이스크림 주세요.", "speech": "polite", "honorListener": false, "cards": ["aiseukeurim", "juda", "haseyo"]}
+{"id": "12212821", "text": "물 좀 주세요.", "speech": "polite", "honorListener": false, "cards": ["mul", "jom", "juda", "haseyo"]}
 {"id": "12964985", "text": "너 왜 자전거 안 사?", "speech": "plain", "honorListener": false, "cards": ["neo", "wae", "jajeongeo", "sada", "an"]}
 {"id": "13017483", "text": "집 밖에 고양이 두 마리가 있습니다.", "speech": "formal", "honorListener": false, "cards": ["jip", "bak", "goyangi", "dul", "itda"]}
 {"id": "13095560", "text": "말해봐", "speech": "plain", "honorListener": false, "cards": ["malhada", "boda-try"]}
 {"id": "13111665", "text": "좋아요!", "speech": "polite", "honorListener": false, "cards": ["jota"]}
+{"id": "13115746", "text": "저는 잊었습니다.", "speech": "formal", "honorListener": false, "cards": ["na", "itda-forget", "past"]}
 {"id": "13115777", "text": "넌 집에 있었어.", "speech": "plain", "honorListener": false, "cards": ["neo", "jip", "itda", "past"]}
 {"id": "13115783", "text": "집에 있었습니다.", "speech": "formal", "honorListener": false, "cards": ["jip", "itda", "past"]}
 {"id": "13115784", "text": "집에 있었어.", "speech": "plain", "honorListener": false, "cards": ["jip", "itda", "past"]}
@@ -302,26 +474,52 @@
 {"id": "13117112", "text": "괜찮습니까?", "speech": "formal", "honorListener": false, "cards": ["gwaenchanta", "q"]}
 {"id": "13117114", "text": "괜찮아요?", "speech": "polite", "honorListener": false, "cards": ["gwaenchanta", "q"]}
 {"id": "13117116", "text": "괜찮으십니까?", "speech": "formal", "honorListener": true, "cards": ["gwaenchanta", "q"]}
+{"id": "13117400", "text": "다녀오세요.", "speech": "polite", "honorListener": false, "cards": ["danyeooda", "haseyo"]}
+{"id": "13117407", "text": "다녀왔습니다.", "speech": "formal", "honorListener": false, "cards": ["danyeooda", "past"]}
+{"id": "13117408", "text": "다녀왔어요.", "speech": "polite", "honorListener": false, "cards": ["danyeooda", "past"]}
+{"id": "13117414", "text": "잘 다녀왔어요.", "speech": "polite", "honorListener": false, "cards": ["jal", "danyeooda", "past"]}
+{"id": "13117660", "text": "잘 부탁합니다.", "speech": "formal", "honorListener": false, "cards": ["jal", "butakhada"]}
+{"id": "13121239", "text": "저는 돈이 없습니다.", "speech": "formal", "honorListener": false, "cards": ["na", "don", "eopda"]}
+{"id": "13121241", "text": "내가 돈이 없어요.", "speech": "polite", "honorListener": false, "cards": ["na", "don", "eopda"]}
+{"id": "13121243", "text": "돈이 없습니다.", "speech": "formal", "honorListener": false, "cards": ["don", "eopda"]}
+{"id": "13121244", "text": "돈이 없어요.", "speech": "polite", "honorListener": false, "cards": ["don", "eopda"]}
 {"id": "13121486", "text": "마시러 왔습니다.", "speech": "formal", "honorListener": false, "cards": ["masida", "oda", "past"]}
 {"id": "13128379", "text": "아기가 울고 있어요.", "speech": "polite", "honorListener": false, "cards": ["agi", "ulda", "jungida"]}
+{"id": "13130059", "text": "너무 비싸요.", "speech": "polite", "honorListener": false, "cards": ["neomu", "bissada"]}
 {"id": "13134956", "text": "그만 말해!", "speech": "plain", "honorListener": false, "cards": ["geuman", "malhada"]}
-{"id": "13138312", "text": "버스로 가자.", "speech": "plain", "honorListener": false, "cards": ["beoseu", "gada", "halkkayo"]}
+{"id": "13138312", "text": "버스로 가자.", "speech": "plain", "honorListener": false, "cards": ["beoseu", "gada", "haja"]}
+{"id": "13140222", "text": "주말 잘 보내세요!", "speech": "polite", "honorListener": false, "cards": ["jumal", "jal", "bonaeda", "haseyo"]}
+{"id": "13140371", "text": "돈 가져 가.", "speech": "plain", "honorListener": false, "cards": ["don", "gajida", "gada"]}
 {"id": "13144319", "text": "나와 만나고 싶어?", "speech": "plain", "honorListener": false, "cards": ["na", "mannada", "sipda", "q"]}
 {"id": "13150918", "text": "심심해.", "speech": "plain", "honorListener": false, "cards": ["simsimhada"]}
 {"id": "13151143", "text": "어디에서 오셨어요?", "speech": "polite", "honorListener": true, "cards": ["eodi", "oda", "past"]}
 {"id": "13155897", "text": "왜 이 학교로 했어?", "speech": "plain", "honorListener": false, "cards": ["wae", "i-det", "hakgyo", "hada", "past"]}
+{"id": "13156246", "text": "이야기해 봅시다.", "speech": "formal", "honorListener": false, "cards": ["iyagihada", "boda-try", "haja"]}
+{"id": "13156248", "text": "이야기해요.", "speech": "polite", "honorListener": false, "cards": ["iyagihada"]}
+{"id": "13156254", "text": "이야기 해 볼까요.", "speech": "polite", "honorListener": false, "cards": ["iyagihada", "boda-try", "halkkayo"]}
 {"id": "13156263", "text": "난 널 안 좋아해!", "speech": "plain", "honorListener": false, "cards": ["na", "neo", "johahada", "an"]}
+{"id": "13158966", "text": "어제는 일찍 일어났어.", "speech": "plain", "honorListener": false, "cards": ["eoje", "iljjik", "ireonada"]}
+{"id": "13160088", "text": "아직도 화났어?", "speech": "plain", "honorListener": false, "cards": ["ajik", "do", "hwanada", "past", "q"]}
 {"id": "13162794", "text": "왜 여기 있어요?", "speech": "polite", "honorListener": false, "cards": ["wae", "yeogi", "itda"]}
 {"id": "13162795", "text": "왜 여기 있어?", "speech": "plain", "honorListener": false, "cards": ["wae", "yeogi", "itda"]}
+{"id": "13162819", "text": "돌아와요!", "speech": "polite", "honorListener": false, "cards": ["doraoda"]}
+{"id": "13162821", "text": "돌아와!", "speech": "plain", "honorListener": false, "cards": ["doraoda"]}
+{"id": "13162826", "text": "돌아오세요.", "speech": "polite", "honorListener": false, "cards": ["doraoda", "haseyo"]}
+{"id": "13162829", "text": "돌아오십시오.", "speech": "formal", "honorListener": true, "cards": ["doraoda", "haseyo"]}
+{"id": "13162840", "text": "들어와요.", "speech": "polite", "honorListener": false, "cards": ["deureooda"]}
+{"id": "13162844", "text": "들어오십시오!", "speech": "formal", "honorListener": true, "cards": ["deureooda", "haseyo"]}
 {"id": "13162865", "text": "앉으세요.", "speech": "polite", "honorListener": false, "cards": ["anjda", "haseyo"]}
 {"id": "13162883", "text": "그거 주세요.", "speech": "polite", "honorListener": false, "cards": ["geugeo", "juda", "haseyo"]}
 {"id": "13162884", "text": "그것을 주세요.", "speech": "polite", "honorListener": false, "cards": ["geugeo", "juda", "haseyo"]}
 {"id": "13162887", "text": "그것을 주십시오.", "speech": "formal", "honorListener": true, "cards": ["geugeo", "juda", "haseyo"]}
+{"id": "13162894", "text": "돈을 줘!", "speech": "plain", "honorListener": false, "cards": ["don", "juda"]}
 {"id": "13163030", "text": "문을 닫아!", "speech": "plain", "honorListener": false, "cards": ["mun", "datda"]}
 {"id": "13163032", "text": "문을 닫아요!", "speech": "polite", "honorListener": false, "cards": ["mun", "datda"]}
 {"id": "13163571", "text": "우리 빵을 먹어요.", "speech": "polite", "honorListener": false, "cards": ["uri", "ppang", "meokda"]}
 {"id": "13164609", "text": "너 싫어!", "speech": "plain", "honorListener": false, "cards": ["neo", "silta"]}
 {"id": "13164668", "text": "싫어!", "speech": "plain", "honorListener": false, "cards": ["silta"]}
+{"id": "13164771", "text": "영화를 보고 있어요.", "speech": "polite", "honorListener": false, "cards": ["yeonghwa", "boda", "jungida"]}
+{"id": "13164772", "text": "영화를 보고 있어.", "speech": "plain", "honorListener": false, "cards": ["yeonghwa", "boda", "jungida"]}
 {"id": "13167426", "text": "맛있어!", "speech": "plain", "honorListener": false, "cards": ["masitda"]}
 {"id": "13168103", "text": "기다릴께요.", "speech": "polite", "honorListener": false, "cards": ["gidarida", "promise"]}
 {"id": "13168109", "text": "기다릴 거야.", "speech": "plain", "honorListener": false, "cards": ["gidarida", "future"]}
@@ -337,9 +535,14 @@
 {"id": "13170215", "text": "배고픕니다.", "speech": "formal", "honorListener": false, "cards": ["baegopeuda"]}
 {"id": "13170239", "text": "목말라요.", "speech": "polite", "honorListener": false, "cards": ["mongmareuda"]}
 {"id": "13170241", "text": "목말라.", "speech": "plain", "honorListener": false, "cards": ["mongmareuda"]}
+{"id": "13170260", "text": "바빠요.", "speech": "polite", "honorListener": false, "cards": ["bappeuda"]}
+{"id": "13170262", "text": "바쁩니다.", "speech": "formal", "honorListener": false, "cards": ["bappeuda"]}
+{"id": "13170264", "text": "바빠.", "speech": "plain", "honorListener": false, "cards": ["bappeuda"]}
 {"id": "13170288", "text": "너무 더워요!", "speech": "polite", "honorListener": false, "cards": ["neomu", "deopda"]}
 {"id": "13170289", "text": "너무 덥습니다!", "speech": "formal", "honorListener": false, "cards": ["neomu", "deopda"]}
 {"id": "13170402", "text": "아빠는 지금 집에 안 계셔.", "speech": "plain", "honorListener": false, "cards": ["appa", "jigeum", "jip", "itda", "an"]}
+{"id": "13170776", "text": "컴퓨터를 가지고 있어요.", "speech": "polite", "honorListener": false, "cards": ["keompyuteo", "gajida", "jungida"]}
+{"id": "13170777", "text": "컴퓨터를 가지고 있어.", "speech": "plain", "honorListener": false, "cards": ["keompyuteo", "gajida", "jungida"]}
 {"id": "13170801", "text": "컴퓨터가 있어요.", "speech": "polite", "honorListener": false, "cards": ["keompyuteo", "itda"]}
 {"id": "13170803", "text": "저는 컴퓨터가 있습니다.", "speech": "formal", "honorListener": false, "cards": ["na", "keompyuteo", "itda"]}
 {"id": "13170804", "text": "나 컴퓨터 있어.", "speech": "plain", "honorListener": false, "cards": ["na", "keompyuteo", "itda"]}
@@ -347,6 +550,10 @@
 {"id": "13172420", "text": "뭐 하고 있어요?", "speech": "polite", "honorListener": false, "cards": ["mwo", "hada", "jungida"]}
 {"id": "13172422", "text": "뭐 하고 있어?", "speech": "plain", "honorListener": false, "cards": ["mwo", "hada", "jungida"]}
 {"id": "13172424", "text": "무엇을 하십니까?", "speech": "formal", "honorListener": true, "cards": ["mwo", "hada"]}
+{"id": "13172462", "text": "비가 옵니다.", "speech": "formal", "honorListener": false, "cards": ["bi", "oda"]}
+{"id": "13172492", "text": "비가 오고 있어요.", "speech": "polite", "honorListener": false, "cards": ["bi", "oda", "jungida"]}
+{"id": "13174605", "text": "이해합니다.", "speech": "formal", "honorListener": false, "cards": ["ihaehada"]}
+{"id": "13174606", "text": "이해해요.", "speech": "polite", "honorListener": false, "cards": ["ihaehada"]}
 {"id": "13174613", "text": "알아요.", "speech": "polite", "honorListener": false, "cards": ["alda"]}
 {"id": "13174615", "text": "알았어요.", "speech": "polite", "honorListener": false, "cards": ["alda", "past"]}
 {"id": "13174616", "text": "알았어?", "speech": "plain", "honorListener": false, "cards": ["alda", "past", "q"]}
@@ -354,6 +561,15 @@
 {"id": "13174720", "text": "가고 있어요.", "speech": "polite", "honorListener": false, "cards": ["gada", "jungida"]}
 {"id": "13174721", "text": "가고 있어.", "speech": "plain", "honorListener": false, "cards": ["gada", "jungida"]}
 {"id": "13174724", "text": "지금 가요.", "speech": "polite", "honorListener": false, "cards": ["jigeum", "gada"]}
+{"id": "13174727", "text": "들어오세요!", "speech": "polite", "honorListener": false, "cards": ["deureooda", "haseyo"]}
+{"id": "13174788", "text": "잘 자!", "speech": "plain", "honorListener": false, "cards": ["jal", "jada"]}
+{"id": "13174789", "text": "나중에 봐요!", "speech": "polite", "honorListener": false, "cards": ["najung", "boda"]}
+{"id": "13174792", "text": "나중에 봐!", "speech": "plain", "honorListener": false, "cards": ["najung", "boda"]}
+{"id": "13174803", "text": "잘 가요!", "speech": "polite", "honorListener": false, "cards": ["jal", "gada"]}
+{"id": "13174804", "text": "잘 가!", "speech": "plain", "honorListener": false, "cards": ["jal", "gada"]}
+{"id": "13174812", "text": "잘 있어!", "speech": "plain", "honorListener": false, "cards": ["jal", "itda"]}
+{"id": "13174835", "text": "부탁합니다!", "speech": "formal", "honorListener": false, "cards": ["butakhada"]}
+{"id": "13174889", "text": "믿어 주세요.", "speech": "polite", "honorListener": false, "cards": ["mitda", "juseyo"]}
 {"id": "13179657", "text": "여기 있습니다.", "speech": "formal", "honorListener": false, "cards": ["yeogi", "itda"]}
 {"id": "13179659", "text": "여기 있어요.", "speech": "polite", "honorListener": false, "cards": ["yeogi", "itda"]}
 {"id": "13180008", "text": "왜 울어?", "speech": "plain", "honorListener": false, "cards": ["wae", "ulda"]}
@@ -379,6 +595,7 @@
 {"id": "13192220", "text": "어디가 아파요?", "speech": "polite", "honorListener": false, "cards": ["eodi", "apeuda"]}
 {"id": "13192222", "text": "어디가 아파?", "speech": "plain", "honorListener": false, "cards": ["eodi", "apeuda"]}
 {"id": "13192521", "text": "천천히 말해 주세요.", "speech": "polite", "honorListener": false, "cards": ["cheoncheonhi", "malhada", "juseyo"]}
+{"id": "13192783", "text": "잘 먹어.", "speech": "plain", "honorListener": false, "cards": ["jal", "meokda"]}
 {"id": "13193955", "text": "무서워요.", "speech": "polite", "honorListener": false, "cards": ["museopda"]}
 {"id": "13193988", "text": "무서워.", "speech": "plain", "honorListener": false, "cards": ["museopda"]}
 {"id": "13194094", "text": "무섭습니다.", "speech": "formal", "honorListener": false, "cards": ["museopda"]}
@@ -396,21 +613,53 @@
 {"id": "13220278", "text": "좋아했어요?", "speech": "polite", "honorListener": false, "cards": ["johahada", "past", "q"]}
 {"id": "13220281", "text": "좋아하셨어요?", "speech": "polite", "honorListener": true, "cards": ["johahada", "past", "q"]}
 {"id": "13220282", "text": "좋아하셨습니까?", "speech": "formal", "honorListener": true, "cards": ["johahada", "past", "q"]}
+{"id": "13224638", "text": "남자친구 있어요?", "speech": "polite", "honorListener": false, "cards": ["namja", "chingu", "itda", "q"]}
+{"id": "13224639", "text": "남자친구 있어?", "speech": "plain", "honorListener": false, "cards": ["namja", "chingu", "itda", "q"]}
+{"id": "13224658", "text": "남자친구 있으세요?", "speech": "polite", "honorListener": true, "cards": ["namja", "chingu", "itda", "q"]}
+{"id": "13224659", "text": "남자친구 있습니까?", "speech": "formal", "honorListener": false, "cards": ["namja", "chingu", "itda", "q"]}
+{"id": "13224665", "text": "남자친구가 있습니까?", "speech": "formal", "honorListener": false, "cards": ["namja", "chingu", "itda", "q"]}
+{"id": "13224666", "text": "남자친구가 있으십니까?", "speech": "formal", "honorListener": true, "cards": ["namja", "chingu", "itda", "q"]}
+{"id": "13224670", "text": "여자친구 있어요?", "speech": "polite", "honorListener": false, "cards": ["yeoja", "chingu", "itda", "q"]}
+{"id": "13224672", "text": "여자친구 있어?", "speech": "plain", "honorListener": false, "cards": ["yeoja", "chingu", "itda", "q"]}
+{"id": "13224673", "text": "여자친구 있으세요?", "speech": "polite", "honorListener": true, "cards": ["yeoja", "chingu", "itda", "q"]}
+{"id": "13224700", "text": "나는 여자친구에게 전화했어요.", "speech": "polite", "honorListener": false, "cards": ["na", "yeoja", "chingu", "jeonhwahada", "past"]}
+{"id": "13224702", "text": "나는 여자친구에게 전화했어.", "speech": "plain", "honorListener": false, "cards": ["na", "yeoja", "chingu", "jeonhwahada", "past"]}
 {"id": "13231318", "text": "예뻐요.", "speech": "polite", "honorListener": false, "cards": ["yeppeuda"]}
+{"id": "13231358", "text": "영화를 좋아해요.", "speech": "polite", "honorListener": false, "cards": ["yeonghwa", "johahada"]}
+{"id": "13231366", "text": "영화를 좋아합니다.", "speech": "formal", "honorListener": false, "cards": ["yeonghwa", "johahada"]}
+{"id": "13231391", "text": "영화를 좋아해.", "speech": "plain", "honorListener": false, "cards": ["yeonghwa", "johahada"]}
+{"id": "13236514", "text": "영화 보러 가요.", "speech": "polite", "honorListener": false, "cards": ["yeonghwa", "boda", "gada"]}
+{"id": "13236515", "text": "영화 보러 가자.", "speech": "plain", "honorListener": false, "cards": ["yeonghwa", "boda", "gada", "haja"]}
+{"id": "13236516", "text": "영화를 보러 갑시다.", "speech": "formal", "honorListener": false, "cards": ["yeonghwa", "boda", "gada", "haja"]}
 {"id": "13237601", "text": "엄마 집에 있어?", "speech": "plain", "honorListener": false, "cards": ["eomma", "jip", "itda", "q"]}
+{"id": "13238591", "text": "약속합니까?", "speech": "formal", "honorListener": false, "cards": ["yaksokhada", "q"]}
+{"id": "13238592", "text": "약속해요?", "speech": "polite", "honorListener": false, "cards": ["yaksokhada", "q"]}
+{"id": "13238593", "text": "약속하십니까?", "speech": "formal", "honorListener": true, "cards": ["yaksokhada", "q"]}
 {"id": "13243084", "text": "방 있어요?", "speech": "polite", "honorListener": false, "cards": ["bang", "itda", "q"]}
 {"id": "13243087", "text": "방 있습니까?", "speech": "formal", "honorListener": false, "cards": ["bang", "itda", "q"]}
 {"id": "13243093", "text": "방이 있습니까?", "speech": "formal", "honorListener": false, "cards": ["bang", "itda", "q"]}
 {"id": "13243137", "text": "가고 싶습니다.", "speech": "formal", "honorListener": false, "cards": ["gada", "sipda"]}
 {"id": "13243139", "text": "가고 싶어요.", "speech": "polite", "honorListener": false, "cards": ["gada", "sipda"]}
+{"id": "13243148", "text": "정말 고마워요!", "speech": "polite", "honorListener": false, "cards": ["jeongmal", "gomapda"]}
+{"id": "13243149", "text": "정말 고마워!", "speech": "plain", "honorListener": false, "cards": ["jeongmal", "gomapda"]}
+{"id": "13250260", "text": "할아버지는 아침 일찍 일어나셔요.", "speech": "polite", "honorListener": false, "cards": ["harabeoji", "achim", "iljjik", "ireonada"]}
 {"id": "13250302", "text": "어제는 학교에 갔습니다.", "speech": "formal", "honorListener": false, "cards": ["eoje", "hakgyo", "gada"]}
 {"id": "13250479", "text": "열어줘.", "speech": "plain", "honorListener": false, "cards": ["yeolda", "juseyo"]}
 {"id": "13250556", "text": "지금 뭘 하고 있어?", "speech": "plain", "honorListener": false, "cards": ["jigeum", "mwo", "hada", "jungida"]}
+{"id": "13250756", "text": "나 찾았어?", "speech": "plain", "honorListener": false, "cards": ["na", "chatda", "past", "q"]}
+{"id": "13250824", "text": "계속 일해.", "speech": "plain", "honorListener": false, "cards": ["gyesok", "ilhada"]}
+{"id": "13250872", "text": "이제 알았어!", "speech": "plain", "honorListener": false, "cards": ["ije", "alda", "past"]}
 {"id": "13252653", "text": "음악을 듣습니다.", "speech": "formal", "honorListener": false, "cards": ["eumak", "deutda"]}
 {"id": "13252658", "text": "음악을 들어요.", "speech": "polite", "honorListener": false, "cards": ["eumak", "deutda"]}
 {"id": "13252696", "text": "추워요.", "speech": "polite", "honorListener": false, "cards": ["chupda"]}
 {"id": "13252697", "text": "춥습니다.", "speech": "formal", "honorListener": false, "cards": ["chupda"]}
+{"id": "13252698", "text": "날씨가 춥습니다.", "speech": "formal", "honorListener": false, "cards": ["nalssi", "chupda"]}
+{"id": "13252699", "text": "날씨가 추워요.", "speech": "polite", "honorListener": false, "cards": ["nalssi", "chupda"]}
+{"id": "13252704", "text": "날씨가 추워.", "speech": "plain", "honorListener": false, "cards": ["nalssi", "chupda"]}
 {"id": "13252705", "text": "추워.", "speech": "plain", "honorListener": false, "cards": ["chupda"]}
+{"id": "13252717", "text": "날씨가 더워요.", "speech": "polite", "honorListener": false, "cards": ["nalssi", "deopda"]}
+{"id": "13252718", "text": "날씨가 더워.", "speech": "plain", "honorListener": false, "cards": ["nalssi", "deopda"]}
+{"id": "13252720", "text": "날씨가 덥습니다.", "speech": "formal", "honorListener": false, "cards": ["nalssi", "deopda"]}
 {"id": "13252721", "text": "덥습니다.", "speech": "formal", "honorListener": false, "cards": ["deopda"]}
 {"id": "13252722", "text": "더워요.", "speech": "polite", "honorListener": false, "cards": ["deopda"]}
 {"id": "13252723", "text": "더워.", "speech": "plain", "honorListener": false, "cards": ["deopda"]}
@@ -418,11 +667,23 @@
 {"id": "13252767", "text": "여기에 살고 있습니다.", "speech": "formal", "honorListener": false, "cards": ["yeogi", "salda", "jungida"]}
 {"id": "13252768", "text": "여기에 살고 있어.", "speech": "plain", "honorListener": false, "cards": ["yeogi", "salda", "jungida"]}
 {"id": "13253013", "text": "다로 밥 먹어!", "speech": "plain", "honorListener": false, "cards": ["da", "bap", "meokda"]}
+{"id": "13253103", "text": "배불러요.", "speech": "polite", "honorListener": false, "cards": ["baebureuda"]}
+{"id": "13253105", "text": "배부릅니다.", "speech": "formal", "honorListener": false, "cards": ["baebureuda"]}
 {"id": "13253111", "text": "배가 불러요.", "speech": "polite", "honorListener": false, "cards": ["bae", "bureuda"]}
 {"id": "13253112", "text": "배가 부릅니다.", "speech": "formal", "honorListener": false, "cards": ["bae", "bureuda"]}
+{"id": "13253115", "text": "배불러.", "speech": "plain", "honorListener": false, "cards": ["baebureuda"]}
 {"id": "13253119", "text": "배가 불러.", "speech": "plain", "honorListener": false, "cards": ["bae", "bureuda"]}
 {"id": "13254275", "text": "음악을 좋아해요.", "speech": "polite", "honorListener": false, "cards": ["eumak", "johahada"]}
+{"id": "13254288", "text": "운동을 잘 못해요.", "speech": "polite", "honorListener": false, "cards": ["undong", "jal", "hada", "mot"]}
+{"id": "13254290", "text": "운동을 잘 못해.", "speech": "plain", "honorListener": false, "cards": ["undong", "jal", "hada", "mot"]}
+{"id": "13254292", "text": "운동을 잘 못합니다.", "speech": "formal", "honorListener": false, "cards": ["undong", "jal", "hada", "mot"]}
 {"id": "13254404", "text": "봐.", "speech": "plain", "honorListener": false, "cards": ["boda"]}
+{"id": "13256536", "text": "택시 불러.", "speech": "plain", "honorListener": false, "cards": ["taeksi", "bureuda"]}
+{"id": "13256537", "text": "택시를 부르세요.", "speech": "polite", "honorListener": false, "cards": ["taeksi", "bureuda", "haseyo"]}
+{"id": "13256559", "text": "택시를 부르십시오.", "speech": "formal", "honorListener": true, "cards": ["taeksi", "bureuda", "haseyo"]}
+{"id": "13256562", "text": "택시를 불러주십시오.", "speech": "formal", "honorListener": true, "cards": ["taeksi", "bureuda", "juseyo"]}
+{"id": "13256564", "text": "택시를 불러주세요.", "speech": "polite", "honorListener": false, "cards": ["taeksi", "bureuda", "juseyo"]}
+{"id": "13256566", "text": "택시 불러주어.", "speech": "plain", "honorListener": false, "cards": ["taeksi", "bureuda", "juseyo"]}
 {"id": "13258734", "text": "엄마를 사랑해?", "speech": "plain", "honorListener": false, "cards": ["eomma", "saranghada", "q"]}
 {"id": "13258736", "text": "나를 사랑해?", "speech": "plain", "honorListener": false, "cards": ["na", "saranghada", "q"]}
 {"id": "13258737", "text": "저를 사랑합니까?", "speech": "formal", "honorListener": false, "cards": ["na", "saranghada", "q"]}
@@ -430,17 +691,26 @@
 {"id": "13258740", "text": "저를 사랑하십니까?", "speech": "formal", "honorListener": true, "cards": ["na", "saranghada", "q"]}
 {"id": "13258741", "text": "저를 사랑하세요?", "speech": "polite", "honorListener": true, "cards": ["na", "saranghada", "q"]}
 {"id": "13306346", "text": "이거 봐!", "speech": "plain", "honorListener": false, "cards": ["igeo", "boda"]}
+{"id": "13319314", "text": "허리가 아파.", "speech": "plain", "honorListener": false, "cards": ["heori", "apeuda"]}
 {"id": "13384138", "text": "지금 뭐 해요?", "speech": "polite", "honorListener": false, "cards": ["jigeum", "mwo", "hada"]}
+{"id": "13523718", "text": "나는 영화를 좋아해요.", "speech": "polite", "honorListener": false, "cards": ["na", "yeonghwa", "johahada"]}
+{"id": "13535107", "text": "돈 가지고 있어?", "speech": "plain", "honorListener": false, "cards": ["don", "gajida", "jungida", "q"]}
+{"id": "13535166", "text": "생일 축하합니다.", "speech": "formal", "honorListener": false, "cards": ["saengil", "chukhahada"]}
 {"id": "13535302", "text": "지금 자요.", "speech": "polite", "honorListener": false, "cards": ["jigeum", "jada"]}
 {"id": "13536219", "text": "갈 거야?", "speech": "plain", "honorListener": false, "cards": ["gada", "future", "q"]}
 {"id": "13537575", "text": "너는 사과를 좋아해.", "speech": "plain", "honorListener": false, "cards": ["neo", "sagwa", "johahada"]}
 {"id": "13537671", "text": "정말 재미있어.", "speech": "plain", "honorListener": false, "cards": ["jeongmal", "jaemiitda"]}
 {"id": "13540997", "text": "나는 사과 주스를 마시고 있어요.", "speech": "polite", "honorListener": false, "cards": ["na", "sagwa", "juseu", "masida", "jungida"]}
+{"id": "13547816", "text": "택시를 불러.", "speech": "plain", "honorListener": false, "cards": ["taeksi", "bureuda"]}
+{"id": "13553871", "text": "날 기억해줘.", "speech": "plain", "honorListener": false, "cards": ["na", "gieokhada", "juseyo"]}
+{"id": "13553872", "text": "기억해줘.", "speech": "plain", "honorListener": false, "cards": ["gieokhada", "juseyo"]}
 {"id": "13553879", "text": "너무 사랑해.", "speech": "plain", "honorListener": false, "cards": ["neomu", "saranghada"]}
 {"id": "13557035", "text": "화장실에 가고 싶어요.", "speech": "polite", "honorListener": false, "cards": ["hwajangsil", "gada", "sipda"]}
+{"id": "13557036", "text": "화장실 다녀올게요.", "speech": "polite", "honorListener": false, "cards": ["hwajangsil", "danyeooda", "promise"]}
 {"id": "13558985", "text": "아침으로 뭐 먹었어요?", "speech": "polite", "honorListener": false, "cards": ["achim", "mwo", "meokda", "past"]}
 {"id": "13559001", "text": "우리는 어디에서 아침을 먹어요?", "speech": "polite", "honorListener": false, "cards": ["uri", "eodi", "achim", "meokda"]}
 {"id": "13569182", "text": "나도 몰라요.", "speech": "polite", "honorListener": false, "cards": ["na", "do", "moreuda"]}
+{"id": "13575929", "text": "오늘 학교에서 무엇을 배웠어요?", "speech": "polite", "honorListener": false, "cards": ["oneul", "hakgyo", "mwo", "baeuda", "past"]}
 {"id": "13576005", "text": "교실에서 그걸 먹어요?", "speech": "polite", "honorListener": false, "cards": ["gyosil", "geugeo", "meokda", "q"]}
 {"id": "13587057", "text": "거기에도 공원이 있어요.", "speech": "polite", "honorListener": false, "cards": ["geogi", "do", "gongwon", "itda"]}
 {"id": "13587114", "text": "우리는 저녁 먹으러 식당에 갔어요.", "speech": "polite", "honorListener": false, "cards": ["uri", "jeonyeok", "meokda", "sikdang", "gada", "past"]}
@@ -448,10 +718,16 @@
 {"id": "13589891", "text": "나 우유 마셨어.", "speech": "plain", "honorListener": false, "cards": ["na", "uyu", "masida", "past"]}
 {"id": "13614433", "text": "학교를 가세요.", "speech": "polite", "honorListener": false, "cards": ["hakgyo", "gada", "haseyo"]}
 {"id": "13711160", "text": "여기에 있어요.", "speech": "polite", "honorListener": false, "cards": ["yeogi", "itda"]}
+{"id": "13711437", "text": "저는 학교에 일찍 왔어요.", "speech": "polite", "honorListener": false, "cards": ["na", "hakgyo", "iljjik", "oda", "past"]}
 {"id": "13756439", "text": "끝났어?", "speech": "plain", "honorListener": false, "cards": ["kkeunnada", "past", "q"]}
 {"id": "13761852", "text": "방에 있어.", "speech": "plain", "honorListener": false, "cards": ["bang", "itda"]}
+{"id": "13761888", "text": "나 좀 놀고 싶어.", "speech": "plain", "honorListener": false, "cards": ["na", "jom", "nolda", "sipda"]}
 {"id": "13762805", "text": "우리 오늘 저녁 어디서 먹어?", "speech": "plain", "honorListener": false, "cards": ["uri", "oneul", "jeonyeok", "eodi", "meokda"]}
+{"id": "13828586", "text": "일 없습니다!", "speech": "formal", "honorListener": false, "cards": ["il", "eopda"]}
+{"id": "13828589", "text": "일 없습니까?", "speech": "formal", "honorListener": false, "cards": ["il", "eopda", "q"]}
+{"id": "13879051", "text": "내일은 비가 와요.", "speech": "polite", "honorListener": false, "cards": ["naeil", "bi", "oda"]}
 {"id": "13918335", "text": "도와 주세요.", "speech": "polite", "honorListener": false, "cards": ["dopda", "juseyo"]}
 {"id": "13918337", "text": "조금 해요.", "speech": "polite", "honorListener": false, "cards": ["jogeum", "hada"]}
+{"id": "13948190", "text": "이제 괜찮아요?", "speech": "polite", "honorListener": false, "cards": ["ije", "gwaenchanta", "q"]}
 {"id": "13992479", "text": "우리는 저녁을 먹고 있어요.", "speech": "polite", "honorListener": false, "cards": ["uri", "jeonyeok", "meokda", "jungida"]}
 {"id": "13997733", "text": "식당 가고 있었어요.", "speech": "polite", "honorListener": false, "cards": ["sikdang", "gada", "jungida", "past"]}

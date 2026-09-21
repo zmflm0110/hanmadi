@@ -74,6 +74,15 @@ describe('대표 문장(1순위)', () => {
     ['na hakgyo do gada', 'polite', '저는 학교에도 가요.'],
     ['gong ppalgata', 'polite', '공이 빨개요.'],
     ['seonsaengnim dowajwo', 'polite', '선생님, 도와주세요.'],
+    ['eoje chingu gachi nolda', 'polite', '어제 친구랑 같이 놀았어요.'],
+    ['na jom dopda juseyo', 'polite', '저를 좀 도와 주세요.'],
+    ['jal jada', 'polite', '잘 자요.'],
+    ['dasi hada sipda', 'polite', '다시 하고 싶어요.'],
+    ['mwo meokda halkkayo', 'plain', '뭐 먹을까?'],
+    ['naeil nalssi jota halkkayo', 'plain', '내일 날씨가 좋을까?'],
+    ['gachi nolda haja', 'plain', '같이 놀자.'],
+    ['meokda boda-try sipda', 'polite', '먹어 보고 싶어요.'],
+    ['beoseu oda an', 'plain', '버스가 안 와.'],
     ['eomma ne', 'plain', '엄마, 응.'],
     ['chingu annyeong', 'plain', '친구야, 안녕.'],
   ])('[%s] %s → %s', (ids, speech, out) => expect(top(ids, speech as Speech)).toBe(out));
@@ -100,6 +109,11 @@ describe('애매하면 다른 해석을 후보로 함께 낸다', () => {
   });
   it('반말로 친구를 부르면 호격 조사', () => {
     expect(texts('chingu gachi nolda', 'plain')).toContain('친구야, 같이 놀자.');
+  });
+  it('이동 동사 앞 동사: 목적(-러)과 순서(-고)를 모두 후보로', () => {
+    const t = texts('ilhada oda promise', 'plain');
+    expect(t[0]).toBe('일하러 올게.');
+    expect(t).toContain('일하고 올게.');
   });
   it('높일 사람을 부를 때는 반말 설정이어도 존댓말', () => {
     expect(texts('halmeoni bap meokda', 'plain')).toContain('할머니, 진지를 드세요.');
