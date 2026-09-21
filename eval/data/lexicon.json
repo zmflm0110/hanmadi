@@ -573,6 +573,48 @@
  },
  {
   "kind": "noun",
+  "id": "igeo",
+  "word": "이거",
+  "cat": "thing",
+  "deictic": true
+ },
+ {
+  "kind": "noun",
+  "id": "geugeo",
+  "word": "그거",
+  "cat": "thing",
+  "deictic": true
+ },
+ {
+  "kind": "noun",
+  "id": "jeogeo",
+  "word": "저거",
+  "cat": "thing",
+  "deictic": true
+ },
+ {
+  "kind": "noun",
+  "id": "yeogi",
+  "word": "여기",
+  "cat": "place",
+  "deictic": true
+ },
+ {
+  "kind": "noun",
+  "id": "geogi",
+  "word": "거기",
+  "cat": "place",
+  "deictic": true
+ },
+ {
+  "kind": "noun",
+  "id": "jeogi",
+  "word": "저기",
+  "cat": "place",
+  "deictic": true
+ },
+ {
+  "kind": "noun",
   "id": "mwo",
   "word": "뭐",
   "cat": "thing",
@@ -3434,6 +3476,146 @@
  },
  {
   "kind": "pred",
+  "id": "ppalgata",
+  "lemma": "빨갛다",
+  "pos": "adj",
+  "frame": [
+   {
+    "role": "theme",
+    "josa": "이/가",
+    "cats": [
+     "self",
+     "you",
+     "we",
+     "person",
+     "animal",
+     "place",
+     "food",
+     "drink",
+     "thing",
+     "toy",
+     "vehicle",
+     "body",
+     "clothes",
+     "activity"
+    ]
+   }
+  ]
+ },
+ {
+  "kind": "pred",
+  "id": "parata",
+  "lemma": "파랗다",
+  "pos": "adj",
+  "frame": [
+   {
+    "role": "theme",
+    "josa": "이/가",
+    "cats": [
+     "self",
+     "you",
+     "we",
+     "person",
+     "animal",
+     "place",
+     "food",
+     "drink",
+     "thing",
+     "toy",
+     "vehicle",
+     "body",
+     "clothes",
+     "activity"
+    ]
+   }
+  ]
+ },
+ {
+  "kind": "pred",
+  "id": "norata",
+  "lemma": "노랗다",
+  "pos": "adj",
+  "frame": [
+   {
+    "role": "theme",
+    "josa": "이/가",
+    "cats": [
+     "self",
+     "you",
+     "we",
+     "person",
+     "animal",
+     "place",
+     "food",
+     "drink",
+     "thing",
+     "toy",
+     "vehicle",
+     "body",
+     "clothes",
+     "activity"
+    ]
+   }
+  ]
+ },
+ {
+  "kind": "pred",
+  "id": "hayata",
+  "lemma": "하얗다",
+  "pos": "adj",
+  "frame": [
+   {
+    "role": "theme",
+    "josa": "이/가",
+    "cats": [
+     "self",
+     "you",
+     "we",
+     "person",
+     "animal",
+     "place",
+     "food",
+     "drink",
+     "thing",
+     "toy",
+     "vehicle",
+     "body",
+     "clothes",
+     "activity"
+    ]
+   }
+  ]
+ },
+ {
+  "kind": "pred",
+  "id": "kkamata",
+  "lemma": "까맣다",
+  "pos": "adj",
+  "frame": [
+   {
+    "role": "theme",
+    "josa": "이/가",
+    "cats": [
+     "self",
+     "you",
+     "we",
+     "person",
+     "animal",
+     "place",
+     "food",
+     "drink",
+     "thing",
+     "toy",
+     "vehicle",
+     "body",
+     "clothes",
+     "activity"
+    ]
+   }
+  ]
+ },
+ {
+  "kind": "pred",
   "id": "tteugeopda",
   "lemma": "뜨겁다",
   "pos": "adj",
@@ -3686,6 +3868,62 @@
   "id": "wae",
   "word": "왜",
   "wh": true
+ },
+ {
+  "kind": "det",
+  "id": "nae",
+  "word": "내",
+  "polite": "제"
+ },
+ {
+  "kind": "det",
+  "id": "i-det",
+  "word": "이"
+ },
+ {
+  "kind": "det",
+  "id": "jeo-det",
+  "word": "저"
+ },
+ {
+  "kind": "num",
+  "id": "hana",
+  "word": "하나",
+  "n": 1
+ },
+ {
+  "kind": "num",
+  "id": "dul",
+  "word": "둘",
+  "n": 2
+ },
+ {
+  "kind": "num",
+  "id": "set",
+  "word": "셋",
+  "n": 3
+ },
+ {
+  "kind": "num",
+  "id": "net",
+  "word": "넷",
+  "n": 4
+ },
+ {
+  "kind": "num",
+  "id": "daseot",
+  "word": "다섯",
+  "n": 5
+ },
+ {
+  "kind": "particle",
+  "id": "do",
+  "word": "도"
+ },
+ {
+  "kind": "particle",
+  "id": "man",
+  "word": "만"
  },
  {
   "kind": "phrase",

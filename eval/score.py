@@ -17,7 +17,7 @@ from kiwipiepy import Kiwi
 
 KIWI = Kiwi()
 SKIP_TAGS = {'SF', 'SP', 'SS', 'SE', 'SO', 'SW'}
-PRONOUN = {'저': '나', '저희': '우리', '제': '나'}
+PRONOUN = {'저': '나', '저희': '우리', '제': '나', '이것': '이거', '그것': '그거', '저것': '저거'}  # 이것/이거는 같은 말의 말투 차이
 CASE_JOSA = {'JKS', 'JKO', 'JX'}
 _cache: dict[str, list[tuple[str, str]]] = {}
 

@@ -38,6 +38,7 @@ const CORE_IDS = [
   'mul', 'bap', 'hwajangsil', 'swi',
   'an', 'sipda', 'juseyo', 'q', 'gachi', 'deo', 'geuman',
   'ne', 'aniyo', 'dowajwo',
+  'igeo', 'yeogi', 'do', 'nae',
 ];
 
 const NEG_IDS = new Set(['an', 'mot', 'jimaseyo', 'geuman', 'aniyo']);
@@ -61,6 +62,10 @@ export function tabOf(e: Entry): TabId {
       return 'little';
     case 'phrase':
       return 'social';
+    case 'det':
+    case 'num':
+    case 'particle':
+      return 'little';
   }
 }
 
@@ -80,6 +85,10 @@ export function colorOf(e: Entry): ColorKey {
       return e.set.mood === 'question' ? 'wh' : 'func';
     case 'phrase':
       return 'social';
+    case 'det':
+    case 'num':
+    case 'particle':
+      return 'func';
   }
 }
 

@@ -48,6 +48,31 @@ describe('대표 문장(1순위)', () => {
     ['jeonyeok ramyeon meokda', 'polite', '저녁에 라면을 먹어요.'],
     ['na mongmareuda', 'polite', '저는 목말라요.'],
     ['gongwon deopda', 'polite', '공원이 더워요.'],
+    // 가리키는 말·도·만·소유·수량·꾸밈
+    ['igeo juseyo', 'polite', '이거 주세요.'],
+    ['igeo mwo', 'polite', '이게 뭐예요?'],
+    ['igeo mwo', 'formal', '이것이 무엇입니까?'],
+    ['na igeo jota', 'polite', '저는 이게 좋아요.'],
+    ['na igeo sireohada', 'plain', '나는 이걸 싫어해.'],
+    ['yeogi anjda', 'polite', '여기 앉아요.'],
+    ['yeogi anjda', 'formal', '여기에 앉습니다.'],
+    ['na yeogi nolda sipda', 'polite', '저는 여기서 놀고 싶어요.'],
+    ['na do gada sipda', 'polite', '저도 가고 싶어요.'],
+    ['na do', 'polite', '저도요.'],
+    ['na do', 'plain', '나도.'],
+    ['mul man juseyo', 'polite', '물만 주세요.'],
+    ['sagwa dul juseyo', 'polite', '사과 두 개 주세요.'],
+    ['sagwa dul man juseyo', 'polite', '사과 두 개만 주세요.'],
+    ['mul hana juseyo', 'polite', '물 한 잔 주세요.'],
+    ['chingu set oda past', 'polite', '친구가 세 명 왔어요.'],
+    ['ppalgata gong juseyo', 'polite', '빨간 공 주세요.'],
+    ['na keuda sagwa meokda sipda', 'polite', '저는 큰 사과를 먹고 싶어요.'],
+    ['masitda ppang meokda sipda', 'polite', '맛있는 빵을 먹고 싶어요.'],
+    ['nae gabang eodi', 'polite', '제 가방이 어디예요?'],
+    ['nae gabang eodi', 'plain', '내 가방이 어디야?'],
+    ['halmeoni do bap meokda', 'polite', '할머니도 진지를 드세요.'],
+    ['na hakgyo do gada', 'polite', '저는 학교에도 가요.'],
+    ['gong ppalgata', 'polite', '공이 빨개요.'],
   ])('[%s] %s → %s', (ids, speech, out) => expect(top(ids, speech as Speech)).toBe(out));
 });
 
@@ -103,6 +128,7 @@ function nounForms(e: Entry): string[] {
   if (e.cat === 'you') forms.push('네');
   if (e.word === '누구') forms.push('누가');
   if (e.word === '뭐') forms.push('뭘', '무엇'); // 같은 낱말의 말투 변이
+  if (e.deictic && e.cat === 'thing') forms.push(e.word.slice(0, -1)); // 이게·이걸·이건·이것
   return forms;
 }
 
@@ -134,7 +160,8 @@ describe('속성: 모든 카드가 문장에 반영되고, 카드에 없는 내�
           const src = seq.find((x) => x.key === t.sources[0])!.entry;
           if (!t.text) continue; // 생략된 주어
           if (src.kind === 'noun') {
-            const ok = nounForms(src).some((f) => t.text.startsWith(f));
+            // 꾸밈(빨간·내)이 앞에 올 수 있어 '들어 있는지'로 본다
+            const ok = nounForms(src).some((f) => t.text.split(' ').some((w) => w.startsWith(f)));
             expect(ok, `명사 "${t.text}" ← ${src.word} in ${c.text}`).toBe(true);
           }
           if (src.kind === 'pred') {

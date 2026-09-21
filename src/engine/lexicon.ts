@@ -58,6 +58,8 @@ export interface NounEntry {
   alt?: Category[];
   /** 반말로 부를 때 호격 조사 아/야를 붙이는 말(친구야, 동생아). 엄마·형처럼 부르는 친족어는 안 붙인다 */
   callSuffix?: boolean;
+  /** 가리키는 말(이거·저거·여기): 어떤 사물·장소 자리에도 들어간다. 이거+이 → 이게 */
+  deictic?: boolean;
 }
 
 export interface PredEntry {
@@ -110,7 +112,30 @@ export interface PhraseEntry {
   formal: string;
 }
 
-export type Entry = NounEntry | PredEntry | MarkerEntry | AdverbEntry | PhraseEntry;
+/** 명사 앞에 붙는 말: 내(존댓말 제) 가방, 이 공, 저 사람 */
+export interface DetEntry {
+  kind: 'det';
+  id: string;
+  word: string;
+  polite?: string; // 존댓말에서 바꿔 쓰는 말(내 → 제)
+}
+
+/** 수: 사과 두 개, 친구 세 명 (셀 단위는 명사 범주로 정한다) */
+export interface NumEntry {
+  kind: 'num';
+  id: string;
+  word: string; // 카드 글자: 하나, 둘 …
+  n: number;
+}
+
+/** 뜻을 더하는 조사 카드: 나도, 물만 */
+export interface ParticleEntry {
+  kind: 'particle';
+  id: string;
+  word: '도' | '만';
+}
+
+export type Entry = NounEntry | PredEntry | MarkerEntry | AdverbEntry | PhraseEntry | DetEntry | NumEntry | ParticleEntry;
 
 // ── 자주 쓰는 격틀 조각 ──────────────────────────────────────────────────
 export const PEOPLE: Category[] = ['self', 'you', 'we', 'person'];

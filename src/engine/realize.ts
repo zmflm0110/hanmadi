@@ -5,7 +5,7 @@
 import { attachC, attachEu, type Predicate } from './conjugate';
 import { finalJong } from './hangul';
 import { attachJosa, josaFor } from './josa';
-import type { AdverbEntry, Category, Entry, MarkerEntry, NounEntry, PhraseEntry, PredEntry, Role, Slot } from './lexicon';
+import type { AdverbEntry, Category, DetEntry, Entry, MarkerEntry, NounEntry, NumEntry, ParticleEntry, PhraseEntry, PredEntry, Role, Slot } from './lexicon';
 import { DEFAULT_FEATURES, realizeCopula, realizePredicate, type Features, type Speech } from './predicate';
 
 export interface Card {
@@ -174,11 +174,17 @@ interface NounStyle {
   topic: boolean; // 은/는 으로
   /** 청유문의 '우리'는 듣는 이를 포함하므로 '저희'로 낮추지 않는다(저희는 듣는 이를 뺀 우리) */
   inclusiveWe?: boolean;
+  /** 뜻 조사 카드(도·만): 격조사를 갈아 끼우거나(나도, 물만) 뒤에 붙는다(학교에도) */
+  particle?: '도' | '만';
+  /** 수량이 붙은 명사는 조사 없이 수량 뒤에 뜻 조사를 붙인다(사과 두 개만) */
+  bare?: boolean;
 }
 
 const GA_CONTRACT: Record<string, string> = { 나: '내가', 저: '제가', 너: '네가', 누구: '누가' };
 
 function surfaceWord(n: NounEntry, role: Role | null, st: NounStyle): string {
+  // 합쇼체에서 이거·그거·저거는 글말 '이것'
+  if (n.deictic && n.cat === 'thing' && st.speech === 'formal') return n.word.replace(/거$/, '것');
   if (st.speech !== 'plain') {
     if (n.cat === 'self') return '저';
     if (n.cat === 'we' && !st.inclusiveWe) return '저희';
@@ -187,10 +193,15 @@ function surfaceWord(n: NounEntry, role: Role | null, st: NounStyle): string {
   return n.word;
 }
 
+const CASE_JOSA = new Set(['이/가', '을/를', '은/는', '께서', '']);
+// 이거+이 → 이게, 이거+을 → 이걸, 이거+은 → 이건 (말할 때의 준말)
+const DEICTIC_CONTRACT: Record<string, string> = { '이/가': '게', '을/를': '걸', '은/는': '건' };
+
 function renderNoun(n: NounEntry, slot: Slot | null, st: NounStyle, honorRecipient: boolean): string {
   const word = surfaceWord(n, slot?.role ?? null, st);
-  if (!slot) return word;
-  if (slot.role === 'time') return word + (n.timeJosa ?? '');
+  if (st.bare) return word;
+  if (!slot) return st.particle ? word + st.particle : word;
+  if (slot.role === 'time') return word + (n.timeJosa ?? '') + (st.particle ?? '');
   if (n.wh) {
     const formal = st.speech === 'formal';
     if (n.word === '누구') {
@@ -216,9 +227,118 @@ function renderNoun(n: NounEntry, slot: Slot | null, st: NounStyle, honorRecipie
   if (josa === '이/가' && st.isSubject && st.honorSubject && st.speech === 'formal') josa = '께서';
   if (slot.role === 'recipient') josa = honorRecipient ? '께' : st.speech === 'plain' ? '한테' : '에게';
   if (st.speech === 'formal' && josa === '이랑/랑') josa = '과/와';
+  if (st.particle) {
+    // 도·만은 이/가·을/를·은/는 자리를 차지하고, 에·에서·랑 같은 조사 뒤에는 붙는다
+    return CASE_JOSA.has(josa) ? word + st.particle : word + josaFor(word, josa) + st.particle;
+  }
   if (josa === '이/가' && GA_CONTRACT[word]) return GA_CONTRACT[word]!;
+  if (n.deictic && n.cat === 'thing' && st.speech !== 'formal' && DEICTIC_CONTRACT[josa]) return word.slice(0, -1) + DEICTIC_CONTRACT[josa];
+  // 여기·거기·저기는 말할 때 '에'를 빼고 '에서'는 '서'로 줄인다: 여기 앉아요, 거기 있어, 여기서 놀아요
+  if (n.deictic && n.cat === 'place' && st.speech !== 'formal') {
+    if (josa === '에') return word;
+    if (josa === '에서') return word + '서';
+  }
   if (josa === '') return word;
   return word + josaFor(word, josa);
+}
+
+// ── 명사에 딸린 카드: 내·이(앞), 두(수량), 도·만(뜻 조사), 빨간(꾸밈) ─────────
+interface NounMods {
+  pre: { key: string; text: (speech: Speech) => string }[];
+  num?: { key: string; n: number };
+  particle?: { key: string; word: '도' | '만' };
+}
+
+const NATIVE_NUM = ['', '한', '두', '세', '네', '다섯', '여섯', '일곱', '여덟', '아홉', '열'];
+
+function counterFor(cat: Category): string {
+  if (cat === 'person' || cat === 'self' || cat === 'we') return '명';
+  if (cat === 'animal') return '마리';
+  if (cat === 'drink') return '잔';
+  return '개';
+}
+
+/** 꾸밈으로 쓸 수 있는 형용사(색·크기·맛·온도·모양) — 아프다·좋다 같은 느낌 형용사는 앞에 와도 서술어로 본다 */
+const ATTRIBUTIVE = new Set(['빨갛다', '파랗다', '노랗다', '하얗다', '까맣다', '크다', '작다', '맛있다', '맛없다', '예쁘다', '뜨겁다', '차갑다', '재미있다']);
+
+function modifierForm(e: PredEntry): string {
+  const p = toPredicate(e);
+  // 있다·없다로 끝나는 형용사는 '-는'(맛있는), 나머지는 '-(으)ㄴ'(빨간, 큰, 추운)
+  return /[있없]다$/.test(e.lemma) ? attachC(p, '는') : attachEu(p, 'ㄴ');
+}
+
+/**
+ * 명사에 딸린 카드를 명사에 묶고 나머지 카드만 돌려준다.
+ * 꾸밈 형용사는 바로 뒤에 명사가 있고, 다른 서술어나 [주세요]가 있을 때만 꾸밈으로 본다.
+ */
+function attachToNouns(cards: Card[]): { rest: Card[]; mods: Map<string, NounMods>; unused: string[] } {
+  const mods = new Map<string, NounMods>();
+  const unused: string[] = [];
+  const consumed = new Set<string>();
+  const get = (k: string) => mods.get(k) ?? (mods.set(k, { pre: [] }), mods.get(k)!);
+  const nounAt = (i: number) => (cards[i]?.entry.kind === 'noun' ? cards[i]! : null);
+  const nextNoun = (i: number) => {
+    for (let j = i + 1; j < cards.length; j++) if (cards[j]!.entry.kind === 'noun') return cards[j]!;
+    return null;
+  };
+  const prevNoun = (i: number) => {
+    for (let j = i - 1; j >= 0; j--) {
+      const k = cards[j]!.entry.kind;
+      if (k === 'noun') return cards[j]!;
+      if (k !== 'num' && k !== 'particle' && k !== 'det') return null;
+    }
+    return null;
+  };
+  const predCount = cards.filter((c) => c.entry.kind === 'pred').length;
+  const hasRequest = cards.some((c) => c.entry.kind === 'marker' && c.entry.set.mood === 'request');
+
+  cards.forEach((c, i) => {
+    const e = c.entry;
+    if (e.kind === 'det') {
+      const target = nextNoun(i);
+      if (target) get(target.key).pre.push({ key: c.key, text: (sp) => (sp !== 'plain' && e.polite ? e.polite : e.word) });
+      else unused.push(c.key);
+      consumed.add(c.key);
+    } else if (e.kind === 'num') {
+      const target = prevNoun(i) ?? nextNoun(i);
+      if (target && !get(target.key).num) get(target.key).num = { key: c.key, n: e.n };
+      else unused.push(c.key); // 한 명사에 수는 하나만
+      consumed.add(c.key);
+    } else if (e.kind === 'particle') {
+      const target = prevNoun(i);
+      if (target && !get(target.key).particle) get(target.key).particle = { key: c.key, word: e.word };
+      else unused.push(c.key);
+      consumed.add(c.key);
+    } else if (e.kind === 'pred' && e.pos === 'adj' && ATTRIBUTIVE.has(e.lemma)) {
+      const target = nounAt(i + 1);
+      if (target && (predCount > 1 || hasRequest)) {
+        get(target.key).pre.push({ key: c.key, text: () => modifierForm(e) });
+        consumed.add(c.key);
+      }
+    }
+  });
+  return { rest: cards.filter((c) => !consumed.has(c.key)), mods, unused };
+}
+
+/** 명사구 한 덩어리: [꾸밈] 명사+조사 [수량][뜻 조사] */
+function renderPhrase(n: NounCard, slot: Slot | null, st: NounStyle, honorRecipient: boolean, m: NounMods | undefined): { text: string; sources: string[] } {
+  const sources = [n.key];
+  const pre = (m?.pre ?? []).map((x) => (sources.push(x.key), x.text(st.speech)));
+  let text: string;
+  if (m?.num) {
+    sources.push(m.num.key);
+    const qty = `${NATIVE_NUM[m.num.n] ?? m.num.n} ${counterFor(n.e.cat)}`;
+    if (m.particle) {
+      sources.push(m.particle.key);
+      text = `${renderNoun(n.e, slot, { ...st, bare: true }, honorRecipient)} ${qty}${m.particle.word}`; // 사과 두 개만
+    } else {
+      text = `${renderNoun(n.e, slot, st, honorRecipient)} ${qty}`; // 친구가 세 명, 사과를 두 개
+    }
+  } else {
+    if (m?.particle) sources.push(m.particle.key);
+    text = renderNoun(n.e, slot, { ...st, particle: m?.particle?.word }, honorRecipient);
+  }
+  return { text: [...pre, text].join(' '), sources };
 }
 
 // ── 문장 조립 ────────────────────────────────────────────────────────────
@@ -274,6 +394,7 @@ function addressVariants(cards: Card[], ctx: Context): Candidate[] {
   const idx = cards.findIndex((c) => c.entry.kind === 'noun' && c.entry.cat === 'person' && !c.entry.wh);
   if (!preds.length || idx !== 0) return []; // 부르는 말은 맨 앞 카드일 때만
   const person = cards[idx]!;
+  if (attachToNouns(cards).mods.has(person.key)) return []; // '친구 셋', '할머니도'는 부르는 말이 아니다
   const e = person.entry as NounEntry;
   const rest = cards.filter((_, i) => i !== idx);
   const inner = realizeCore(rest, { speech: e.honorific && ctx.speech === 'plain' ? 'polite' : ctx.speech, honorListener: ctx.honorListener || !!e.honorific });
@@ -296,13 +417,14 @@ function realizeCore(cards: Card[], ctx: Context, limit = 5): Candidate[] {
   const markers: { key: string; e: MarkerEntry; pos: number }[] = [];
   const adverbs: { key: string; e: AdverbEntry; pos: number }[] = [];
   const phrases: { key: string; e: PhraseEntry }[] = [];
-  cards.forEach((c, pos) => {
+  const { rest, mods, unused: modUnused } = attachToNouns(cards);
+  rest.forEach((c, pos) => {
     const e = c.entry;
     if (e.kind === 'noun') nouns.push({ key: c.key, e, pos });
     else if (e.kind === 'pred') preds.push({ key: c.key, e, pos });
     else if (e.kind === 'marker') markers.push({ key: c.key, e, pos });
     else if (e.kind === 'adverb') adverbs.push({ key: c.key, e, pos });
-    else phrases.push({ key: c.key, e });
+    else if (e.kind === 'phrase') phrases.push({ key: c.key, e });
   });
 
   let features: Features = applyMarkers({ ...DEFAULT_FEATURES, speech: ctx.speech }, markers);
@@ -324,12 +446,12 @@ function realizeCore(cards: Card[], ctx: Context, limit = 5): Candidate[] {
   const phraseTokens: Token[] = phrases.map((p) => ({ text: p.e[ctx.speech], sources: [p.key], role: 'phrase' }));
   if (phrases.length && !nouns.length && !preds.length) {
     const text = phraseTokens.map((t) => t.text).join(' ');
-    return [{ text: /[.?!]$/.test(text) ? text : text + '.', tokens: phraseTokens, features, score: 10, note: '인사·대답', unused: markers.map((m) => m.key).concat(adverbs.map((a) => a.key)) }];
+    return [{ text: /[.?!]$/.test(text) ? text : text + '.', tokens: phraseTokens, features, score: 10, note: '인사·대답', unused: markers.map((m) => m.key).concat(adverbs.map((a) => a.key), modUnused) }];
   }
   const withPhrases = (c: Candidate): Candidate =>
     phrases.length ? { ...c, tokens: [...phraseTokens, { text: '.', sources: [] }, ...c.tokens], text: `${phraseTokens.map((t) => t.text).join(' ')}. ${c.text}` } : c;
 
-  if (!preds.length) return nounOnly(nouns, markers, adverbs, features).map(withPhrases).slice(0, limit);
+  if (!preds.length) return nounOnly(nouns, markers, adverbs, features, mods).map((c) => withPhrases({ ...c, unused: [...c.unused, ...modUnused] })).slice(0, limit);
 
   // 서술어가 셋 이상이면 마지막 둘만 잇는다(앞의 것은 unused)
   const usedPreds = preds.slice(-2);
@@ -385,7 +507,7 @@ function realizeCore(cards: Card[], ctx: Context, limit = 5): Candidate[] {
       })();
 
       const tokens: Token[] = [];
-      const unused: string[] = [...unusedPreds];
+      const unused: string[] = [...unusedPreds, ...modUnused];
       // 어순은 사용자가 놓은 카드 순서를 따른다(한국어는 조사가 역할을 말해 주므로 어순이 자유롭고, 강조는 사용자의 뜻이다).
       // 서술어만 늘 끝으로 보낸다.
       const order = nouns
@@ -399,10 +521,14 @@ function realizeCore(cards: Card[], ctx: Context, limit = 5): Candidate[] {
       const placed: { pos: number; token: Token; late?: boolean }[] = [];
       const late = (pos: number, slot: OwnedSlot | null) => !!first && pos > first.pos && (!slot || (slot.owner === 1 && !SHARED_ROLES.has(slot.role)));
 
-      if (opts.vocative && subject) tokens.push({ text: callWord(subject.e, f.speech), sources: [subject.key], role: 'vocative' });
+      if (opts.vocative && subject) {
+        const sm = mods.get(subject.key);
+        const pre = (sm?.pre ?? []).map((x) => x.text(f.speech));
+        tokens.push({ text: [...pre, callWord(subject.e, f.speech)].join(' '), sources: [subject.key, ...(sm?.pre ?? []).map((x) => x.key), ...(sm?.num ? [sm.num.key] : []), ...(sm?.particle ? [sm.particle.key] : [])], role: 'vocative' });
+      }
       for (const { n, i, slot } of order) {
         const isSubject = i === subjectIdx;
-        if (isSubject && opts.omitSubject) {
+        if (isSubject && opts.omitSubject && !mods.has(n.key)) {
           placed.push({ pos: n.pos, token: { text: '', sources: [n.key], role: slot?.role } }); // 생략했지만 뜻은 반영됨
           continue;
         }
@@ -410,8 +536,8 @@ function realizeCore(cards: Card[], ctx: Context, limit = 5): Candidate[] {
         // 청유·명령에서 '우리'는 조사 없이: 우리 같이 가자
         const bareWe = isSubject && n.e.cat === 'we' && (f.mood === 'suggest' || f.mood === 'command');
         const style: NounStyle = { speech: f.speech, honorSubject, isSubject, topic, inclusiveWe: f.mood === 'suggest' };
-        const text = bareWe ? surfaceWord(n.e, null, style) : renderNoun(n.e, slot, style, honorRecipient);
-        placed.push({ pos: n.pos, token: { text, sources: [n.key], role: slot?.role }, late: late(n.pos, slot) });
+        const ph = bareWe && !mods.has(n.key) ? { text: surfaceWord(n.e, null, style), sources: [n.key] } : renderPhrase(n, slot, style, honorRecipient, mods.get(n.key));
+        placed.push({ pos: n.pos, token: { text: ph.text, sources: ph.sources, role: slot?.role }, late: late(n.pos, slot) });
       }
       const all = [...placed, ...extras.map((x) => ({ ...x, late: !!first && x.pos > first.pos }))].sort((p, q) => p.pos - q.pos);
       for (const x of all) if (!x.late) tokens.push(x.token);
@@ -468,18 +594,19 @@ function realizeCore(cards: Card[], ctx: Context, limit = 5): Candidate[] {
     .slice(0, limit);
 }
 
-/** 서술어 카드 없이 명사만: '물 주세요', '화장실이 어디예요?', '엄마, 물이요.' */
-function nounOnly(nouns: NounCard[], markers: { key: string; e: MarkerEntry }[], adverbs: { key: string; e: AdverbEntry }[], f: Features): Candidate[] {
+/** 서술어 카드 없이 명사만: '물 주세요', '화장실이 어디예요?', '이게 뭐예요?', '저도요.' */
+function nounOnly(nouns: NounCard[], markers: { key: string; e: MarkerEntry }[], adverbs: { key: string; e: AdverbEntry }[], f: Features, mods: Map<string, NounMods>): Candidate[] {
   const request = markers.find((m) => m.e.set.mood === 'request');
   const unusedMarkers = markers.filter((m) => m !== request).map((m) => m.key);
   const adverbTokens: Token[] = adverbs.map((a) => ({ text: a.e.word, sources: [a.key], role: 'adverb' }));
-  const person = nouns.length > 1 ? nouns.find((n) => n.e.cat === 'person' && !n.e.wh) : undefined;
+  const person = nouns.length > 1 ? nouns.find((n) => n.e.cat === 'person' && !n.e.wh && !mods.has(n.key)) : undefined;
   const rest = nouns.filter((n) => n !== person);
   const vocative: Token[] = person ? [{ text: person.e.word, sources: [person.key], role: 'vocative' }] : [];
-  const word = (n: NounCard) => (f.speech !== 'plain' && n.e.cat === 'self' ? '저' : n.e.word);
+  const style: NounStyle = { speech: f.speech, honorSubject: false, isSubject: false, topic: false };
+  const phrase = (n: NounCard, slot: Slot | null) => renderPhrase(n, slot, style, false, mods.get(n.key));
 
   if (request) {
-    const tokens: Token[] = [...vocative, ...rest.map((n) => ({ text: word(n), sources: [n.key], role: 'theme' as const })), ...adverbTokens];
+    const tokens: Token[] = [...vocative, ...rest.map((n) => ({ ...phrase(n, null), role: 'theme' as const })), ...adverbTokens];
     const ask = f.speech === 'plain' ? '줘' : f.speech === 'formal' ? '주십시오' : '주세요';
     tokens.push({ text: ask, sources: [request.key], role: 'predicate' });
     return [{ text: textOf(tokens), tokens, features: f, score: 5, note: '달라고 하기', unused: unusedMarkers }];
@@ -488,20 +615,26 @@ function nounOnly(nouns: NounCard[], markers: { key: string; e: MarkerEntry }[],
   const wh = rest.find((n) => n.e.wh);
   if (wh) {
     const others = rest.filter((n) => n !== wh);
-    const tokens: Token[] = [...vocative, ...others.map((n) => ({ text: word(n) + josaFor(word(n), '이/가'), sources: [n.key], role: 'agent' as const })), ...adverbTokens];
-    tokens.push({ text: realizeCopula(wh.e.word, { ...f, mood: 'question' }), sources: [wh.key], role: 'predicate' });
-    return [{ text: textOf(tokens), tokens, features: { ...f, mood: 'question' }, score: 5, note: '묻기', unused: unusedMarkers }];
+    const subjectSlot: Slot = { role: 'agent', josa: '이/가', cats: [] };
+    const tokens: Token[] = [...vocative, ...others.map((n) => ({ ...phrase(n, subjectSlot), role: 'agent' as const })), ...adverbTokens];
+    const whWord = f.speech === 'formal' && wh.e.word === '뭐' ? '무엇' : wh.e.word; // 합쇼체는 글말: 무엇입니까
+    tokens.push({ text: realizeCopula(whWord, { ...f, mood: 'question' }), sources: [wh.key], role: 'predicate' });
+    const wm = mods.get(wh.key); // '뭐도'처럼 의문사에 딸린 카드는 이 문장에 못 넣는다
+    const whUnused = wm ? [...wm.pre.map((x) => x.key), ...(wm.num ? [wm.num.key] : []), ...(wm.particle ? [wm.particle.key] : [])] : [];
+    return [{ text: textOf(tokens), tokens, features: { ...f, mood: 'question' }, score: 5, note: '묻기', unused: [...unusedMarkers, ...whUnused] }];
   }
 
   if (!rest.length) return [];
   const last = rest[rest.length - 1]!;
-  const lastWord = word(last);
-  const frag = f.speech === 'plain' ? lastWord : f.speech === 'formal' ? `${lastWord}입니다` : lastWord + (finalJong(lastWord) === '' ? '요' : '이요');
+  const lastPhrase = phrase(last, null);
+  const hasParticle = !!mods.get(last.key)?.particle;
+  const polite = hasParticle || finalJong(lastPhrase.text) === '' ? '요' : '이요'; // 저도요, 사과요, 물이요
+  const frag = f.speech === 'plain' ? lastPhrase.text : f.speech === 'formal' ? `${lastPhrase.text}입니다` : lastPhrase.text + polite;
   const tokens: Token[] = [
     ...vocative,
-    ...rest.slice(0, -1).map((n) => ({ text: word(n) + ',', sources: [n.key], role: 'fragment' as const })),
+    ...rest.slice(0, -1).map((n) => ({ ...phrase(n, null), text: `${phrase(n, null).text},`, role: 'fragment' as const })),
     ...adverbTokens,
-    { text: frag, sources: [last.key], role: 'fragment' },
+    { text: frag, sources: lastPhrase.sources, role: 'fragment' },
   ];
   return [{ text: textOf(tokens), tokens, features: f, score: 1, note: '낱말로 말하기', unused: unusedMarkers }];
 }

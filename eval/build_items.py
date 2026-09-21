@@ -22,7 +22,11 @@ for e in LEX:
         if e.get('honorForm'):
             NOUNS[e['honorForm']] = e['id']
 # 내/제/네 는 '내가·제가·네가' 일 때만 주어이고, 홀로 쓰이면 소유격(내 집)이라 카드가 없다
-NOUNS.update({'저': 'na', '저희': 'uri', '무엇': 'mwo', '누': 'nugu'})
+NOUNS.update({'저': 'na', '저희': 'uri', '무엇': 'mwo', '누': 'nugu', '이것': 'igeo', '그것': 'geugeo', '저것': 'jeogeo'})
+PARTICLES = {'도': 'do', '만': 'man'}
+NATIVE = {'한': 'hana', '하나': 'hana', '두': 'dul', '둘': 'dul', '세': 'set', '셋': 'set', '네': 'net', '넷': 'net', '다섯': 'daseot'}
+COUNTERS = {'개', '명', '마리', '잔'}
+DETS = {'이': 'i-det', '저': 'jeo-det'}
 GA_ONLY = {'내': 'na', '제': 'na', '네': 'neo'}
 
 PREDS = {e['lemma'][:-1]: e['id'] for e in LEX if e['kind'] == 'pred'}
@@ -59,7 +63,7 @@ class Tok:
 HAERACHE = {'다', 'ㄴ다', '는다', '라', '어라', '아라', '냐', '느냐', '니', '으냐', '는가'}
 UNSUPPORTED_EF = {'니까', '으니까', 'ㄴ대요', '는대요', 'ㄴ대', '는대', '대요', '래요', '라고요', '거야', '을걸', 'ㄹ걸', '나요', 'ㄴ가요', '는가요', '은가요', '죠', '지요', '지', '잖아', '잖아요', '네요', '네', '군요', '구나', '는데', '는데요', 'ㄴ데', '은데', '거든', '거든요', '다고', 'ㄴ다고', '더라'}
 # 뜻을 싣는 조사: 카드 없이 버리면 뜻이 사라진다
-MEANING_JOSA = {'도', '만', '까지', '부터', '조차', '마저', '밖에', '마다', '보다', '처럼', '한테서', '에게서', '로서', '로써', '으로서', '으로써', '의', '나', '이나', '든지', '라도', '이라도'}
+MEANING_JOSA = {'까지', '부터', '조차', '마저', '밖에', '마다', '보다', '처럼', '한테서', '에게서', '로서', '로써', '으로서', '으로써', '의', '나', '이나', '든지', '라도', '이라도'}
 
 
 def speech_of(tokens) -> str:
@@ -94,8 +98,16 @@ def to_cards(sentence: str, kiwi: Kiwi):
         t = toks[i]
         nxt = toks[i + 1] if i + 1 < len(toks) else None
         tag = t.tag
-        if tag in JOSA_TAGS or tag in PUNCT_TAGS or tag == 'EF':
+        if tag == 'JX' and t.form in PARTICLES:
+            cards.append(PARTICLES[t.form])
+        elif tag in JOSA_TAGS or tag in PUNCT_TAGS or tag == 'EF':
             pass
+        elif tag in ('MM', 'NR', 'SN') and t.form in NATIVE and nxt is not None and nxt.form in COUNTERS:
+            cards.append(NATIVE[t.form])
+            i += 2  # 셀 단위(개·명·마리·잔)는 엔진이 명사 범주로 다시 붙인다
+            continue
+        elif tag == 'MM' and t.form in DETS:
+            cards.append(DETS[t.form])
         elif tag in NOUN_TAGS:
             # 명사 + 하다 동사(공부하다)
             if nxt is not None and nxt.tag == 'XSV' and nxt.form == '하':
@@ -111,6 +123,10 @@ def to_cards(sentence: str, kiwi: Kiwi):
                 raise Skip(f'하다 동사 없음: {t.form}하다')
             if t.form in GA_ONLY and nxt is not None and nxt.tag == 'JKS':
                 cards.append(GA_ONLY[t.form])
+            elif t.form == '나' and nxt is not None and nxt.tag == 'JKG':
+                cards.append('nae')  # 내(나의) 가방
+                i += 2
+                continue
             elif t.form not in NOUNS:
                 raise Skip(f'명사 없음: {t.form}')
             else:

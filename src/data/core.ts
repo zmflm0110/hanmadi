@@ -116,6 +116,14 @@ export const CORE: Entry[] = [
   n('jeonyeok', '저녁', 'time', { timeJosa: '에', alt: ['food'] }),
   n('jumal', '주말', 'time', { timeJosa: '에' }),
 
+  // ── 가리키는 말(AAC 핵심어휘 최상위권) ──
+  n('igeo', '이거', 'thing', { deictic: true }),
+  n('geugeo', '그거', 'thing', { deictic: true }),
+  n('jeogeo', '저거', 'thing', { deictic: true }),
+  n('yeogi', '여기', 'place', { deictic: true }),
+  n('geogi', '거기', 'place', { deictic: true }),
+  n('jeogi', '저기', 'place', { deictic: true }),
+
   // ── 묻는 말 ──
   n('mwo', '뭐', 'thing', { wh: true }),
   n('nugu', '누구', 'person', { wh: true }),
@@ -202,6 +210,12 @@ export const CORE: Entry[] = [
   p('gwaenchanta', '괜찮다', 'adj', [S.experiencer, S.theme(ALL, '이/가')]),
   p('piryohada', '필요하다', 'adj', [S.experiencer, S.theme(ALL, '이/가')]),
   p('yeppeuda', '예쁘다', 'adj', [S.theme(ALL, '이/가')]),
+  // 색: 꾸밈말로 자주 쓴다(빨간 공)
+  p('ppalgata', '빨갛다', 'adj', [S.theme(ALL, '이/가')]),
+  p('parata', '파랗다', 'adj', [S.theme(ALL, '이/가')]),
+  p('norata', '노랗다', 'adj', [S.theme(ALL, '이/가')]),
+  p('hayata', '하얗다', 'adj', [S.theme(ALL, '이/가')]),
+  p('kkamata', '까맣다', 'adj', [S.theme(ALL, '이/가')]),
   p('tteugeopda', '뜨겁다', 'adj', [S.theme(ALL, '이/가')]),
   p('chagapda', '차갑다', 'adj', [S.theme(ALL, '이/가')]),
 
@@ -237,6 +251,18 @@ export const CORE: Entry[] = [
   { kind: 'adverb', id: 'geuman', word: '그만' },
   { kind: 'adverb', id: 'da', word: '다' },
   { kind: 'adverb', id: 'wae', word: '왜', wh: true },
+
+  // ── 명사 앞 · 수 · 뜻 조사 ──
+  { kind: 'det', id: 'nae', word: '내', polite: '제' },
+  { kind: 'det', id: 'i-det', word: '이' },
+  { kind: 'det', id: 'jeo-det', word: '저' },
+  { kind: 'num', id: 'hana', word: '하나', n: 1 },
+  { kind: 'num', id: 'dul', word: '둘', n: 2 },
+  { kind: 'num', id: 'set', word: '셋', n: 3 },
+  { kind: 'num', id: 'net', word: '넷', n: 4 },
+  { kind: 'num', id: 'daseot', word: '다섯', n: 5 },
+  { kind: 'particle', id: 'do', word: '도' },
+  { kind: 'particle', id: 'man', word: '만' },
 
   // ── 인사·대답 ──
   { kind: 'phrase', id: 'annyeong', word: '안녕', plain: '안녕', polite: '안녕하세요', formal: '안녕하십니까' },
