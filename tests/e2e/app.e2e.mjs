@@ -38,7 +38,8 @@ async function check(name, fn) {
 
 const card = (page, label) => page.locator('#grid .card', { hasText: new RegExp(`^${label}$`) }).first();
 const tab = (page, label) => page.locator('#tabs .tab', { hasText: label }).first();
-const cands = (page) => page.locator('#speak .cand .text').allTextContents();
+const cands = (page) => page.locator('#alts .cand .text').allTextContents();
+const sayText = (page) => page.locator('#say .text').textContent();
 
 await check('카드를 고르면 문법에 맞는 문장 후보가 나온다', async (page) => {
   await tab(page, '사람').click();
@@ -54,7 +55,7 @@ await check('카드를 고르면 문법에 맞는 문장 후보가 나온다', a
 
 await check('후보를 누르면 그 문장을 소리 내 읽고, 기록에 남는다', async (page) => {
   for (const l of ['엄마', '쉬', '마렵다']) await card(page, l).click();
-  await page.locator('#speak .cand').first().click();
+  await page.locator('#say').click();
   const spoken = await page.evaluate(() => window.__spoken);
   assert.equal(spoken.at(-1), '엄마, 쉬가 마려워요.');
   const log = await page.evaluate(() => JSON.parse(localStorage.getItem('hanmadi.log')));
@@ -84,6 +85,34 @@ await check('반말로 바꾸면 문장이 반말이 된다', async (page) => {
   await page.locator('#settings button[value=close]').click();
   for (const l of ['나', '먹다', '싶어요']) await card(page, l).click();
   assert.equal((await cands(page))[0], '나는 먹고 싶어.');
+});
+
+await check('글을 몰라도: 다르게를 누르면 다음 해석을 작은 소리로 들려주고, 말하기는 그 해석을 말한다', async (page) => {
+  await tab(page, '사람').click();
+  await card(page, '할머니').click();
+  await tab(page, '먹을거리').click();
+  await card(page, '밥').click();
+  await tab(page, '움직임').click();
+  await card(page, '먹다').click();
+  assert.equal(await sayText(page), '할머니가 진지를 드세요.');
+  assert.equal(await page.locator('#say .cue img').count(), 1, '누구 이야기인지 그림 단서');
+  await page.locator('#other').click();
+  assert.equal(await sayText(page), '할머니, 진지를 드세요.');
+  assert.equal(await page.locator('#say .badge').textContent(), '📣', '부르는 말은 📣 단서');
+  assert.equal((await page.evaluate(() => window.__spoken)).at(-1), '할머니, 진지를 드세요.');
+  await page.locator('#say').click();
+  const log = await page.evaluate(() => JSON.parse(localStorage.getItem('hanmadi.log')));
+  assert.equal(log.find((e) => e.type === 'speak').rank, 1, '두 번째 해석을 골랐다고 기록');
+  assert.equal(log.filter((e) => e.type === 'preview').length, 1);
+});
+
+await check('모두 보기를 펼치면 해석 목록에서 바로 고를 수 있다', async (page) => {
+  for (const l of ['엄마', '쉬', '마렵다']) await card(page, l).click();
+  assert.equal(await page.locator('#alts').isVisible(), false);
+  await page.locator('#more').click();
+  assert.equal(await page.locator('#alts').isVisible(), true);
+  await page.locator('#alts .cand').nth(1).click();
+  assert.equal((await page.evaluate(() => window.__spoken)).at(-1), '엄마는 쉬가 마려워요.');
 });
 
 await check('칩을 누르면 그 카드만 빠지고, 지우기는 모두 비운다', async (page) => {
@@ -116,7 +145,7 @@ await check('과제 모드: 상황을 보여 주고, 말하면 결과를 남기�
   await card(page, '물').click();
   await card(page, '주세요').click();
   assert.equal((await cands(page))[0], '물 주세요.');
-  await page.locator('#speak .cand').first().click();
+  await page.locator('#say').click();
   await page.waitForFunction(() => /과제 2\/12/.test(document.querySelector('#task').textContent), null, { timeout: 4000 });
   const log = await page.evaluate(() => JSON.parse(localStorage.getItem('hanmadi.log')));
   const t = log.find((e) => e.type === 'task');

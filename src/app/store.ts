@@ -36,7 +36,7 @@ export interface MyCard {
 /** 익명 사용 기록 한 줄. 이름·사진·음성은 남기지 않는다. */
 export interface LogEvent {
   t: number; // ms (기록 시작 기준이 아니라 절대 시각 — 내보낼 때 상대 시각으로 바꾼다)
-  type: 'add' | 'remove' | 'clear' | 'speak' | 'task';
+  type: 'add' | 'remove' | 'clear' | 'speak' | 'task' | 'preview';
   card?: string; // 카드 id (내 카드는 'mine' 으로만)
   rank?: number; // 말한 후보가 몇 번째였는지(0 = 1순위)
   taps?: number; // 이 문장을 만드는 데 누른 횟수

@@ -18,6 +18,8 @@ let tab: TabId = 'core';
 let taps = 0;
 let firstAt = 0;
 let seq = 0;
+let pick = 0; // 지금 고른 해석(다르게 누를 때마다 다음 것)
+let showAll = false;
 // 과제 모드(사용성 평가): 과제마다 말투·문법 켬/끔이 정해진다
 let task: { code: string; index: number } | null = null;
 
@@ -92,7 +94,7 @@ function say(i: number) {
 }
 
 function flash(i: number) {
-  const el = document.querySelector<HTMLElement>(`[data-cand="${i}"]`);
+  const el = document.querySelector<HTMLElement>(showAll ? `[data-cand="${i}"]` : '#say');
   el?.classList.add('spoken');
   window.setTimeout(() => el?.classList.remove('spoken'), 900);
 }
@@ -139,6 +141,21 @@ function renderStrip() {
   strip.scrollLeft = strip.scrollWidth;
 }
 
+/** 해석의 그림 단서: 누구에게 말하는지(📣 + 그 사람), 누구 이야기인지(그 사람), 묻기(?) — 글을 몰라도 고를 수 있게 */
+function cueOf(c: Candidate): { pic: string | null; badge: string } {
+  const byKey = (k: string | undefined) => sentence.find((x) => x.key === k)?.entry;
+  const voc = c.tokens.find((t) => t.role === 'vocative');
+  if (voc) return { pic: pictureFor(byKey(voc.sources[0])), badge: '📣' };
+  const subj = c.tokens.find((t) => (t.role === 'agent' || t.role === 'experiencer') && t.text);
+  const badge = c.features.mood === 'question' || c.features.mood === 'volitionQ' ? '❓' : '💬';
+  if (subj) return { pic: pictureFor(byKey(subj.sources[0])), badge };
+  return { pic: pictureFor(CORE.find((e) => e.id === 'na')), badge }; // 주어가 없으면 대개 '나'의 말
+}
+
+function pictureFor(e: Entry | undefined): string | null {
+  return e ? pictureOf(e, photos()) : null;
+}
+
 function renderSpeak() {
   const box = $('speak');
   box.replaceChildren();
@@ -151,22 +168,78 @@ function renderSpeak() {
     }
     return;
   }
-  candidates.forEach((c, i) => {
+  const c = candidates[pick] ?? candidates[0]!;
+  const main = document.createElement('button');
+  main.id = 'say';
+  main.className = 'say-main';
+  const cue = cueOf(c);
+  main.innerHTML = `<span class="cue"><span class="badge"></span></span><span class="text"></span><span class="icon" aria-hidden="true">🔊</span>`;
+  if (cue.pic && settings.grammar) {
+    const img = document.createElement('img');
+    img.src = cue.pic;
+    img.alt = '';
+    main.querySelector('.cue')!.prepend(img);
+  }
+  main.querySelector('.badge')!.textContent = settings.grammar ? cue.badge : '';
+  main.querySelector('.text')!.textContent = c.text;
+  main.setAttribute('aria-label', `말하기: ${c.text}`);
+  main.onclick = () => say(pick);
+  box.append(main);
+
+  if (candidates.length > 1) {
+    const other = document.createElement('button');
+    other.id = 'other';
+    other.className = 'say-other';
+    other.innerHTML = `<span>다르게</span><small>${pick + 1}/${candidates.length}</small>`;
+    other.setAttribute('aria-label', `다른 뜻으로 (${pick + 1}/${candidates.length})`);
+    other.onclick = () => {
+      pick = (pick + 1) % candidates.length;
+      log({ type: 'preview', rank: pick });
+      renderSpeak();
+      speak(candidates[pick]!.text, settings.rate, true); // 미리 듣기: 작은 소리
+      scanner.refresh();
+    };
+    box.append(other);
+
+    const more = document.createElement('button');
+    more.id = 'more';
+    more.className = 'say-more';
+    more.textContent = showAll ? '▴ 접기' : '▾ 모두';
+    more.setAttribute('aria-expanded', String(showAll));
+    more.onclick = () => {
+      showAll = !showAll;
+      renderSpeak();
+      scanner.refresh();
+    };
+    box.append(more);
+  }
+
+  // 모든 해석 목록: 글을 읽는 사용자·대화 상대용. 접혀 있어도 DOM 에 남긴다(보조기술·테스트).
+  const list = document.createElement('ol');
+  list.id = 'alts';
+  list.className = showAll ? 'alts open' : 'alts';
+  candidates.forEach((cand, i) => {
+    const li = document.createElement('li');
     const b = document.createElement('button');
-    b.className = i === 0 ? 'cand first' : 'cand';
+    b.className = i === pick ? 'cand on' : 'cand';
     b.dataset.cand = String(i);
-    b.innerHTML = `<span class="say">🔊</span><span class="text"></span><small></small>`;
-    b.querySelector('.text')!.textContent = c.text;
-    b.querySelector('small')!.textContent = c.note;
-    b.setAttribute('aria-label', `말하기: ${c.text}`);
-    b.onclick = () => say(i);
-    box.append(b);
+    b.innerHTML = `<span class="text"></span><small></small>`;
+    b.querySelector('.text')!.textContent = cand.text;
+    b.querySelector('small')!.textContent = cand.note;
+    b.onclick = () => {
+      pick = i;
+      say(i);
+    };
+    li.append(b);
+    list.append(li);
   });
+  box.append(list);
+
   const unused = candidates[0]?.unused ?? [];
   if (unused.length) {
     const p = document.createElement('p');
     p.className = 'hint';
-    const names = unused.map((k) => sentence.find((c) => c.key === k)).filter(Boolean).map((c) => labelOf(c!.entry));
+    const names = unused.map((k) => sentence.find((x) => x.key === k)).filter(Boolean).map((x) => labelOf(x!.entry));
     p.textContent = `‘${names.join(', ')}’ 카드는 움직임·느낌 카드와 함께 쓰면 문장에 들어가요`;
     box.append(p);
   }
@@ -252,6 +325,7 @@ $('task-stop').onclick = () => {
 
 function update() {
   compute();
+  pick = 0;
   renderStrip();
   renderSpeak();
   scanner.refresh();
@@ -259,7 +333,8 @@ function update() {
 
 // ── 스캐닝 ──────────────────────────────────────────────────────────────
 function scanGroups(): HTMLElement[][] {
-  const cands = [...document.querySelectorAll<HTMLElement>('#speak .cand')];
+  const cands = [...document.querySelectorAll<HTMLElement>('#speak .say-main, #speak .say-other, #speak .say-more')];
+  const list = showAll ? [...document.querySelectorAll<HTMLElement>('#alts .cand')] : [];
   const tools = [...document.querySelectorAll<HTMLElement>('.strip-tools .tool')];
   const tabs = [...document.querySelectorAll<HTMLElement>('#tabs .tab')];
   const cards = [...document.querySelectorAll<HTMLElement>('#grid .card')];
@@ -269,7 +344,7 @@ function scanGroups(): HTMLElement[][] {
     rows.set(top, [...(rows.get(top) ?? []), c]);
   }
   const taskButtons = [...document.querySelectorAll<HTMLElement>('#task button')];
-  return [cands, ...[...rows.values()], tabs, tools, taskButtons];
+  return [cands, list, ...[...rows.values()], tabs, tools, taskButtons];
 }
 
 const scanner = new Scanner(scanGroups, () => settings.scanMs);

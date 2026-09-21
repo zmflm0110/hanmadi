@@ -19,12 +19,14 @@ export function hasKoreanVoice(): boolean {
   return !!(voice ?? pickVoice());
 }
 
-export function speak(text: string, rate = 0.9) {
+/** quiet: '다르게'로 해석을 미리 들어 볼 때 작은 소리로 */
+export function speak(text: string, rate = 0.9, quiet = false) {
   if (typeof speechSynthesis === 'undefined') return;
   speechSynthesis.cancel();
   const u = new SpeechSynthesisUtterance(text);
   u.lang = 'ko-KR';
   u.rate = rate;
+  u.volume = quiet ? 0.45 : 1;
   const v = voice ?? pickVoice();
   if (v) u.voice = v;
   speechSynthesis.speak(u);
