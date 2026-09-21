@@ -38,8 +38,11 @@ def key(s: str, level: str) -> tuple:
         return tuple(m)
     # 느슨한 기준은 형태만 비교(Kiwi 가 같은 낱말을 NNG/MAG 로 달리 붙이는 흔들림을 없앤다)
     forms = [PRONOUN.get(f, f) if t == 'NP' else (SAME_JOSA.get(f, f) if t.startswith('J') else f) for f, t in m]
-    if level == 'josa':
+    if level in ('josa', 'bag'):
         forms = [f for f, (_, t) in zip(forms, m) if t not in CASE_JOSA]
+    if level == 'bag':
+        # 어순 무시: 카드를 섞어 넣었을 때 역할(뜻 조사)·어미가 맞는지만 본다
+        return tuple(sorted(forms))
     return tuple(forms)
 
 
@@ -53,13 +56,14 @@ def main():
     ap.add_argument('preds')
     ap.add_argument('--errors', type=int, default=0)
     ap.add_argument('--split', choices=['dev', 'test', 'all'], default='dev')
+    ap.add_argument('--bag', action='store_true', help='어순을 무시하는 기준도 잰다(카드 섞기 실험용)')
     args = ap.parse_args()
     rows = [json.loads(l) for l in Path(args.preds).read_text().splitlines() if l.strip()]
     if args.split != 'all':
         rows = [r for r in rows if split_of(r['id']) == args.split]
     if args.split == 'test' and args.errors:
         raise SystemExit('시험용 오류는 보지 않는다(튜닝에 새면 숫자가 부풀려진다)')
-    levels = [('strict', '엄격'), ('pronoun', '대명사'), ('josa', '조사생략')]
+    levels = [('strict', '엄격'), ('pronoun', '대명사'), ('josa', '조사생략')] + ([('bag', '어순무시')] if args.bag else [])
     hits = {lv: Counter() for lv, _ in levels}
     errors = []
     for r in rows:
